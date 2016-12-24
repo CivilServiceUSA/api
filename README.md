@@ -3,7 +3,7 @@
 Civil Services API
 ===
 
-[![Build Status](https://circleci.com/gh/civilserviceusa/api/tree/master.svg?style=shield)](https://circleci.com/gh/civilserviceusa/api/tree/master)  [![Known Vulnerabilities] (https://snyk.io/test/github/civilserviceusa/api/badge.svg)](https://snyk.io/test/github/civilserviceusa/api)  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/civilserviceusa/api/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/civilserviceusa/api.svg)](https://github.com/civilserviceusa/api/graphs/contributors)
+[![Build Status](https://circleci.com/gh/CivilServiceUSA/api/tree/master.svg?style=shield)](https://circleci.com/gh/CivilServiceUSA/api/tree/master)  [![Known Vulnerabilities] (https://snyk.io/test/github/CivilServiceUSA/api/badge.svg)](https://snyk.io/test/github/CivilServiceUSA/api)  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE)  [![GitHub contributors](https://img.shields.io/github/contributors/CivilServiceUSA/api.svg)](https://github.com/CivilServiceUSA/api/graphs/contributors)
 
 __Civil Services__ is a collection of tools that make it possible for citizens to be apart of what is happening in their Local, State & Federal Governments.
 
