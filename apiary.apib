@@ -1,0 +1,2015 @@
+FORMAT: 1A
+HOST: https://api.civil.services/v1
+
+# API
+
+Civil Services is a collection of tools that make it possible for citizens to be apart of what is happening in their Local, State & Federal Governments.
+
+* _Maintained By:_ __[Peter Schmalfeldt](mailto:me@peterschmalfeldt.com)__
+* _Last Modified:_ __January 1st, 2017__
+* _Current API Version:_ __v1.0.0__
+
+[![API Documentation](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/apiary-button.png)](http://docs.civilservices.apiary.io)
+
+# Group API Basics
+
+## API Overview
+
+Our API has a default Rate Limit by IP Address to `2500` calls per day. We add the following headers so you can monitor your API Rate:
+
+* __X-Rate-Limit-Limit__: The rate limit ceiling for that given request
+* __X-Rate-Limit-Remaining__: The number of requests left for the 24 hour window
+* __X-Rate-Limit-Reset__: The remaining window before the rate limit resets in UTC [epoch seconds](http://en.wikipedia.org/wiki/Unix_time)
+
+If a specific IP Address exceeds this limit, the API will return a 429 HTTP JSON Response Error.  A sample of this is provided in the Artwork API endpoint.
+
+Your
+
+## API Authentication
+
+Our API requires an API Key to use.  We are not providing API Keys to the general public at this time.  You likely received an API Key before accessing this documentation, if not, please contact the individual who sent you here.
+
+## You can set the API Key one of two ways
+
+#### Request Header:
+
+* __API-Key__ `243CEA2E-7E63-D2C4-3D2D-1A114288274B` _( this is not an actual API Key )_
+
+#### GET Parameter:
+
+* __?apikey=__ `243CEA2E-7E63-D2C4-3D2D-1A114288274B`
+
+### HTTP Request Method Limits
+
+### Common API Responses
+
+The following parameters are available on every API endpoint and used for pagination
+for if there are a lot of results.
+
++ `error` (boolean) - Whether or not there were errors in the API call.
++ `errors` (array) - An array of general errors.
++ `field_errors` (object) - If the error was in regards to data entry, any errors specific to an input field will return here with the input name and error message.
++ `meta` (object) - The META data object that contains the basic information about the API response.
++ `meta.total` (number) - Total number of all results.  Not just the number returned in the API call.
++ `meta.showing` (number) - Number of results returned in the current API call ( may be less than total results ).
++ `meta.pages` (number) - Number of pages of results.  This is based on the `total` results divided by the `pageSize`.
++ `meta.page` (number) - Current Page
++ `data` (object or array) - This is the the actual data returned for the API call.  For API calls that are expected to return a single result, the `data` will be an Object.  For API calls that are expecting multiple items returned, `data` will be returned as an array ( even if there is only one item returned, such as search results, etc ).
+
+__Response 200:__ (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": {},
+            "meta": {
+                "total": 97,
+                "showing": 30,
+                "pages": 4,
+                "page": 1
+            },
+            "data": [
+                ...
+            ]
+        }
+
+__Response 403:__ (application/json)
+
+        {
+            "error": true,
+            "errors": ["Missing API Key"],
+            "field_errors": {},
+            "meta": {
+                "total": 0,
+                "showing": 0,
+                "pages": 1,
+                "page": 1
+            },
+            "data": []
+        }
+
+### Optional API Params
+
+The following parameters are available on every API endpoint and used for pagination
+for if there are a lot of results.
+
++ `pageSize` (number, optional) - How many results to return in a single API call. Defaults to 30
++ `page` (number, optional) - If there is more than one page of results, you can set which page to load here
++ `pretty` (optional) - If you want to format the JSON response to be human readable, just add a `pretty` param in the API call ( it does not need a value )
+
+### Request Authorization Header
+
+* __Authorization:__ Bearer `token`
+
+An example API Header would look like this:
+
+```
+curl --data '' https://api.civil.services/v1/user/refresh/ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNDUxNzEyNzg0LCJleHAiOjE0NTIzMTc1ODQsImlzcyI6IkRvaW5nIEFQSSJ9.x3eJutiulLnJCJkl_jP9ETj43ihePVeMtaWgWF0I60w"
+```
+
+
+
+# Group API Access
+
+All access to our API will require an Authentication Token. The following endpoint will
+get your access to endpoints that do not require user authentication.
+
+## Token [/token]
+
+You will not be able to make a request to our API without a `token` sent in an
+Authorization Header.  This `/token` endpoint is the only public endpoint open to
+allow a `token` to be requested.  This endpoint is only required for anonymous users
+that have not logged in.  Once the user logs in, you will need to use the `token` that
+is sent back for that user, as it will be used for authenticating that specific user.
+
+Once a user has logged in, you will need to send over their Authentication
+Token in the HTTP Header.  A `token` is returned with a succesful login.  A session
+token is valid for 7 days.  You can refresh your token to prevent having to log in
+again by either adding the Request Authorization Header below, or using the
+`/api/0.1/user/refresh/` endpoint.
+
+### Get Token [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0NTU1MTQ2NzIsImV4cCI6MTQ1NjExOTQ3MiwiaXNzIjoiQ29kZXJzIEJ1aWxkIEFQSSJ9.PZagWEzVC2sr_QjcwvqvUB9lUUlFSNIT9gzY80XWAn4"
+          }
+        }
+
+## Refresh Session [/user/refresh]
+
+A `token` is returned with a succesful login.  A session token is valid for 7 days.
+You can refresh your token to prevent having to log in again by either adding the
+Request Authorization Header below. `token` should be the string returned in the
+`token` parameter from a succesful login.
+
+* __Authorization:__ Bearer `token`
+
+### Refresh Session [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsImlhdCI6MTQ1MTc5ODYyMSwiZXhwIjoxNDUyNDAzNDIxLCJpc3MiOiJEb2luZyBBUEkifQ.za4PspEZfeVxydO3QHSFBLm_9PcrCBRwK9HLofBY74s"
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid or expired token"
+          ],
+          "meta": {},
+          "data": []
+        }
+
+
+
+
+# Group Account Management
+
+The following endpoints are specifically setup to manage the logged in users account.
+
+## Register [/user/register/?username={username}&password={password}&retype_password={retype_password}&inviteCode={inviteCode}&first_name={first_name}&last_name={last_name}&email={email}&agree={agree}]
+
+API Endpoint to register new users. This should set the user's `activated` field
+to `true` unless they've included their email address. If so, `activated` is
+`false` and the user will be sent an email with a `new_email_key` key to confirm
+their email address to complete registration.
+
++ Parameters
+    + username (string, required) - The username or email address of the account
+        + Min Length: __3__
+        + Max Length: __30__
+        + Characters Allowed: __a-zA-Z0-9___
+        + Case Insensitive
+    + password (string, required) - The password to the account
+        + Min Length: __6__
+        + No Other Password Requirements :)
+    + retype_password (string, required) - The password to the account
+        + Min Length: __6__
+        + No Other Password Requirements :)
+    + inviteCode (string, required) - During Alpha / Beta testing, an Invitation Code is Required for registration
+        + Length: __6__
+        + Existing Users: __hash_id__
+    + first_name (string, optional) - First Name - NOTE: Apple does not like requiring personal info for registration
+        + Min Length: __1__
+        + Max Length: __50__
+    + last_name (string, optional) - Last Name - NOTE: Apple does not like requiring personal info for registration
+        + Min Length: __1__
+        + Max Length: __50__
+    + email (string, optional) - Email Address - NOTE: Apple does not like requiring personal info for registration
+        + Min Length: __1__
+        + Max Length: __100__
+    + agree (string, required) - Agree to TOS - User Agreed to Terms of Service
+
+### User Register [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "banned": false,
+            "id": "5",
+            "username": "test",
+            "first_name": "Test",
+            "last_name": "User",
+            "email": "test@email.com",
+            "activated": false,
+            "new_email_key": "TriqG3m344N8",
+            "modified": "2016-01-03T03:59:45.465Z",
+            "created": "2016-01-03T03:59:45.465Z",
+            "banned_reason": null,
+            "new_password_key": null,
+            "new_password_requested": null,
+            "new_email": null,
+            "profile_photo": null
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [],
+          "field_errors": {
+            "username": [
+              "Username is already in use"
+            ],
+            "email": [
+              "Email is already in use"
+            ]
+          },
+          "meta": {},
+          "data": []
+        }
+
+## Confirm Account [/user/confirm/account/?key={key}]
+
+During account registration, new users will be sent a link to confirm their
+email address.  The users account will be disabled until the user confirms the email
+address.
+
+
++ Parameters
+    + key (required, string) - The `new_email_key` stored for the user
+
+### Confirm Account [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "id": "5",
+            "username": "test",
+            "email": "test@email.com",
+            "first_name": "Test",
+            "last_name": "User",
+            "activated": true,
+            "banned": false,
+            "banned_reason": null,
+            "new_password_key": null,
+            "new_password_requested": null,
+            "new_email": null,
+            "new_email_key": null,
+            "profile_photo": null,
+            "created": "2016-01-02T06:00:54.303Z",
+            "modified": "2016-01-02T06:01:35.207Z",
+            "banned": false
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": ["Error Saving User Account"],
+          "meta": {},
+          "data": []
+        }
+
+## Confirm Email Change [/user/confirm/email/?key={key}]
+
+When a user changes their email, they will be sent a confirmation email to both
+their new and old email address assuring it was them that requested the email
+change.
+
+
++ Parameters
+    + key (required, string) - The `new_email_key` stored for the user
+
+### Confirm Email Change [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "id": "5",
+            "username": "test",
+            "email": "test@email.com",
+            "first_name": "Test",
+            "last_name": "User",
+            "activated": true,
+            "banned": false,
+            "banned_reason": null,
+            "new_password_key": null,
+            "new_password_requested": null,
+            "new_email": null,
+            "new_email_key": null,
+            "profile_photo": null,
+            "created": "2016-01-02T06:00:54.303Z",
+            "modified": "2016-01-02T06:01:35.207Z",
+            "banned": false
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": ["Error Confirming Account"],
+          "meta": {},
+          "data": []
+        }
+
+## Confirm Password Change [/user/confirm/password/?key={key}]
+
+When a user changes their password, they will be sent a confirmation email assuring
+it was them that requested the password change.
+
+
++ Parameters
+    + key (required, string) - The `new_email_key` stored for the user
+
+### Confirm Password Change [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "id": "5",
+            "username": "test",
+            "email": "test@email.com",
+            "first_name": "Test",
+            "last_name": "User",
+            "activated": true,
+            "banned": false,
+            "banned_reason": null,
+            "new_password_key": null,
+            "new_password_requested": null,
+            "new_email": null,
+            "new_email_key": null,
+            "profile_photo": null,
+            "created": "2016-01-02T06:00:54.303Z",
+            "modified": "2016-01-02T06:01:35.207Z",
+            "banned": false
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": ["Error Confirming Account"],
+          "meta": {},
+          "data": []
+        }
+
+## Login [/user/login/?username={username}&password={password}]
+
+Some of the API endpoints will require authentication. Those endpoints will
+require the `token` returned from a succesful login.
+
+To access authentication-protected endpoints, you will need to include an
+`Authorization` HTTP header in the format: `Bearer (token)`.
+
++ Parameters
+    + username (string, required) - The username of the account
+    + password (string, required) - The password to the account
+
+### User Login [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "id": "5",
+            "username": "test",
+            "email": "test@email.com",
+            "first_name": "Test",
+            "last_name": "User",
+            "activated": true,
+            "banned": false,
+            "banned_reason": null,
+            "new_password_key": null,
+            "new_password_requested": null,
+            "new_email": null,
+            "new_email_key": "TriqG3m344N8",
+            "profile_photo": null,
+            "created": "2016-01-03T03:59:45.465Z",
+            "modified": "2016-01-03T03:59:45.465Z",
+            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1IiwiaWF0IjoxNDUxNzk0OTI2LCJleHAiOjE0NTIzOTk3MjYsImlzcyI6IkRvaW5nIEFQSSJ9.Y-ALQxsdTCf8zJvD-IUeobGTbgKbtNTvt3_JrUMOyXA"
+          }
+        }
+
++ Response 200 (application/json)
+
+        {
+          "error": true,
+          "errors": ["User not active"],
+          "meta": {},
+          "data": []
+        }
+
++ Response 200 (application/json)
+
+        {
+          "error": true,
+          "errors": ["No user found with that username"],
+          "meta": {},
+          "data": []
+        }
+
+## Logout [/user/logout]
+
+Tell API that the user has logged out
+
+### User Logout [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {},
+          "data": {
+            "success": true
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": ["Invalid API Authorization Token"],
+          "meta": {},
+          "data": []
+        }
+
+## Forgot Password [/user/forgot-password/?email={email}]
+
+Forgot password will require an email address that is requesting for the password
+reset link.
+
++ Parameters
+    + email (required, string) - The email address of the account
+
+### User Forgot Password [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "message": "Check your email to obtain instructions on password reset."
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "We could not find that email address in our system."
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Reset Password [/user/reset-password/?token={token}&password={password}&retype_password={retype_password}]
+
+Reset password will check the token against the `new_password_key` column for that user.  We will also likely want to make sure that `new_password_requested` is less than a certain age to prevent open password change requests.
+
++ Parameters
+    + token (required, string) - This is the token that is sent from the link in the email address.
+    + password (required, string) - This is the new password that the user wants to reset
+    + retype_password (required, string) - This should be the same as 'password' and is the confirmation of the password
+
+### User Reset Password [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "message": "You may now login with your new password."
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid Reset Password token."
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Resend Email Confirmation [/user/resend-confirmation/{hash_id}]
+
+If the user needs to resend their email confirmation, this is the endpoint to use.
+
++ Parameters
+    + hash_id (required, string) - This is the hash id of the user
+
+### Resend Email Confirmation [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "message": "You may now login with your new password."
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid Reset Password token."
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Update Account [/user/update/?current_password={current_password}&username={username}&email={email}&password_new={password_new}&password_new_retype={password_new_retype}]
+
+This endpoint will allow the logged in user to update their own account.  This uses the current Authentication Bearer Token to lookup who's account to update.
+
+The Bearer Token is created during login and contains the users ID from our database.  You will not be able to use this endpoint to manage anyone else's account except your own.
+
+IMPORTANT NOTES ABOUT THIS ENDPOINT:
+
+1. Changing the username will immediately make the old username available to the world for use.  We do check to make sure that the new username being requested is available.
+2. We do not immediately change the email when requested.  Instead we send a confirmation email to both the new and old email to confirm the requested change.
+3. We do not immediately change the password when requested.  We first send a confirmation email to the users current email to confirm that they made the requested change.
+
++ Parameters
+    + current_password (required, string) - Current Account Password ( required to make any changes on this endpoint )
+    + username (optional, string) - New Username user wishes to change their username to
+    + email (optional, string) - New Email Address user wishes to associate with their account
+    + password_new (optional, string) - New Password user wishes to use for their account
+    + password_new_retype (optional, string) - Repeat the new password to make sure they match so they don't get locked out
+
+### Update Account [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Username is not available"
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Delete Account [/user/delete/?username={username}&password={password}]
+
+This endpoint only works for the currently logged in user using the Authorization
+Bearer Header Token.  Once that is verified there is a second check to require the
+account holders username and password to double check that they just did not steal
+the Authentication Header to try to steal / delete the users account.
+
+IMPORTANT NOTES ABOUT THIS ENDPOINT:
+
+1. This will permanently delete the users account
+2. This will also permanently delete all data generated by the user
+3. There is no way to undo this
+
++ Parameters
+    + username (required, string) - Current Account User
+    + password (required, string) - Current Account Password
+
+### Delete Account [DELETE]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Incorrect Password"
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+
+# Group User Interaction
+
+The following endpoints are for accessing specific public data about a given
+username.  No private information is accessible from these endpoints.
+
+## Get User Profile [/user/{username}/profile]
+
+Get a public profile for given `username`.
+
++ Parameters
+    + username (required, string) - Username for requested profile
+
+### Get User Profile [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "No Matching User Found"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+## Follow User [/user/{username}/follow]
+
+Add's `username` to the current logged in users follow list.
+
++ Parameters
+    + username (required, string) - Username of user you wish to follow
+
+### Follow User [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "No Matching User Found"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+## Unfollow User [/user/{username}/unfollow]
+
+Removes `username` from the current logged in users follow list.
+
++ Parameters
+    + username (required, string) - Username of user you wish to unfollow
+
+### Unfollow User [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "No Matching User Found"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+## Get Followers [/user/{username}/followers]
+
+Fetches list of users that is following `username`
+
++ Parameters
+    + username (required, string) - Username to get followers list for
+
+### Get Followers [GET]
+
++ Response 200 (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": { },
+            "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+            },
+            "data": [
+                {
+                    "id": 2,
+                    "username": "manifestinteractive",
+                    "profile_name": "Peter Schmalfeldt",
+                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
+                    "followed_on": "2016-03-05T08:30:04.000Z"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Missing Username"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+## Get Following [/user/{username}/following]
+
+Fetches list of users `username` is following
+
++ Parameters
+    + username (required, string) - Username to get following list for
+
+### Get Following [GET]
+
++ Response 200 (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": { },
+            "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+            },
+            "data": [
+                {
+                    "id": 2,
+                    "username": "manifestinteractive",
+                    "profile_name": "Peter Schmalfeldt",
+                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
+                    "followed_on": "2016-03-05T08:30:04.000Z"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Missing Username"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+## Get Invitations [/user/invite/{key}]
+
+Fetches list of users that have registered using the provided invite `key`
+
++ Parameters
+    + key (required, string) - Invitation Key ( users hash_id )
+
+### Get Invitations [GET]
+
++ Response 200 (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": { },
+            "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+            },
+            "data": [
+                {
+                    "id": 2,
+                    "username": "manifestinteractive",
+                    "profile_name": "Peter Schmalfeldt",
+                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
+                    "followed_on": "2016-03-05T08:30:04.000Z"
+                }
+            ]
+        }
+
++ Response 400 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Missing Username"
+          ],
+          "field_errors": {},
+          "meta": {
+            "total": 0,
+            "showing": 0,
+            "pages": 1,
+            "page": 1
+          },
+          "data": []
+        }
+
+
+# Group User Settings
+
+The following endpoints for accessing & managing settings for the current logged
+in user.  These endpoints only work for the user associated with the Authorization
+Bearer Token sent in the header.  This uses the current Authentication Bearer Token
+to lookup who's account to update. The Bearer Token is created during login and contains
+the users ID from our database.  You will not be able to use this endpoint to manage
+anyone elses account except your own.
+
+## Get User Settings [/settings]
+
+Gets account settings for current logged in user
+
+### Get User Settings [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [
+
+          ],
+          "field_errors": {
+
+          },
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "notifications": {
+              "email_comment_left": true,
+              "email_comment_liked": false,
+              "email_mentioned_in_comment": true,
+              "email_someone_follows": true,
+              "newsletter": true,
+              "web_comment_left": true,
+              "web_comment_liked": true,
+              "web_mentioned_in_comment": true,
+              "web_someone_follows": false
+            }
+          }
+        }
+
+## Update Profile [/settings/profile/?profile_photo={profile_photo}&profile_name={profile_name}&location={location}&company_name={company_name}&first_name={first_name}&last_name={last_name}&bio={bio}]
+
+This endpoint will allow the logged in user to update their own account profile.
+
++ Parameters
+    + profile_photo (optional, string) - absolute path to location of User Avatar ( must be HTTPS to prevent issues )
+        + Max Length: `255`
+        + Default: null
+    + profile_name (optional, string) - Public Display Name of User
+        + Max Length: `100`
+        + Default: Users Username
+    + location (optional, string) - Public Pysical Location of User
+        + Max Length: `50`
+        + Default: null
+    + company_name (optional, string) - Public Company the User works for
+        + Max Length: `100`
+        + Default: null
+    + first_name (optional, string) - Private First Name ( never shown on site - for internal use only )
+        + Max Length: `100`
+        + Default: null
+    + last_name (optional, string) - Private Last Name ( never shown on site - for internal use only )
+        + Max Length: `100`
+        + Default: null
+    + bio (optional, string) - Public User Bio to display on website
+        + Max Length: `255`
+        + Default: null
+
+### Update Profile [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "bio": "Front End Designer",
+            "company_name": "Awesome Company",
+            "email": "me@email.com",
+            "first_name": "Jane",
+            "hash_id": "yRdRYJ",
+            "join_date": "2016-02-15T02:51:52.000Z",
+            "last_name": "Doe",
+            "location": "St. Petersburg, FL",
+            "profile_link_1": "http://mywebsite.com",
+            "profile_link_2": null,
+            "profile_link_3": null,
+            "profile_link_twitter": null,
+            "profile_link_website": null,
+            "profile_name": "Jane Doe",
+            "profile_photo": null,
+            "username": "janedoe"
+          }
+        }
+
+
+## Update Social Links [/settings/social-links/?profile_link_github={profile_link_github}&profile_link_bitbucket={profile_link_bitbucket}&profile_link_twitter={profile_link_twitter}&profile_link_1={profile_link_1}&profile_link_2={profile_link_2}&profile_link_3={profile_link_3}]
+
+This endpoint will allow the logged in user to update their own accounts Social Links.
+
++ Parameters
+    + profile_link_github (optional, string) - Absolute URL to Github Profile Page
+        + Max Length: `100`
+        + Default: null
+    + profile_link_bitbucket (optional, string) - Absolute URL to Bitbucket Profile Page
+        + Max Length: `100`
+        + Default: null
+    + profile_link_twitter (optional, string) - Absolute URL to Twitter Profile Page
+        + Max Length: `100`
+        + Default: null
+    + profile_link_1 (optional, string) - Absolute URL to a URL of the Users Choosing
+        + Max Length: `100`
+        + Default: null
+    + profile_link_2 (optional, string) - Absolute URL to a URL of the Users Choosing
+        + Max Length: `100`
+        + Default: null
+    + profile_link_3 (optional, string) - Absolute URL to a URL of the Users Choosing
+        + Max Length: `100`
+        + Default: null
+
+### Update Social Links [POST]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid API Authorization Token"
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Update Email Notifications [/settings/email-notifications/?email_comment_left={email_comment_left}&email_comment_liked={email_comment_liked}&email_project_liked={email_project_liked}&email_someone_follows={email_someone_follows}&email_mentioned_in_comment={email_mentioned_in_comment}]
+
+This endpoint will allow the logged in user to update their own accounts email notification settings.
+
++ Parameters
+    + email_comment_left (boolean, optional) - DATA
+        + Default: true
+    + email_comment_liked (boolean, optional) - DATA
+        + Default: true
+    + email_project_liked (boolean, optional) - DATA
+        + Default: true
+    + email_someone_follows (boolean, optional) - DATA
+        + Default: true
+    + email_mentioned_in_comment (boolean, optional) - DATA
+        + Default: true
+
+### Update Email Notifications [POST]
+
++ Response 200 (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": {},
+            "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+            },
+            "data": {
+                "email_comment_left": true,
+                "email_comment_liked": false,
+                "email_mentioned_in_comment": true,
+                "email_project_liked": false,
+                "email_someone_follows": true,
+                "newsletter": true,
+                "web_comment_left": true,
+                "web_comment_liked": true,
+                "web_mentioned_in_comment": true,
+                "web_project_liked": false,
+                "web_someone_follows": false
+            }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid API Authorization Token"
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+## Update Web Notifications [/settings/web-notifications/?web_comment_left={web_comment_left}&web_comment_liked={web_comment_liked}&web_project_liked={web_project_liked}&web_someone_follows={web_someone_follows}&web_mentioned_in_comment={web_mentioned_in_comment}]
+
+This endpoint will allow the logged in user to update their own accounts web notification settings.
+
++ Parameters
+    + web_comment_left (boolean, optional) - DATA
+        + Default: true
+    + web_comment_liked (boolean, optional) - DATA
+        + Default: true
+    + web_project_liked (boolean, optional) - DATA
+        + Default: true
+    + web_someone_follows (boolean, optional) - DATA
+        + Default: true
+    + web_mentioned_in_comment (boolean, optional) - DATA
+        + Default: true
+
+### Update Web Notifications [POST]
+
++ Response 200 (application/json)
+
+        {
+            "error": false,
+            "errors": [],
+            "field_errors": {},
+            "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+            },
+            "data": {
+                "email_comment_left": true,
+                "email_comment_liked": false,
+                "email_mentioned_in_comment": true,
+                "email_project_liked": false,
+                "email_someone_follows": true,
+                "newsletter": true,
+                "web_comment_left": true,
+                "web_comment_liked": true,
+                "web_mentioned_in_comment": true,
+                "web_project_liked": false,
+                "web_someone_follows": false
+            }
+        }
+
++ Response 403 (application/json)
+
+        {
+          "error": true,
+          "errors": [
+            "Invalid API Authorization Token"
+          ],
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {}
+        }
+
+
+# Group Application Data Endpoints
+
+## Categories [/categories/{slug}]
+
+Fetch a list of all categories.  Optionally, you can pass over a `slug` for a category to get a list of subcategories for that category.
+
++ Parameters
+    + slug (optional, string) - Main category `slug` that will return subcategories
+
+### Get Categories [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 2,
+            "showing": 2,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "id": 1,
+              "parent_id": null,
+              "name": "Category One",
+              "slug": "category-one",
+              "subcategories": [
+                {
+                  "id": 3,
+                  "parent_id": 1,
+                  "name": "Subcategory One",
+                  "slug": "subcategory-one"
+                },
+                {
+                  "id": 4,
+                  "parent_id": 1,
+                  "name": "Subcategory Two",
+                  "slug": "subcategory-two"
+                },
+                {
+                  "id": 5,
+                  "parent_id": 1,
+                  "name": "Subcategory Three",
+                  "slug": "subcategory-three"
+                }
+              ]
+            },
+            {
+              "id": 2,
+              "parent_id": null,
+              "name": "Category Two",
+              "slug": "category-two",
+              "subcategories": [
+                {
+                  "id": 6,
+                  "parent_id": 2,
+                  "name": "Subcategory One",
+                  "slug": "subcategory-one"
+                },
+                {
+                  "id": 7,
+                  "parent_id": 2,
+                  "name": "Subcategory Two",
+                  "slug": "subcategory-two"
+                },
+                {
+                  "id": 8,
+                  "parent_id": 2,
+                  "name": "Subcategory Three",
+                  "slug": "subcategory-three"
+                }
+              ]
+            }
+          ]
+        }
+
+## Tags [/tags]
+
+Fetch a list of all tags being used.
+
+### Get Tags [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 3,
+            "showing": 3,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "id": 1,
+              "name": "Tag One",
+              "slug": "tag-one"
+            },
+            {
+              "id": 2,
+              "name": "Tag Two",
+              "slug": "tag-two"
+            },
+            {
+              "id": 3,
+              "name": "Tag Three",
+              "slug": "tag-three"
+            }
+          ]
+        }
+
+# Group Geolocation Endpoints
+
+The following endpoints are for specific data related to Zip Codes and Geolocation data.
+
+## Zipcode [/geolocation/zipcode/{zipcode}]
+
+Fetch details for Specific Zipcode
+
++ Parameters
+    + zipcode (string) -  Unique Zip Code
+
+### Get Zipcode [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "type": "standard",
+              "city": "Saint Petersburg",
+              "state": "FL",
+              "zipcode": "33701",
+              "county": "Pinellas County",
+              "country": "US",
+              "timezone": "America/New_York",
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "area_codes": [
+                "727"
+              ],
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "estimated_population": 12000
+            }
+          ]
+        }
+
+## IP Address [/geolocation/ip/{ipaddress}]
+
+Fetch details for Specific IP Address
+
++ Parameters
+    + ipaddress (optional, string) -  IP Address to Lookup.
+        + Default: Requester's IP Address
+
+### Get IP Address [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "city": {
+                "geoname_id": 5037649,
+                "names": {
+                    "de": "Minneapolis",
+                    "en": "Minneapolis",
+                    "es": "Mineápolis",
+                    "fr": "Minneapolis",
+                    "ja": "ミネアポリス",
+                    "pt-BR": "Minneapolis",
+                    "ru": "Миннеаполис",
+                    "zh-CN": "明尼阿波利斯"
+                }
+            },
+            "continent": {
+                "code": "NA",
+                "geoname_id": 6255149,
+                "names": {
+                    "de": "Nordamerika",
+                    "en": "North America",
+                    "es": "Norteamérica",
+                    "fr": "Amérique du Nord",
+                    "ja": "北アメリカ",
+                    "pt-BR": "América do Norte",
+                    "ru": "Северная Америка",
+                    "zh-CN": "北美洲"
+                }
+            },
+            "country": {
+                "geoname_id": 6252001,
+                "iso_code": "US",
+                "names": {
+                    "de": "USA",
+                    "en": "United States",
+                    "es": "Estados Unidos",
+                    "fr": "États-Unis",
+                    "ja": "アメリカ合衆国",
+                    "pt-BR": "Estados Unidos",
+                    "ru": "США",
+                    "zh-CN": "美国"
+                }
+            },
+            "location": {
+                "latitude": 44.9759,
+                "longitude": -93.2166,
+                "metro_code": "613",
+                "time_zone": "America/Chicago"
+            },
+            "postal": {
+                "code": "55414"
+            },
+            "registered_country": {
+                "geoname_id": 6252001,
+                "iso_code": "US",
+                "names": {
+                    "de": "USA",
+                    "en": "United States",
+                    "es": "Estados Unidos",
+                    "fr": "États-Unis",
+                    "ja": "アメリカ合衆国",
+                    "pt-BR": "Estados Unidos",
+                    "ru": "США",
+                    "zh-CN": "美国"
+                }
+            },
+            "subdivisions": [
+                {
+                    "geoname_id": 5037779,
+                    "iso_code": "MN",
+                    "names": {
+                        "en": "Minnesota",
+                        "es": "Minnesota",
+                        "ja": "ミネソタ州",
+                        "ru": "Миннесота"
+                    }
+                }
+            ]
+        }
+
+## Geolocation [/geolocation/?zipcode={zipcode}&city={city}&county={county}&state={state}&type={type}&areaCode={areaCode}&timezone={timezone}&minPopulation={minPopulation}&maxPopulation={maxPopulation}&latitude={latitude}&longitude={longitude}&distance={distance}]
+
+Get Location Specific Data using any combination of filters.
+
++ Parameters
+    + zipcode (optional, string) - Unique Zip Code
+    + city (optional, string) - City to use as Filter
+    + county (optional, string) - County to use as Filter
+    + state (optional, string) - State to use as Filter
+    + type (optional, string) - Type to use as Filter ['UNIQUE','PO BOX','STANDARD','MILITARY']
+    + areaCode (optional, number) - Area Code of Phone Number to use as Filter
+    + timezone (optional, string) - Time Zone of Location ( e.g. America/New_York )
+    + minPopulation (optional, number) - Minimum Population of Location
+    + maxPopulation (optional, number) - Maximum Population of Location
+    + latitude (optional, number) - Latitude to base Location on
+    + longitude (optional, number) - Longitude to base Location on
+    + distance (optional, string) - Distance from Latitude & Longitude ( e.g. 5mi, 10km )
+
+### Get Location [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 4,
+            "showing": 4,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "type": "standard",
+              "city": "Portland",
+              "state": "OR",
+              "zipcode": "97214",
+              "county": "Multnomah County",
+              "country": "US",
+              "timezone": "America/Los_Angeles",
+              "location": {
+                "lat": 45.51,
+                "lon": -122.64
+              },
+              "area_codes": [
+                "503",
+                "971"
+              ],
+              "alternate_city_names": [
+                ""
+              ],
+              "estimated_population": 21730
+            },
+            {
+              "type": "standard",
+              "city": "Portland",
+              "state": "OR",
+              "zipcode": "97232",
+              "county": "Multnomah County",
+              "country": "US",
+              "timezone": "America/Los_Angeles",
+              "location": {
+                "lat": 45.52,
+                "lon": -122.64
+              },
+              "area_codes": [
+                "971",
+                "503"
+              ],
+              "alternate_city_names": [
+                ""
+              ],
+              "estimated_population": 10780
+            },
+            {
+              "type": "po box",
+              "city": "Portland",
+              "state": "OR",
+              "zipcode": "97283",
+              "county": "Multnomah County",
+              "country": "US",
+              "timezone": "America/Los_Angeles",
+              "location": {
+                "lat": 45.53,
+                "lon": -122.65
+              },
+              "area_codes": [
+                "971"
+              ],
+              "alternate_city_names": [
+                ""
+              ],
+              "estimated_population": 426
+            },
+            {
+              "type": "po box",
+              "city": "Portland",
+              "state": "OR",
+              "zipcode": "97293",
+              "county": "Multnomah County",
+              "country": "US",
+              "timezone": "America/Los_Angeles",
+              "location": {
+                "lat": 45.51,
+                "lon": -122.64
+              },
+              "area_codes": [
+                "971"
+              ],
+              "alternate_city_names": [
+                ""
+              ],
+              "estimated_population": 410
+            }
+          ]
+        }
+
+# Group Bills Endpoints
+
+The following endpoints are for specific Campaign Zero Bills.
+
+## Bills [/bills/?status={status}&progress={progress}&chamber={chamber}&state={state}&city={city}&billId={billId}&repId={repId}&sessionId={sessionId}&beforeDate={beforeDate}&afterDate={afterDate}]
+
+Search Campaign Zero Bills
+
++ Parameters
+    + status (optional, enum[string]) - Status of Bill ['considering','passed','failed']
+        + Members
+            + `considering`
+            + `passed`
+            + `failed`
+    + progress (optional, enum[string]) - Whether this bill passing is Good or Bad ['good','bad']
+        + Members
+            + `good`
+            + `bad`
+    + chamber (optional, enum[string]) - Which Chamber of Congress this bill is for ['upper','lower']
+        + Members
+            + `upper`
+            + `lower`
+    + state (optional, string) - Two Letter US State Code Abbreviation ( ISO 3166 )
+    + city (optional, string) - Specific City this Bill Belongs to
+    + billId (optional, string) - Unique Bill ID from Open States ( required to get vote status )
+    + repId (optional, string) - Unique Representative ID from Open States ( required to get vote status )
+    + sessionId (optional, string) - Unique Session ID from Open States
+    + beforeDate (optional, string) - Filter by Bills Created Before or On this Date
+    + afterDate (optional, string) - Filter by Bills Created After or On this Date
+
+
+### Get Bills [GET]
+
+If your search contains a `billId` & `repId` we will check OpenStates.org for how the `repId` voted for the `billId`.  Possible `vote` values are `unknown` ( default ), `supported` & `opposed`.
+
+Voting Status for reps can only be checked if your search result is specific enough to return a single result for Upper and/or Lower chambers for the same State & Session ID for the provided `billId`.
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 2,
+            "showing": 2,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "vote": "supported",
+              "status": "passed",
+              "progress": "good",
+              "chamber": "upper",
+              "state": "FL",
+              "city": null,
+              "bill_id": "SB 1044",
+              "session_id": "2016",
+              "short_description": "ends civil asset forfeiture",
+              "long_description": null,
+              "details_url": "https://openstates.org/fl/bills/2016/SB1044/"
+            },
+            {
+              "vote": "supported",
+              "status": "passed",
+              "progress": "good",
+              "chamber": "lower",
+              "state": "FL",
+              "city": null,
+              "bill_id": "SB 1044",
+              "session_id": "2016",
+              "short_description": "ends civil asset forfeiture",
+              "long_description": null,
+              "details_url": "https://openstates.org/fl/bills/2016/SB1044/"
+            }
+          ]
+        }
+
+# Group Legislator Endpoints
+
+The following endpoints convert location data into parameters that can fetch Legislators from Open States.
+
+## Legislators [/legislators/?zipcode={zipcode}&latitude={latitude}&longitude={longitude}]
+
+Search for Legislators for a Given Location
+
++ Parameters
+    + zipcode (optional, string) - Zip Code ( must be a valid US Zip Code )
+    + latitude (optional, string) - GPS Latitude ( required if also passing over `longitude` )
+    + longitude (optional, string) - GPS Longitude ( required if also passing over `latitude` )
+
+### Get Legislators [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
+            "request": {
+              "latitude": 45.52,
+              "longitude": -122.64,
+              "zipcode": "97232"
+            },
+            "results": [
+              {
+                "last_name": "Nosse",
+                "updated_at": "2016-05-12 07:27:47",
+                "sources": [
+                  {
+                    "url": "http://www.oregonlegislature.gov/house/Pages/RepresentativesAll.aspx"
+                  }
+                ],
+                "full_name": "Rob Nosse",
+                "old_roles": {
+                  "2013-2014": [
+                    {
+                      "term": "2013-2014",
+                      "end_date": null,
+                      "district": "42",
+                      "chamber": "lower",
+                      "state": "or",
+                      "party": "Democrat",
+                      "type": "member",
+                      "start_date": null
+                    }
+                  ]
+                },
+                "id": "ORL000259",
+                "first_name": "Rob",
+                "middle_name": "",
+                "district": "42",
+                "state": "or",
+                "boundary_id": "ocd-division/country:us/state:or/sldl:42",
+                "email": "Rep.RobNosse@state.or.us",
+                "all_ids": [
+                  "ORL000259",
+                  "ORL000340"
+                ],
+                "leg_id": "ORL000259",
+                "party": "Democrat",
+                "active": true,
+                "transparencydata_id": "",
+                "nickname": "",
+                "photo_url": "http://www.oregonlegislature.gov/house/MemberPhotos/nosse.jpg",
+                "roles": [
+                  {
+                    "term": "2015-2016",
+                    "end_date": null,
+                    "district": "42",
+                    "chamber": "lower",
+                    "state": "or",
+                    "party": "Democrat",
+                    "type": "member",
+                    "start_date": null
+                  }
+                ],
+                "url": "http://www.oregonlegislature.gov/nosse",
+                "created_at": "2014-07-07 23:28:46",
+                "chamber": "lower",
+                "offices": [
+                  {
+                    "fax": null,
+                    "name": "Capitol Office",
+                    "phone": "503-986-1442",
+                    "address": "900 Court St NE, H-472, Salem, OR 97301",
+                    "type": "capitol",
+                    "email": "Rep.RobNosse@state.or.us"
+                  }
+                ],
+                "suffixes": ""
+              },
+              {
+                "last_name": "Rosenbaum",
+                "+capitol_address": "900 Court St NE, S-223, Salem, OR 97301",
+                "updated_at": "2016-05-12 07:27:47",
+                "sources": [
+                  {
+                    "url": "http://www.oregonlegislature.gov/senate/Pages/SenatorsAll.aspx"
+                  }
+                ],
+                "full_name": "Diane Rosenbaum",
+                "old_roles": {
+                  "2013-2014": [
+                    {
+                      "term": "2013-2014",
+                      "end_date": null,
+                      "district": "21",
+                      "chamber": "upper",
+                      "state": "or",
+                      "party": "Democrat",
+                      "type": "member",
+                      "start_date": null
+                    }
+                  ],
+                  "2011-2012": [
+                    {
+                      "term": "2011-2012",
+                      "end_date": null,
+                      "district": "21",
+                      "chamber": "upper",
+                      "state": "or",
+                      "party": "Democratic",
+                      "type": "member",
+                      "start_date": null
+                    }
+                  ]
+                },
+                "+district_address": "1125 SE Madison St., Suite 100B, Portland, OR 97214",
+                "first_name": "Diane",
+                "middle_name": "",
+                "district": "21",
+                "id": "ORL000023",
+                "state": "or",
+                "votesmart_id": "23660",
+                "party": "Democrat",
+                "+district_phone": "503-231-9970",
+                "email": "Sen.DianeRosenbaum@state.or.us",
+                "+oregon_member_id": "48",
+                "all_ids": [
+                  "ORL000023",
+                  "ORL000183",
+                  "ORL000282"
+                ],
+                "leg_id": "ORL000023",
+                "boundary_id": "ocd-division/country:us/state:or/sldu:21",
+                "active": true,
+                "transparencydata_id": "1490a9c428bf4603a3832f5387222f5c",
+                "nickname": "",
+                "photo_url": "http://www.oregonlegislature.gov/senate/MemberPhotos/rosenbaum.jpg",
+                "+phone": "503-986-1700",
+                "roles": [
+                  {
+                    "term": "2015-2016",
+                    "end_date": null,
+                    "district": "21",
+                    "chamber": "upper",
+                    "state": "or",
+                    "party": "Democrat",
+                    "type": "member",
+                    "start_date": null
+                  }
+                ],
+                "level": "state",
+                "url": "http://www.oregonlegislature.gov/rosenbaum",
+                "country": "us",
+                "created_at": "2011-06-13 14:45:49",
+                "chamber": "upper",
+                "+website": "http://www.leg.state.or.us/rosenbaum",
+                "offices": [
+                  {
+                    "fax": null,
+                    "name": "Capitol Office",
+                    "phone": "503-986-1721",
+                    "address": "900 Court St NE, S-213, Salem, OR, 97301",
+                    "type": "capitol",
+                    "email": "Sen.DianeRosenbaum@state.or.us"
+                  }
+                ],
+                "suffixes": ""
+              }
+            ]
+          }
+        }

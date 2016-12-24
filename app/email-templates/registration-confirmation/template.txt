@@ -1,0 +1,15 @@
+Welcome @*|USERNAME|*,
+
+Confirming your account will give you full access to all our features.
+
+CONFIRM ACCOUNT:
+
+*|CONFIRM_LINK|*
+
+---
+
+Website: https://mywebsite.com
+
+Twitter: https://twitter.com/mytwitter
+
+Unsubscribe: *|UNSUB:https://mywebsite.com/unsubscribed|*

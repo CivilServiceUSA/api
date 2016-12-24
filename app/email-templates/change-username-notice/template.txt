@@ -1,0 +1,22 @@
+Greetings @*|USERNAME|*,
+
+This email is to confirm that we have changed your username from @*|OLD_USERNAME|* to @*|USERNAME|*.
+
+VISIT PROFILE:
+
+*|PROFILE_LINK|*
+
+
+This change was made from the IP address *|IP_ADDRESS|* located in *|CITY|*, *|STATE|* *|ZIP_CODE|*.
+
+If you did not make this change, please contact us immediately at support@mywebsite.zendesk.com
+
+*|MAP_LINK|*
+
+---
+
+Website: https://mywebsite.com
+
+Twitter: https://twitter.com/mytwitter
+
+Unsubscribe: *|UNSUB:https://mywebsite.com/unsubscribed|*

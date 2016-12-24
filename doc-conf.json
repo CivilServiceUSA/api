@@ -1,0 +1,34 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "exclude": [ "./app/seeders" ],
+    "includePattern": ".+\\.js(doc)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [ "plugins/markdown" ],
+  "templates": {
+    "default": {
+      "outputSourceFiles": true
+    },
+    "dateFormat": "[<span id='generated-date'>Documentation Generated on ]MMMM Do, YYYY [@] h:mm A zz[</span>]",
+    "systemName": "API Docs",
+    "theme": "cosmo",
+    "linenums": false,
+    "collapseSymbols": false,
+    "inverseNav": false,
+    "highlightTutorialCode": true,
+    "search": true,
+    "outputSourcePath": true,
+    "outputSourceFiles": true,
+    "footer": "<script>var js=document.createElement('script');js.type='text/javascript';js.src='/docs.js';document.getElementsByTagName('head')[0].appendChild(js);</script>",
+    "analytics": {
+      "ua":"UA-XXXXX-XXX",
+      "domain":"XXXX"
+    }
+  },
+  "opts": {
+    "encoding": "utf8"
+  }
+}

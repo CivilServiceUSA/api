@@ -1,0 +1,8 @@
+!.gitignore
+.DS_Store
+Thumbs.db
+.idea
+.well-known
+*.log
+app/static/docs
+coverage

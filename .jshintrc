@@ -1,0 +1,23 @@
+{
+  "browser": true,
+  "curly": true,
+  "devel": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "node": true,
+  "mocha": true,
+  "nocomma": true,
+  "phantom": true,
+  "undef": true,
+  "bitwise": true,
+  "freeze": true,
+  "latedef": true,
+  "nonbsp": true,
+  "indent": 2,
+  "globals": {
+    "module": true,
+    "Promise": true,
+    "__dirname": true,
+    "__filename": true
+  }
+}

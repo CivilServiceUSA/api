@@ -1,0 +1,22 @@
+Greetings @*|USERNAME|*,
+
+Before we update your email address to *|NEW_EMAIL|*, we would like you to confirm that you ( and not some hacker ) made this request.  This protects your account from unauthorized changes.
+
+CONFIRM CHANGE:
+
+*|CONFIRM_LINK|*
+
+
+This request was made from the IP address *|IP_ADDRESS|* located in *|CITY|*, *|STATE|* *|ZIP_CODE|*.
+
+If you did not make this request, please contact us immediately at support@mywebsite.zendesk.com
+
+*|MAP_LINK|*
+
+---
+
+Website: https://mywebsite.com
+
+Twitter: https://twitter.com/mytwitter
+
+Unsubscribe: *|UNSUB:https://mywebsite.com/unsubscribed|*

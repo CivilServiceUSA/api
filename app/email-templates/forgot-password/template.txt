@@ -1,0 +1,21 @@
+Greetings @*|USERNAME|*,
+
+A password reset was requested from the IP address *|IP_ADDRESS|* located in *|CITY|*, *|STATE|* *|ZIP_CODE|*.
+
+If you did not make this request, please contact us immediately at support@mywebsite.zendesk.com
+
+*|MAP_LINK|*
+
+RESET PASSWORD:
+
+*|RESET_LINK|*
+
+Your username is *|USERNAME|*
+
+---
+
+Website: https://mywebsite.com
+
+Twitter: https://twitter.com/mytwitter
+
+Unsubscribe: *|UNSUB:https://mywebsite.com/unsubscribed|*

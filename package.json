@@ -1,0 +1,210 @@
+{
+  "name": "civil-services-api",
+  "version": "1.0.0",
+  "description": "Civil Services API",
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": "6.x",
+    "npm": "3.10.7"
+  },
+  "scripts": {
+    "start": "npm run -s cleanup && npm run -s docs && forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
+    "start:debug": "DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js",
+    "stop": "node ./node_modules/forever/bin/forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
+    "cleanup": "find ~/.forever/ -name '*.log' -delete && find ./ -name '*.log' -delete && rm -fr cleanup && npm run docs:clean",
+    "docs": "jsdoc -c ./doc-conf.json -r ./app -R ./apiary.apib -d ./app/static/docs -t ./node_modules/ink-docstrap/template",
+    "docs:clean": "rm -r ./app/static/docs || true",
+    "test": "snyk test && npm run -s lint && npm run -s coverage && npm run -s check-coverage",
+    "lint": "jshint --reporter=node_modules/jshint-stylish ./app",
+    "coverage": "API_NODE_ENV=test istanbul cover _mocha --recursive --require ./test/bootstrap.js ./test/**/*_test.js",
+    "check-coverage": "istanbul check-coverage --statement 70 --branch 70 --function 70 --line 70",
+    "migrate": "cd ./app && sequelize db:migrate:latest && cd -",
+    "migrate:create": "cd ./app && sequelize migration:create && cd - ",
+    "migrate:rollback": "cd ./app && sequelize db:migrate:undo && cd -",
+    "seed": "cd ./app && sequelize db:seed:all && cd -",
+    "seed:create": "cd ./app && sequelize seed:create && cd - ",
+    "seed:rollback": "cd ./app && sequelize db:seed:undo && cd -",
+    "elasticsearch:create": "cd ./app && node ./elasticsearch/create && cd -",
+    "elasticsearch:update": "cd ./app && node ./elasticsearch/update && cd -",
+    "elasticsearch:delete": "cd ./app && node ./elasticsearch/delete && cd -",
+    "snyk-protect": "snyk protect",
+    "snyk-test": "snyk test",
+    "flatdb:download-all": "npm run -s flatdb:geo-city && npm run -s flatdb:geo-country",
+    "flatdb:geo-city": "rm -f ./app/flat-db/cities.mmdb && curl -o ./app/flat-db/cities.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz && gunzip ./app/flat-db/cities.mmdb.gz",
+    "flatdb:geo-country": "rm -f ./app/flat-db/countries.mmdb && curl -o ./app/flat-db/countries.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && gunzip ./app/flat-db/countries.mmdb.gz",
+    "make-config": "if ( ! test -e ./app/config/local.json ); then curl -o ./app/config/local.json https://gist.githubusercontent.com/manifestinteractive/a5e9ef7ef6730cb5e0d1783c89a94a5a/raw/5443e7d7b4fc144c6a3560581f9ae8bef9153b6c/campaign-zero-local.json; fi",
+    "prepublish": "npm run snyk-protect",
+    "postinstall": "npm run make-config && npm run -s flatdb:download-all",
+    "redis:clearcache": "redis-cli -r 1 flushall",
+    "help": "node node_modules/npm-scripts-help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/civilserviceusa/api.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/civilserviceusa/api/issues"
+  },
+  "homepage": "https://github.com/civilserviceusa/api#readme",
+  "dependencies": {
+    "@turf/turf": "^3.7.0",
+    "async": "^2.1.2",
+    "bcrypt": "^0.8.7",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
+    "bugsnag": "^1.8.0",
+    "class-extend": "^0.1.2",
+    "colors": "^1.1.2",
+    "compression": "^1.6.2",
+    "convict": "^1.5.0",
+    "debug": "^2.2.0",
+    "elasticsearch": "^11.0.1",
+    "express": "^4.14.0",
+    "express-jwt": "^5.1.0",
+    "express-rate-limit": "git://github.com/manifestinteractive/express-rate-limit.git#d615bcf3cb50cb67e6a6c05d220d7b86d7f82255",
+    "express-session": "^1.14.1",
+    "forever": "^0.15.2",
+    "hashids": "^1.1.1",
+    "ipaddr.js": "^1.2.0",
+    "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.16.4",
+    "logzio-nodejs": "^0.4.1",
+    "mandrill-api": "^1.0.45",
+    "maxmind-db-reader": "^0.2.1",
+    "md5": "^2.2.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.15.2",
+    "moment-timezone": "^0.5.7",
+    "mysql": "git://github.com/mysqljs/mysql.git#a0f2cec26ee86536dbc1c2837b92b191ca9618f1",
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-localapikey": "0.0.3",
+    "path": "^0.12.7",
+    "randomstring": "^1.1.5",
+    "redis": "^2.6.3",
+    "request": "^2.76.0",
+    "sanitizer": "^0.1.3",
+    "sequelize": "^3.24.6",
+    "sequelize-cli": "^2.4.0",
+    "sequelize-fixtures": "^0.5.5",
+    "sequelize-slugify": "^0.4.0",
+    "slug": "^0.9.1",
+    "snyk": "^1.19.1",
+    "uuid": "^2.0.3",
+    "validate.js": "^0.10.0",
+    "validator": "^6.1.0",
+    "yargs": "^6.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-passport-strategy": "^1.0.0",
+    "ink-docstrap": "^1.3.0",
+    "istanbul": "^0.4.5",
+    "jsdoc": "^3.4.2",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.1.2",
+    "mock-req": "^0.2.0",
+    "mock-res": "^0.3.3",
+    "npm-scripts-help": "^0.7.0",
+    "rewire": "^2.5.2",
+    "sinon": "^1.17.6"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
+  "snyk": true,
+  "scriptshelp": {
+    "help-message": "Civil Services API NPM Commands:",
+    "help": {
+      "Desciption": "Generates List of NPM Scripts you can run"
+    },
+    "start": {
+      "Desciption": "Runs API using `forever` service after running `npm run cleanup`"
+    },
+    "start:debug": {
+      "Desciption": "Starts the API in Debug Mode so you can see Console statements in terminal"
+    },
+    "stop": {
+      "Desciption": "Stop API when run from `npm start` using `forever`"
+    },
+    "cleanup": {
+      "Desciption": "Remove files & folders generated by API that are not apart of the code base"
+    },
+    "docs": {
+      "Desciption": "Generate JSDoc Documentation"
+    },
+    "docs:clean": {
+      "Desciption": "Remove the JSDoc Documentation Folder in `./static/docs/`"
+    },
+    "test": {
+      "Desciption": "Runs complete test suite of Linting, Unit Tests & Code Coverage Reports"
+    },
+    "lint": {
+      "Desciption": "Tests Javascript Code against Linting Rules"
+    },
+    "coverage": {
+      "Desciption": "Generate Code Coverage Reports and Run Unit Tests"
+    },
+    "check-coverage": {
+      "Desciption": "Check Coverage Reports against Minimum Requirements"
+    },
+    "migrate": {
+      "Desciption": "Migrate to Latest Database Schema"
+    },
+    "migrate:create": {
+      "Desciption": "Create new Migration Template file in `./app/seeders` folder"
+    },
+    "migrate:rollback": {
+      "Desciption": "Roll Back Migration Changes"
+    },
+    "seed": {
+      "Desciption": "Run Seeders in `./app/seeders` folder"
+    },
+    "seed:create": {
+      "Desciption": "Create new Seeder Template file in `./app/seeders` folder"
+    },
+    "seed:rollback": {
+      "Desciption": "Undo Seeders"
+    },
+    "elasticsearch:create": {
+      "Desciption": "Create Elasticsearch Indexes"
+    },
+    "elasticsearch:update": {
+      "Desciption": "Update Elasticsearch Indexes"
+    },
+    "elasticsearch:delete": {
+      "Desciption": "Delete Elasticsearch Indexes"
+    },
+    "snyk-protect": {
+      "Desciption": "Patches Security issues detected running via `npm run snyk-test`"
+    },
+    "snyk-test": {
+      "Desciption": "Checks for Known NPM Package Dependency Security Issues"
+    },
+    "flatdb:download-all": {
+      "Desciption": "Downloads All Flat Database Files used for API"
+    },
+    "flatdb:geo-city": {
+      "Desciption": "Downloads and Unzips GeoLite2 City from MaxMind"
+    },
+    "flatdb:geo-country": {
+      "Desciption": "Downloads and Unzips GeoLite2 Country from MaxMind"
+    },
+    "make-config": {
+      "Desciption": "Runs during `npm install` and downloads sample local.json file if one was not already created"
+    },
+    "prepublish": {
+      "Desciption": "Runs any commands necessary before publishing API"
+    },
+    "postinstall": {
+      "Desciption": "This runs automatically after running `npm install`"
+    },
+    "redis:clearcache": {
+      "Desciption": "Clear Redis Cache"
+    }
+  }
+}
