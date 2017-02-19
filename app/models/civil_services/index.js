@@ -9,8 +9,6 @@
  * @type {object}
  */
 module.exports = {
-  Bills: require('./bills'),
   CityCouncil: require('./city_council'),
-  PoliceKillings: require('./police_killings'),
   ZipCode: require('./zipcode')
 };

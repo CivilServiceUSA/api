@@ -1,4 +1,4 @@
-![Civil Services Logo](docs/img/logo.png "Civil Services Logo")
+![Civil Services Logo](https://cdn.civil.services/common/github-logo.png "Civil Services Logo")
 
 Civil Services API
 ===

@@ -9,7 +9,7 @@
     "npm": "3.10.7"
   },
   "scripts": {
-    "start": "npm run -s cleanup && npm run -s docs && forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
+    "start": "npm run -s cleanup && npm run -s docs && node ./node_modules/forever/bin/forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
     "start:debug": "DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js",
     "stop": "node ./node_modules/forever/bin/forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
     "cleanup": "find ~/.forever/ -name '*.log' -delete && find ./ -name '*.log' -delete && rm -fr cleanup && npm run docs:clean",
@@ -37,6 +37,8 @@
     "prepublish": "npm run snyk-protect",
     "postinstall": "npm run make-config && npm run -s flatdb:download-all",
     "redis:clearcache": "redis-cli -r 1 flushall",
+    "docker:update": "git submodule update --recursive --remote",
+    "docker:up": "cd docker-api && docker-compose up",
     "help": "node node_modules/npm-scripts-help"
   },
   "repository": {
@@ -51,19 +53,18 @@
   "dependencies": {
     "@turf/turf": "^3.7.0",
     "async": "^2.1.2",
-    "bcrypt": "^0.8.7",
-    "bluebird": "^3.4.6",
-    "body-parser": "^1.15.2",
+    "bcrypt": "^1.0.2",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.16.0",
     "bugsnag": "^1.8.0",
     "class-extend": "^0.1.2",
     "colors": "^1.1.2",
     "compression": "^1.6.2",
-    "convict": "^1.5.0",
+    "convict": "^2.0.0",
     "debug": "^2.2.0",
     "elasticsearch": "^11.0.1",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
-    "express-rate-limit": "git://github.com/manifestinteractive/express-rate-limit.git#d615bcf3cb50cb67e6a6c05d220d7b86d7f82255",
     "express-session": "^1.14.1",
     "forever": "^0.15.2",
     "hashids": "^1.1.1",
