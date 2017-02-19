@@ -1,0 +1,38 @@
+version: '2'
+services:
+  api:
+    build:
+      context: .
+    environment:
+      API_DEBUG: 1
+      API_NODE_ENV: local
+      API_PORT: 5000
+      API_SESSION_KEY: 66B338B8-241F-8714-7D11-6BFD087AE138
+      API_BUGSNAG: abc123
+      API_HASH_ID_SECRET: A7FA9157-D951-8D54-F54A-636A6DD168D1
+      API_API_HOST: localhost
+      API_API_DATABASE: civil_services_api
+      API_API_USERNAME: root
+      API_API_PASSWORD: c1v1Ls3rv1c3s
+      API_APP_SECRET: AD827053-C62D-64C4-7567-64061B7DEF49
+      API_ELASTIC_SEARCH: 'http://elasticsearch:9200'
+      API_REDIS_PORT: 6380
+    links:
+      - database
+      - elasticsearch
+      - redis
+    volumes:
+      - .:/home/civilservices/api/
+      - /home/civilservices/api/node_modules
+    ports:
+      - 5000:5000
+    command: ["./scripts/docker-compose/wait-for-it.sh", "elasticsearch:9200", "--timeout=30", "--", "./scripts/docker-compose/start.sh"]
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: c1v1Ls3rv1c3s
+      MYSQL_DATABASE: civil_services_api
+  elasticsearch:
+    image: elasticsearch:latest
+  redis:
+    image: redis:latest
