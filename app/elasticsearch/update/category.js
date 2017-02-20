@@ -9,7 +9,6 @@ var config = require('../../config');
 var elasticsearchClient = require('../client');
 var domain = require('../../api/v1/domain');
 var debug = require('../../debug');
-var logger = require('../../logger');
 var CategoryModel = require('../../models/api/categories');
 
 var env = config.get('env');
@@ -71,7 +70,6 @@ var CategoryES = {
               }
 
               debug.success(indexName + ' indexed ' + result.items.length + ' items');
-              logger.log(indexName + ' indexed ' + result.items.length + ' items');
             })
             .catch(function(error) {
               debug.error('Error indexing ' + indexName);

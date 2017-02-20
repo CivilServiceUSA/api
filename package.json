@@ -9,9 +9,8 @@
     "npm": "3.10.7"
   },
   "scripts": {
-    "start": "npm run -s cleanup && npm run -s docs && node ./node_modules/forever/bin/forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
-    "start:debug": "DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js",
-    "stop": "node ./node_modules/forever/bin/forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
+    "start": "./scripts/civil-services-api.sh start",
+    "stop": "./scripts/civil-services-api.sh stop",
     "cleanup": "find ~/.forever/ -name '*.log' -delete && find ./ -name '*.log' -delete && rm -fr cleanup && npm run docs:clean",
     "docs": "jsdoc -c ./doc-conf.json -r ./app -R ./apiary.apib -d ./app/static/docs -t ./node_modules/ink-docstrap/template",
     "docs:clean": "rm -r ./app/static/docs || true",
@@ -19,7 +18,7 @@
     "lint": "jshint --reporter=node_modules/jshint-stylish ./app",
     "coverage": "API_NODE_ENV=test istanbul cover _mocha --recursive --require ./test/bootstrap.js ./test/**/*_test.js",
     "check-coverage": "istanbul check-coverage --statement 70 --branch 70 --function 70 --line 70",
-    "migrate": "cd ./app && sequelize db:migrate:latest && cd -",
+    "migrate": "cd ./app && sequelize db:migrate && cd -",
     "migrate:create": "cd ./app && sequelize migration:create && cd - ",
     "migrate:rollback": "cd ./app && sequelize db:migrate:undo && cd -",
     "seed": "cd ./app && sequelize db:seed:all && cd -",
@@ -33,8 +32,6 @@
     "flatdb:geo-country": "rm -f ./app/flat-db/countries.mmdb && curl -o ./app/flat-db/countries.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && gunzip ./app/flat-db/countries.mmdb.gz",
     "make-config": "if ( ! test -e ./app/config/local.json ); then curl -o ./app/config/local.json https://gist.githubusercontent.com/manifestinteractive/a5e9ef7ef6730cb5e0d1783c89a94a5a/raw/5443e7d7b4fc144c6a3560581f9ae8bef9153b6c/campaign-zero-local.json; fi",
     "redis:clearcache": "redis-cli -r 1 flushall",
-    "docker:update": "git submodule update --recursive --remote",
-    "docker:up": "cd docker-api && docker-compose up",
     "help": "node node_modules/npm-scripts-help"
   },
   "repository": {
@@ -49,18 +46,19 @@
   "dependencies": {
     "@turf/turf": "^3.7.0",
     "async": "^2.1.2",
-    "bcrypt": "^1.0.2",
-    "bluebird": "^3.4.7",
-    "body-parser": "^1.16.0",
+    "bcrypt": "^0.8.7",
+    "bluebird": "^3.4.6",
+    "body-parser": "^1.15.2",
     "bugsnag": "^1.8.0",
     "class-extend": "^0.1.2",
     "colors": "^1.1.2",
     "compression": "^1.6.2",
-    "convict": "^2.0.0",
+    "convict": "^1.5.0",
     "debug": "^2.2.0",
     "elasticsearch": "^11.0.1",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
+    "express-rate-limit": "git://github.com/manifestinteractive/express-rate-limit.git#d615bcf3cb50cb67e6a6c05d220d7b86d7f82255",
     "express-session": "^1.14.1",
     "forever": "^0.15.2",
     "hashids": "^1.1.1",
@@ -184,13 +182,10 @@
       "Desciption": "Downloads and Unzips GeoLite2 Country from MaxMind"
     },
     "make-config": {
-      "Desciption": "Runs during `npm install` and downloads sample local.json file if one was not already created"
+      "Desciption": "Downloads sample local.json file if one was not already created"
     },
     "prepublish": {
       "Desciption": "Runs any commands necessary before publishing API"
-    },
-    "postinstall": {
-      "Desciption": "This runs automatically after running `npm install`"
     },
     "redis:clearcache": {
       "Desciption": "Clear Redis Cache"

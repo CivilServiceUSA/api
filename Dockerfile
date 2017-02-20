@@ -23,6 +23,8 @@ RUN chown -R civilservices:civilservices /home/civilservices/api
 
 USER civilservices
 
+RUN export API_NODE_ENV=docker
+
 # Install dependencies
 RUN npm install --no-optional && npm cache clean
 
@@ -37,16 +39,13 @@ RUN npm install -g forever
 RUN npm install -g istanbul
 RUN npm install -g sequelize-cli
 
-COPY .jshintrc .jshintignore ./
+COPY .jshintrc ./
+COPY .jshintignore ./
+COPY .sequelizerc ./
+COPY .nvmrc ./
+
 COPY app ./app
 COPY scripts ./scripts
-
-# Copy Docker Config Files
-RUN rm -f ./app/config/local.json
-RUN curl -o ./app/config/local.json https://cdn.civil.services/docker/local.json
-
-RUN rm -f ./app/config/config.json
-RUN curl -o ./app/config/config.json https://cdn.civil.services/docker/config.json
 
 # Download Required Libraries
 RUN rm -f ./app/flat-db/cities.mmdb

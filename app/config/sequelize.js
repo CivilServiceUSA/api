@@ -38,12 +38,6 @@ dbApi.authenticate()
   .then(function () {
     console.log('Connection has been established successfully');
   })
-  .then(function () {
-    return dbApi.sync();
-  })
-  .then(function () {
-    console.log('Database Synchronized ' + env);
-  })
   .catch(function (error) {
     if (env !== 'test') {
       console.log('Unable to Connect to ' + dbHost);
