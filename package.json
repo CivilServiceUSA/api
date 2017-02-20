@@ -9,17 +9,16 @@
     "npm": "3.10.7"
   },
   "scripts": {
-    "start": "npm run -s cleanup && npm run -s docs && forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
-    "start:debug": "DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js",
-    "stop": "node ./node_modules/forever/bin/forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js",
+    "start": "./scripts/civil-services-api.sh start",
+    "stop": "./scripts/civil-services-api.sh stop",
     "cleanup": "find ~/.forever/ -name '*.log' -delete && find ./ -name '*.log' -delete && rm -fr cleanup && npm run docs:clean",
     "docs": "jsdoc -c ./doc-conf.json -r ./app -R ./apiary.apib -d ./app/static/docs -t ./node_modules/ink-docstrap/template",
     "docs:clean": "rm -r ./app/static/docs || true",
-    "test": "snyk test && npm run -s lint && npm run -s coverage && npm run -s check-coverage",
+    "test": "npm run -s lint && npm run -s coverage && npm run -s check-coverage",
     "lint": "jshint --reporter=node_modules/jshint-stylish ./app",
     "coverage": "API_NODE_ENV=test istanbul cover _mocha --recursive --require ./test/bootstrap.js ./test/**/*_test.js",
     "check-coverage": "istanbul check-coverage --statement 70 --branch 70 --function 70 --line 70",
-    "migrate": "cd ./app && sequelize db:migrate:latest && cd -",
+    "migrate": "cd ./app && sequelize db:migrate && cd -",
     "migrate:create": "cd ./app && sequelize migration:create && cd - ",
     "migrate:rollback": "cd ./app && sequelize db:migrate:undo && cd -",
     "seed": "cd ./app && sequelize db:seed:all && cd -",
@@ -28,14 +27,10 @@
     "elasticsearch:create": "cd ./app && node ./elasticsearch/create && cd -",
     "elasticsearch:update": "cd ./app && node ./elasticsearch/update && cd -",
     "elasticsearch:delete": "cd ./app && node ./elasticsearch/delete && cd -",
-    "snyk-protect": "snyk protect",
-    "snyk-test": "snyk test",
     "flatdb:download-all": "npm run -s flatdb:geo-city && npm run -s flatdb:geo-country",
     "flatdb:geo-city": "rm -f ./app/flat-db/cities.mmdb && curl -o ./app/flat-db/cities.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz && gunzip ./app/flat-db/cities.mmdb.gz",
     "flatdb:geo-country": "rm -f ./app/flat-db/countries.mmdb && curl -o ./app/flat-db/countries.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz && gunzip ./app/flat-db/countries.mmdb.gz",
     "make-config": "if ( ! test -e ./app/config/local.json ); then curl -o ./app/config/local.json https://gist.githubusercontent.com/manifestinteractive/a5e9ef7ef6730cb5e0d1783c89a94a5a/raw/5443e7d7b4fc144c6a3560581f9ae8bef9153b6c/campaign-zero-local.json; fi",
-    "prepublish": "npm run snyk-protect",
-    "postinstall": "npm run make-config && npm run -s flatdb:download-all",
     "redis:clearcache": "redis-cli -r 1 flushall",
     "help": "node node_modules/npm-scripts-help"
   },
@@ -92,7 +87,6 @@
     "sequelize-fixtures": "^0.5.5",
     "sequelize-slugify": "^0.4.0",
     "slug": "^0.9.1",
-    "snyk": "^1.19.1",
     "uuid": "^2.0.3",
     "validate.js": "^0.10.0",
     "validator": "^6.1.0",
@@ -116,7 +110,6 @@
   "optionalDependencies": {
     "fsevents": "*"
   },
-  "snyk": true,
   "scriptshelp": {
     "help-message": "Civil Services API NPM Commands:",
     "help": {
@@ -179,12 +172,6 @@
     "elasticsearch:delete": {
       "Desciption": "Delete Elasticsearch Indexes"
     },
-    "snyk-protect": {
-      "Desciption": "Patches Security issues detected running via `npm run snyk-test`"
-    },
-    "snyk-test": {
-      "Desciption": "Checks for Known NPM Package Dependency Security Issues"
-    },
     "flatdb:download-all": {
       "Desciption": "Downloads All Flat Database Files used for API"
     },
@@ -195,13 +182,10 @@
       "Desciption": "Downloads and Unzips GeoLite2 Country from MaxMind"
     },
     "make-config": {
-      "Desciption": "Runs during `npm install` and downloads sample local.json file if one was not already created"
+      "Desciption": "Downloads sample local.json file if one was not already created"
     },
     "prepublish": {
       "Desciption": "Runs any commands necessary before publishing API"
-    },
-    "postinstall": {
-      "Desciption": "This runs automatically after running `npm install`"
     },
     "redis:clearcache": {
       "Desciption": "Clear Redis Cache"

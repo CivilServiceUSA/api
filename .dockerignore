@@ -1,0 +1,3 @@
+node_modules
+app/config/db-local.json
+app/config/local.json

@@ -1,0 +1,39 @@
+{
+  "debug": true,
+  "env": "local",
+  "secret": "F8E1577B-DDAF-8234-4DD5-9301E7223582",
+  "sessionKey": "F41CF60C-9A23-55C4-DDE3-7642B13B6276",
+  "debugKey": "BD52B1DC-C396-A714-B5B4-21AE9B6A0971",
+  "bugsnag": "",
+  "hashID": {
+    "secret": "4B1AB909-EA83-4E34-3D43-280273497137"
+  },
+  "database": {
+    "api": {
+      "host": "database",
+      "database": "civil_services_api",
+      "username": "root",
+      "password": "c1v1Ls3rv1c3s"
+    }
+  },
+  "mandrill": {
+    "key": "CHANGE_ME"
+  },
+  "ipinfodb": {
+    "key": "CHANGE_ME"
+  },
+  "openStates": {
+    "key": "a31a13474e2d401caa2352a555b62d00"
+  },
+  "elasticsearch": {
+    "log": "error",
+    "host": "http://elasticsearch:9200"
+  },
+  "redis": {
+    "host": "redis"
+  },
+  "logzio": {
+    "token": "whlkgELECMPjsnHWAiPrbvqJhvoXbGsp",
+    "type": "CivilServiceAPI"
+  }
+}

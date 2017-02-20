@@ -1,0 +1,7 @@
+{
+  "username": "root",
+  "password": "c1v1Ls3rv1c3s",
+  "database": "civil_services_api",
+  "host": "database",
+  "dialect": "mysql"
+}

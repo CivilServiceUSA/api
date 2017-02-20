@@ -8,13 +8,11 @@
  * @type {object}
  */
 module.exports = {
-  Bills: require('./bills'),
   CityCouncil: require('./city_council'),
   Category: require('./category'),
   Email: require('./email'),
   Geolocation: require('./geolocation'),
   Profile: require('./profile'),
-  PoliceKillings: require('./police_killings'),
   Search: require('./search'),
   Settings: require('./settings'),
   Tag: require('./tag'),
