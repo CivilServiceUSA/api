@@ -15,6 +15,8 @@ WORKDIR /home/civilservices/api
 
 COPY package.json ./
 
+RUN mkdir /home/civilservices/.forever
+RUN chown -R civilservices:civilservices /home/civilservices/.forever
 RUN chown -R civilservices:civilservices /home/civilservices/api
 
 # Change user so that everything that's npm-installed belongs to it
@@ -22,7 +24,6 @@ RUN chown -R civilservices:civilservices /home/civilservices/api
 USER civilservices
 
 # Install dependencies
-
 RUN npm install --no-optional && npm cache clean
 
 # Switch to root and copy over the rest of our code
@@ -30,13 +31,22 @@ RUN npm install --no-optional && npm cache clean
 # of the npm install line
 
 USER root
+
+RUN npm install -g mysql
+RUN npm install -g forever
+RUN npm install -g istanbul
+RUN npm install -g sequelize-cli
+
 COPY .jshintrc .jshintignore ./
 COPY app ./app
 COPY scripts ./scripts
 
 # Copy Docker Config Files
-COPY .docker_compose/config.json ./app/config
-COPY .docker_compose/local.json ./app/config
+RUN rm -f ./app/config/local.json
+RUN curl -o ./app/config/local.json https://cdn.civil.services/docker/local.json
+
+RUN rm -f ./app/config/config.json
+RUN curl -o ./app/config/config.json https://cdn.civil.services/docker/config.json
 
 # Download Required Libraries
 RUN rm -f ./app/flat-db/cities.mmdb
@@ -49,6 +59,6 @@ RUN gunzip ./app/flat-db/countries.mmdb.gz
 
 RUN chmod 755 ./scripts/docker-compose/*.sh
 RUN chown -R civilservices:civilservices /home/civilservices/api
+
 USER civilservices
 
-CMD [ "npm", "start" ]

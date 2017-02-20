@@ -1,9 +1,0 @@
-{
-  "development": {
-    "username": "root",
-    "password": "c1v1Ls3rv1c3s",
-    "database": "civil_services_api",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  }
-}

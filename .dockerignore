@@ -1,1 +1,3 @@
 node_modules
+app/config/config.json
+app/config/local.json
