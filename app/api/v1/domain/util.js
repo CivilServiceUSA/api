@@ -47,6 +47,6 @@ module.exports = {
           return [key, obj[key]];
         }
       )
-    )
+    );
   }
 };
