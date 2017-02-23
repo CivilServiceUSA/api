@@ -7,7 +7,7 @@ Redis Configuration
 
 #### Start / Stop
 
-You need Elasticsearch running, which you can do if you've Brew-installed it like this:
+You need Redis running, which you can do if you've Brew-installed it like this:
 
 ```bash
 brew services start redis

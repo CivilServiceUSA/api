@@ -10,8 +10,8 @@ Elasticsearch Configuration
 You need Elasticsearch running, which you can do if you've Brew-installed it like this:
 
 ```bash
-brew services start elasticsearch
-brew services stop elasticsearch
+brew services start elasticsearch@1.7
+brew services stop elasticsearch@1.7
 ```
 
 On Linux you can run in like this ( assuming you installed the service ):

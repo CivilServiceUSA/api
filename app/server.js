@@ -121,8 +121,9 @@ function setupAPI(request, response, next) {
           var validHost = false;
 
           for (var i = 0; i < whitelist.length; i++) {
-            if (whitelist.indexOf(apiUser.host) === -1) {
+            if (whitelist.indexOf(apiUser.host) !== -1) {
               validHost = true;
+              break;
             }
           }
 

@@ -10,5 +10,7 @@
  */
 module.exports = {
   CityCouncil: require('./city_council'),
+  House: require('./house'),
+  Senate: require('./senate'),
   ZipCode: require('./zipcode')
 };

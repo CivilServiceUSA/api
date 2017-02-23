@@ -28,5 +28,25 @@ module.exports = {
     }));
 
     return ints && ints.length ? ints : null;
+  },
+
+  /**
+   * Sort Object by Keys
+   * @param obj
+   * @returns {Object}
+   */
+  sortByKeys: function(obj) {
+
+    var keys = Object.keys(obj);
+    var sortedKeys = _.sortBy(keys);
+
+    return _.fromPairs(
+      _.map(
+        sortedKeys,
+        function (key) {
+          return [key, obj[key]];
+        }
+      )
+    )
   }
 };

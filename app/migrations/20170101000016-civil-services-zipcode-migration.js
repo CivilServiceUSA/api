@@ -1,14 +1,18 @@
 'use strict';
 
-var Models = require('../models/index.js');
+var Model = require('../models').CivilService.ZipCode;
 
 module.exports = {
   up: function (queryInterface) {
-    return queryInterface.createTable(Models.CivilService.ZipCode.tableName,
-      Models.CivilService.ZipCode.attributes);
+    return queryInterface.createTable(Model.tableName,
+      Model.attributes).then(function() {
+        for (var i = 0; i < Model.options.indexes.length; i++) {
+          queryInterface.addIndex(Model.tableName, Model.options.indexes[i]);
+        }
+      }
+    );
   },
-
   down: function (queryInterface) {
-    return queryInterface.dropTable(Models.CivilService.ZipCode.tableName);
+    return queryInterface.dropTable(Model.tableName);
   }
 };

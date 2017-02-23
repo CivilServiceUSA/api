@@ -249,7 +249,6 @@ var config = convict({
 });
 
 var env = config.get('env');
-
 try {
   config.loadFile(path.join(__dirname, env + '.json'));
   config.validate({strict: true});

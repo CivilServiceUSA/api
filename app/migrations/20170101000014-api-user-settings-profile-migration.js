@@ -1,14 +1,18 @@
 'use strict';
 
-var Models = require('../models/index.js');
+var Model = require('../models').API.UserSettingProfile;
 
 module.exports = {
   up: function (queryInterface) {
-    return queryInterface.createTable(Models.API.UserSettingProfile.tableName,
-      Models.API.UserSettingProfile.attributes);
+    return queryInterface.createTable(Model.tableName,
+      Model.attributes).then(function() {
+        for (var i = 0; i < Model.options.indexes.length; i++) {
+          queryInterface.addIndex(Model.tableName, Model.options.indexes[i]);
+        }
+      }
+    );
   },
-
   down: function (queryInterface) {
-    return queryInterface.dropTable(Models.API.UserSettingProfile.tableName);
+    return queryInterface.dropTable(Model.tableName);
   }
 };

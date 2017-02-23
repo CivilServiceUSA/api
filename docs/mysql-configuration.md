@@ -10,8 +10,8 @@ MySQL Configuration
 For MacOS you can run the following:
 
 ```bash
-mysql.server start
-mysql.server stop
+brew services start mysql
+brew services stop mysql
 ```
 
 On Linux you can run in like this:

@@ -11,6 +11,7 @@
 module.exports = {
   Category: require('./category'),
   Geolocation: require('./geolocation'),
+  Senate: require('./senate'),
   Tag: require('./tag'),
   User: require('./user')
 };

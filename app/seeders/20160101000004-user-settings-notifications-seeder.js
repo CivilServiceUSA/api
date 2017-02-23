@@ -16,7 +16,13 @@ module.exports = {
         modified_date: new Date()
       }
     ], {
-      updateOnDuplicate: ['user_id']
+      updateOnDuplicate: ['user_id', 'email_comment_left', 'email_comment_liked', 'email_someone_follows', 'email_mentioned_in_comment', 'web_comment_left', 'web_comment_liked', 'web_someone_follows', 'web_mentioned_in_comment', 'newsletter', 'modified_date']
+    }).catch(function (err) {
+      if (err && err.errors) {
+        for (var i = 0; i < err.errors.length; i++) {
+          console.error('× SEED ERROR', err.errors[i].type, err.errors[i].message, err.errors[i].path, err.errors[i].value);
+        }
+      }
     });
   },
   down: function (queryInterface) {

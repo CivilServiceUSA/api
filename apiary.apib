@@ -9,7 +9,7 @@ Civil Services is a collection of tools that make it possible for citizens to be
 * _Last Modified:_ __January 1st, 2017__
 * _Current API Version:_ __v1.0.0__
 
-[![API Documentation](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/apiary-button.png)](http://docs.civilservices.apiary.io)
+[![API Documentation](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/apiary.jpg)](http://docs.civilservices.apiary.io)
 
 # Group API Basics
 
@@ -108,22 +108,16 @@ curl --data '' https://api.civil.services/v1/user/refresh/ -H "Authorization: Be
 ```
 
 
-
 # Group API Access
 
-All access to our API will require an Authentication Token. The following endpoint will
-get your access to endpoints that do not require user authentication.
+If you are using the API to access User Endpoints ( https://api.civil.services/v1/user/* ) you will want to create a
+`token` to manage the users sessions.  This is not the same as an `apikey` which is required for all API endpoints.  This
+token is specifically for individual users and acts as a session id.
 
 ## Token [/token]
 
-You will not be able to make a request to our API without a `token` sent in an
-Authorization Header.  This `/token` endpoint is the only public endpoint open to
-allow a `token` to be requested.  This endpoint is only required for anonymous users
-that have not logged in.  Once the user logs in, you will need to use the `token` that
-is sent back for that user, as it will be used for authenticating that specific user.
-
 Once a user has logged in, you will need to send over their Authentication
-Token in the HTTP Header.  A `token` is returned with a succesful login.  A session
+Token in the HTTP Header.  A `token` is returned with a successful login.  A session
 token is valid for 7 days.  You can refresh your token to prevent having to log in
 again by either adding the Request Authorization Header below, or using the
 `/api/0.1/user/refresh/` endpoint.
@@ -149,10 +143,10 @@ again by either adding the Request Authorization Header below, or using the
 
 ## Refresh Session [/user/refresh]
 
-A `token` is returned with a succesful login.  A session token is valid for 7 days.
+A `token` is returned with a successful login.  A session token is valid for 7 days.
 You can refresh your token to prevent having to log in again by either adding the
 Request Authorization Header below. `token` should be the string returned in the
-`token` parameter from a succesful login.
+`token` parameter from a successful login.
 
 * __Authorization:__ Bearer `token`
 
@@ -179,8 +173,6 @@ Request Authorization Header below. `token` should be the string returned in the
           "meta": {},
           "data": []
         }
-
-
 
 
 # Group Account Management
@@ -1933,4 +1925,308 @@ Search for Legislators for a Given Location
               }
             ]
           }
+        }
+
+
+# Group Senate Endpoints
+
+View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
+
+## Senate [/senate/?state={state}&class={class}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
+
+Search for Senator using any combination of search parameters.  
+
++ Parameters
+    + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
+    + class (optional, enum) - Senate to be divided into three classes for purposes of elections 
+        + Values
+            + `I`
+            + `II`
+            + `III`
+    + bioguide (optional, string) - The alphanumeric ID for this Senator on http://bioguide.congress.gov
+    + thomas (optional, string) - The numeric ID for this Senator ( not really used anymore )
+    + govtrack (optional, string) - The numeric ID for this Senator on GovTrack.us
+    + opensecrets (optional, string) - The alphanumeric ID for this Senator on OpenSecrets.org
+    + votesmart (optional, string) - The numeric ID for this Senator on VoteSmart.org
+    + fec (optional, string) - Federal Election Commission ID
+    + maplight (optional, string) - The numeric ID for this Senator on MapLight.org
+    + wikidata (optional, string) - The numeric ID for this Senator on wikidata.org
+    + googleEntityId (optional, string) - Google Integration
+    + title (optional, enum) - Title of Senator
+        + Values
+            + `senator`
+            + `senate_majority_leader`
+            + `senate_majority_whip`
+            + `senate_minority_leader`
+            + `senate_minority_whip`
+    + party (optional, enum) - Political Party of Senator
+        + Values
+            + `constitution`
+            + `democrat`
+            + `green`
+            + `independent`
+            + `libertarian`
+            + `nonpartisan`
+            + `republican`
+    + name (optional, string) - Full Name of Senator
+    + gender (optional, enum) - Gender of Senator
+        + Values
+            + `female`
+            + `male`
+            + `unspecified`
+    + ethnicity (optional, enum) - Ethnicity of Senator
+        + Values
+            + `african-american`
+            + `asian-american`
+            + `hispanic-american`
+            + `middle-eastern-american`
+            + `multi-racial-american`
+            + `native-american`
+            + `pacific-islander`
+            + `white-american`
+            + `unspecified`
+    + religion (optional, enum) - Religion of Senator
+        + Values
+            + `african-methodist`
+            + `anglican`
+            + `baptist`
+            + `buddhism`
+            + `christian`
+            + `christian-reformed`
+            + `christian-scientist`
+            + `church-of-christ`
+            + `church-of-god`
+            + `congregationalist`
+            + `deist`
+            + `eastern-orthodox`
+            + `episcopalian`
+            + `evangelical`
+            + `evangelical-lutheran`
+            + `hindu`
+            + `jewish`
+            + `jodo-shinshu-buddhist`
+            + `lutheran`
+            + `methodist`
+            + `mormon`
+            + `muslim`
+            + `nazarene-christian`
+            + `pentecostal`
+            + `presbyterian`
+            + `protestant`
+            + `roman-catholic`
+            + `seventh-day-adventist-church`
+            + `soka-gakkai-buddhist`
+            + `southern-baptist`
+            + `united-church-of-christ`
+            + `united-methodist`
+            + `unitarian-universalist`
+            + `unspecified`
+    + openlyLGBTQ (optional, enum) - Senator is Openly LGBTQ
+        + Values
+            + `no`
+            + `lesbian`
+            + `gay`
+            + `bisexual`
+            + `transgender`
+            + `queer`
+    + age (optional, number) - Age of Senator
+    + minAge (optional, number) - Minimum Age of Senator
+    + maxAge (optional, number) - Maximum Age of Senator
+
+### Get Senators [GET]
+
++ Response 200 (application/json)
+
+        {
+          "error": false,
+          "errors": [],
+          "field_errors": {},
+          "meta": {
+            "total": 2,
+            "showing": 2,
+            "pages": 1,
+            "page": 1
+          },
+          "data": [
+            {
+              "address_city": "Washington",
+              "address_complete": "284 Russell, Washington, DC 20510",
+              "address_number": null,
+              "address_prefix": null,
+              "address_sec_unit_num": null,
+              "address_sec_unit_type": null,
+              "address_state": "DC",
+              "address_street": "284 Russell",
+              "address_type": "Building",
+              "address_zipcode": "20510",
+              "age": 45,
+              "biography": "Marco Rubio, a Senator from Florida; born in Miami, Fla., May 28, 1971; graduated University of Florida, B.S., 1993; graduated University of Miami, J.D., 1996; lawyer; West Miami City Commission 1998-2000; member of the Florida house of representatives 2000-2008; majority leader 2003-2006; speaker 2006-2008; elected as a Republican to the United States Senate for the term ending January 3, 2017.",
+              "bioguide": "R000595",
+              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=R000595",
+              "class": "III",
+              "contact_page": "https://www.rubio.senate.gov/public/index.cfm/contact",
+              "date_of_birth": "1971-05-28T00:00:00.000Z",
+              "entered_office": "2011-01-03T00:00:00.000Z",
+              "ethnicity": "hispanic-american",
+              "facebook_url": "https://www.facebook.com/SenatorMarcoRubio",
+              "fax": null,
+              "fec": null,
+              "fec_url": null,
+              "first_name": "Marco",
+              "gender": "male",
+              "goes_by": null,
+              "google_entity_id": null,
+              "govtrack": "412491",
+              "govtrack_url": "https://www.govtrack.us/congress/members/412491",
+              "last_name": "Rubio",
+              "latitude": 38.8925,
+              "longitude": -77.0074,
+              "maplight": null,
+              "maplight_url": null,
+              "middle_name": null,
+              "name": "Marco Rubio",
+              "name_slug": "marco-rubio",
+              "name_suffix": null,
+              "openly_lgbtq": "no",
+              "opensecrets": "N00030612",
+              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
+              "opensecrets_url_tabs": {
+                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
+                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00030612",
+                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00030612",
+                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00030612",
+                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00030612",
+                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00030612",
+                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00030612",
+                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00030612",
+                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00030612",
+                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00030612"
+              },
+              "party": "republican",
+              "phone": "202-224-3041",
+              "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
+              "photo_url_sizes": {
+                "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/marco-rubio.jpg",
+                "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/marco-rubio.jpg",
+                "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/marco-rubio.jpg",
+                "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
+                "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/marco-rubio.jpg"
+              },
+              "pronunciation": "MAR-koh ROO-bee-oh",
+              "religion": "roman-catholic",
+              "state_code": "FL",
+              "state_code_slug": "fl",
+              "state_name": "Florida",
+              "state_name_slug": "florida",
+              "term_end": "2023-01-03T00:00:00.000Z",
+              "thomas": "2084",
+              "title": "senator",
+              "twitter_handle": "marcorubio",
+              "twitter_url": "https://twitter.com/marcorubio",
+              "votesmart": "1601",
+              "votesmart_url": "http://votesmart.org/candidate/1601",
+              "votesmart_url_tabs": {
+                "summary": "http://votesmart.org/candidate/1601",
+                "bio": "http://votesmart.org/candidate/biography/1601",
+                "votes": "http://votesmart.org/candidate/key-votes/1601",
+                "positions": "http://votesmart.org/candidate/political-courage-test/1601",
+                "ratings": "http://votesmart.org/candidate/evaluations/1601",
+                "speeches": "http://votesmart.org/candidate/public-statements/1601",
+                "funding": "http://votesmart.org/candidate/campaign-finance/1601"
+              },
+              "website": "http://www.rubio.senate.gov",
+              "wikidata": null,
+              "wikidata_url": null
+            },
+            {
+              "address_city": "Washington",
+              "address_complete": "716 Hart, Washington, DC 20510",
+              "address_number": null,
+              "address_prefix": null,
+              "address_sec_unit_num": null,
+              "address_sec_unit_type": null,
+              "address_state": "DC",
+              "address_street": "716 Hart",
+              "address_type": "Building",
+              "address_zipcode": "20510",
+              "age": 74,
+              "biography": "Bill Nelson, a Senator and a Representative from Florida; born in Miami, Dade County, Fla., September 29, 1942; attended the Brevard County public schools; graduated from Melbourne High School 1960; B.A., Yale University 1965; J.D., University of Virginia School of Law 1968; admitted to the Florida bar in 1968 and commenced practice in Melbourne in 1970; served in United States Army Reserve 1965-1971; United States Army, active duty, 1968-1970, achieving rank of captain; legislative assistant to Governor Reubin Askew 1971; elected to Florida State house of representatives in 1972 and reelected in 1974 and 1976; elected as a Democrat to the Ninety-sixth and to the five succeeding Congresses (January 3, 1979-January 3, 1991); was not a candidate for reelection in 1990 to the House of Representatives, but was a candidate for nomination for governor of Florida; crewmember on the twenty-fourth flight of the Space Shuttle Columbia, January 12-18, 1986; Florida treasurer and insurance commissioner 1995-2000; elected to the United States Senate in 2000 for the term commencing January 3, 2001; reelected in 2006 and again in 2012 for the term ending January 3, 2019; Chair, Special Committee on Aging (One Hundred Thirteenth Congress).",
+              "bioguide": "N000032",
+              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=N000032",
+              "class": "I",
+              "contact_page": "https://www.billnelson.senate.gov/contact-bill",
+              "date_of_birth": "1942-09-29T00:00:00.000Z",
+              "entered_office": "2001-01-03T00:00:00.000Z",
+              "ethnicity": "white-american",
+              "facebook_url": "https://www.facebook.com/billnelson/",
+              "fax": "202-228-2183",
+              "fec": null,
+              "fec_url": null,
+              "first_name": "Bill",
+              "gender": "male",
+              "goes_by": null,
+              "google_entity_id": null,
+              "govtrack": "300078",
+              "govtrack_url": "https://www.govtrack.us/congress/members/300078",
+              "last_name": "Nelson",
+              "latitude": 38.8928,
+              "longitude": -77.0044,
+              "maplight": null,
+              "maplight_url": null,
+              "middle_name": null,
+              "name": "Bill Nelson",
+              "name_slug": "bill-nelson",
+              "name_suffix": null,
+              "openly_lgbtq": "no",
+              "opensecrets": "N00009926",
+              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
+              "opensecrets_url_tabs": {
+                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
+                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009926",
+                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009926",
+                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009926",
+                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009926",
+                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009926",
+                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009926",
+                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009926",
+                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009926",
+                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009926"
+              },
+              "party": "democrat",
+              "phone": "202-224-5274",
+              "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
+              "photo_url_sizes": {
+                "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/bill-nelson.jpg",
+                "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/bill-nelson.jpg",
+                "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/bill-nelson.jpg",
+                "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
+                "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/bill-nelson.jpg"
+              },
+              "pronunciation": "BILL NELL-suhn",
+              "religion": "christian",
+              "state_code": "FL",
+              "state_code_slug": "fl",
+              "state_name": "Florida",
+              "state_name_slug": "florida",
+              "term_end": "2019-01-03T00:00:00.000Z",
+              "thomas": "859",
+              "title": "senator",
+              "twitter_handle": "SenBillNelson",
+              "twitter_url": "https://twitter.com/SenBillNelson",
+              "votesmart": "1606",
+              "votesmart_url": "http://votesmart.org/candidate/1606",
+              "votesmart_url_tabs": {
+                "summary": "http://votesmart.org/candidate/1606",
+                "bio": "http://votesmart.org/candidate/biography/1606",
+                "votes": "http://votesmart.org/candidate/key-votes/1606",
+                "positions": "http://votesmart.org/candidate/political-courage-test/1606",
+                "ratings": "http://votesmart.org/candidate/evaluations/1606",
+                "speeches": "http://votesmart.org/candidate/public-statements/1606",
+                "funding": "http://votesmart.org/candidate/campaign-finance/1606"
+              },
+              "website": "http://www.billnelson.senate.gov",
+              "wikidata": null,
+              "wikidata_url": null
+            }
+          ]
         }

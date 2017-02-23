@@ -35,15 +35,15 @@ var dbOptions = {
 var dbApi = new Sequelize( dbName, dbUser, dbPass, dbOptions );
 
 dbApi.authenticate()
-  .then(function () {
-    console.log('Connection has been established successfully');
-  })
-  .catch(function (error) {
-    if (env !== 'test') {
-      console.log('Unable to Connect to ' + dbHost);
-      console.log(error);
-    }
-  });
+.then(function () {
+  // Connection has been established successfully
+})
+.catch(function (error) {
+  if (env !== 'test') {
+    console.log('Unable to Connect to ' + dbHost);
+    console.log(error);
+  }
+});
 
 module.exports = {
   dbApi: dbApi

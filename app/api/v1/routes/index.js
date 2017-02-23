@@ -17,6 +17,7 @@ var profile = require('./profile');
 var apiUser = require('./user');
 var token = require('./token');
 var search = require('./search');
+var senate = require('./senate');
 
 var API_VERSION = config.get('version');
 
@@ -33,5 +34,6 @@ router.use('/' + API_VERSION + '/', profile);
 router.use('/' + API_VERSION + '/', apiUser);
 router.use('/' + API_VERSION + '/', token);
 router.use('/' + API_VERSION + '/', search);
+router.use('/' + API_VERSION + '/', senate);
 
 module.exports = router;

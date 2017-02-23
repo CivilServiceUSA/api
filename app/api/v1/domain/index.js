@@ -14,6 +14,7 @@ module.exports = {
   Geolocation: require('./geolocation'),
   Profile: require('./profile'),
   Search: require('./search'),
+  Senate: require('./senate'),
   Settings: require('./settings'),
   Tag: require('./tag'),
   User: require('./user'),

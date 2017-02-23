@@ -7412,7 +7412,13 @@ module.exports = {
         modified_date: new Date()
       }
     ], {
-      updateOnDuplicate: [ 'zipcode' ]
+      updateOnDuplicate: ['zipcode', 'type', 'decommissioned', 'primary_city', 'acceptable_cities', 'state', 'county', 'timezone', 'area_codes', 'world_region', 'country', 'latitude', 'longitude', 'estimated_population', 'modified_date']
+    }).catch(function (err) {
+      if (err && err.errors) {
+        for (var i = 0; i < err.errors.length; i++) {
+          console.error('× SEED ERROR', err.errors[i].type, err.errors[i].message, err.errors[i].path, err.errors[i].value);
+        }
+      }
     });
   },
   down: function (queryInterface) {

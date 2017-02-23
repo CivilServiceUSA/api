@@ -18,7 +18,13 @@ module.exports = {
         modified_date: new Date()
       }
     ], {
-      updateOnDuplicate: ['username', 'email']
+      updateOnDuplicate: ['activated', 'username', 'password', 'email', 'first_name', 'last_name', 'company_name', 'profile_name', 'profile_photo', 'location', 'profile_link_website', 'bio', 'modified_date']
+    }).catch(function (err) {
+      if (err && err.errors) {
+        for (var i = 0; i < err.errors.length; i++) {
+          console.error('× SEED ERROR', err.errors[i].type, err.errors[i].message, err.errors[i].path, err.errors[i].value);
+        }
+      }
     });
   },
   down: function (queryInterface) {

@@ -92,7 +92,13 @@ module.exports = {
         modified_date: new Date()
       }
     ], {
-      updateOnDuplicate: ['name']
+      updateOnDuplicate: ['status', 'name', 'description', 'monthly_rate', 'annual_rate', 'modified_date']
+    }).catch(function (err) {
+      if (err && err.errors) {
+        for (var i = 0; i < err.errors.length; i++) {
+          console.error('× SEED ERROR', err.errors[i].type, err.errors[i].message, err.errors[i].path, err.errors[i].value);
+        }
+      }
     });
   },
   down: function (queryInterface) {

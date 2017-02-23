@@ -113,6 +113,7 @@ civil_services_api_start() {
 
   # Cleanup old log files
   rm -f *.log
+  rm -f ~/.forever/web-server.log
 
   if [[ -n $NX ]]; then
     __notice "Nginx Already Running"
@@ -124,8 +125,6 @@ civil_services_api_start() {
     else
         sudo systemctl start nginx
     fi
-
-    sleep 3
   fi
 
   if [[ -n $ES ]]; then
@@ -138,8 +137,6 @@ civil_services_api_start() {
     else
         sudo systemctl start elasticsearch
     fi
-
-    sleep 3
   fi
 
   if [[ -n $MS ]]; then
@@ -152,8 +149,6 @@ civil_services_api_start() {
     else
         sudo systemctl start mysql
     fi
-
-    sleep 3
   fi
 
   if [[ -n $RS ]]; then
@@ -166,8 +161,6 @@ civil_services_api_start() {
     else
         sudo systemctl start redis
     fi
-
-    sleep 3
   fi
 
   if [[ -n $NS ]]; then
@@ -177,13 +170,15 @@ civil_services_api_start() {
 
     cd $PATH_API
 
-    civil_services_api_migrate
-    civil_services_api_seed
-
+    npm run -s cleanup
+    npm run -s docs
+    npm run -s migrate
+    npm run -s seed
     npm run -s elasticsearch:create
     npm run -s elasticsearch:update
+    npm run -s cleanup && npm run -s docs
 
-    npm run -s cleanup && npm run -s docs && forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
+    DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js
   fi
 }
 
