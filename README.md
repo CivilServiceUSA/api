@@ -21,12 +21,23 @@ Developer Overview
 
 * [Downloading API](docs/downloading-api.md)
 * [Getting Setup with Docker ( Recommended )](docs/getting-setup-with-docker.md)
+* [Development Scripts](docs/development-scripts.md)
+* [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
+* [Maintaining API](docs/maintaining-api.md)
+* [Troubleshooting](docs/troubleshooting.md)
+
+#### Additional Setup without Docker
+
 * [Getting Setup without Docker](docs/getting-setup-without-docker.md)
 * [Server Configuration](docs/server-configuration.md)
 * [MySQL Configuration](docs/mysql-configuration.md)
 * [Redis Configuration](docs/redis-configuration.md)
 * [Elasticsearch Configuration](docs/elasticsearch-configuration.md)
-* [Development Scripts](docs/development-scripts.md)
-* [Unit Testing and Code Coverage Reports](docs/unit-testing-and-code-coverage-reports.md)
-* [Maintaining API](docs/maintaining-api.md)
-* [Troubleshooting](docs/troubleshooting.md)
+
+
+Join us on Slack
+---
+
+__[Join us on Slack](https://slack.civil.services/bkx7n2)__ if you need help using our API, or you are interested in contributing.
+
+[![Slack Team Invite](https://cdn.civil.services/common/github-slack-invite.jpg)](https://slack.civil.services/bkx7n2)
