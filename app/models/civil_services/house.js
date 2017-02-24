@@ -140,7 +140,7 @@ var House = db.dbApi.define('house', {
     allowNull: true
   },
   title: {
-    type: DataTypes.ENUM('representative','house_speaker','house_majority_leader','house_majority_whip','house_minority_leader','house_minority_whip','republican-conference-chairman','republican-policy-committee-chairman','assistant-democratic-leader','democratic-caucus-chairman'),
+    type: DataTypes.ENUM('representative','house-speaker','house-majority-leader','house-majority-whip','house-minority-leader','house-minority-whip','republican-conference-chairman','republican-policy-committee-chairman','assistant-democratic-leader','democratic-caucus-chairman'),
     allowNull: true,
     defaultValue: 'representative'
   },

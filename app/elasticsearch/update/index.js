@@ -6,12 +6,14 @@
 
 var Category = require('./category');
 var Geolocation = require('./geolocation');
+var House = require('./house');
 var Senate = require('./senate');
 var Tag = require('./tag');
 var User = require('./user');
 
 Category.update();
 Geolocation.update();
+House.update();
 Senate.update();
 Tag.update();
 User.update();
@@ -23,6 +25,7 @@ User.update();
 module.exports = {
   Category: Category,
   Geolocation: Geolocation,
+  House: House,
   Senate: Senate,
   Tag: Tag,
   User: User

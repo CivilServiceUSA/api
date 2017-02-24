@@ -75,6 +75,15 @@ module.exports = {
       response.meta.page = 1;
     }
 
+    response.attribution = {
+      text: 'Data Provided by Civil Services',
+      website: 'https://civil.services',
+      link: '<a href="https://civil.services">Data Provided by Civil Services</a>',
+      license: 'https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE',
+      logo: 'https://cdn.civil.services/common/logo.png',
+      icon: 'https://cdn.civil.services/common/icon.png'
+    };
+
     return response;
   },
 

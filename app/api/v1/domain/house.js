@@ -1,5 +1,5 @@
 /**
- * @module domain/senate
+ * @module domain/house
  * @version 1.0.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -12,7 +12,7 @@ var config = require('../../../config');
 var elasticsearchClient = require('../../../elasticsearch/client');
 
 var env = config.get('env');
-var indexType = env + '_senate';
+var indexType = env + '_house';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 var DEFAULT_PAGE_SIZE = 30;
@@ -40,10 +40,12 @@ module.exports = {
       'address_street',
       'address_type',
       'address_zipcode',
+      'at_large',
       'biography',
       'bioguide',
       'contact_page',
       'date_of_birth',
+      'district',
       'entered_office',
       'ethnicity',
       'facebook_url',
@@ -79,6 +81,7 @@ module.exports = {
       'title',
       'twitter_handle',
       'twitter_url',
+      'vacant',
       'votesmart',
       'website',
       'wikidata'
@@ -105,7 +108,9 @@ module.exports = {
       state_name_slug: data.state_name_slug,
       state_code: data.state_code,
       state_code_slug: data.state_code_slug,
-      class: data.class,
+      district: data.district,
+      at_large: data.at_large,
+      vacant: data.vacant,
       bioguide: data.bioguide,
       thomas: data.thomas,
       govtrack: data.govtrack,
@@ -220,7 +225,7 @@ module.exports = {
   },
 
   /**
-   * Search Senate
+   * Search House
    * @param {object} query - GET Parameters
    * @returns {*}
    */
@@ -274,13 +279,37 @@ module.exports = {
     }
 
     /**
-     * Filter By Class
+     * Filter By District
      */
-    if (query.class) {
+    if (query.district) {
       andFilters = getAndFilters();
       andFilters.push({
         match: {
-          class: query.class
+          district: query.district
+        }
+      });
+    }
+
+    /**
+     * Filter By at Large
+     */
+    if (query.atLarge) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        match: {
+          at_large: query.atLarge
+        }
+      });
+    }
+
+    /**
+     * Filter By Vacant
+     */
+    if (query.vacant) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        match: {
+          vacant: query.vacant
         }
       });
     }

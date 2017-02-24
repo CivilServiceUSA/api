@@ -1,5 +1,5 @@
 /**
- * @module elasticsearch/update/senate
+ * @module elasticsearch/update/house
  * @version 1.0.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -8,18 +8,18 @@ var _ = require('lodash');
 var debug = require('../../debug');
 var config = require('../../config');
 var elasticsearchClient = require('../client');
-var SenateModel = require('../../models/civil_services/senate');
-var SenateDomain = require('../../api/v1/domain/senate');
+var HouseModel = require('../../models/civil_services/house');
+var HouseDomain = require('../../api/v1/domain/house');
 
 var env = config.get('env');
-var indexType = env + '_senate';
+var indexType = env + '_house';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 /**
- * Update Senate Index
- * @type {{update: SenateES.update}}
+ * Update House Index
+ * @type {{update: HouseES.update}}
  */
-var SenateES = {
+var HouseES = {
   update: function(){
     elasticsearchClient.search({
       index: indexName,
@@ -29,7 +29,7 @@ var SenateES = {
     .then(function() {
       var params = {};
 
-      return SenateModel.findAll(params);
+      return HouseModel.findAll(params);
     })
     .then(function(data) {
 
@@ -45,7 +45,7 @@ var SenateES = {
             }
           });
 
-          bulkActions.push(SenateDomain.prepareForElasticSearch(evt));
+          bulkActions.push(HouseDomain.prepareForElasticSearch(evt));
         });
 
         elasticsearchClient
@@ -80,4 +80,4 @@ var SenateES = {
   }
 };
 
-module.exports = SenateES;
+module.exports = HouseES;
