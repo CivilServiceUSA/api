@@ -188,6 +188,8 @@ Request Authorization Header below. `token` should be the string returned in the
 
 The following endpoints are specifically setup to manage the logged in users account.
 
+__IMPORTANT:__ Account Creation is not enabled by default for API Users.  If you believe your application should be allowed to create user accounts, please contact us to let us know why.
+
 ## Register [/user/register/?username={username}&password={password}&retype_password={retype_password}&inviteCode={inviteCode}&first_name={first_name}&last_name={last_name}&email={email}&agree={agree}]
 
 API Endpoint to register new users. This should set the user's `activated` field
@@ -2273,7 +2275,7 @@ Search for Senator using any combination of search parameters.
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/house/?state={state}&district={district}&atLarge={atLarge}&vacant={vacant}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
+## House [/house/?state={state}&district={district}&atLarge={atLarge}&vacant={vacant}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
 
 Search for House Representative using any combination of search parameters.  
 
