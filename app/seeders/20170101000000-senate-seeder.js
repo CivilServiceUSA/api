@@ -537,7 +537,7 @@ module.exports = {
         date_of_birth: "1964-10-20",
         entered_office: "2017-01-03",
         term_end: "2023-01-03",
-        biography: "Kamala Harris, a Senator from California; born in Oakland, Calif., October 20, 1964; B.A., Howard University, 1986; J.D., University of California, Hastings College of the Law, 1989; admitted to the California bar in 1990; deputy district attorney, Alameda County, Calif., 1990-1998; managing attorney, San Francisco District Attorneyâ€™s Office; chief of the San Francisco City Attorneyâ€™s Division on Children and Families; district attorney of San Francisco 2004-2011; attorney general of California 2011-2016; elected as a Democrat to the United States Senate in 2016 for the term ending January 3, 2023.",
+        biography: "Kamala Harris, a Senator from California; born in Oakland, Calif., October 20, 1964; B.A., Howard University, 1986; J.D., University of California, Hastings College of the Law, 1989; admitted to the California bar in 1990; deputy district attorney, Alameda County, Calif., 1990-1998; managing attorney, San Francisco District Attorney's Office; chief of the San Francisco City Attorney's Division on Children and Families; district attorney of San Francisco 2004-2011; attorney general of California 2011-2016; elected as a Democrat to the United States Senate in 2016 for the term ending January 3, 2023.",
         phone: "202-224-3553",
         fax: "202-224-2200",
         latitude: "38.892839",

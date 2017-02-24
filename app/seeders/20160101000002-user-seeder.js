@@ -16,6 +16,22 @@ module.exports = {
         bio: 'Accountability in Action',
         created_date: new Date(),
         modified_date: new Date()
+      },
+      {
+        activated: true,
+        username: 'civilservices',
+        password: '$2a$08$OVrWutoBCqIH2MB6HFyrguwBjy5V8oGR8pUagTsxa5ZBTkXIk2rkG',
+        email: 'hello@civil.services',
+        first_name: 'Civil',
+        last_name: 'Services',
+        company_name: 'Civil Service USA Corp',
+        profile_name: 'Civil Services',
+        profile_photo: 'https://cdn.civil.services/common/icon.jpg',
+        location: 'United States',
+        profile_link_website: 'https://civil.services',
+        bio: 'Accountability in Action',
+        created_date: new Date(),
+        modified_date: new Date()
       }
     ], {
       updateOnDuplicate: ['activated', 'username', 'password', 'email', 'first_name', 'last_name', 'company_name', 'profile_name', 'profile_photo', 'location', 'profile_link_website', 'bio', 'modified_date']
