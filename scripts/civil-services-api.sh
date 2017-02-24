@@ -174,10 +174,10 @@ civil_services_api_start() {
   else
     cd $PATH_API
 
-     __make_header "Cleaning Up Junk Files"
+     __success "Cleaning Up Junk Files"
     npm run -s cleanup
 
-     __make_header "Generating API Docs"
+     __success "Generating API Docs"
     npm run -s docs
 
      __make_header "Migrating API Structure"
