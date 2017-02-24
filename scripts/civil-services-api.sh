@@ -303,6 +303,9 @@ civil_services_api_stop() {
     cd $PATH_API
     forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
 
+    # kill Known Ports just in case
+    lsof -i TCP:5000 | grep LISTEN | awk '{print $2}' | xargs kill -9;
+    lsof -i TCP:5001 | grep LISTEN | awk '{print $2}' | xargs kill -9;
   else
     __notice "Node Server was not Running"
   fi
