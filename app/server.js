@@ -4,6 +4,8 @@
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
+require('dotenv').config({silent: true});
+
 var rateLimit = require('express-rate-limit');
 var express = require('express');
 var compression = require('compression');
