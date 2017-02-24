@@ -5,7 +5,7 @@ module.exports = {
         activated: true,
         username: 'admin',
         password: '$2a$08$OVrWutoBCqIH2MB6HFyrguwBjy5V8oGR8pUagTsxa5ZBTkXIk2rkG',
-        email: 'hello@civil.services',
+        email: 'admin@civil.services',
         first_name: 'Civil',
         last_name: 'Services',
         company_name: 'Civil Service USA Corp',

@@ -8,6 +8,12 @@ DIR=`dirname $0`
 APP_NAME="Civil Services API"
 PATH_API="$(dirname "$DIR")"
 
+ARG1=1
+ARG2=2
+
+COMMAND=${!ARG1}
+OPTION=${!ARG2}
+
 NX=""
 ES=""
 MS=""
@@ -166,19 +172,32 @@ civil_services_api_start() {
   if [[ -n $NS ]]; then
     __notice "Node Server Already Running"
   else
-    __success "Starting Node Server"
-
     cd $PATH_API
 
+     __make_header "Cleaning Up Junk Files"
     npm run -s cleanup
+
+     __make_header "Generating API Docs"
     npm run -s docs
+
+     __make_header "Migrating API Structure"
     npm run -s migrate
+
+     __make_header "Seeding Database"
     npm run -s seed
+
+     __make_header "Updating Search Index"
     npm run -s elasticsearch:create
     npm run -s elasticsearch:update
-    npm run -s cleanup && npm run -s docs
 
-    DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js
+    if [ "$OPTION" == "debug" ]; then
+      __make_header "Starting Node Server in Debug Mode"
+      DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js
+    else
+        __make_header "Starting Node Server"
+      forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
+    fi
+
   fi
 }
 
@@ -392,4 +411,4 @@ civil_services_api_help() {
   echo -e ""
 }
 
-civil_services_api $1
+civil_services_api $1 $2
