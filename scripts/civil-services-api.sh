@@ -198,7 +198,7 @@ civil_services_api_start() {
       __make_header "Starting Node Server in Debug Mode"
       DEBUG=express:* ./node_modules/nodemon/bin/nodemon.js index.js
     else
-        __make_header "Starting Node Server"
+      __make_header "Starting Node Server"
       forever start -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
     fi
 
@@ -223,7 +223,6 @@ civil_services_api_stop() {
         fi
       ;;
       n|N|no|NO|No)
-        __notice "Skipping Nginx Shutdown"
       ;;
       *)
       __notice "Please enter only y or n"
@@ -248,7 +247,6 @@ civil_services_api_stop() {
         fi
       ;;
       n|N|no|NO|No)
-        __notice "Skipping Elasticsearch Shutdown"
       ;;
       *)
       __notice "Please enter only y or n"
@@ -270,7 +268,6 @@ civil_services_api_stop() {
         fi
       ;;
       n|N|no|NO|No)
-        __notice "Skipping MySQL Shutdown"
       ;;
       *)
       __notice "Please enter only y or n"
@@ -292,7 +289,6 @@ civil_services_api_stop() {
         fi
       ;;
       n|N|no|NO|No)
-        __notice "Skipping Redis Server Shutdown"
       ;;
       *)
       __notice "Please enter only y or n"
@@ -305,7 +301,7 @@ civil_services_api_stop() {
     __success "Stopping Node Server"
 
     cd $PATH_API
-    node ./node_modules/forever/bin/forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
+    forever stop -w --minUptime 1000 --spinSleepTime 1000 -m 1 -l web-server.log -o ./web-server-stdout.log -e ./web-server-stderr.log index.js
 
   else
     __notice "Node Server was not Running"
