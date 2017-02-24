@@ -42,7 +42,11 @@ __notice(){
 
 __error(){
     TEXT=$( echo $1 | tr '\n' ' ')
-    echo -e "\033[38;5;196m! Civil Services › $TEXT\033[0m\n"
+    echo -e "\033[38;5;196m× Civil Services › $TEXT\033[0m\n"
+}
+
+__confirm(){
+    echo -ne "\n\033[38;5;220m⚠ Civil Services › $1\033[0m"
 }
 
 function civil_services_api(){
@@ -61,7 +65,7 @@ function civil_services_api(){
     restart)
       __error "You are about to restart the $APP_NAME."
 
-      echo -ne "\e[38;5;196mCONTINUE? (y or n) : \e[0m"
+      echo -ne "\33[38;5;196mCONTINUE? (y or n) : \33[0m"
       read CONFIRM
       case $CONFIRM in
           y|Y|YES|yes|Yes)
@@ -208,56 +212,91 @@ civil_services_api_stop() {
   cd $PATH_API
 
   if [[ -n $NX ]]; then
-    __success "Stopping Nginx"
-
-    if [[ $OSTYPE == darwin* ]]; then
-        brew services stop nginx
-    else
-        sudo systemctl stop nginx
-    fi
-
+    __confirm "Stopping Nginx. CONTINUE? (y or n): "
+    read CONFIRM
+    case $CONFIRM in
+      y|Y|YES|yes|Yes)
+        if [[ $OSTYPE == darwin* ]]; then
+          brew services stop nginx
+        else
+          sudo systemctl stop nginx
+        fi
+      ;;
+      n|N|no|NO|No)
+        __notice "Skipping Nginx Shutdown"
+      ;;
+      *)
+      __notice "Please enter only y or n"
+    esac
   else
     __notice "Nginx was not Running"
   fi
 
   if [[ -n $ES ]]; then
-    __success "Stopping Elasticsearch"
+    __confirm "Stopping Elasticsearch. CONTINUE? (y or n): "
 
-    cd $PATH_API
-    npm run -s elasticsearch:delete
+    read CONFIRM
+    case $CONFIRM in
+      y|Y|YES|yes|Yes)
+        cd $PATH_API
+        npm run -s elasticsearch:delete
 
-    if [[ $OSTYPE == darwin* ]]; then
-        brew services stop elasticsearch@1.7
-    else
-        sudo systemctl stop elasticsearch
-    fi
-
+        if [[ $OSTYPE == darwin* ]]; then
+          brew services stop elasticsearch@1.7
+        else
+          sudo systemctl stop elasticsearch
+        fi
+      ;;
+      n|N|no|NO|No)
+        __notice "Skipping Elasticsearch Shutdown"
+      ;;
+      *)
+      __notice "Please enter only y or n"
+    esac
   else
     __notice "Elasticsearch was not Running"
   fi
 
   if [[ -n $MS ]]; then
-    __success "Stopping MySQL"
+    __confirm "Stopping MySQL. CONTINUE? (y or n): "
 
-    if [[ $OSTYPE == darwin* ]]; then
-        brew services stop mysql
-    else
-        sudo systemctl stop mysql
-    fi
-
+    read CONFIRM
+    case $CONFIRM in
+      y|Y|YES|yes|Yes)
+        if [[ $OSTYPE == darwin* ]]; then
+          brew services stop mysql
+        else
+          sudo systemctl stop mysql
+        fi
+      ;;
+      n|N|no|NO|No)
+        __notice "Skipping MySQL Shutdown"
+      ;;
+      *)
+      __notice "Please enter only y or n"
+    esac
   else
     __notice "MySQL was not Running"
   fi
 
   if [[ -n $RS ]]; then
-    __success "Stopping Redis Server"
+    __confirm "Stopping Redis Server. CONTINUE? (y or n): "
 
-    if [[ $OSTYPE == darwin* ]]; then
-        brew services stop redis
-    else
-        sudo systemctl stop redis
-    fi
-
+    read CONFIRM
+    case $CONFIRM in
+      y|Y|YES|yes|Yes)
+        if [[ $OSTYPE == darwin* ]]; then
+          brew services stop redis
+        else
+          sudo systemctl stop redis
+        fi
+      ;;
+      n|N|no|NO|No)
+        __notice "Skipping Redis Server Shutdown"
+      ;;
+      *)
+      __notice "Please enter only y or n"
+    esac
   else
     __notice "Redis Server was not Running"
   fi
