@@ -29,8 +29,6 @@ API Development Scripts:
 | `npm run elasticsearch:create` | Create Elasticsearch Indexes                                                                        |
 | `npm run elasticsearch:update` | Update Elasticsearch Indexes                                                                        |
 | `npm run elasticsearch:delete` | Delete Elasticsearch Indexes                                                                        |
-| `npm run snyk-protect`         | Patches Security issues detected running via `npm run snyk-test`                                    |
-| `npm run snyk-test`            | Checks for Known NPM Package Dependency Security Issues                                             |
 | `npm run flatdb:download-all`  | Downloads All Flat Database Files used for API                                                      |
 | `npm run flatdb:geo-city`      | Downloads and Unzips [GeoLite2 City](http://dev.maxmind.com/geoip/geoip2/geolite2/) from MaxMind    |
 | `npm run flatdb:geo-country`   | Downloads and Unzips [GeoLite2 Country](http://dev.maxmind.com/geoip/geoip2/geolite2/) from MaxMind |

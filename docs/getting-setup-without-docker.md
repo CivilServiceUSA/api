@@ -35,10 +35,77 @@ Please use the requirement links above to review install instructions for each d
 #### NPM Packages
 
 ```bash
-npm install -g mysql
 npm install -g forever
-npm install -g istanbul
-npm install -g sequelize-cli
+```
+
+
+Running the API
+---
+
+Once you have downloaded the API you will need to create some config files for the local installation.
+
+The possible environment options are `local`, `mobile`, `staging`, `production`, `test` & `docker`.
+
+There are two config files you will need to initial create. Using the name of the environment you wish to setup.  
+For example, if you are setting up a `local` environment, you would need to create `./app/config/db-local.json` & `./app/config/local.json`.
+
+#### Example of `./app/config/local.json`
+
+```json
+{
+  "debug": true,
+  "env": "local",
+  "secret": "F8E1577B-DDAF-8234-4DD5-9301E7223582",
+  "sessionKey": "F41CF60C-9A23-55C4-DDE3-7642B13B6276",
+  "debugKey": "BD52B1DC-C396-A714-B5B4-21AE9B6A0971",
+  "bugsnag": "",
+  "hashID": {
+    "secret": "4B1AB909-EA83-4E34-3D43-280273497137"
+  },
+  "database": {
+    "api": {
+      "host": "localhost",
+      "database": "civil_services_api",
+      "username": "root",
+      "password": ""
+    }
+  },
+  "mandrill": {
+    "key": "CHANGE_ME"
+  },
+  "ipinfodb": {
+    "key": "CHANGE_ME"
+  },
+  "openStates": {
+    "key": "CHANGE_ME"
+  },
+  "elasticsearch": {
+    "log": "error"
+  },
+  "logzio": {
+    "token": "CHANGE_ME",
+    "type": "CivilServiceAPI"
+  }
+}
+```
+
+#### Example of `./app/config/db-local.json`
+
+```json
+{
+  "username": "root",
+  "password": "",
+  "database": "civil_services_api",
+  "host": "localhost",
+  "dialect": "mysql"
+}
+```
+
+#### Start API
+
+```bash
+cd /path/to/api
+export API_NODE_ENV=local && npm start
 ```
 
 Accessing the API via Browser
