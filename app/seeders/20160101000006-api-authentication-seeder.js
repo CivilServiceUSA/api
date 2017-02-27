@@ -3,7 +3,7 @@ module.exports = {
     return queryInterface.bulkInsert('api_authentication', [
       {
         user_id: 1,
-        approved_whitelist: 'localhost:5000',
+        approved_whitelist: '127.0.0.1,127.0.0.1:5000,127.0.0.1:63342,localhost,localhost:5000,localhost:63342',
         api_key: '7E07D864-209A-F9E4-819F-2DD7E76B6F24',
         api_secret: '6A126F89-10BD-DCB4-79CF-4BFC73AB3987',
         allow_api_get: 1,
