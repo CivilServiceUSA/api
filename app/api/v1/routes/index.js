@@ -19,6 +19,7 @@ var token = require('./token');
 var search = require('./search');
 var house = require('./house');
 var senate = require('./senate');
+var state = require('./state');
 
 var API_VERSION = config.get('version');
 
@@ -37,5 +38,6 @@ router.use('/' + API_VERSION + '/', token);
 router.use('/' + API_VERSION + '/', search);
 router.use('/' + API_VERSION + '/', senate);
 router.use('/' + API_VERSION + '/', house);
+router.use('/' + API_VERSION + '/', state);
 
 module.exports = router;

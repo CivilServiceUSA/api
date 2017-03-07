@@ -34,9 +34,7 @@ RUN npm install --no-optional && npm cache clean
 
 USER root
 
-RUN npm install -g mysql
 RUN npm install -g forever
-RUN npm install -g istanbul
 RUN npm install -g sequelize-cli
 
 COPY .jshintrc ./

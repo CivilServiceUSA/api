@@ -28,6 +28,8 @@ module.exports = {
         for (var i = 0; i < err.errors.length; i++) {
           console.error('× SEED ERROR', err.errors[i].type, err.errors[i].message, err.errors[i].path, err.errors[i].value);
         }
+      } else if (err && err.message) {
+        console.error('× SEED ERROR', err.message);
       }
     });
   },

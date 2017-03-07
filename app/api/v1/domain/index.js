@@ -17,6 +17,7 @@ module.exports = {
   House: require('./house'),
   Senate: require('./senate'),
   Settings: require('./settings'),
+  State: require('./state'),
   Tag: require('./tag'),
   User: require('./user'),
   Util: require('./util')

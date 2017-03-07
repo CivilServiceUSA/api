@@ -1,12 +1,22 @@
-# Thank you for Contributing !
+![Civil Services Logo](https://cdn.civil.services/common/github-logo.png "Civil Services Logo")
+
+__Civil Services__ is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
+
+Thank you for Contributing !
+===
 
 We want to keep it as easy as possible to contribute changes. Just follow these requirements for Creating Issues and Pull Requests, and everything will be super simple for everyong :)
 
-## Creating an Issue:
+![OctoLiberty](https://octodex.github.com/images/octoliberty.png "OctoLiberty")
+
+Creating an Issue:
+---
 
 Use the Template that we provide.  Issues reported that do not use the template will closed.
 
-## Creating a Pull Request:
+
+Creating a Pull Request:
+---
 
 Before you can submit a PR, you will need to:
 
