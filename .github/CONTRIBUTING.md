@@ -5,7 +5,7 @@ __Civil Services__ is a collection of tools that make it possible for citizens t
 Thank you for Contributing !
 ===
 
-We want to keep it as easy as possible to contribute changes. Just follow these requirements for Creating Issues and Pull Requests, and everything will be super simple for everyong :)
+We want to make it as easy as possible to contribute changes. Just follow these requirements below for [Creating Issues](https://github.com/CivilServiceUSA/api/issues/new) and [Pull Requests](https://github.com/CivilServiceUSA/api/pull/new), and everything will be simple for everyone :)
 
 ![OctoLiberty](https://octodex.github.com/images/octoliberty.png "OctoLiberty")
 
