@@ -11,6 +11,7 @@ Follow the requirements below for __[Creating Issues](https://github.com/CivilSe
 
 ![OctoLiberty](https://octodex.github.com/images/octoliberty.png "OctoLiberty")
 
+
 Creating an Issue
 ---
 
