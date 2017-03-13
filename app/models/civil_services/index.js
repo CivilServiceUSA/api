@@ -13,5 +13,6 @@ module.exports = {
   House: require('./house'),
   Senate: require('./senate'),
   State: require('./state'),
+  ShapeZipCode: require('./shape_zipcode'),
   ZipCode: require('./zipcode')
 };
