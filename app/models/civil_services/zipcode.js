@@ -12,8 +12,6 @@ var db = require('../../config/sequelize');
  * @type {object}
  * @property {number} id - Unique ID
  * @property {string} zipcode - Unique Zip Code
- * @property {enum} type=STANDARD - Type of Zip Code ['UNIQUE','PO BOX','STANDARD','MILITARY']
- * @property {boolean} [decommissioned=false] - Whether Zip Code was Decommissioned
  * @property {string} primary_city - The Official City Name used for Zip Code
  * @property {string} [acceptable_cities] - Comma Separated list of other City Names Zip Code uses
  * @property {string} unacceptable_cities - Comma Separated list of Unacceptable City Names sometimes used for Zip Code
@@ -21,11 +19,10 @@ var db = require('../../config/sequelize');
  * @property {string} [county] - County Zip Code belongs to
  * @property {string} [timezone] - Time Zone Zip Code belongs to
  * @property {string} [area_codes] - Comma Separated list of Area Codes in Zip Code
- * @property {string} world_region - Region Zip Code belongs to
- * @property {string} country - Country Zip Code belongs to
  * @property {float} latitude - GPS Latitude
  * @property {float} longitude - GPS Longitude
  * @property {number} estimated_population - Estimated Population
+ * @property {geometry} shape - GeoJSON Shape Data
  */
 var ZipCode = db.dbApi.define('zipcode', {
   id: {
@@ -37,16 +34,6 @@ var ZipCode = db.dbApi.define('zipcode', {
   zipcode: {
     type: DataTypes.STRING(5),
     allowNull: false
-  },
-  type: {
-    type: DataTypes.ENUM('UNIQUE','PO BOX','STANDARD','MILITARY'),
-    allowNull: false,
-    defaultValue: 'STANDARD'
-  },
-  decommissioned: {
-    type: DataTypes.BOOLEAN,
-    allowNull: true,
-    defaultValue: false
   },
   primary_city: {
     type: DataTypes.STRING(100),
@@ -76,14 +63,6 @@ var ZipCode = db.dbApi.define('zipcode', {
     type: DataTypes.STRING(50),
     allowNull: true
   },
-  world_region: {
-    type: DataTypes.STRING(50),
-    allowNull: false
-  },
-  country: {
-    type: DataTypes.STRING(50),
-    allowNull: false
-  },
   latitude: {
     type: DataTypes.FLOAT(14),
     allowNull: false
@@ -95,12 +74,32 @@ var ZipCode = db.dbApi.define('zipcode', {
   estimated_population: {
     type: DataTypes.INTEGER(10),
     allowNull: false
+  },
+  shape: {
+    type: DataTypes.GEOMETRY,
+    allowNull: false
   }
 }, {
   indexes: [
     {
       fields: ['zipcode'],
       unique: true
+    },
+    {
+      fields: ['shape'],
+      type: 'spatial'
+    },
+    {
+      fields: ['primary_city']
+    },
+    {
+      fields: ['county']
+    },
+    {
+      fields: ['timezone']
+    },
+    {
+      fields: ['area_codes']
     }
   ]
 });
