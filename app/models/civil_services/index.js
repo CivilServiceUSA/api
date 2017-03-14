@@ -5,11 +5,12 @@
  */
 
 /**
- * Campaign Zero
+ * Civil Services
  * @type {object}
  */
 module.exports = {
   CityCouncil: require('./city_council'),
+  County: require('./county'),
   House: require('./house'),
   Senate: require('./senate'),
   State: require('./state'),

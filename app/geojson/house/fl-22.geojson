@@ -1,1 +1,233 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Florida","state_name_slug":"florida","state_code":"FL","state_code_slug":"fl","district":"22","at_large":false,"vacant":false,"bioguide":"D000610","thomas":"1976","govtrack":"412385","opensecrets":"N00031317","votesmart":"67151","fec":"H0FL19080","maplight":"1365","wikidata":"Q245724","google_entity_id":"kg:/m/03cg3qs","title":"representative","party":"democrat","name":"Ted Deutch","name_slug":"ted-deutch","first_name":"Ted","middle_name":null,"last_name":null,"name_suffix":"Ted","goes_by":null,"pronunciation":"LOW-iss FRAYNK-uhl","gender":"female","ethnicity":"white-american","religion":"jewish","openley_lgbtq":"no","date_of_birth":"1966-05-07","entered_office":"2010-04-15","term_end":"2019-01-03","biography":"Ted Deutch, a Representative from Florida; born in Bethlehem, Northampton County, Pa., May 7, 1966; graduated from Liberty High School, Bethlehem, Pa., 1984; A.B., University of Michigan, Ann Arbor, Mich., 1988; J.D., University of Michigan, Ann Arbor, Mich., 1990; lawyer, private practice; member of the Florida state senate, 2007-2010; elected as a Democrat to the One Hundred Eleventh Congress, by special election, to fill the vacancy caused by the resignation of United States Representative Robert Wexler, and reelected to the four succeeding Congresses (April 13, 2010-present).","phone":"202-225-9890","fax":"561-998-9048","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://frankel.house.gov","contact_page":"https://frankel.house.gov/contact/","facebook_url":"https://www.facebook.com/RepLoisFrankel/","twitter_handle":"RepLoisFrankel","twitter_url":"https://twitter.com/RepLoisFrankel","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/ted-deutch.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-80.298154,26.229809],[-80.297062,26.35532],[-80.297048,26.355547],[-80.170173,26.32778],[-80.170149,26.327781],[-80.171067,26.409384],[-80.171067,26.4095],[-80.058064,26.426452],[-80.006888,26.426457],[-80.037726,26.114498],[-80.040916,26.092522],[-80.168919,26.080877],[-80.168933,26.080831],[-80.216255,26.091601],[-80.216539,26.091663],[-80.214692,26.105855],[-80.214597,26.106114],[-80.16185,26.106385],[-80.161416,26.106397],[-80.165703,26.11979],[-80.165705,26.119975],[-80.138114,26.129911],[-80.137925,26.129916],[-80.171005,26.182597],[-80.171025,26.183093],[-80.132481,26.210864],[-80.132408,26.210868],[-80.11382,26.275099],[-80.113772,26.275264],[-80.123143,26.261098],[-80.123132,26.26075],[-80.163248,26.260036],[-80.164094,26.260017],[-80.156134,26.215787],[-80.15613,26.215685],[-80.187786,26.195337],[-80.187781,26.194956],[-80.22092,26.22791],[-80.22104,26.228239],[-80.298154,26.229809]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Florida",
+    "state_name_slug": "florida",
+    "state_code": "FL",
+    "state_code_slug": "fl",
+    "district": "22",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "D000610",
+    "thomas": "1976",
+    "govtrack": "412385",
+    "opensecrets": "N00031317",
+    "votesmart": "67151",
+    "fec": "H0FL19080",
+    "maplight": "1365",
+    "wikidata": "Q245724",
+    "google_entity_id": "kg:/m/03cg3qs",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Ted Deutch",
+    "name_slug": "ted-deutch",
+    "first_name": "Ted",
+    "middle_name": null,
+    "last_name": "Deutch",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "LOW-iss FRAYNK-uhl",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "jewish",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1966-05-07",
+    "entered_office": "2010-04-15",
+    "term_end": "2019-01-03",
+    "biography": "Ted Deutch, a Representative from Florida; born in Bethlehem, Northampton County, Pa., May 7, 1966; graduated from Liberty High School, Bethlehem, Pa., 1984; A.B., University of Michigan, Ann Arbor, Mich., 1988; J.D., University of Michigan, Ann Arbor, Mich., 1990; lawyer, private practice; member of the Florida state senate, 2007-2010; elected as a Democrat to the One Hundred Eleventh Congress, by special election, to fill the vacancy caused by the resignation of United States Representative Robert Wexler, and reelected to the four succeeding Congresses (April 13, 2010-present).",
+    "phone": "202-225-9890",
+    "fax": "561-998-9048",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://frankel.house.gov",
+    "contact_page": "https://frankel.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepLoisFrankel/",
+    "twitter_handle": "RepLoisFrankel",
+    "twitter_url": "https://twitter.com/RepLoisFrankel",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/ted-deutch.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -80.298154,
+          26.229809
+        ],
+        [
+          -80.297062,
+          26.35532
+        ],
+        [
+          -80.297048,
+          26.355547
+        ],
+        [
+          -80.170173,
+          26.32778
+        ],
+        [
+          -80.170149,
+          26.327781
+        ],
+        [
+          -80.171067,
+          26.409384
+        ],
+        [
+          -80.171067,
+          26.4095
+        ],
+        [
+          -80.058064,
+          26.426452
+        ],
+        [
+          -80.006888,
+          26.426457
+        ],
+        [
+          -80.037726,
+          26.114498
+        ],
+        [
+          -80.040916,
+          26.092522
+        ],
+        [
+          -80.168919,
+          26.080877
+        ],
+        [
+          -80.168933,
+          26.080831
+        ],
+        [
+          -80.216255,
+          26.091601
+        ],
+        [
+          -80.216539,
+          26.091663
+        ],
+        [
+          -80.214692,
+          26.105855
+        ],
+        [
+          -80.214597,
+          26.106114
+        ],
+        [
+          -80.16185,
+          26.106385
+        ],
+        [
+          -80.161416,
+          26.106397
+        ],
+        [
+          -80.165703,
+          26.11979
+        ],
+        [
+          -80.165705,
+          26.119975
+        ],
+        [
+          -80.138114,
+          26.129911
+        ],
+        [
+          -80.137925,
+          26.129916
+        ],
+        [
+          -80.171005,
+          26.182597
+        ],
+        [
+          -80.171025,
+          26.183093
+        ],
+        [
+          -80.132481,
+          26.210864
+        ],
+        [
+          -80.132408,
+          26.210868
+        ],
+        [
+          -80.11382,
+          26.275099
+        ],
+        [
+          -80.113772,
+          26.275264
+        ],
+        [
+          -80.123143,
+          26.261098
+        ],
+        [
+          -80.123132,
+          26.26075
+        ],
+        [
+          -80.163248,
+          26.260036
+        ],
+        [
+          -80.164094,
+          26.260017
+        ],
+        [
+          -80.156134,
+          26.215787
+        ],
+        [
+          -80.15613,
+          26.215685
+        ],
+        [
+          -80.187786,
+          26.195337
+        ],
+        [
+          -80.187781,
+          26.194956
+        ],
+        [
+          -80.22092,
+          26.22791
+        ],
+        [
+          -80.22104,
+          26.228239
+        ],
+        [
+          -80.298154,
+          26.229809
+        ]
+      ]
+    ]
+  }
+}

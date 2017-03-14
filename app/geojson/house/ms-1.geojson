@@ -1,1 +1,417 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Mississippi","state_name_slug":"mississippi","state_code":"MS","state_code_slug":"ms","district":"1","at_large":false,"vacant":false,"bioguide":"K000388","thomas":"2294","govtrack":"412673","opensecrets":"N00037003","votesmart":"156389","fec":"H6MS01131","maplight":"2163","wikidata":"Q20204915","google_entity_id":"kg:/m/013b9qgh","title":"representative","party":"republican","name":"Trent Kelly","name_slug":"trent-kelly","first_name":"Trent","middle_name":null,"last_name":null,"name_suffix":"Trent","goes_by":null,"pronunciation":"CHRENT KELL-ee","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1966-03-01","entered_office":"2015-06-09","term_end":"2019-01-03","biography":"Trent Kelly, a Representative from Mississippi; born March 1, 1966, Union, Union County, Miss.; graduated from Union High School, Union, Miss., 1984; A.A., East Central Community College, Decatur, Miss., 1986; B.A., University of Mississippi, University, Miss., 1989; J.D., University of Mississippi, Oxford, Miss., 1994; M.A., United States Army War College, Carlisle, Penn., 2010; United States Army National Guard; lawyer, private practice; prosecutor, Tupelo, Miss., 1999-2011; district attorney, 2012-2015; elected as a Republican to the One Hundred Fourteenth Congress, by special election, to fill the vacancy caused by the death of United States Representative Alan Nunnelee, and reelected to the succeeding Congress (June 2, 2015-present).","phone":"202-225-4306","fax":"202-225-3549","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://trentkelly.house.gov","contact_page":"http://trentkelly.house.gov/contact/","facebook_url":"https://www.facebook.com/RepTrentKelly/","twitter_handle":null,"twitter_url":null,"photo_url":"https://cdn.civil.services/us-house/headshots/512x512/trent-kelly.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-90.313476,34.871698],[-90.246552,34.914163],[-90.244731,34.921026],[-90.24952,34.950406],[-90.250056,34.951196],[-90.30779,34.991853],[-90.309289,34.995694],[-88.200064,34.995634],[-88.20003,34.99564],[-88.153496,34.921084],[-88.152413,34.919741],[-88.097993,34.892364],[-88.097888,34.892202],[-88.304399,33.288611],[-88.304434,33.28832],[-88.666483,33.286921],[-88.669076,33.286922],[-88.671522,33.563557],[-88.671526,33.565135],[-88.791721,33.562345],[-88.791865,33.562296],[-88.841061,33.520373],[-88.84115,33.520317],[-88.832803,33.507353],[-88.832057,33.506195],[-88.959612,33.498379],[-88.959617,33.498204],[-89.087952,33.532388],[-89.088438,33.532518],[-89.088644,33.454068],[-89.088652,33.445821],[-88.966681,33.446679],[-88.966515,33.446672],[-88.966344,33.360966],[-88.966298,33.359284],[-88.932958,33.359132],[-88.930606,33.359136],[-88.931661,33.334764],[-88.931675,33.329819],[-88.966904,33.330072],[-88.967126,33.330073],[-88.966018,33.288852],[-88.965963,33.286108],[-88.813565,33.286422],[-88.813053,33.286424],[-88.812784,32.926254],[-88.812782,32.925973],[-88.930505,32.919533],[-88.930505,32.91924],[-89.318604,32.931661],[-89.319163,32.931654],[-89.316423,33.284509],[-89.316408,33.285556],[-89.452933,33.285939],[-89.453808,33.285942],[-89.454009,33.430236],[-89.45405,33.4332],[-89.421725,33.429434],[-89.421505,33.429476],[-89.380675,33.459739],[-89.380691,33.459846],[-89.505978,33.459806],[-89.506496,33.459806],[-89.509446,34.190433],[-89.50944,34.19096],[-89.717816,34.192496],[-89.72105,34.192545],[-89.721311,34.55315],[-89.721341,34.554274],[-90.218226,34.559482],[-90.21829,34.559491],[-90.211076,34.573097],[-90.211154,34.573224],[-90.244216,34.600711],[-90.244282,34.60091],[-90.2146,34.657434],[-90.214558,34.657753],[-90.23143,34.701922],[-90.231412,34.701991],[-90.200341,34.724275],[-90.200199,34.724418],[-90.202073,34.852278],[-90.202126,34.860374],[-90.303387,34.860597],[-90.304532,34.860588],[-90.313476,34.871698]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Mississippi",
+    "state_name_slug": "mississippi",
+    "state_code": "MS",
+    "state_code_slug": "ms",
+    "district": "1",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "K000388",
+    "thomas": "2294",
+    "govtrack": "412673",
+    "opensecrets": "N00037003",
+    "votesmart": "156389",
+    "fec": "H6MS01131",
+    "maplight": "2163",
+    "wikidata": "Q20204915",
+    "google_entity_id": "kg:/m/013b9qgh",
+    "title": "representative",
+    "party": "republican",
+    "name": "Trent Kelly",
+    "name_slug": "trent-kelly",
+    "first_name": "Trent",
+    "middle_name": null,
+    "last_name": "Kelly",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "CHRENT KELL-ee",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1966-03-01",
+    "entered_office": "2015-06-09",
+    "term_end": "2019-01-03",
+    "biography": "Trent Kelly, a Representative from Mississippi; born March 1, 1966, Union, Union County, Miss.; graduated from Union High School, Union, Miss., 1984; A.A., East Central Community College, Decatur, Miss., 1986; B.A., University of Mississippi, University, Miss., 1989; J.D., University of Mississippi, Oxford, Miss., 1994; M.A., United States Army War College, Carlisle, Penn., 2010; United States Army National Guard; lawyer, private practice; prosecutor, Tupelo, Miss., 1999-2011; district attorney, 2012-2015; elected as a Republican to the One Hundred Fourteenth Congress, by special election, to fill the vacancy caused by the death of United States Representative Alan Nunnelee, and reelected to the succeeding Congress (June 2, 2015-present).",
+    "phone": "202-225-4306",
+    "fax": "202-225-3549",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://trentkelly.house.gov",
+    "contact_page": "http://trentkelly.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepTrentKelly/",
+    "twitter_handle": null,
+    "twitter_url": null,
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/trent-kelly.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -90.313476,
+          34.871698
+        ],
+        [
+          -90.246552,
+          34.914163
+        ],
+        [
+          -90.244731,
+          34.921026
+        ],
+        [
+          -90.24952,
+          34.950406
+        ],
+        [
+          -90.250056,
+          34.951196
+        ],
+        [
+          -90.30779,
+          34.991853
+        ],
+        [
+          -90.309289,
+          34.995694
+        ],
+        [
+          -88.200064,
+          34.995634
+        ],
+        [
+          -88.20003,
+          34.99564
+        ],
+        [
+          -88.153496,
+          34.921084
+        ],
+        [
+          -88.152413,
+          34.919741
+        ],
+        [
+          -88.097993,
+          34.892364
+        ],
+        [
+          -88.097888,
+          34.892202
+        ],
+        [
+          -88.304399,
+          33.288611
+        ],
+        [
+          -88.304434,
+          33.28832
+        ],
+        [
+          -88.666483,
+          33.286921
+        ],
+        [
+          -88.669076,
+          33.286922
+        ],
+        [
+          -88.671522,
+          33.563557
+        ],
+        [
+          -88.671526,
+          33.565135
+        ],
+        [
+          -88.791721,
+          33.562345
+        ],
+        [
+          -88.791865,
+          33.562296
+        ],
+        [
+          -88.841061,
+          33.520373
+        ],
+        [
+          -88.84115,
+          33.520317
+        ],
+        [
+          -88.832803,
+          33.507353
+        ],
+        [
+          -88.832057,
+          33.506195
+        ],
+        [
+          -88.959612,
+          33.498379
+        ],
+        [
+          -88.959617,
+          33.498204
+        ],
+        [
+          -89.087952,
+          33.532388
+        ],
+        [
+          -89.088438,
+          33.532518
+        ],
+        [
+          -89.088644,
+          33.454068
+        ],
+        [
+          -89.088652,
+          33.445821
+        ],
+        [
+          -88.966681,
+          33.446679
+        ],
+        [
+          -88.966515,
+          33.446672
+        ],
+        [
+          -88.966344,
+          33.360966
+        ],
+        [
+          -88.966298,
+          33.359284
+        ],
+        [
+          -88.932958,
+          33.359132
+        ],
+        [
+          -88.930606,
+          33.359136
+        ],
+        [
+          -88.931661,
+          33.334764
+        ],
+        [
+          -88.931675,
+          33.329819
+        ],
+        [
+          -88.966904,
+          33.330072
+        ],
+        [
+          -88.967126,
+          33.330073
+        ],
+        [
+          -88.966018,
+          33.288852
+        ],
+        [
+          -88.965963,
+          33.286108
+        ],
+        [
+          -88.813565,
+          33.286422
+        ],
+        [
+          -88.813053,
+          33.286424
+        ],
+        [
+          -88.812784,
+          32.926254
+        ],
+        [
+          -88.812782,
+          32.925973
+        ],
+        [
+          -88.930505,
+          32.919533
+        ],
+        [
+          -88.930505,
+          32.91924
+        ],
+        [
+          -89.318604,
+          32.931661
+        ],
+        [
+          -89.319163,
+          32.931654
+        ],
+        [
+          -89.316423,
+          33.284509
+        ],
+        [
+          -89.316408,
+          33.285556
+        ],
+        [
+          -89.452933,
+          33.285939
+        ],
+        [
+          -89.453808,
+          33.285942
+        ],
+        [
+          -89.454009,
+          33.430236
+        ],
+        [
+          -89.45405,
+          33.4332
+        ],
+        [
+          -89.421725,
+          33.429434
+        ],
+        [
+          -89.421505,
+          33.429476
+        ],
+        [
+          -89.380675,
+          33.459739
+        ],
+        [
+          -89.380691,
+          33.459846
+        ],
+        [
+          -89.505978,
+          33.459806
+        ],
+        [
+          -89.506496,
+          33.459806
+        ],
+        [
+          -89.509446,
+          34.190433
+        ],
+        [
+          -89.50944,
+          34.19096
+        ],
+        [
+          -89.717816,
+          34.192496
+        ],
+        [
+          -89.72105,
+          34.192545
+        ],
+        [
+          -89.721311,
+          34.55315
+        ],
+        [
+          -89.721341,
+          34.554274
+        ],
+        [
+          -90.218226,
+          34.559482
+        ],
+        [
+          -90.21829,
+          34.559491
+        ],
+        [
+          -90.211076,
+          34.573097
+        ],
+        [
+          -90.211154,
+          34.573224
+        ],
+        [
+          -90.244216,
+          34.600711
+        ],
+        [
+          -90.244282,
+          34.60091
+        ],
+        [
+          -90.2146,
+          34.657434
+        ],
+        [
+          -90.214558,
+          34.657753
+        ],
+        [
+          -90.23143,
+          34.701922
+        ],
+        [
+          -90.231412,
+          34.701991
+        ],
+        [
+          -90.200341,
+          34.724275
+        ],
+        [
+          -90.200199,
+          34.724418
+        ],
+        [
+          -90.202073,
+          34.852278
+        ],
+        [
+          -90.202126,
+          34.860374
+        ],
+        [
+          -90.303387,
+          34.860597
+        ],
+        [
+          -90.304532,
+          34.860588
+        ],
+        [
+          -90.313476,
+          34.871698
+        ]
+      ]
+    ]
+  }
+}

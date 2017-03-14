@@ -1,1 +1,457 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"10","at_large":false,"vacant":false,"bioguide":"D000612","thomas":"1995","govtrack":"412403","opensecrets":"N00031593","votesmart":"28769","fec":"H0CA19173","maplight":"1276","wikidata":"Q1686295","google_entity_id":"kg:/m/02q4gng","title":"representative","party":"republican","name":"Jeff Denham","name_slug":"jeff-denham","first_name":"Jeff","middle_name":null,"last_name":null,"name_suffix":"Jeff","goes_by":null,"pronunciation":"JEFF DEN-um","gender":"male","ethnicity":"white-american","religion":"presbyterian","openley_lgbtq":"no","date_of_birth":"1967-07-29","entered_office":"2011-01-05","term_end":"2019-01-03","biography":"Jeff Denham, a Representative from California; born in Hawthorne, Los Angeles County, California, on July 29, 1967; attended Atascadero High School, Atascadero, Calif.; graduated from Morro Bay High School, Morro Bay, Calif., 1985; A.A.,Victor Valley Junior College, Victorville, Calif., 1989; B.A., California Polytechnic State University, San Luis Obispo, Calif., 1992; United States Air Force, 1984-1988; United States Air Force Reserve, 1988-2000; business owner; member of the California state senate, 2002-2010; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).","phone":"202-225-4540","fax":"202-225-3402","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://denham.house.gov","contact_page":"http://denham.house.gov/contact-me","facebook_url":"https://www.facebook.com/RepJeffDenham/","twitter_handle":"RepJeffDenham","twitter_url":"https://twitter.com/RepJeffDenham","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/jeff-denham.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-121.557256,37.616671],[-121.556959,37.742357],[-121.556959,37.743051],[-121.497112,37.740961],[-121.496324,37.741103],[-121.46956,37.754063],[-121.469658,37.765532],[-121.41957,37.769062],[-121.419459,37.76906],[-121.420221,37.790819],[-121.420495,37.791016],[-121.392563,37.804868],[-121.391951,37.80496],[-121.309516,37.759769],[-121.308965,37.75992],[-121.306133,37.784808],[-121.306199,37.784862],[-121.264336,37.797314],[-121.263901,37.797314],[-121.245305,37.833711],[-121.245673,37.840986],[-121.183677,37.819283],[-121.180768,37.819297],[-121.173411,37.770555],[-121.169701,37.768378],[-121.07012,37.772567],[-121.069656,37.772587],[-121.070381,37.798239],[-121.070387,37.798304],[-121.031545,37.798629],[-121.029026,37.798614],[-121.013942,37.812994],[-121.013395,37.812945],[-120.97925,37.800743],[-120.978297,37.800743],[-120.995703,37.760449],[-120.995696,37.760178],[-120.921286,37.737797],[-120.920993,37.737947],[-120.92654,38.073342],[-120.926449,38.077421],[-120.655302,37.833362],[-120.655205,37.83326],[-120.387613,37.633704],[-120.387329,37.633499],[-120.983491,37.399755],[-120.983756,37.39964],[-120.994534,37.386186],[-120.994456,37.385812],[-120.973387,37.376462],[-120.973119,37.376148],[-120.981799,37.365873],[-120.981784,37.365592],[-120.964242,37.346366],[-120.963812,37.346144],[-121.225062,37.136253],[-121.226804,37.134774],[-121.280194,37.183072],[-121.281107,37.183603],[-121.29773,37.166429],[-121.298552,37.165963],[-121.327728,37.166035],[-121.328409,37.16595],[-121.359558,37.184453],[-121.360942,37.184321],[-121.383201,37.152354],[-121.383551,37.151487],[-121.405338,37.157038],[-121.406012,37.157887],[-121.416792,37.209795],[-121.416869,37.211262],[-121.448493,37.23702],[-121.448744,37.237277],[-121.458566,37.28166],[-121.459068,37.282319],[-121.406204,37.310531],[-121.405753,37.31099],[-121.422153,37.356025],[-121.42365,37.358837],[-121.410566,37.385834],[-121.410629,37.386108],[-121.45155,37.394635],[-121.456651,37.395535],[-121.472328,37.422981],[-121.472606,37.423345],[-121.462655,37.448438],[-121.462917,37.451489],[-121.486463,37.474926],[-121.486775,37.475652],[-121.469214,37.48936],[-121.469275,37.489688],[-121.500766,37.52431],[-121.501475,37.525003],[-121.550454,37.539332],[-121.556655,37.542732],[-121.557256,37.616671]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "10",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "D000612",
+    "thomas": "1995",
+    "govtrack": "412403",
+    "opensecrets": "N00031593",
+    "votesmart": "28769",
+    "fec": "H0CA19173",
+    "maplight": "1276",
+    "wikidata": "Q1686295",
+    "google_entity_id": "kg:/m/02q4gng",
+    "title": "representative",
+    "party": "republican",
+    "name": "Jeff Denham",
+    "name_slug": "jeff-denham",
+    "first_name": "Jeff",
+    "middle_name": null,
+    "last_name": "Denham",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "JEFF DEN-um",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "presbyterian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1967-07-29",
+    "entered_office": "2011-01-05",
+    "term_end": "2019-01-03",
+    "biography": "Jeff Denham, a Representative from California; born in Hawthorne, Los Angeles County, California, on July 29, 1967; attended Atascadero High School, Atascadero, Calif.; graduated from Morro Bay High School, Morro Bay, Calif., 1985; A.A.,Victor Valley Junior College, Victorville, Calif., 1989; B.A., California Polytechnic State University, San Luis Obispo, Calif., 1992; United States Air Force, 1984-1988; United States Air Force Reserve, 1988-2000; business owner; member of the California state senate, 2002-2010; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).",
+    "phone": "202-225-4540",
+    "fax": "202-225-3402",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://denham.house.gov",
+    "contact_page": "http://denham.house.gov/contact-me",
+    "facebook_url": "https://www.facebook.com/RepJeffDenham/",
+    "twitter_handle": "RepJeffDenham",
+    "twitter_url": "https://twitter.com/RepJeffDenham",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/jeff-denham.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -121.557256,
+          37.616671
+        ],
+        [
+          -121.556959,
+          37.742357
+        ],
+        [
+          -121.556959,
+          37.743051
+        ],
+        [
+          -121.497112,
+          37.740961
+        ],
+        [
+          -121.496324,
+          37.741103
+        ],
+        [
+          -121.46956,
+          37.754063
+        ],
+        [
+          -121.469658,
+          37.765532
+        ],
+        [
+          -121.41957,
+          37.769062
+        ],
+        [
+          -121.419459,
+          37.76906
+        ],
+        [
+          -121.420221,
+          37.790819
+        ],
+        [
+          -121.420495,
+          37.791016
+        ],
+        [
+          -121.392563,
+          37.804868
+        ],
+        [
+          -121.391951,
+          37.80496
+        ],
+        [
+          -121.309516,
+          37.759769
+        ],
+        [
+          -121.308965,
+          37.75992
+        ],
+        [
+          -121.306133,
+          37.784808
+        ],
+        [
+          -121.306199,
+          37.784862
+        ],
+        [
+          -121.264336,
+          37.797314
+        ],
+        [
+          -121.263901,
+          37.797314
+        ],
+        [
+          -121.245305,
+          37.833711
+        ],
+        [
+          -121.245673,
+          37.840986
+        ],
+        [
+          -121.183677,
+          37.819283
+        ],
+        [
+          -121.180768,
+          37.819297
+        ],
+        [
+          -121.173411,
+          37.770555
+        ],
+        [
+          -121.169701,
+          37.768378
+        ],
+        [
+          -121.07012,
+          37.772567
+        ],
+        [
+          -121.069656,
+          37.772587
+        ],
+        [
+          -121.070381,
+          37.798239
+        ],
+        [
+          -121.070387,
+          37.798304
+        ],
+        [
+          -121.031545,
+          37.798629
+        ],
+        [
+          -121.029026,
+          37.798614
+        ],
+        [
+          -121.013942,
+          37.812994
+        ],
+        [
+          -121.013395,
+          37.812945
+        ],
+        [
+          -120.97925,
+          37.800743
+        ],
+        [
+          -120.978297,
+          37.800743
+        ],
+        [
+          -120.995703,
+          37.760449
+        ],
+        [
+          -120.995696,
+          37.760178
+        ],
+        [
+          -120.921286,
+          37.737797
+        ],
+        [
+          -120.920993,
+          37.737947
+        ],
+        [
+          -120.92654,
+          38.073342
+        ],
+        [
+          -120.926449,
+          38.077421
+        ],
+        [
+          -120.655302,
+          37.833362
+        ],
+        [
+          -120.655205,
+          37.83326
+        ],
+        [
+          -120.387613,
+          37.633704
+        ],
+        [
+          -120.387329,
+          37.633499
+        ],
+        [
+          -120.983491,
+          37.399755
+        ],
+        [
+          -120.983756,
+          37.39964
+        ],
+        [
+          -120.994534,
+          37.386186
+        ],
+        [
+          -120.994456,
+          37.385812
+        ],
+        [
+          -120.973387,
+          37.376462
+        ],
+        [
+          -120.973119,
+          37.376148
+        ],
+        [
+          -120.981799,
+          37.365873
+        ],
+        [
+          -120.981784,
+          37.365592
+        ],
+        [
+          -120.964242,
+          37.346366
+        ],
+        [
+          -120.963812,
+          37.346144
+        ],
+        [
+          -121.225062,
+          37.136253
+        ],
+        [
+          -121.226804,
+          37.134774
+        ],
+        [
+          -121.280194,
+          37.183072
+        ],
+        [
+          -121.281107,
+          37.183603
+        ],
+        [
+          -121.29773,
+          37.166429
+        ],
+        [
+          -121.298552,
+          37.165963
+        ],
+        [
+          -121.327728,
+          37.166035
+        ],
+        [
+          -121.328409,
+          37.16595
+        ],
+        [
+          -121.359558,
+          37.184453
+        ],
+        [
+          -121.360942,
+          37.184321
+        ],
+        [
+          -121.383201,
+          37.152354
+        ],
+        [
+          -121.383551,
+          37.151487
+        ],
+        [
+          -121.405338,
+          37.157038
+        ],
+        [
+          -121.406012,
+          37.157887
+        ],
+        [
+          -121.416792,
+          37.209795
+        ],
+        [
+          -121.416869,
+          37.211262
+        ],
+        [
+          -121.448493,
+          37.23702
+        ],
+        [
+          -121.448744,
+          37.237277
+        ],
+        [
+          -121.458566,
+          37.28166
+        ],
+        [
+          -121.459068,
+          37.282319
+        ],
+        [
+          -121.406204,
+          37.310531
+        ],
+        [
+          -121.405753,
+          37.31099
+        ],
+        [
+          -121.422153,
+          37.356025
+        ],
+        [
+          -121.42365,
+          37.358837
+        ],
+        [
+          -121.410566,
+          37.385834
+        ],
+        [
+          -121.410629,
+          37.386108
+        ],
+        [
+          -121.45155,
+          37.394635
+        ],
+        [
+          -121.456651,
+          37.395535
+        ],
+        [
+          -121.472328,
+          37.422981
+        ],
+        [
+          -121.472606,
+          37.423345
+        ],
+        [
+          -121.462655,
+          37.448438
+        ],
+        [
+          -121.462917,
+          37.451489
+        ],
+        [
+          -121.486463,
+          37.474926
+        ],
+        [
+          -121.486775,
+          37.475652
+        ],
+        [
+          -121.469214,
+          37.48936
+        ],
+        [
+          -121.469275,
+          37.489688
+        ],
+        [
+          -121.500766,
+          37.52431
+        ],
+        [
+          -121.501475,
+          37.525003
+        ],
+        [
+          -121.550454,
+          37.539332
+        ],
+        [
+          -121.556655,
+          37.542732
+        ],
+        [
+          -121.557256,
+          37.616671
+        ]
+      ]
+    ]
+  }
+}

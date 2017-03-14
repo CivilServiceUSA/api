@@ -1,1 +1,481 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Missouri","state_name_slug":"missouri","state_code":"MO","state_code_slug":"mo","district":"2","at_large":false,"vacant":false,"bioguide":"W000812","thomas":"2137","govtrack":"412548","opensecrets":"N00033106","votesmart":"136083","fec":"H2MO02102","maplight":"1772","wikidata":"Q3917251","google_entity_id":"kg:/m/07q9w8","title":"representative","party":"republican","name":"Ann Wagner","name_slug":"ann-wagner","first_name":"Ann","middle_name":null,"last_name":null,"name_suffix":"Ann","goes_by":null,"pronunciation":"ANN WAG-ner","gender":"female","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1962-09-13","entered_office":"2013-01-03","term_end":"2019-01-03","biography":"Ann Wagner, a Representative from Missouri; born in St. Louis, Mo., September 13, 1962; B.S.B.A., University of Missouri, Columbia, Mo., 1984; businesswoman; chair, Missouri Republican Party, 1999-2005; co-chair, Republican National Committee, 2001-2005; United States Ambassador to Luxembourg, 2005-2009; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).","phone":"202-225-1621","fax":null,"latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://wagner.house.gov","contact_page":"https://wagner.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/RepAnnWagner/","twitter_handle":"RepAnnWagner","twitter_url":"https://twitter.com/RepAnnWagner","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/ann-wagner.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-90.80608,38.692545],[-90.803337,38.734441],[-90.803287,38.734529],[-90.739681,38.734786],[-90.739586,38.734805],[-90.75632,38.7651],[-90.7563,38.76604],[-90.686216,38.768966],[-90.685903,38.768964],[-90.700108,38.802235],[-90.7001,38.80232],[-90.677633,38.803012],[-90.677288,38.803018],[-90.671846,38.77981],[-90.671846,38.779785],[-90.64685,38.76895],[-90.64656,38.76884],[-90.585643,38.772502],[-90.585502,38.772485],[-90.584366,38.757061],[-90.58391,38.75705],[-90.54063,38.76046],[-90.54012,38.76062],[-90.52973,38.79911],[-90.52944,38.79945],[-90.505422,38.782899],[-90.505118,38.782637],[-90.506819,38.75632],[-90.507008,38.755923],[-90.437549,38.766795],[-90.437271,38.766955],[-90.389659,38.753484],[-90.388659,38.753164],[-90.407265,38.722393],[-90.407296,38.722293],[-90.394186,38.698873],[-90.394186,38.698793],[-90.440991,38.721895],[-90.441405,38.722356],[-90.469053,38.698661],[-90.468929,38.69842],[-90.415107,38.697626],[-90.414268,38.697472],[-90.395206,38.661374],[-90.395216,38.661061],[-90.334797,38.65675],[-90.3347,38.656733],[-90.334007,38.611495],[-90.334058,38.611402],[-90.377199,38.60553],[-90.377828,38.605301],[-90.37482,38.586441],[-90.374819,38.586236],[-90.318625,38.599668],[-90.318212,38.600017],[-90.280742,38.552292],[-90.280563,38.552187],[-90.300629,38.540697],[-90.300606,38.540646],[-90.258759,38.532435],[-90.257413,38.531852],[-90.289901,38.433136],[-90.291084,38.43089],[-90.343277,38.385604],[-90.343601,38.385114],[-90.437,38.44504],[-90.43709,38.44509],[-90.45821,38.43622],[-90.45831,38.43623],[-90.45095,38.46449],[-90.45101,38.46461],[-90.51222,38.48065],[-90.512414,38.480664],[-90.512537,38.500152],[-90.512522,38.501454],[-90.591043,38.501671],[-90.591123,38.501652],[-90.611654,38.47231],[-90.613685,38.471328],[-90.651911,38.487746],[-90.653829,38.487547],[-90.654228,38.458054],[-90.654389,38.457156],[-90.684614,38.446558],[-90.684971,38.446606],[-90.676907,38.455309],[-90.677487,38.456653],[-90.695658,38.470539],[-90.696027,38.471252],[-90.728561,38.482751],[-90.730509,38.482736],[-90.736419,38.466787],[-90.73653,38.466953],[-90.741187,38.635067],[-90.742412,38.634563],[-90.73126,38.660807],[-90.731474,38.66145],[-90.740471,38.647643],[-90.741104,38.64751],[-90.77615,38.65288],[-90.77641,38.65269],[-90.80608,38.692545]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Missouri",
+    "state_name_slug": "missouri",
+    "state_code": "MO",
+    "state_code_slug": "mo",
+    "district": "2",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "W000812",
+    "thomas": "2137",
+    "govtrack": "412548",
+    "opensecrets": "N00033106",
+    "votesmart": "136083",
+    "fec": "H2MO02102",
+    "maplight": "1772",
+    "wikidata": "Q3917251",
+    "google_entity_id": "kg:/m/07q9w8",
+    "title": "representative",
+    "party": "republican",
+    "name": "Ann Wagner",
+    "name_slug": "ann-wagner",
+    "first_name": "Ann",
+    "middle_name": null,
+    "last_name": "Wagner",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "ANN WAG-ner",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1962-09-13",
+    "entered_office": "2013-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Ann Wagner, a Representative from Missouri; born in St. Louis, Mo., September 13, 1962; B.S.B.A., University of Missouri, Columbia, Mo., 1984; businesswoman; chair, Missouri Republican Party, 1999-2005; co-chair, Republican National Committee, 2001-2005; United States Ambassador to Luxembourg, 2005-2009; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).",
+    "phone": "202-225-1621",
+    "fax": null,
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://wagner.house.gov",
+    "contact_page": "https://wagner.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/RepAnnWagner/",
+    "twitter_handle": "RepAnnWagner",
+    "twitter_url": "https://twitter.com/RepAnnWagner",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/ann-wagner.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -90.80608,
+          38.692545
+        ],
+        [
+          -90.803337,
+          38.734441
+        ],
+        [
+          -90.803287,
+          38.734529
+        ],
+        [
+          -90.739681,
+          38.734786
+        ],
+        [
+          -90.739586,
+          38.734805
+        ],
+        [
+          -90.75632,
+          38.7651
+        ],
+        [
+          -90.7563,
+          38.76604
+        ],
+        [
+          -90.686216,
+          38.768966
+        ],
+        [
+          -90.685903,
+          38.768964
+        ],
+        [
+          -90.700108,
+          38.802235
+        ],
+        [
+          -90.7001,
+          38.80232
+        ],
+        [
+          -90.677633,
+          38.803012
+        ],
+        [
+          -90.677288,
+          38.803018
+        ],
+        [
+          -90.671846,
+          38.77981
+        ],
+        [
+          -90.671846,
+          38.779785
+        ],
+        [
+          -90.64685,
+          38.76895
+        ],
+        [
+          -90.64656,
+          38.76884
+        ],
+        [
+          -90.585643,
+          38.772502
+        ],
+        [
+          -90.585502,
+          38.772485
+        ],
+        [
+          -90.584366,
+          38.757061
+        ],
+        [
+          -90.58391,
+          38.75705
+        ],
+        [
+          -90.54063,
+          38.76046
+        ],
+        [
+          -90.54012,
+          38.76062
+        ],
+        [
+          -90.52973,
+          38.79911
+        ],
+        [
+          -90.52944,
+          38.79945
+        ],
+        [
+          -90.505422,
+          38.782899
+        ],
+        [
+          -90.505118,
+          38.782637
+        ],
+        [
+          -90.506819,
+          38.75632
+        ],
+        [
+          -90.507008,
+          38.755923
+        ],
+        [
+          -90.437549,
+          38.766795
+        ],
+        [
+          -90.437271,
+          38.766955
+        ],
+        [
+          -90.389659,
+          38.753484
+        ],
+        [
+          -90.388659,
+          38.753164
+        ],
+        [
+          -90.407265,
+          38.722393
+        ],
+        [
+          -90.407296,
+          38.722293
+        ],
+        [
+          -90.394186,
+          38.698873
+        ],
+        [
+          -90.394186,
+          38.698793
+        ],
+        [
+          -90.440991,
+          38.721895
+        ],
+        [
+          -90.441405,
+          38.722356
+        ],
+        [
+          -90.469053,
+          38.698661
+        ],
+        [
+          -90.468929,
+          38.69842
+        ],
+        [
+          -90.415107,
+          38.697626
+        ],
+        [
+          -90.414268,
+          38.697472
+        ],
+        [
+          -90.395206,
+          38.661374
+        ],
+        [
+          -90.395216,
+          38.661061
+        ],
+        [
+          -90.334797,
+          38.65675
+        ],
+        [
+          -90.3347,
+          38.656733
+        ],
+        [
+          -90.334007,
+          38.611495
+        ],
+        [
+          -90.334058,
+          38.611402
+        ],
+        [
+          -90.377199,
+          38.60553
+        ],
+        [
+          -90.377828,
+          38.605301
+        ],
+        [
+          -90.37482,
+          38.586441
+        ],
+        [
+          -90.374819,
+          38.586236
+        ],
+        [
+          -90.318625,
+          38.599668
+        ],
+        [
+          -90.318212,
+          38.600017
+        ],
+        [
+          -90.280742,
+          38.552292
+        ],
+        [
+          -90.280563,
+          38.552187
+        ],
+        [
+          -90.300629,
+          38.540697
+        ],
+        [
+          -90.300606,
+          38.540646
+        ],
+        [
+          -90.258759,
+          38.532435
+        ],
+        [
+          -90.257413,
+          38.531852
+        ],
+        [
+          -90.289901,
+          38.433136
+        ],
+        [
+          -90.291084,
+          38.43089
+        ],
+        [
+          -90.343277,
+          38.385604
+        ],
+        [
+          -90.343601,
+          38.385114
+        ],
+        [
+          -90.437,
+          38.44504
+        ],
+        [
+          -90.43709,
+          38.44509
+        ],
+        [
+          -90.45821,
+          38.43622
+        ],
+        [
+          -90.45831,
+          38.43623
+        ],
+        [
+          -90.45095,
+          38.46449
+        ],
+        [
+          -90.45101,
+          38.46461
+        ],
+        [
+          -90.51222,
+          38.48065
+        ],
+        [
+          -90.512414,
+          38.480664
+        ],
+        [
+          -90.512537,
+          38.500152
+        ],
+        [
+          -90.512522,
+          38.501454
+        ],
+        [
+          -90.591043,
+          38.501671
+        ],
+        [
+          -90.591123,
+          38.501652
+        ],
+        [
+          -90.611654,
+          38.47231
+        ],
+        [
+          -90.613685,
+          38.471328
+        ],
+        [
+          -90.651911,
+          38.487746
+        ],
+        [
+          -90.653829,
+          38.487547
+        ],
+        [
+          -90.654228,
+          38.458054
+        ],
+        [
+          -90.654389,
+          38.457156
+        ],
+        [
+          -90.684614,
+          38.446558
+        ],
+        [
+          -90.684971,
+          38.446606
+        ],
+        [
+          -90.676907,
+          38.455309
+        ],
+        [
+          -90.677487,
+          38.456653
+        ],
+        [
+          -90.695658,
+          38.470539
+        ],
+        [
+          -90.696027,
+          38.471252
+        ],
+        [
+          -90.728561,
+          38.482751
+        ],
+        [
+          -90.730509,
+          38.482736
+        ],
+        [
+          -90.736419,
+          38.466787
+        ],
+        [
+          -90.73653,
+          38.466953
+        ],
+        [
+          -90.741187,
+          38.635067
+        ],
+        [
+          -90.742412,
+          38.634563
+        ],
+        [
+          -90.73126,
+          38.660807
+        ],
+        [
+          -90.731474,
+          38.66145
+        ],
+        [
+          -90.740471,
+          38.647643
+        ],
+        [
+          -90.741104,
+          38.64751
+        ],
+        [
+          -90.77615,
+          38.65288
+        ],
+        [
+          -90.77641,
+          38.65269
+        ],
+        [
+          -90.80608,
+          38.692545
+        ]
+      ]
+    ]
+  }
+}

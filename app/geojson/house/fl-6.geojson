@@ -1,1 +1,449 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Florida","state_name_slug":"florida","state_code":"FL","state_code_slug":"fl","district":"6","at_large":false,"vacant":false,"bioguide":"D000621","thomas":"2116","govtrack":"412526","opensecrets":"N00034746","votesmart":"137630","fec":"H2FL00292","maplight":"1750","wikidata":"Q3105215","google_entity_id":"kg:/m/0l8mn35","title":"representative","party":"republican","name":"Ron DeSantis","name_slug":"ron-desantis","first_name":"Ron","middle_name":null,"last_name":null,"name_suffix":"Ron","goes_by":null,"pronunciation":"RAHN dee-SAN-tiss","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1978-09-14","entered_office":"2013-01-03","term_end":"2019-01-03","biography":"Ron DeSantis, a Representative from Florida; born in Jacksonville, Duval County, Fla., September 14, 1978; graduated from Dunedin High School, Dunedin, Fla., 1997; B.A., Yale University, New Haven, Conn., 2001; J.D., Harvard University, Cambridge, Mass., 2005; United States Navy, 2004-2010; United States Navy Reserve, 2010-present; author; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).","phone":"202-225-2706","fax":"202-226-6299","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://desantis.house.gov","contact_page":"https://desantis.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/RepDeSantis/","twitter_handle":"RepDeSantis","twitter_url":"https://twitter.com/RepDeSantis","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/ron-desantis.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-81.774034,28.921318],[-81.76167,28.959992],[-81.761654,28.960932],[-81.658698,28.960345],[-81.658677,28.960345],[-81.659188,29.046154],[-81.659197,29.04776],[-81.639218,29.04776],[-81.638696,29.04776],[-81.641921,29.275823],[-81.641916,29.276766],[-81.680874,29.32425],[-81.680903,29.32443],[-81.450892,29.378464],[-81.450685,29.378519],[-81.433592,29.398161],[-81.433583,29.398166],[-81.477321,29.39698],[-81.477493,29.397152],[-81.487194,29.447151],[-81.487594,29.448251],[-81.519914,29.494897],[-81.520467,29.496513],[-81.524781,29.719899],[-81.524804,29.721586],[-81.493624,29.716176],[-81.493273,29.716419],[-81.452598,29.774739],[-81.452303,29.775046],[-81.430619,29.778896],[-81.430309,29.779136],[-81.361302,29.847129],[-81.361037,29.847442],[-81.339683,29.817068],[-81.339659,29.817062],[-81.281062,29.840945],[-81.28106,29.840954],[-81.275918,29.821361],[-81.275815,29.821009],[-81.249024,29.826038],[-81.206196,29.838481],[-81.132703,29.626287],[-81.132291,29.625251],[-80.926279,29.182367],[-80.921019,29.17125],[-80.675135,28.80747],[-80.663461,28.790588],[-80.967496,28.790201],[-80.967895,28.790197],[-80.964612,28.613212],[-80.964453,28.613039],[-80.986737,28.613014],[-80.98725,28.612997],[-81.021114,28.673971],[-81.021287,28.674253],[-81.01635,28.691926],[-81.016646,28.693037],[-81.059396,28.74756],[-81.06111,28.750001],[-81.05639,28.768449],[-81.053087,28.773557],[-81.075717,28.818989],[-81.076085,28.819325],[-81.119062,28.826365],[-81.119782,28.826157],[-81.135719,28.79283],[-81.136167,28.792222],[-81.17838,28.782046],[-81.178936,28.781886],[-81.180416,28.795957],[-81.180999,28.79661],[-81.213625,28.804121],[-81.213717,28.804212],[-81.225678,28.832453],[-81.226003,28.83263],[-81.357369,28.847701],[-81.358027,28.847804],[-81.366892,28.879147],[-81.36694,28.879227],[-81.416294,28.825565],[-81.416846,28.824569],[-81.414462,28.784979],[-81.414446,28.784955],[-81.64652,28.785884],[-81.646741,28.785882],[-81.699169,28.807207],[-81.701836,28.807198],[-81.699984,28.869119],[-81.699996,28.87135],[-81.74287,28.872799],[-81.743058,28.87286],[-81.741437,28.895158],[-81.741415,28.895203],[-81.774034,28.921318]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Florida",
+    "state_name_slug": "florida",
+    "state_code": "FL",
+    "state_code_slug": "fl",
+    "district": "6",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "D000621",
+    "thomas": "2116",
+    "govtrack": "412526",
+    "opensecrets": "N00034746",
+    "votesmart": "137630",
+    "fec": "H2FL00292",
+    "maplight": "1750",
+    "wikidata": "Q3105215",
+    "google_entity_id": "kg:/m/0l8mn35",
+    "title": "representative",
+    "party": "republican",
+    "name": "Ron DeSantis",
+    "name_slug": "ron-desantis",
+    "first_name": "Ron",
+    "middle_name": null,
+    "last_name": "DeSantis",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "RAHN dee-SAN-tiss",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1978-09-14",
+    "entered_office": "2013-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Ron DeSantis, a Representative from Florida; born in Jacksonville, Duval County, Fla., September 14, 1978; graduated from Dunedin High School, Dunedin, Fla., 1997; B.A., Yale University, New Haven, Conn., 2001; J.D., Harvard University, Cambridge, Mass., 2005; United States Navy, 2004-2010; United States Navy Reserve, 2010-present; author; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).",
+    "phone": "202-225-2706",
+    "fax": "202-226-6299",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://desantis.house.gov",
+    "contact_page": "https://desantis.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/RepDeSantis/",
+    "twitter_handle": "RepDeSantis",
+    "twitter_url": "https://twitter.com/RepDeSantis",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/ron-desantis.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -81.774034,
+          28.921318
+        ],
+        [
+          -81.76167,
+          28.959992
+        ],
+        [
+          -81.761654,
+          28.960932
+        ],
+        [
+          -81.658698,
+          28.960345
+        ],
+        [
+          -81.658677,
+          28.960345
+        ],
+        [
+          -81.659188,
+          29.046154
+        ],
+        [
+          -81.659197,
+          29.04776
+        ],
+        [
+          -81.639218,
+          29.04776
+        ],
+        [
+          -81.638696,
+          29.04776
+        ],
+        [
+          -81.641921,
+          29.275823
+        ],
+        [
+          -81.641916,
+          29.276766
+        ],
+        [
+          -81.680874,
+          29.32425
+        ],
+        [
+          -81.680903,
+          29.32443
+        ],
+        [
+          -81.450892,
+          29.378464
+        ],
+        [
+          -81.450685,
+          29.378519
+        ],
+        [
+          -81.433592,
+          29.398161
+        ],
+        [
+          -81.433583,
+          29.398166
+        ],
+        [
+          -81.477321,
+          29.39698
+        ],
+        [
+          -81.477493,
+          29.397152
+        ],
+        [
+          -81.487194,
+          29.447151
+        ],
+        [
+          -81.487594,
+          29.448251
+        ],
+        [
+          -81.519914,
+          29.494897
+        ],
+        [
+          -81.520467,
+          29.496513
+        ],
+        [
+          -81.524781,
+          29.719899
+        ],
+        [
+          -81.524804,
+          29.721586
+        ],
+        [
+          -81.493624,
+          29.716176
+        ],
+        [
+          -81.493273,
+          29.716419
+        ],
+        [
+          -81.452598,
+          29.774739
+        ],
+        [
+          -81.452303,
+          29.775046
+        ],
+        [
+          -81.430619,
+          29.778896
+        ],
+        [
+          -81.430309,
+          29.779136
+        ],
+        [
+          -81.361302,
+          29.847129
+        ],
+        [
+          -81.361037,
+          29.847442
+        ],
+        [
+          -81.339683,
+          29.817068
+        ],
+        [
+          -81.339659,
+          29.817062
+        ],
+        [
+          -81.281062,
+          29.840945
+        ],
+        [
+          -81.28106,
+          29.840954
+        ],
+        [
+          -81.275918,
+          29.821361
+        ],
+        [
+          -81.275815,
+          29.821009
+        ],
+        [
+          -81.249024,
+          29.826038
+        ],
+        [
+          -81.206196,
+          29.838481
+        ],
+        [
+          -81.132703,
+          29.626287
+        ],
+        [
+          -81.132291,
+          29.625251
+        ],
+        [
+          -80.926279,
+          29.182367
+        ],
+        [
+          -80.921019,
+          29.17125
+        ],
+        [
+          -80.675135,
+          28.80747
+        ],
+        [
+          -80.663461,
+          28.790588
+        ],
+        [
+          -80.967496,
+          28.790201
+        ],
+        [
+          -80.967895,
+          28.790197
+        ],
+        [
+          -80.964612,
+          28.613212
+        ],
+        [
+          -80.964453,
+          28.613039
+        ],
+        [
+          -80.986737,
+          28.613014
+        ],
+        [
+          -80.98725,
+          28.612997
+        ],
+        [
+          -81.021114,
+          28.673971
+        ],
+        [
+          -81.021287,
+          28.674253
+        ],
+        [
+          -81.01635,
+          28.691926
+        ],
+        [
+          -81.016646,
+          28.693037
+        ],
+        [
+          -81.059396,
+          28.74756
+        ],
+        [
+          -81.06111,
+          28.750001
+        ],
+        [
+          -81.05639,
+          28.768449
+        ],
+        [
+          -81.053087,
+          28.773557
+        ],
+        [
+          -81.075717,
+          28.818989
+        ],
+        [
+          -81.076085,
+          28.819325
+        ],
+        [
+          -81.119062,
+          28.826365
+        ],
+        [
+          -81.119782,
+          28.826157
+        ],
+        [
+          -81.135719,
+          28.79283
+        ],
+        [
+          -81.136167,
+          28.792222
+        ],
+        [
+          -81.17838,
+          28.782046
+        ],
+        [
+          -81.178936,
+          28.781886
+        ],
+        [
+          -81.180416,
+          28.795957
+        ],
+        [
+          -81.180999,
+          28.79661
+        ],
+        [
+          -81.213625,
+          28.804121
+        ],
+        [
+          -81.213717,
+          28.804212
+        ],
+        [
+          -81.225678,
+          28.832453
+        ],
+        [
+          -81.226003,
+          28.83263
+        ],
+        [
+          -81.357369,
+          28.847701
+        ],
+        [
+          -81.358027,
+          28.847804
+        ],
+        [
+          -81.366892,
+          28.879147
+        ],
+        [
+          -81.36694,
+          28.879227
+        ],
+        [
+          -81.416294,
+          28.825565
+        ],
+        [
+          -81.416846,
+          28.824569
+        ],
+        [
+          -81.414462,
+          28.784979
+        ],
+        [
+          -81.414446,
+          28.784955
+        ],
+        [
+          -81.64652,
+          28.785884
+        ],
+        [
+          -81.646741,
+          28.785882
+        ],
+        [
+          -81.699169,
+          28.807207
+        ],
+        [
+          -81.701836,
+          28.807198
+        ],
+        [
+          -81.699984,
+          28.869119
+        ],
+        [
+          -81.699996,
+          28.87135
+        ],
+        [
+          -81.74287,
+          28.872799
+        ],
+        [
+          -81.743058,
+          28.87286
+        ],
+        [
+          -81.741437,
+          28.895158
+        ],
+        [
+          -81.741415,
+          28.895203
+        ],
+        [
+          -81.774034,
+          28.921318
+        ]
+      ]
+    ]
+  }
+}

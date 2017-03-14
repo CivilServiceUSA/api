@@ -1,1 +1,449 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Colorado","state_name_slug":"colorado","state_code":"CO","state_code_slug":"co","district":"7","at_large":false,"vacant":false,"bioguide":"P000593","thomas":"1835","govtrack":"412192","opensecrets":"N00027510","votesmart":"2653","fec":"H6CO07023","maplight":"679","wikidata":"Q331507","google_entity_id":"kg:/m/07n9ns","title":"representative","party":"democrat","name":"Ed Perlmutter","name_slug":"ed-perlmutter","first_name":"Ed","middle_name":null,"last_name":null,"name_suffix":"Ed","goes_by":null,"pronunciation":"ED PEARL-mutt-er","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1953-05-01","entered_office":"2007-01-04","term_end":"2019-01-03","biography":"Ed Perlmutter, a Representative from Colorado; born in Denver, Jefferson County, Colo., May 1, 1953; graduated from Jefferson High School, Edgewater, Colo., 1971; B.A., University of Colorado, Boulder, Colo., 1975; J.D., University of Colorado, Boulder, Colo., 1978; lawyer, private practice; member of the Colorado state senate, 1995-2003, president pro tempore, 2001-2003; elected as a Democrat to the One Hundred Tenth and to the five succeeding Congresses (January 3, 2007-present).","phone":"202-225-2645","fax":"202-225-5278","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://perlmutter.house.gov","contact_page":"https://perlmutter.house.gov/contact/","facebook_url":"https://www.facebook.com/RepPerlmutter/","twitter_handle":"RepPerlmutter","twitter_url":"https://twitter.com/RepPerlmutter","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/ed-perlmutter.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-105.347109,39.906008],[-105.166565,39.913893],[-105.16615,39.914047],[-105.165173,39.892499],[-105.165167,39.891486],[-105.135351,39.889283],[-105.134852,39.889292],[-105.128679,39.899383],[-105.128678,39.899985],[-105.147147,39.900087],[-105.147396,39.900094],[-105.147121,39.91389],[-105.147117,39.914002],[-105.109031,39.914139],[-105.108609,39.914137],[-105.071713,39.899833],[-105.071688,39.899832],[-105.01997,39.921377],[-105.015469,39.921402],[-105.015657,39.943093],[-105.015657,39.943131],[-104.999396,39.943219],[-104.9971,39.943239],[-105.016938,39.952691],[-105.017117,39.952814],[-105.01581,39.979868],[-105.015845,39.981193],[-105.000787,39.981235],[-104.997423,39.981213],[-104.988007,39.945447],[-104.987976,39.943074],[-104.857453,39.921455],[-104.857249,39.921459],[-104.846607,39.899778],[-104.846605,39.899704],[-104.792252,39.933342],[-104.791714,39.933743],[-104.64042,39.924394],[-104.640356,39.913834],[-104.731415,39.898612],[-104.73155,39.898611],[-104.732075,39.847518],[-104.732138,39.845086],[-104.786472,39.841793],[-104.790859,39.841802],[-104.790917,39.799559],[-104.790895,39.798251],[-104.864202,39.798384],[-104.866041,39.798386],[-104.866062,39.810274],[-104.866075,39.812986],[-104.883265,39.812941],[-104.884585,39.812975],[-104.903439,39.783888],[-104.903438,39.783808],[-104.96872,39.797055],[-104.968716,39.798396],[-105.064243,39.791079],[-105.064541,39.79108],[-105.054442,39.783814],[-105.053183,39.783797],[-105.053257,39.668604],[-105.053256,39.667785],[-105.081454,39.662896],[-105.081454,39.662074],[-105.053754,39.651727],[-105.053727,39.651159],[-105.109814,39.635188],[-105.109874,39.635186],[-105.108599,39.624262],[-105.1086,39.624208],[-105.065746,39.620588],[-105.064966,39.620238],[-105.102602,39.614446],[-105.103791,39.613534],[-105.128629,39.637043],[-105.128614,39.638665],[-105.169379,39.637043],[-105.173901,39.639649],[-105.181542,39.648983],[-105.181625,39.649092],[-105.165991,39.66722],[-105.165988,39.667603],[-105.201402,39.653395],[-105.201785,39.653364],[-105.204439,39.698997],[-105.204648,39.699401],[-105.235939,39.698794],[-105.236256,39.698834],[-105.226575,39.725515],[-105.226314,39.725521],[-105.25657,39.819166],[-105.256621,39.819269],[-105.347109,39.906008]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Colorado",
+    "state_name_slug": "colorado",
+    "state_code": "CO",
+    "state_code_slug": "co",
+    "district": "7",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "P000593",
+    "thomas": "1835",
+    "govtrack": "412192",
+    "opensecrets": "N00027510",
+    "votesmart": "2653",
+    "fec": "H6CO07023",
+    "maplight": "679",
+    "wikidata": "Q331507",
+    "google_entity_id": "kg:/m/07n9ns",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Ed Perlmutter",
+    "name_slug": "ed-perlmutter",
+    "first_name": "Ed",
+    "middle_name": null,
+    "last_name": "Perlmutter",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "ED PEARL-mutt-er",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1953-05-01",
+    "entered_office": "2007-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Ed Perlmutter, a Representative from Colorado; born in Denver, Jefferson County, Colo., May 1, 1953; graduated from Jefferson High School, Edgewater, Colo., 1971; B.A., University of Colorado, Boulder, Colo., 1975; J.D., University of Colorado, Boulder, Colo., 1978; lawyer, private practice; member of the Colorado state senate, 1995-2003, president pro tempore, 2001-2003; elected as a Democrat to the One Hundred Tenth and to the five succeeding Congresses (January 3, 2007-present).",
+    "phone": "202-225-2645",
+    "fax": "202-225-5278",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://perlmutter.house.gov",
+    "contact_page": "https://perlmutter.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepPerlmutter/",
+    "twitter_handle": "RepPerlmutter",
+    "twitter_url": "https://twitter.com/RepPerlmutter",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/ed-perlmutter.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -105.347109,
+          39.906008
+        ],
+        [
+          -105.166565,
+          39.913893
+        ],
+        [
+          -105.16615,
+          39.914047
+        ],
+        [
+          -105.165173,
+          39.892499
+        ],
+        [
+          -105.165167,
+          39.891486
+        ],
+        [
+          -105.135351,
+          39.889283
+        ],
+        [
+          -105.134852,
+          39.889292
+        ],
+        [
+          -105.128679,
+          39.899383
+        ],
+        [
+          -105.128678,
+          39.899985
+        ],
+        [
+          -105.147147,
+          39.900087
+        ],
+        [
+          -105.147396,
+          39.900094
+        ],
+        [
+          -105.147121,
+          39.91389
+        ],
+        [
+          -105.147117,
+          39.914002
+        ],
+        [
+          -105.109031,
+          39.914139
+        ],
+        [
+          -105.108609,
+          39.914137
+        ],
+        [
+          -105.071713,
+          39.899833
+        ],
+        [
+          -105.071688,
+          39.899832
+        ],
+        [
+          -105.01997,
+          39.921377
+        ],
+        [
+          -105.015469,
+          39.921402
+        ],
+        [
+          -105.015657,
+          39.943093
+        ],
+        [
+          -105.015657,
+          39.943131
+        ],
+        [
+          -104.999396,
+          39.943219
+        ],
+        [
+          -104.9971,
+          39.943239
+        ],
+        [
+          -105.016938,
+          39.952691
+        ],
+        [
+          -105.017117,
+          39.952814
+        ],
+        [
+          -105.01581,
+          39.979868
+        ],
+        [
+          -105.015845,
+          39.981193
+        ],
+        [
+          -105.000787,
+          39.981235
+        ],
+        [
+          -104.997423,
+          39.981213
+        ],
+        [
+          -104.988007,
+          39.945447
+        ],
+        [
+          -104.987976,
+          39.943074
+        ],
+        [
+          -104.857453,
+          39.921455
+        ],
+        [
+          -104.857249,
+          39.921459
+        ],
+        [
+          -104.846607,
+          39.899778
+        ],
+        [
+          -104.846605,
+          39.899704
+        ],
+        [
+          -104.792252,
+          39.933342
+        ],
+        [
+          -104.791714,
+          39.933743
+        ],
+        [
+          -104.64042,
+          39.924394
+        ],
+        [
+          -104.640356,
+          39.913834
+        ],
+        [
+          -104.731415,
+          39.898612
+        ],
+        [
+          -104.73155,
+          39.898611
+        ],
+        [
+          -104.732075,
+          39.847518
+        ],
+        [
+          -104.732138,
+          39.845086
+        ],
+        [
+          -104.786472,
+          39.841793
+        ],
+        [
+          -104.790859,
+          39.841802
+        ],
+        [
+          -104.790917,
+          39.799559
+        ],
+        [
+          -104.790895,
+          39.798251
+        ],
+        [
+          -104.864202,
+          39.798384
+        ],
+        [
+          -104.866041,
+          39.798386
+        ],
+        [
+          -104.866062,
+          39.810274
+        ],
+        [
+          -104.866075,
+          39.812986
+        ],
+        [
+          -104.883265,
+          39.812941
+        ],
+        [
+          -104.884585,
+          39.812975
+        ],
+        [
+          -104.903439,
+          39.783888
+        ],
+        [
+          -104.903438,
+          39.783808
+        ],
+        [
+          -104.96872,
+          39.797055
+        ],
+        [
+          -104.968716,
+          39.798396
+        ],
+        [
+          -105.064243,
+          39.791079
+        ],
+        [
+          -105.064541,
+          39.79108
+        ],
+        [
+          -105.054442,
+          39.783814
+        ],
+        [
+          -105.053183,
+          39.783797
+        ],
+        [
+          -105.053257,
+          39.668604
+        ],
+        [
+          -105.053256,
+          39.667785
+        ],
+        [
+          -105.081454,
+          39.662896
+        ],
+        [
+          -105.081454,
+          39.662074
+        ],
+        [
+          -105.053754,
+          39.651727
+        ],
+        [
+          -105.053727,
+          39.651159
+        ],
+        [
+          -105.109814,
+          39.635188
+        ],
+        [
+          -105.109874,
+          39.635186
+        ],
+        [
+          -105.108599,
+          39.624262
+        ],
+        [
+          -105.1086,
+          39.624208
+        ],
+        [
+          -105.065746,
+          39.620588
+        ],
+        [
+          -105.064966,
+          39.620238
+        ],
+        [
+          -105.102602,
+          39.614446
+        ],
+        [
+          -105.103791,
+          39.613534
+        ],
+        [
+          -105.128629,
+          39.637043
+        ],
+        [
+          -105.128614,
+          39.638665
+        ],
+        [
+          -105.169379,
+          39.637043
+        ],
+        [
+          -105.173901,
+          39.639649
+        ],
+        [
+          -105.181542,
+          39.648983
+        ],
+        [
+          -105.181625,
+          39.649092
+        ],
+        [
+          -105.165991,
+          39.66722
+        ],
+        [
+          -105.165988,
+          39.667603
+        ],
+        [
+          -105.201402,
+          39.653395
+        ],
+        [
+          -105.201785,
+          39.653364
+        ],
+        [
+          -105.204439,
+          39.698997
+        ],
+        [
+          -105.204648,
+          39.699401
+        ],
+        [
+          -105.235939,
+          39.698794
+        ],
+        [
+          -105.236256,
+          39.698834
+        ],
+        [
+          -105.226575,
+          39.725515
+        ],
+        [
+          -105.226314,
+          39.725521
+        ],
+        [
+          -105.25657,
+          39.819166
+        ],
+        [
+          -105.256621,
+          39.819269
+        ],
+        [
+          -105.347109,
+          39.906008
+        ]
+      ]
+    ]
+  }
+}

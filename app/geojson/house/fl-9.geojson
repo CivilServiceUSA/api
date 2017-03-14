@@ -1,1 +1,345 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Florida","state_name_slug":"florida","state_code":"FL","state_code_slug":"fl","district":"9","at_large":false,"vacant":false,"bioguide":"S001200","thomas":null,"govtrack":"412695","opensecrets":"N00037422","votesmart":"67618","fec":"H6FL09179","maplight":"2207","wikidata":"Q5225162","google_entity_id":null,"title":"representative","party":"democrat","name":"Darren Soto","name_slug":"darren-soto","first_name":"Darren","middle_name":null,"last_name":null,"name_suffix":"Darren","goes_by":null,"pronunciation":"DAIR-ren SOH-toh","gender":"male","ethnicity":"hispanic-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1978-02-25","entered_office":"2017-01-03","term_end":"2019-01-03","biography":"Darren Soto, a Representative from Florida; born in Ringwood, Passaic County, N.J., February 25, 1978; B.A., Rutgers College, New Brunswick , N.J., 2000; J.D., George Washington University, Washington, D.C., 2004; lawyer, private practice; financial analyst; member of the Florida state house of representatives, 2007-2012; member of the Florida state senate, 2012-2016; deputy minority whip, 2012-2014; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).","phone":"202-225-9889","fax":"202-225-9742","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://soto.house.gov","contact_page":"https://soto.house.gov/contact/email","facebook_url":"https://www.facebook.com/DarrenSotoFlorida","twitter_handle":"USRepDarrenSoto","twitter_url":"https://twitter.com/USRepDarrenSoto","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/darren-soto.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-81.853112,27.994642],[-81.83113,28.019009],[-81.830927,28.019964],[-81.840949,28.04008],[-81.846123,28.040142],[-81.826063,28.096476],[-81.823168,28.096493],[-81.835561,28.157466],[-81.835602,28.164146],[-81.816637,28.175228],[-81.816588,28.176205],[-81.795427,28.166569],[-81.795249,28.166565],[-81.805142,28.183951],[-81.805271,28.185935],[-81.777348,28.16527],[-81.777126,28.16512],[-81.650037,28.232187],[-81.649874,28.232304],[-81.657262,28.346928],[-81.657268,28.347098],[-81.3097,28.348044],[-81.309571,28.348051],[-81.302978,28.538934],[-81.302974,28.539027],[-81.184739,28.542652],[-81.184524,28.542681],[-81.178177,28.565297],[-81.17818,28.565408],[-81.154932,28.565355],[-81.154194,28.565348],[-81.125255,28.539566],[-81.125,28.539384],[-81.161094,28.451885],[-81.161093,28.45179],[-81.100188,28.451571],[-81.095017,28.451715],[-81.094678,28.349203],[-81.094674,28.348105],[-80.864758,28.347528],[-80.862908,28.347487],[-80.861415,28.253402],[-80.861395,28.252281],[-80.875991,27.822602],[-80.881566,27.822511],[-80.873158,27.642304],[-80.87315,27.642288],[-81.526293,27.646422],[-81.529961,27.646422],[-81.637608,27.81121],[-81.637705,27.811401],[-81.658435,27.902316],[-81.659003,27.902985],[-81.718588,27.905333],[-81.719053,27.905328],[-81.710463,27.952139],[-81.711293,27.953166],[-81.742536,27.956605],[-81.743058,27.956606],[-81.747643,27.934725],[-81.747748,27.934703],[-81.793269,27.938327],[-81.79612,27.938327],[-81.802455,27.975338],[-81.802454,27.975723],[-81.836327,27.979442],[-81.852159,27.982789],[-81.853112,27.994642]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Florida",
+    "state_name_slug": "florida",
+    "state_code": "FL",
+    "state_code_slug": "fl",
+    "district": "9",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "S001200",
+    "thomas": null,
+    "govtrack": "412695",
+    "opensecrets": "N00037422",
+    "votesmart": "67618",
+    "fec": "H6FL09179",
+    "maplight": "2207",
+    "wikidata": "Q5225162",
+    "google_entity_id": null,
+    "title": "representative",
+    "party": "democrat",
+    "name": "Darren Soto",
+    "name_slug": "darren-soto",
+    "first_name": "Darren",
+    "middle_name": null,
+    "last_name": "Soto",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "DAIR-ren SOH-toh",
+    "gender": "male",
+    "ethnicity": "hispanic-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1978-02-25",
+    "entered_office": "2017-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Darren Soto, a Representative from Florida; born in Ringwood, Passaic County, N.J., February 25, 1978; B.A., Rutgers College, New Brunswick , N.J., 2000; J.D., George Washington University, Washington, D.C., 2004; lawyer, private practice; financial analyst; member of the Florida state house of representatives, 2007-2012; member of the Florida state senate, 2012-2016; deputy minority whip, 2012-2014; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).",
+    "phone": "202-225-9889",
+    "fax": "202-225-9742",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://soto.house.gov",
+    "contact_page": "https://soto.house.gov/contact/email",
+    "facebook_url": "https://www.facebook.com/DarrenSotoFlorida",
+    "twitter_handle": "USRepDarrenSoto",
+    "twitter_url": "https://twitter.com/USRepDarrenSoto",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/darren-soto.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -81.853112,
+          27.994642
+        ],
+        [
+          -81.83113,
+          28.019009
+        ],
+        [
+          -81.830927,
+          28.019964
+        ],
+        [
+          -81.840949,
+          28.04008
+        ],
+        [
+          -81.846123,
+          28.040142
+        ],
+        [
+          -81.826063,
+          28.096476
+        ],
+        [
+          -81.823168,
+          28.096493
+        ],
+        [
+          -81.835561,
+          28.157466
+        ],
+        [
+          -81.835602,
+          28.164146
+        ],
+        [
+          -81.816637,
+          28.175228
+        ],
+        [
+          -81.816588,
+          28.176205
+        ],
+        [
+          -81.795427,
+          28.166569
+        ],
+        [
+          -81.795249,
+          28.166565
+        ],
+        [
+          -81.805142,
+          28.183951
+        ],
+        [
+          -81.805271,
+          28.185935
+        ],
+        [
+          -81.777348,
+          28.16527
+        ],
+        [
+          -81.777126,
+          28.16512
+        ],
+        [
+          -81.650037,
+          28.232187
+        ],
+        [
+          -81.649874,
+          28.232304
+        ],
+        [
+          -81.657262,
+          28.346928
+        ],
+        [
+          -81.657268,
+          28.347098
+        ],
+        [
+          -81.3097,
+          28.348044
+        ],
+        [
+          -81.309571,
+          28.348051
+        ],
+        [
+          -81.302978,
+          28.538934
+        ],
+        [
+          -81.302974,
+          28.539027
+        ],
+        [
+          -81.184739,
+          28.542652
+        ],
+        [
+          -81.184524,
+          28.542681
+        ],
+        [
+          -81.178177,
+          28.565297
+        ],
+        [
+          -81.17818,
+          28.565408
+        ],
+        [
+          -81.154932,
+          28.565355
+        ],
+        [
+          -81.154194,
+          28.565348
+        ],
+        [
+          -81.125255,
+          28.539566
+        ],
+        [
+          -81.125,
+          28.539384
+        ],
+        [
+          -81.161094,
+          28.451885
+        ],
+        [
+          -81.161093,
+          28.45179
+        ],
+        [
+          -81.100188,
+          28.451571
+        ],
+        [
+          -81.095017,
+          28.451715
+        ],
+        [
+          -81.094678,
+          28.349203
+        ],
+        [
+          -81.094674,
+          28.348105
+        ],
+        [
+          -80.864758,
+          28.347528
+        ],
+        [
+          -80.862908,
+          28.347487
+        ],
+        [
+          -80.861415,
+          28.253402
+        ],
+        [
+          -80.861395,
+          28.252281
+        ],
+        [
+          -80.875991,
+          27.822602
+        ],
+        [
+          -80.881566,
+          27.822511
+        ],
+        [
+          -80.873158,
+          27.642304
+        ],
+        [
+          -80.87315,
+          27.642288
+        ],
+        [
+          -81.526293,
+          27.646422
+        ],
+        [
+          -81.529961,
+          27.646422
+        ],
+        [
+          -81.637608,
+          27.81121
+        ],
+        [
+          -81.637705,
+          27.811401
+        ],
+        [
+          -81.658435,
+          27.902316
+        ],
+        [
+          -81.659003,
+          27.902985
+        ],
+        [
+          -81.718588,
+          27.905333
+        ],
+        [
+          -81.719053,
+          27.905328
+        ],
+        [
+          -81.710463,
+          27.952139
+        ],
+        [
+          -81.711293,
+          27.953166
+        ],
+        [
+          -81.742536,
+          27.956605
+        ],
+        [
+          -81.743058,
+          27.956606
+        ],
+        [
+          -81.747643,
+          27.934725
+        ],
+        [
+          -81.747748,
+          27.934703
+        ],
+        [
+          -81.793269,
+          27.938327
+        ],
+        [
+          -81.79612,
+          27.938327
+        ],
+        [
+          -81.802455,
+          27.975338
+        ],
+        [
+          -81.802454,
+          27.975723
+        ],
+        [
+          -81.836327,
+          27.979442
+        ],
+        [
+          -81.852159,
+          27.982789
+        ],
+        [
+          -81.853112,
+          27.994642
+        ]
+      ]
+    ]
+  }
+}

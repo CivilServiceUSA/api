@@ -1,1 +1,453 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"New Jersey","state_name_slug":"new-jersey","state_code":"NJ","state_code_slug":"nj","district":"6","at_large":false,"vacant":false,"bioguide":"P000034","thomas":"887","govtrack":"400308","opensecrets":"N00000781","votesmart":"26951","fec":"H8NJ03073","maplight":"402","wikidata":"Q965289","google_entity_id":"kg:/m/0g6t5w","title":"representative","party":"democrat","name":"Frank Pallone","name_slug":"frank-pallone","first_name":"Frank","middle_name":null,"last_name":"Jr.","name_suffix":"Frank","goes_by":null,"pronunciation":"FRAYNK puh-LOHN","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1951-10-30","entered_office":"1987-01-06","term_end":"2019-01-03","biography":"Frank Pallone, a Representative from New Jersey; born in Long Branch, Monmouth County, N.J., October 30, 1951; graduated from Long Branch High School, Long Branch, N.J., 1969; B.A., Middlebury College, Middlebury, Vt., 1973; M.A., Fletcher School of Law and Diplomacy, Tufts University, Medford, Mass., 1974; J.D., Rutgers University School of Law, Camden, N.J., 1978; lawyer, private practice; member of the Long Branch, N.J., city council, 1982-1988; member of the New Jersey state senate, 1983-1988; elected as a Democrat to the One Hundredth Congress, by special election, to fill the vacancy caused by the death of United States Representative James John Howard, but was not sworn in because Congress had adjourned; elected simultaneously to the One Hundred First Congress and reelected to the fourteen succeeding Congresses (November 8, 1988-present); unsuccessful candidate for nomination to the United States Senate in 2013.","phone":"202-225-4671","fax":"732-249-1335","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://palloneforms.house.gov","contact_page":"https://palloneforms.house.gov/contact/email/","facebook_url":"https://www.facebook.com/RepFrankPallone/","twitter_handle":"FrankPallone","twitter_url":"https://twitter.com/FrankPallone","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/frank-pallone.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-74.519843,40.555584],[-74.455865,40.595502],[-74.455132,40.595954],[-74.21464,40.604149],[-74.214457,40.604141],[-74.203734,40.592719],[-74.203688,40.592691],[-74.21221,40.568177],[-74.215278,40.560241],[-74.239211,40.553764],[-74.247415,40.5492],[-74.258262,40.507964],[-74.258291,40.507905],[-74.237935,40.481241],[-74.228153,40.477399],[-73.950337,40.525464],[-73.949912,40.52554],[-73.943747,40.522014],[-73.886652,40.489794],[-73.886747,40.475892],[-73.88506,40.452776],[-73.890791,40.31069],[-73.898208,40.274353],[-73.965079,40.100892],[-73.965414,40.097642],[-73.999579,40.097662],[-74.007179,40.097715],[-74.02828,40.117415],[-73.99867,40.216339],[-73.998521,40.216712],[-74.024375,40.213164],[-74.024954,40.213153],[-74.027227,40.224822],[-74.027287,40.224872],[-73.999711,40.261934],[-73.999732,40.262132],[-74.002893,40.276385],[-74.002889,40.276407],[-74.027554,40.27274],[-74.027625,40.272741],[-74.051124,40.31502],[-74.051125,40.315037],[-73.977241,40.355939],[-73.977144,40.356022],[-73.977499,40.383391],[-73.977528,40.383546],[-74.076739,40.356147],[-74.076797,40.35608],[-74.085795,40.404288],[-74.085802,40.404383],[-74.130199,40.407996],[-74.130508,40.407913],[-74.133159,40.426842],[-74.133157,40.426856],[-74.195956,40.410352],[-74.196103,40.410316],[-74.208853,40.405039],[-74.209053,40.405025],[-74.197513,40.345412],[-74.197471,40.345374],[-74.224207,40.339833],[-74.225295,40.339457],[-74.222873,40.278104],[-74.222881,40.278071],[-74.290128,40.293607],[-74.290268,40.293622],[-74.282702,40.312622],[-74.282476,40.313183],[-74.327367,40.344591],[-74.327377,40.344599],[-74.290945,40.372932],[-74.290883,40.372978],[-74.306103,40.391875],[-74.306102,40.39214],[-74.283261,40.405584],[-74.283044,40.405624],[-74.277099,40.445245],[-74.27747,40.445731],[-74.305381,40.458146],[-74.306353,40.45859],[-74.361411,40.416673],[-74.36154,40.416595],[-74.353648,40.431785],[-74.353585,40.431836],[-74.385234,40.459037],[-74.386089,40.459521],[-74.383991,40.486106],[-74.385078,40.487212],[-74.476506,40.468175],[-74.477344,40.467244],[-74.488631,40.47394],[-74.489491,40.474452],[-74.459164,40.496538],[-74.459179,40.496619],[-74.519843,40.555584]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "New Jersey",
+    "state_name_slug": "new-jersey",
+    "state_code": "NJ",
+    "state_code_slug": "nj",
+    "district": "6",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "P000034",
+    "thomas": "887",
+    "govtrack": "400308",
+    "opensecrets": "N00000781",
+    "votesmart": "26951",
+    "fec": "H8NJ03073",
+    "maplight": "402",
+    "wikidata": "Q965289",
+    "google_entity_id": "kg:/m/0g6t5w",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Frank Pallone",
+    "name_slug": "frank-pallone",
+    "first_name": "Frank",
+    "middle_name": null,
+    "last_name": "Pallone",
+    "name_suffix": "Jr.",
+    "goes_by": null,
+    "pronunciation": "FRAYNK puh-LOHN",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1951-10-30",
+    "entered_office": "1987-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Frank Pallone, a Representative from New Jersey; born in Long Branch, Monmouth County, N.J., October 30, 1951; graduated from Long Branch High School, Long Branch, N.J., 1969; B.A., Middlebury College, Middlebury, Vt., 1973; M.A., Fletcher School of Law and Diplomacy, Tufts University, Medford, Mass., 1974; J.D., Rutgers University School of Law, Camden, N.J., 1978; lawyer, private practice; member of the Long Branch, N.J., city council, 1982-1988; member of the New Jersey state senate, 1983-1988; elected as a Democrat to the One Hundredth Congress, by special election, to fill the vacancy caused by the death of United States Representative James John Howard, but was not sworn in because Congress had adjourned; elected simultaneously to the One Hundred First Congress and reelected to the fourteen succeeding Congresses (November 8, 1988-present); unsuccessful candidate for nomination to the United States Senate in 2013.",
+    "phone": "202-225-4671",
+    "fax": "732-249-1335",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://palloneforms.house.gov",
+    "contact_page": "https://palloneforms.house.gov/contact/email/",
+    "facebook_url": "https://www.facebook.com/RepFrankPallone/",
+    "twitter_handle": "FrankPallone",
+    "twitter_url": "https://twitter.com/FrankPallone",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/frank-pallone.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -74.519843,
+          40.555584
+        ],
+        [
+          -74.455865,
+          40.595502
+        ],
+        [
+          -74.455132,
+          40.595954
+        ],
+        [
+          -74.21464,
+          40.604149
+        ],
+        [
+          -74.214457,
+          40.604141
+        ],
+        [
+          -74.203734,
+          40.592719
+        ],
+        [
+          -74.203688,
+          40.592691
+        ],
+        [
+          -74.21221,
+          40.568177
+        ],
+        [
+          -74.215278,
+          40.560241
+        ],
+        [
+          -74.239211,
+          40.553764
+        ],
+        [
+          -74.247415,
+          40.5492
+        ],
+        [
+          -74.258262,
+          40.507964
+        ],
+        [
+          -74.258291,
+          40.507905
+        ],
+        [
+          -74.237935,
+          40.481241
+        ],
+        [
+          -74.228153,
+          40.477399
+        ],
+        [
+          -73.950337,
+          40.525464
+        ],
+        [
+          -73.949912,
+          40.52554
+        ],
+        [
+          -73.943747,
+          40.522014
+        ],
+        [
+          -73.886652,
+          40.489794
+        ],
+        [
+          -73.886747,
+          40.475892
+        ],
+        [
+          -73.88506,
+          40.452776
+        ],
+        [
+          -73.890791,
+          40.31069
+        ],
+        [
+          -73.898208,
+          40.274353
+        ],
+        [
+          -73.965079,
+          40.100892
+        ],
+        [
+          -73.965414,
+          40.097642
+        ],
+        [
+          -73.999579,
+          40.097662
+        ],
+        [
+          -74.007179,
+          40.097715
+        ],
+        [
+          -74.02828,
+          40.117415
+        ],
+        [
+          -73.99867,
+          40.216339
+        ],
+        [
+          -73.998521,
+          40.216712
+        ],
+        [
+          -74.024375,
+          40.213164
+        ],
+        [
+          -74.024954,
+          40.213153
+        ],
+        [
+          -74.027227,
+          40.224822
+        ],
+        [
+          -74.027287,
+          40.224872
+        ],
+        [
+          -73.999711,
+          40.261934
+        ],
+        [
+          -73.999732,
+          40.262132
+        ],
+        [
+          -74.002893,
+          40.276385
+        ],
+        [
+          -74.002889,
+          40.276407
+        ],
+        [
+          -74.027554,
+          40.27274
+        ],
+        [
+          -74.027625,
+          40.272741
+        ],
+        [
+          -74.051124,
+          40.31502
+        ],
+        [
+          -74.051125,
+          40.315037
+        ],
+        [
+          -73.977241,
+          40.355939
+        ],
+        [
+          -73.977144,
+          40.356022
+        ],
+        [
+          -73.977499,
+          40.383391
+        ],
+        [
+          -73.977528,
+          40.383546
+        ],
+        [
+          -74.076739,
+          40.356147
+        ],
+        [
+          -74.076797,
+          40.35608
+        ],
+        [
+          -74.085795,
+          40.404288
+        ],
+        [
+          -74.085802,
+          40.404383
+        ],
+        [
+          -74.130199,
+          40.407996
+        ],
+        [
+          -74.130508,
+          40.407913
+        ],
+        [
+          -74.133159,
+          40.426842
+        ],
+        [
+          -74.133157,
+          40.426856
+        ],
+        [
+          -74.195956,
+          40.410352
+        ],
+        [
+          -74.196103,
+          40.410316
+        ],
+        [
+          -74.208853,
+          40.405039
+        ],
+        [
+          -74.209053,
+          40.405025
+        ],
+        [
+          -74.197513,
+          40.345412
+        ],
+        [
+          -74.197471,
+          40.345374
+        ],
+        [
+          -74.224207,
+          40.339833
+        ],
+        [
+          -74.225295,
+          40.339457
+        ],
+        [
+          -74.222873,
+          40.278104
+        ],
+        [
+          -74.222881,
+          40.278071
+        ],
+        [
+          -74.290128,
+          40.293607
+        ],
+        [
+          -74.290268,
+          40.293622
+        ],
+        [
+          -74.282702,
+          40.312622
+        ],
+        [
+          -74.282476,
+          40.313183
+        ],
+        [
+          -74.327367,
+          40.344591
+        ],
+        [
+          -74.327377,
+          40.344599
+        ],
+        [
+          -74.290945,
+          40.372932
+        ],
+        [
+          -74.290883,
+          40.372978
+        ],
+        [
+          -74.306103,
+          40.391875
+        ],
+        [
+          -74.306102,
+          40.39214
+        ],
+        [
+          -74.283261,
+          40.405584
+        ],
+        [
+          -74.283044,
+          40.405624
+        ],
+        [
+          -74.277099,
+          40.445245
+        ],
+        [
+          -74.27747,
+          40.445731
+        ],
+        [
+          -74.305381,
+          40.458146
+        ],
+        [
+          -74.306353,
+          40.45859
+        ],
+        [
+          -74.361411,
+          40.416673
+        ],
+        [
+          -74.36154,
+          40.416595
+        ],
+        [
+          -74.353648,
+          40.431785
+        ],
+        [
+          -74.353585,
+          40.431836
+        ],
+        [
+          -74.385234,
+          40.459037
+        ],
+        [
+          -74.386089,
+          40.459521
+        ],
+        [
+          -74.383991,
+          40.486106
+        ],
+        [
+          -74.385078,
+          40.487212
+        ],
+        [
+          -74.476506,
+          40.468175
+        ],
+        [
+          -74.477344,
+          40.467244
+        ],
+        [
+          -74.488631,
+          40.47394
+        ],
+        [
+          -74.489491,
+          40.474452
+        ],
+        [
+          -74.459164,
+          40.496538
+        ],
+        [
+          -74.459179,
+          40.496619
+        ],
+        [
+          -74.519843,
+          40.555584
+        ]
+      ]
+    ]
+  }
+}

@@ -1,1 +1,425 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Texas","state_name_slug":"texas","state_code":"TX","state_code_slug":"tx","district":"7","at_large":false,"vacant":false,"bioguide":"C001048","thomas":"1670","govtrack":"400089","opensecrets":"N00009738","votesmart":"5488","fec":"H0TX07055","maplight":"203","wikidata":"Q671976","google_entity_id":"kg:/m/03sfhc","title":"representative","party":"republican","name":"John Culberson","name_slug":"john-culberson","first_name":"John","middle_name":null,"last_name":null,"name_suffix":"John","goes_by":null,"pronunciation":"JAHN KUHL-ber-suhn","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1956-08-24","entered_office":"2001-01-03","term_end":"2019-01-03","biography":"John Culberson, a Representative from Texas; born in Houston, Harris County, Tex., August 24, 1956; graduated from Lamar High School, Houston, Tex., 1975; B.A., Southern Methodist University, Dallas, Tex., 1981; J.D., South Texas College of Law, Houston, Tex.; member of the Texas state house of representatives, 1986-2001; elected as a Republican to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).","phone":"202-225-2571","fax":"202-225-4381","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://culberson.house.gov","contact_page":"http://culberson.house.gov/contact/zipauth.htm","facebook_url":null,"twitter_handle":"CongCulberson","twitter_url":"https://twitter.com/CongCulberson","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/john-culberson.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-95.773835,29.875155],[-95.704516,29.879814],[-95.703605,29.87982],[-95.703875,29.90895],[-95.703682,29.909449],[-95.687028,29.908503],[-95.686001,29.908524],[-95.673604,29.952791],[-95.67347,29.953075],[-95.652163,29.938769],[-95.649615,29.937117],[-95.629301,29.947423],[-95.629004,29.947427],[-95.607497,29.928215],[-95.607446,29.925472],[-95.584861,29.932957],[-95.584796,29.932988],[-95.588217,29.911127],[-95.588062,29.910864],[-95.553638,29.896165],[-95.550179,29.896344],[-95.549718,29.88098],[-95.549736,29.880524],[-95.558697,29.872099],[-95.558894,29.872051],[-95.584769,29.890888],[-95.589326,29.894057],[-95.60596,29.872186],[-95.605961,29.871867],[-95.645192,29.87921],[-95.645313,29.879209],[-95.644788,29.784716],[-95.644787,29.784642],[-95.521267,29.78508],[-95.520124,29.785133],[-95.510165,29.798379],[-95.51006,29.798778],[-95.487153,29.794924],[-95.484927,29.79491],[-95.486405,29.769172],[-95.486191,29.769084],[-95.40842,29.757137],[-95.408402,29.756408],[-95.418283,29.707063],[-95.418288,29.706164],[-95.439739,29.690491],[-95.440069,29.690637],[-95.421671,29.68781],[-95.420333,29.687039],[-95.462005,29.648547],[-95.463743,29.647875],[-95.464007,29.660325],[-95.464015,29.660477],[-95.480923,29.652694],[-95.48125,29.652717],[-95.501173,29.666746],[-95.502367,29.666714],[-95.493143,29.678295],[-95.492978,29.678679],[-95.513001,29.684597],[-95.513467,29.684383],[-95.514022,29.725822],[-95.514021,29.726494],[-95.535021,29.724713],[-95.539086,29.724635],[-95.538898,29.736602],[-95.538871,29.737117],[-95.653267,29.735479],[-95.653982,29.735466],[-95.688009,29.71107],[-95.688349,29.710862],[-95.75128,29.746362],[-95.751446,29.746472],[-95.751869,29.784883],[-95.751868,29.785097],[-95.71912,29.784913],[-95.71893,29.784913],[-95.719873,29.831169],[-95.719873,29.831247],[-95.759556,29.833664],[-95.759651,29.833713],[-95.76863,29.846017],[-95.76875,29.846138],[-95.75706,29.860381],[-95.757071,29.860789],[-95.773659,29.86067],[-95.773741,29.860631],[-95.773835,29.875155]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Texas",
+    "state_name_slug": "texas",
+    "state_code": "TX",
+    "state_code_slug": "tx",
+    "district": "7",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "C001048",
+    "thomas": "1670",
+    "govtrack": "400089",
+    "opensecrets": "N00009738",
+    "votesmart": "5488",
+    "fec": "H0TX07055",
+    "maplight": "203",
+    "wikidata": "Q671976",
+    "google_entity_id": "kg:/m/03sfhc",
+    "title": "representative",
+    "party": "republican",
+    "name": "John Culberson",
+    "name_slug": "john-culberson",
+    "first_name": "John",
+    "middle_name": null,
+    "last_name": "Culberson",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "JAHN KUHL-ber-suhn",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1956-08-24",
+    "entered_office": "2001-01-03",
+    "term_end": "2019-01-03",
+    "biography": "John Culberson, a Representative from Texas; born in Houston, Harris County, Tex., August 24, 1956; graduated from Lamar High School, Houston, Tex., 1975; B.A., Southern Methodist University, Dallas, Tex., 1981; J.D., South Texas College of Law, Houston, Tex.; member of the Texas state house of representatives, 1986-2001; elected as a Republican to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).",
+    "phone": "202-225-2571",
+    "fax": "202-225-4381",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://culberson.house.gov",
+    "contact_page": "http://culberson.house.gov/contact/zipauth.htm",
+    "facebook_url": null,
+    "twitter_handle": "CongCulberson",
+    "twitter_url": "https://twitter.com/CongCulberson",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/john-culberson.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -95.773835,
+          29.875155
+        ],
+        [
+          -95.704516,
+          29.879814
+        ],
+        [
+          -95.703605,
+          29.87982
+        ],
+        [
+          -95.703875,
+          29.90895
+        ],
+        [
+          -95.703682,
+          29.909449
+        ],
+        [
+          -95.687028,
+          29.908503
+        ],
+        [
+          -95.686001,
+          29.908524
+        ],
+        [
+          -95.673604,
+          29.952791
+        ],
+        [
+          -95.67347,
+          29.953075
+        ],
+        [
+          -95.652163,
+          29.938769
+        ],
+        [
+          -95.649615,
+          29.937117
+        ],
+        [
+          -95.629301,
+          29.947423
+        ],
+        [
+          -95.629004,
+          29.947427
+        ],
+        [
+          -95.607497,
+          29.928215
+        ],
+        [
+          -95.607446,
+          29.925472
+        ],
+        [
+          -95.584861,
+          29.932957
+        ],
+        [
+          -95.584796,
+          29.932988
+        ],
+        [
+          -95.588217,
+          29.911127
+        ],
+        [
+          -95.588062,
+          29.910864
+        ],
+        [
+          -95.553638,
+          29.896165
+        ],
+        [
+          -95.550179,
+          29.896344
+        ],
+        [
+          -95.549718,
+          29.88098
+        ],
+        [
+          -95.549736,
+          29.880524
+        ],
+        [
+          -95.558697,
+          29.872099
+        ],
+        [
+          -95.558894,
+          29.872051
+        ],
+        [
+          -95.584769,
+          29.890888
+        ],
+        [
+          -95.589326,
+          29.894057
+        ],
+        [
+          -95.60596,
+          29.872186
+        ],
+        [
+          -95.605961,
+          29.871867
+        ],
+        [
+          -95.645192,
+          29.87921
+        ],
+        [
+          -95.645313,
+          29.879209
+        ],
+        [
+          -95.644788,
+          29.784716
+        ],
+        [
+          -95.644787,
+          29.784642
+        ],
+        [
+          -95.521267,
+          29.78508
+        ],
+        [
+          -95.520124,
+          29.785133
+        ],
+        [
+          -95.510165,
+          29.798379
+        ],
+        [
+          -95.51006,
+          29.798778
+        ],
+        [
+          -95.487153,
+          29.794924
+        ],
+        [
+          -95.484927,
+          29.79491
+        ],
+        [
+          -95.486405,
+          29.769172
+        ],
+        [
+          -95.486191,
+          29.769084
+        ],
+        [
+          -95.40842,
+          29.757137
+        ],
+        [
+          -95.408402,
+          29.756408
+        ],
+        [
+          -95.418283,
+          29.707063
+        ],
+        [
+          -95.418288,
+          29.706164
+        ],
+        [
+          -95.439739,
+          29.690491
+        ],
+        [
+          -95.440069,
+          29.690637
+        ],
+        [
+          -95.421671,
+          29.68781
+        ],
+        [
+          -95.420333,
+          29.687039
+        ],
+        [
+          -95.462005,
+          29.648547
+        ],
+        [
+          -95.463743,
+          29.647875
+        ],
+        [
+          -95.464007,
+          29.660325
+        ],
+        [
+          -95.464015,
+          29.660477
+        ],
+        [
+          -95.480923,
+          29.652694
+        ],
+        [
+          -95.48125,
+          29.652717
+        ],
+        [
+          -95.501173,
+          29.666746
+        ],
+        [
+          -95.502367,
+          29.666714
+        ],
+        [
+          -95.493143,
+          29.678295
+        ],
+        [
+          -95.492978,
+          29.678679
+        ],
+        [
+          -95.513001,
+          29.684597
+        ],
+        [
+          -95.513467,
+          29.684383
+        ],
+        [
+          -95.514022,
+          29.725822
+        ],
+        [
+          -95.514021,
+          29.726494
+        ],
+        [
+          -95.535021,
+          29.724713
+        ],
+        [
+          -95.539086,
+          29.724635
+        ],
+        [
+          -95.538898,
+          29.736602
+        ],
+        [
+          -95.538871,
+          29.737117
+        ],
+        [
+          -95.653267,
+          29.735479
+        ],
+        [
+          -95.653982,
+          29.735466
+        ],
+        [
+          -95.688009,
+          29.71107
+        ],
+        [
+          -95.688349,
+          29.710862
+        ],
+        [
+          -95.75128,
+          29.746362
+        ],
+        [
+          -95.751446,
+          29.746472
+        ],
+        [
+          -95.751869,
+          29.784883
+        ],
+        [
+          -95.751868,
+          29.785097
+        ],
+        [
+          -95.71912,
+          29.784913
+        ],
+        [
+          -95.71893,
+          29.784913
+        ],
+        [
+          -95.719873,
+          29.831169
+        ],
+        [
+          -95.719873,
+          29.831247
+        ],
+        [
+          -95.759556,
+          29.833664
+        ],
+        [
+          -95.759651,
+          29.833713
+        ],
+        [
+          -95.76863,
+          29.846017
+        ],
+        [
+          -95.76875,
+          29.846138
+        ],
+        [
+          -95.75706,
+          29.860381
+        ],
+        [
+          -95.757071,
+          29.860789
+        ],
+        [
+          -95.773659,
+          29.86067
+        ],
+        [
+          -95.773741,
+          29.860631
+        ],
+        [
+          -95.773835,
+          29.875155
+        ]
+      ]
+    ]
+  }
+}

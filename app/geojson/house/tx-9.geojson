@@ -1,1 +1,305 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Texas","state_name_slug":"texas","state_code":"TX","state_code_slug":"tx","district":"9","at_large":false,"vacant":false,"bioguide":"G000553","thomas":"1803","govtrack":"400653","opensecrets":"N00026686","votesmart":"49680","fec":"H4TX09095","maplight":"658","wikidata":"Q749039","google_entity_id":"kg:/m/02kn0_","title":"representative","party":"democrat","name":"Al Green","name_slug":"al-green","first_name":"Al","middle_name":null,"last_name":null,"name_suffix":"Al","goes_by":null,"pronunciation":"AL GREEN","gender":"male","ethnicity":"african-american","religion":"southern-baptist","openley_lgbtq":"no","date_of_birth":"1947-09-01","entered_office":"2005-01-04","term_end":"2019-01-03","biography":"Al Green, a Representative from Texas; born in New Orleans, Jefferson Parish, La., September 1, 1947; attended Florida A&M University, Tallahassee, Fla., 1966-1971; attended Tuskegee University, Tuskegee, Ala.; J.D., Texas Southern University, Houston, Tex., 1974; lawyer, private practice; justice of the peace, Harris County, Tex., 1977-2004; elected as a Democrat to the One Hundred Ninth and to the six succeeding Congresses (January 3, 2005-present).","phone":"202-225-7508","fax":"202-225-2947","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://algreen.house.gov","contact_page":"https://algreen.house.gov/contact-me/email-me","facebook_url":"https://www.facebook.com/Congressman-Al-Green-224027854297805/","twitter_handle":"RepAlGreen","twitter_url":"https://twitter.com/RepAlGreen","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/al-green.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-95.715453,29.705316],[-95.654035,29.735369],[-95.653982,29.735466],[-95.539426,29.737106],[-95.538871,29.737117],[-95.5391,29.725363],[-95.539086,29.724635],[-95.51457,29.72649],[-95.514021,29.726494],[-95.513481,29.685206],[-95.513467,29.684383],[-95.493152,29.67873],[-95.492978,29.678679],[-95.502389,29.667641],[-95.502367,29.666714],[-95.481202,29.652781],[-95.48125,29.652717],[-95.464384,29.660138],[-95.464015,29.660477],[-95.463753,29.648478],[-95.463743,29.647875],[-95.390619,29.72453],[-95.390258,29.724958],[-95.381778,29.675439],[-95.381783,29.675222],[-95.272,29.672733],[-95.271976,29.671633],[-95.276711,29.658354],[-95.276701,29.6579],[-95.314646,29.655004],[-95.314894,29.654952],[-95.29743,29.596597],[-95.297409,29.596514],[-95.509187,29.580199],[-95.511783,29.580114],[-95.500408,29.561216],[-95.500069,29.560886],[-95.463948,29.5546],[-95.463891,29.554528],[-95.471898,29.513368],[-95.47207,29.512979],[-95.544056,29.540394],[-95.544929,29.540845],[-95.56425,29.565462],[-95.564645,29.565927],[-95.564135,29.589869],[-95.564146,29.590733],[-95.542188,29.596935],[-95.540857,29.59815],[-95.590169,29.628583],[-95.590486,29.628554],[-95.571554,29.648553],[-95.571345,29.648741],[-95.621221,29.673231],[-95.621848,29.673572],[-95.713237,29.660954],[-95.714876,29.660931],[-95.715453,29.705316]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Texas",
+    "state_name_slug": "texas",
+    "state_code": "TX",
+    "state_code_slug": "tx",
+    "district": "9",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "G000553",
+    "thomas": "1803",
+    "govtrack": "400653",
+    "opensecrets": "N00026686",
+    "votesmart": "49680",
+    "fec": "H4TX09095",
+    "maplight": "658",
+    "wikidata": "Q749039",
+    "google_entity_id": "kg:/m/02kn0_",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Al Green",
+    "name_slug": "al-green",
+    "first_name": "Al",
+    "middle_name": null,
+    "last_name": "Green",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "AL GREEN",
+    "gender": "male",
+    "ethnicity": "african-american",
+    "religion": "southern-baptist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1947-09-01",
+    "entered_office": "2005-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Al Green, a Representative from Texas; born in New Orleans, Jefferson Parish, La., September 1, 1947; attended Florida A&M University, Tallahassee, Fla., 1966-1971; attended Tuskegee University, Tuskegee, Ala.; J.D., Texas Southern University, Houston, Tex., 1974; lawyer, private practice; justice of the peace, Harris County, Tex., 1977-2004; elected as a Democrat to the One Hundred Ninth and to the six succeeding Congresses (January 3, 2005-present).",
+    "phone": "202-225-7508",
+    "fax": "202-225-2947",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://algreen.house.gov",
+    "contact_page": "https://algreen.house.gov/contact-me/email-me",
+    "facebook_url": "https://www.facebook.com/Congressman-Al-Green-224027854297805/",
+    "twitter_handle": "RepAlGreen",
+    "twitter_url": "https://twitter.com/RepAlGreen",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/al-green.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -95.715453,
+          29.705316
+        ],
+        [
+          -95.654035,
+          29.735369
+        ],
+        [
+          -95.653982,
+          29.735466
+        ],
+        [
+          -95.539426,
+          29.737106
+        ],
+        [
+          -95.538871,
+          29.737117
+        ],
+        [
+          -95.5391,
+          29.725363
+        ],
+        [
+          -95.539086,
+          29.724635
+        ],
+        [
+          -95.51457,
+          29.72649
+        ],
+        [
+          -95.514021,
+          29.726494
+        ],
+        [
+          -95.513481,
+          29.685206
+        ],
+        [
+          -95.513467,
+          29.684383
+        ],
+        [
+          -95.493152,
+          29.67873
+        ],
+        [
+          -95.492978,
+          29.678679
+        ],
+        [
+          -95.502389,
+          29.667641
+        ],
+        [
+          -95.502367,
+          29.666714
+        ],
+        [
+          -95.481202,
+          29.652781
+        ],
+        [
+          -95.48125,
+          29.652717
+        ],
+        [
+          -95.464384,
+          29.660138
+        ],
+        [
+          -95.464015,
+          29.660477
+        ],
+        [
+          -95.463753,
+          29.648478
+        ],
+        [
+          -95.463743,
+          29.647875
+        ],
+        [
+          -95.390619,
+          29.72453
+        ],
+        [
+          -95.390258,
+          29.724958
+        ],
+        [
+          -95.381778,
+          29.675439
+        ],
+        [
+          -95.381783,
+          29.675222
+        ],
+        [
+          -95.272,
+          29.672733
+        ],
+        [
+          -95.271976,
+          29.671633
+        ],
+        [
+          -95.276711,
+          29.658354
+        ],
+        [
+          -95.276701,
+          29.6579
+        ],
+        [
+          -95.314646,
+          29.655004
+        ],
+        [
+          -95.314894,
+          29.654952
+        ],
+        [
+          -95.29743,
+          29.596597
+        ],
+        [
+          -95.297409,
+          29.596514
+        ],
+        [
+          -95.509187,
+          29.580199
+        ],
+        [
+          -95.511783,
+          29.580114
+        ],
+        [
+          -95.500408,
+          29.561216
+        ],
+        [
+          -95.500069,
+          29.560886
+        ],
+        [
+          -95.463948,
+          29.5546
+        ],
+        [
+          -95.463891,
+          29.554528
+        ],
+        [
+          -95.471898,
+          29.513368
+        ],
+        [
+          -95.47207,
+          29.512979
+        ],
+        [
+          -95.544056,
+          29.540394
+        ],
+        [
+          -95.544929,
+          29.540845
+        ],
+        [
+          -95.56425,
+          29.565462
+        ],
+        [
+          -95.564645,
+          29.565927
+        ],
+        [
+          -95.564135,
+          29.589869
+        ],
+        [
+          -95.564146,
+          29.590733
+        ],
+        [
+          -95.542188,
+          29.596935
+        ],
+        [
+          -95.540857,
+          29.59815
+        ],
+        [
+          -95.590169,
+          29.628583
+        ],
+        [
+          -95.590486,
+          29.628554
+        ],
+        [
+          -95.571554,
+          29.648553
+        ],
+        [
+          -95.571345,
+          29.648741
+        ],
+        [
+          -95.621221,
+          29.673231
+        ],
+        [
+          -95.621848,
+          29.673572
+        ],
+        [
+          -95.713237,
+          29.660954
+        ],
+        [
+          -95.714876,
+          29.660931
+        ],
+        [
+          -95.715453,
+          29.705316
+        ]
+      ]
+    ]
+  }
+}

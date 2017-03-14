@@ -1,1 +1,225 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"40","at_large":false,"vacant":false,"bioguide":"R000486","thomas":"997","govtrack":"400347","opensecrets":"N00006671","votesmart":"26766","fec":"H2CA33048","maplight":"440","wikidata":"Q469115","google_entity_id":"kg:/m/024txf","title":"representative","party":"democrat","name":"Lucille Roybal-Allard","name_slug":"lucille-roybal-allard","first_name":"Lucille","middle_name":null,"last_name":null,"name_suffix":"Lucille","goes_by":null,"pronunciation":"loo-SEEL ROY-bawl AL-lurd","gender":"female","ethnicity":"hispanic-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1941-06-12","entered_office":"1993-01-05","term_end":"2019-01-03","biography":"Lucille Roybal-Allard, (daughter of Edward R. Roybal), a Representative from California; born in Boyle Heights, Los Angeles County, Calif., June 12, 1941; graduated from Ramona Convent Secondary School, Alhambra, Calif., 1959; B.A., California State University, Los Angeles, Calif., 1965; community relations and nonprofit executive; member of the California state assembly, 1987-1992; elected as a Democrat to the One Hundred Third and to the twelve succeeding Congresses (January 3, 1993-present).","phone":"202-225-1766","fax":"202-226-0350","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://roybal-allard.house.gov","contact_page":"http://roybal-allard.house.gov/contact/","facebook_url":"https://www.facebook.com/RepRoybalAllard/","twitter_handle":"RepRoybalAllard","twitter_url":"https://twitter.com/RepRoybalAllard","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/lucille-roybal-allard.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-118.280982,34.003772],[-118.262031,34.030485],[-118.261508,34.031132],[-118.23971,34.014796],[-118.239708,34.014713],[-118.192125,34.012921],[-118.191416,34.012859],[-118.191372,34.039909],[-118.191405,34.040499],[-118.15732,34.044261],[-118.157164,34.044261],[-118.126999,34.013185],[-118.126646,34.013109],[-118.134025,33.985816],[-118.134219,33.985656],[-118.090445,33.931752],[-118.090378,33.931675],[-118.11138,33.922645],[-118.111611,33.922077],[-118.10827,33.887074],[-118.108268,33.88694],[-118.188048,33.885433],[-118.188167,33.885442],[-118.178709,33.918592],[-118.178685,33.91871],[-118.15906,33.910004],[-118.159007,33.909964],[-118.170068,33.923442],[-118.170424,33.923608],[-118.156354,33.950918],[-118.156253,33.951038],[-118.217509,33.973284],[-118.217543,33.973414],[-118.247539,33.96025],[-118.247405,33.960145],[-118.280536,33.967875],[-118.280718,33.967874],[-118.280982,34.003772]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "40",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "R000486",
+    "thomas": "997",
+    "govtrack": "400347",
+    "opensecrets": "N00006671",
+    "votesmart": "26766",
+    "fec": "H2CA33048",
+    "maplight": "440",
+    "wikidata": "Q469115",
+    "google_entity_id": "kg:/m/024txf",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Lucille Roybal-Allard",
+    "name_slug": "lucille-roybal-allard",
+    "first_name": "Lucille",
+    "middle_name": null,
+    "last_name": "Roybal-Allard",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "loo-SEEL ROY-bawl AL-lurd",
+    "gender": "female",
+    "ethnicity": "hispanic-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1941-06-12",
+    "entered_office": "1993-01-05",
+    "term_end": "2019-01-03",
+    "biography": "Lucille Roybal-Allard, (daughter of Edward R. Roybal), a Representative from California; born in Boyle Heights, Los Angeles County, Calif., June 12, 1941; graduated from Ramona Convent Secondary School, Alhambra, Calif., 1959; B.A., California State University, Los Angeles, Calif., 1965; community relations and nonprofit executive; member of the California state assembly, 1987-1992; elected as a Democrat to the One Hundred Third and to the twelve succeeding Congresses (January 3, 1993-present).",
+    "phone": "202-225-1766",
+    "fax": "202-226-0350",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://roybal-allard.house.gov",
+    "contact_page": "http://roybal-allard.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepRoybalAllard/",
+    "twitter_handle": "RepRoybalAllard",
+    "twitter_url": "https://twitter.com/RepRoybalAllard",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/lucille-roybal-allard.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -118.280982,
+          34.003772
+        ],
+        [
+          -118.262031,
+          34.030485
+        ],
+        [
+          -118.261508,
+          34.031132
+        ],
+        [
+          -118.23971,
+          34.014796
+        ],
+        [
+          -118.239708,
+          34.014713
+        ],
+        [
+          -118.192125,
+          34.012921
+        ],
+        [
+          -118.191416,
+          34.012859
+        ],
+        [
+          -118.191372,
+          34.039909
+        ],
+        [
+          -118.191405,
+          34.040499
+        ],
+        [
+          -118.15732,
+          34.044261
+        ],
+        [
+          -118.157164,
+          34.044261
+        ],
+        [
+          -118.126999,
+          34.013185
+        ],
+        [
+          -118.126646,
+          34.013109
+        ],
+        [
+          -118.134025,
+          33.985816
+        ],
+        [
+          -118.134219,
+          33.985656
+        ],
+        [
+          -118.090445,
+          33.931752
+        ],
+        [
+          -118.090378,
+          33.931675
+        ],
+        [
+          -118.11138,
+          33.922645
+        ],
+        [
+          -118.111611,
+          33.922077
+        ],
+        [
+          -118.10827,
+          33.887074
+        ],
+        [
+          -118.108268,
+          33.88694
+        ],
+        [
+          -118.188048,
+          33.885433
+        ],
+        [
+          -118.188167,
+          33.885442
+        ],
+        [
+          -118.178709,
+          33.918592
+        ],
+        [
+          -118.178685,
+          33.91871
+        ],
+        [
+          -118.15906,
+          33.910004
+        ],
+        [
+          -118.159007,
+          33.909964
+        ],
+        [
+          -118.170068,
+          33.923442
+        ],
+        [
+          -118.170424,
+          33.923608
+        ],
+        [
+          -118.156354,
+          33.950918
+        ],
+        [
+          -118.156253,
+          33.951038
+        ],
+        [
+          -118.217509,
+          33.973284
+        ],
+        [
+          -118.217543,
+          33.973414
+        ],
+        [
+          -118.247539,
+          33.96025
+        ],
+        [
+          -118.247405,
+          33.960145
+        ],
+        [
+          -118.280536,
+          33.967875
+        ],
+        [
+          -118.280718,
+          33.967874
+        ],
+        [
+          -118.280982,
+          34.003772
+        ]
+      ]
+    ]
+  }
+}

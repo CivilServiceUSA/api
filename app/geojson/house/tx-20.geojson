@@ -1,1 +1,369 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Texas","state_name_slug":"texas","state_code":"TX","state_code_slug":"tx","district":"20","at_large":false,"vacant":false,"bioguide":"C001091","thomas":"2163","govtrack":"412576","opensecrets":"N00033316","votesmart":"49227","fec":"H2TX35011","maplight":"1800","wikidata":"Q1167934","google_entity_id":"kg:/m/0bmclg","title":"representative","party":"democrat","name":"Joaquin Castro","name_slug":"joaquin-castro","first_name":"Joaquin","middle_name":null,"last_name":null,"name_suffix":"Joaquin","goes_by":null,"pronunciation":"wah-KEEN KAH-stro [R is trilled, O unrounded]","gender":"male","ethnicity":"hispanic-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1974-09-16","entered_office":"2013-01-03","term_end":"2019-01-03","biography":"Joaquin Castro, a Representative from Texas; born in San Antonio, Bexar County, Tex., September 16, 1974; graduated from Thomas Jefferson High School, San Antonio, Tex., 1992; B.A., Stanford University, Stanford, Calif., 1996; J.D., Harvard University, Cambridge, Mass., 2000; lawyer, private practice; member of the Texas state house of representatives, 2002-2012; elected as a Democrat to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).","phone":"202-225-3236","fax":"202-225-1915","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://castro.house.gov","contact_page":"https://castro.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/JoaquinCastroTX/","twitter_handle":"JoaquinCastrotx","twitter_url":"https://twitter.com/JoaquinCastrotx","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/joaquin-castro.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-98.788192,29.500593],[-98.747544,29.536624],[-98.747329,29.536771],[-98.718527,29.525836],[-98.71819,29.525714],[-98.683055,29.626848],[-98.682955,29.627018],[-98.628796,29.610713],[-98.628697,29.610528],[-98.608619,29.620454],[-98.608355,29.620499],[-98.58787,29.592384],[-98.587856,29.59216],[-98.572174,29.595848],[-98.568935,29.597347],[-98.57861,29.55916],[-98.578698,29.558627],[-98.567148,29.549083],[-98.567068,29.549021],[-98.57976,29.521885],[-98.579815,29.521187],[-98.598899,29.524701],[-98.599877,29.523736],[-98.579162,29.500786],[-98.578135,29.500016],[-98.565376,29.527968],[-98.564955,29.528386],[-98.506961,29.512546],[-98.506824,29.512546],[-98.506498,29.538907],[-98.50649,29.539026],[-98.464493,29.517045],[-98.464261,29.516992],[-98.493953,29.454319],[-98.493961,29.453872],[-98.524293,29.466474],[-98.526023,29.46649],[-98.521487,29.454542],[-98.52161,29.453586],[-98.547282,29.442709],[-98.547343,29.442715],[-98.540055,29.415211],[-98.540147,29.414478],[-98.517797,29.409954],[-98.515564,29.409335],[-98.504266,29.375524],[-98.50427,29.374627],[-98.489705,29.37459],[-98.488433,29.374582],[-98.484913,29.343028],[-98.484612,29.342407],[-98.54799,29.357217],[-98.549188,29.357319],[-98.552304,29.333166],[-98.5523,29.332512],[-98.582617,29.33076],[-98.585197,29.329702],[-98.586441,29.341979],[-98.586564,29.342159],[-98.615967,29.31892],[-98.616154,29.318802],[-98.625769,29.337579],[-98.625864,29.337714],[-98.646268,29.322529],[-98.646358,29.322634],[-98.643424,29.367576],[-98.643442,29.367722],[-98.657853,29.394315],[-98.657942,29.394541],[-98.630074,29.452837],[-98.629933,29.453008],[-98.745266,29.429503],[-98.747796,29.429473],[-98.788192,29.500593]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Texas",
+    "state_name_slug": "texas",
+    "state_code": "TX",
+    "state_code_slug": "tx",
+    "district": "20",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "C001091",
+    "thomas": "2163",
+    "govtrack": "412576",
+    "opensecrets": "N00033316",
+    "votesmart": "49227",
+    "fec": "H2TX35011",
+    "maplight": "1800",
+    "wikidata": "Q1167934",
+    "google_entity_id": "kg:/m/0bmclg",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Joaquin Castro",
+    "name_slug": "joaquin-castro",
+    "first_name": "Joaquin",
+    "middle_name": null,
+    "last_name": "Castro",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "wah-KEEN KAH-stro [R is trilled, O unrounded]",
+    "gender": "male",
+    "ethnicity": "hispanic-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1974-09-16",
+    "entered_office": "2013-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Joaquin Castro, a Representative from Texas; born in San Antonio, Bexar County, Tex., September 16, 1974; graduated from Thomas Jefferson High School, San Antonio, Tex., 1992; B.A., Stanford University, Stanford, Calif., 1996; J.D., Harvard University, Cambridge, Mass., 2000; lawyer, private practice; member of the Texas state house of representatives, 2002-2012; elected as a Democrat to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).",
+    "phone": "202-225-3236",
+    "fax": "202-225-1915",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://castro.house.gov",
+    "contact_page": "https://castro.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/JoaquinCastroTX/",
+    "twitter_handle": "JoaquinCastrotx",
+    "twitter_url": "https://twitter.com/JoaquinCastrotx",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/joaquin-castro.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -98.788192,
+          29.500593
+        ],
+        [
+          -98.747544,
+          29.536624
+        ],
+        [
+          -98.747329,
+          29.536771
+        ],
+        [
+          -98.718527,
+          29.525836
+        ],
+        [
+          -98.71819,
+          29.525714
+        ],
+        [
+          -98.683055,
+          29.626848
+        ],
+        [
+          -98.682955,
+          29.627018
+        ],
+        [
+          -98.628796,
+          29.610713
+        ],
+        [
+          -98.628697,
+          29.610528
+        ],
+        [
+          -98.608619,
+          29.620454
+        ],
+        [
+          -98.608355,
+          29.620499
+        ],
+        [
+          -98.58787,
+          29.592384
+        ],
+        [
+          -98.587856,
+          29.59216
+        ],
+        [
+          -98.572174,
+          29.595848
+        ],
+        [
+          -98.568935,
+          29.597347
+        ],
+        [
+          -98.57861,
+          29.55916
+        ],
+        [
+          -98.578698,
+          29.558627
+        ],
+        [
+          -98.567148,
+          29.549083
+        ],
+        [
+          -98.567068,
+          29.549021
+        ],
+        [
+          -98.57976,
+          29.521885
+        ],
+        [
+          -98.579815,
+          29.521187
+        ],
+        [
+          -98.598899,
+          29.524701
+        ],
+        [
+          -98.599877,
+          29.523736
+        ],
+        [
+          -98.579162,
+          29.500786
+        ],
+        [
+          -98.578135,
+          29.500016
+        ],
+        [
+          -98.565376,
+          29.527968
+        ],
+        [
+          -98.564955,
+          29.528386
+        ],
+        [
+          -98.506961,
+          29.512546
+        ],
+        [
+          -98.506824,
+          29.512546
+        ],
+        [
+          -98.506498,
+          29.538907
+        ],
+        [
+          -98.50649,
+          29.539026
+        ],
+        [
+          -98.464493,
+          29.517045
+        ],
+        [
+          -98.464261,
+          29.516992
+        ],
+        [
+          -98.493953,
+          29.454319
+        ],
+        [
+          -98.493961,
+          29.453872
+        ],
+        [
+          -98.524293,
+          29.466474
+        ],
+        [
+          -98.526023,
+          29.46649
+        ],
+        [
+          -98.521487,
+          29.454542
+        ],
+        [
+          -98.52161,
+          29.453586
+        ],
+        [
+          -98.547282,
+          29.442709
+        ],
+        [
+          -98.547343,
+          29.442715
+        ],
+        [
+          -98.540055,
+          29.415211
+        ],
+        [
+          -98.540147,
+          29.414478
+        ],
+        [
+          -98.517797,
+          29.409954
+        ],
+        [
+          -98.515564,
+          29.409335
+        ],
+        [
+          -98.504266,
+          29.375524
+        ],
+        [
+          -98.50427,
+          29.374627
+        ],
+        [
+          -98.489705,
+          29.37459
+        ],
+        [
+          -98.488433,
+          29.374582
+        ],
+        [
+          -98.484913,
+          29.343028
+        ],
+        [
+          -98.484612,
+          29.342407
+        ],
+        [
+          -98.54799,
+          29.357217
+        ],
+        [
+          -98.549188,
+          29.357319
+        ],
+        [
+          -98.552304,
+          29.333166
+        ],
+        [
+          -98.5523,
+          29.332512
+        ],
+        [
+          -98.582617,
+          29.33076
+        ],
+        [
+          -98.585197,
+          29.329702
+        ],
+        [
+          -98.586441,
+          29.341979
+        ],
+        [
+          -98.586564,
+          29.342159
+        ],
+        [
+          -98.615967,
+          29.31892
+        ],
+        [
+          -98.616154,
+          29.318802
+        ],
+        [
+          -98.625769,
+          29.337579
+        ],
+        [
+          -98.625864,
+          29.337714
+        ],
+        [
+          -98.646268,
+          29.322529
+        ],
+        [
+          -98.646358,
+          29.322634
+        ],
+        [
+          -98.643424,
+          29.367576
+        ],
+        [
+          -98.643442,
+          29.367722
+        ],
+        [
+          -98.657853,
+          29.394315
+        ],
+        [
+          -98.657942,
+          29.394541
+        ],
+        [
+          -98.630074,
+          29.452837
+        ],
+        [
+          -98.629933,
+          29.453008
+        ],
+        [
+          -98.745266,
+          29.429503
+        ],
+        [
+          -98.747796,
+          29.429473
+        ],
+        [
+          -98.788192,
+          29.500593
+        ]
+      ]
+    ]
+  }
+}

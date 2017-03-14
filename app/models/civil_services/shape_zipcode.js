@@ -12,7 +12,7 @@ var db = require('../../config/sequelize');
  * @type {object}
  * @property {number} id - Unique ID
  * @property {string} zipcode - Unique Zip Code
- * @property {number} shape - GeoJSON Shape Data
+ * @property {geometry} shape - GeoJSON Shape Data
  */
 var ShapeZipCode = db.dbApi.define('shape_zipcode', {
   id: {
@@ -37,7 +37,7 @@ var ShapeZipCode = db.dbApi.define('shape_zipcode', {
     },
     {
       fields: ['shape'],
-      spatial: true
+      type: 'spatial'
     }
   ]
 });

@@ -1,1 +1,449 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Ohio","state_name_slug":"ohio","state_code":"OH","state_code_slug":"oh","district":"5","at_large":false,"vacant":false,"bioguide":"L000566","thomas":"1885","govtrack":"412256","opensecrets":"N00012233","votesmart":"9926","fec":"H8OH05036","maplight":"737","wikidata":"Q888061","google_entity_id":"kg:/m/02z6_j1","title":"representative","party":"republican","name":"Robert Latta","name_slug":"robert-latta","first_name":"Robert","middle_name":"E.","last_name":null,"name_suffix":"Robert","goes_by":"Bob","pronunciation":"BAHB LATT-uh","gender":"male","ethnicity":"white-american","religion":"christian","openley_lgbtq":"no","date_of_birth":"1956-04-18","entered_office":"2007-12-13","term_end":"2019-01-03","biography":"Robert Latta, (son of Delbert L. Latta), a Representative from Ohio; born in Bluffton, Allen County, Ohio, April 18, 1956; B.A., Bowling Green State University, Bowling Green, Ohio, 1978; J.D., University of Toledo, Toledo, Ohio, 1981; lawyer, private practice; Wood County, Ohio, commissioner, 1991-1996; member of the Ohio state senate, 1997-2000; member of the Ohio state house of representatives, 2001-2007; elected as a Republican to the One Hundred Tenth Congress, by special election, to fill the vacancy caused by the death of United States Representative Paul Eugene Gillmor, and reelected to the five succeeding Congresses (December 11, 2007-present).","phone":"202-225-6405","fax":"202-225-1985","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://latta.house.gov","contact_page":"http://latta.house.gov/contact/","facebook_url":"https://www.facebook.com/boblatta/","twitter_handle":"boblatta","twitter_url":"https://twitter.com/boblatta","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/robert-latta.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-84.806209,41.674584],[-84.805972,41.694642],[-84.805972,41.696118],[-83.585569,41.729236],[-83.585542,41.729237],[-83.595869,41.688967],[-83.59989,41.683586],[-83.620997,41.686113],[-83.623033,41.686804],[-83.622014,41.657697],[-83.621994,41.65719],[-83.692663,41.668373],[-83.693037,41.66845],[-83.684198,41.614061],[-83.6842,41.613713],[-83.63277,41.612421],[-83.63157,41.612437],[-83.621932,41.597758],[-83.620916,41.596507],[-83.563761,41.61761],[-83.563233,41.61765],[-83.182456,41.623153],[-83.182375,41.623154],[-83.18345,41.531023],[-83.183457,41.530516],[-83.069179,41.530437],[-83.067797,41.53039],[-83.067502,41.457692],[-83.067459,41.457169],[-83.337947,41.45751],[-83.338196,41.457508],[-83.338986,41.501049],[-83.338991,41.501189],[-83.413503,41.500231],[-83.414626,41.500228],[-83.420349,40.994154],[-83.420319,40.991889],[-83.113465,40.993439],[-83.112737,40.993447],[-83.111421,40.709141],[-83.11136,40.702915],[-83.418695,40.687277],[-83.419831,40.687278],[-83.418158,40.506002],[-83.418378,40.505232],[-83.874945,40.531459],[-83.879838,40.531861],[-83.880421,40.919704],[-83.880423,40.920429],[-83.993272,40.919847],[-83.995228,40.919843],[-83.995176,40.906675],[-83.995165,40.905066],[-84.087179,40.904785],[-84.109516,40.90473],[-84.10959,40.861326],[-84.109586,40.860994],[-84.340359,40.859101],[-84.340531,40.859099],[-84.340224,40.826589],[-84.340101,40.816143],[-84.395511,40.815931],[-84.397374,40.815941],[-84.39682,40.692249],[-84.396778,40.684926],[-84.444693,40.684785],[-84.45618,40.684862],[-84.455989,40.581524],[-84.455713,40.567888],[-84.522772,40.567767],[-84.525985,40.567759],[-84.517876,40.557302],[-84.517884,40.553232],[-84.544894,40.547005],[-84.544926,40.545895],[-84.512901,40.545458],[-84.512879,40.543417],[-84.538539,40.53758],[-84.543102,40.536254],[-84.55503,40.548075],[-84.555792,40.547929],[-84.576888,40.516371],[-84.576928,40.516339],[-84.646979,40.523524],[-84.647629,40.523523],[-84.666792,40.495714],[-84.666797,40.49435],[-84.688603,40.494379],[-84.688829,40.494382],[-84.688799,40.467267],[-84.688801,40.465193],[-84.802835,40.465386],[-84.803455,40.46539],[-84.806209,41.674584]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Ohio",
+    "state_name_slug": "ohio",
+    "state_code": "OH",
+    "state_code_slug": "oh",
+    "district": "5",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "L000566",
+    "thomas": "1885",
+    "govtrack": "412256",
+    "opensecrets": "N00012233",
+    "votesmart": "9926",
+    "fec": "H8OH05036",
+    "maplight": "737",
+    "wikidata": "Q888061",
+    "google_entity_id": "kg:/m/02z6_j1",
+    "title": "representative",
+    "party": "republican",
+    "name": "Robert Latta",
+    "name_slug": "robert-latta",
+    "first_name": "Robert",
+    "middle_name": "E.",
+    "last_name": "Latta",
+    "name_suffix": null,
+    "goes_by": "Bob",
+    "pronunciation": "BAHB LATT-uh",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "christian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1956-04-18",
+    "entered_office": "2007-12-13",
+    "term_end": "2019-01-03",
+    "biography": "Robert Latta, (son of Delbert L. Latta), a Representative from Ohio; born in Bluffton, Allen County, Ohio, April 18, 1956; B.A., Bowling Green State University, Bowling Green, Ohio, 1978; J.D., University of Toledo, Toledo, Ohio, 1981; lawyer, private practice; Wood County, Ohio, commissioner, 1991-1996; member of the Ohio state senate, 1997-2000; member of the Ohio state house of representatives, 2001-2007; elected as a Republican to the One Hundred Tenth Congress, by special election, to fill the vacancy caused by the death of United States Representative Paul Eugene Gillmor, and reelected to the five succeeding Congresses (December 11, 2007-present).",
+    "phone": "202-225-6405",
+    "fax": "202-225-1985",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://latta.house.gov",
+    "contact_page": "http://latta.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/boblatta/",
+    "twitter_handle": "boblatta",
+    "twitter_url": "https://twitter.com/boblatta",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/robert-latta.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -84.806209,
+          41.674584
+        ],
+        [
+          -84.805972,
+          41.694642
+        ],
+        [
+          -84.805972,
+          41.696118
+        ],
+        [
+          -83.585569,
+          41.729236
+        ],
+        [
+          -83.585542,
+          41.729237
+        ],
+        [
+          -83.595869,
+          41.688967
+        ],
+        [
+          -83.59989,
+          41.683586
+        ],
+        [
+          -83.620997,
+          41.686113
+        ],
+        [
+          -83.623033,
+          41.686804
+        ],
+        [
+          -83.622014,
+          41.657697
+        ],
+        [
+          -83.621994,
+          41.65719
+        ],
+        [
+          -83.692663,
+          41.668373
+        ],
+        [
+          -83.693037,
+          41.66845
+        ],
+        [
+          -83.684198,
+          41.614061
+        ],
+        [
+          -83.6842,
+          41.613713
+        ],
+        [
+          -83.63277,
+          41.612421
+        ],
+        [
+          -83.63157,
+          41.612437
+        ],
+        [
+          -83.621932,
+          41.597758
+        ],
+        [
+          -83.620916,
+          41.596507
+        ],
+        [
+          -83.563761,
+          41.61761
+        ],
+        [
+          -83.563233,
+          41.61765
+        ],
+        [
+          -83.182456,
+          41.623153
+        ],
+        [
+          -83.182375,
+          41.623154
+        ],
+        [
+          -83.18345,
+          41.531023
+        ],
+        [
+          -83.183457,
+          41.530516
+        ],
+        [
+          -83.069179,
+          41.530437
+        ],
+        [
+          -83.067797,
+          41.53039
+        ],
+        [
+          -83.067502,
+          41.457692
+        ],
+        [
+          -83.067459,
+          41.457169
+        ],
+        [
+          -83.337947,
+          41.45751
+        ],
+        [
+          -83.338196,
+          41.457508
+        ],
+        [
+          -83.338986,
+          41.501049
+        ],
+        [
+          -83.338991,
+          41.501189
+        ],
+        [
+          -83.413503,
+          41.500231
+        ],
+        [
+          -83.414626,
+          41.500228
+        ],
+        [
+          -83.420349,
+          40.994154
+        ],
+        [
+          -83.420319,
+          40.991889
+        ],
+        [
+          -83.113465,
+          40.993439
+        ],
+        [
+          -83.112737,
+          40.993447
+        ],
+        [
+          -83.111421,
+          40.709141
+        ],
+        [
+          -83.11136,
+          40.702915
+        ],
+        [
+          -83.418695,
+          40.687277
+        ],
+        [
+          -83.419831,
+          40.687278
+        ],
+        [
+          -83.418158,
+          40.506002
+        ],
+        [
+          -83.418378,
+          40.505232
+        ],
+        [
+          -83.874945,
+          40.531459
+        ],
+        [
+          -83.879838,
+          40.531861
+        ],
+        [
+          -83.880421,
+          40.919704
+        ],
+        [
+          -83.880423,
+          40.920429
+        ],
+        [
+          -83.993272,
+          40.919847
+        ],
+        [
+          -83.995228,
+          40.919843
+        ],
+        [
+          -83.995176,
+          40.906675
+        ],
+        [
+          -83.995165,
+          40.905066
+        ],
+        [
+          -84.087179,
+          40.904785
+        ],
+        [
+          -84.109516,
+          40.90473
+        ],
+        [
+          -84.10959,
+          40.861326
+        ],
+        [
+          -84.109586,
+          40.860994
+        ],
+        [
+          -84.340359,
+          40.859101
+        ],
+        [
+          -84.340531,
+          40.859099
+        ],
+        [
+          -84.340224,
+          40.826589
+        ],
+        [
+          -84.340101,
+          40.816143
+        ],
+        [
+          -84.395511,
+          40.815931
+        ],
+        [
+          -84.397374,
+          40.815941
+        ],
+        [
+          -84.39682,
+          40.692249
+        ],
+        [
+          -84.396778,
+          40.684926
+        ],
+        [
+          -84.444693,
+          40.684785
+        ],
+        [
+          -84.45618,
+          40.684862
+        ],
+        [
+          -84.455989,
+          40.581524
+        ],
+        [
+          -84.455713,
+          40.567888
+        ],
+        [
+          -84.522772,
+          40.567767
+        ],
+        [
+          -84.525985,
+          40.567759
+        ],
+        [
+          -84.517876,
+          40.557302
+        ],
+        [
+          -84.517884,
+          40.553232
+        ],
+        [
+          -84.544894,
+          40.547005
+        ],
+        [
+          -84.544926,
+          40.545895
+        ],
+        [
+          -84.512901,
+          40.545458
+        ],
+        [
+          -84.512879,
+          40.543417
+        ],
+        [
+          -84.538539,
+          40.53758
+        ],
+        [
+          -84.543102,
+          40.536254
+        ],
+        [
+          -84.55503,
+          40.548075
+        ],
+        [
+          -84.555792,
+          40.547929
+        ],
+        [
+          -84.576888,
+          40.516371
+        ],
+        [
+          -84.576928,
+          40.516339
+        ],
+        [
+          -84.646979,
+          40.523524
+        ],
+        [
+          -84.647629,
+          40.523523
+        ],
+        [
+          -84.666792,
+          40.495714
+        ],
+        [
+          -84.666797,
+          40.49435
+        ],
+        [
+          -84.688603,
+          40.494379
+        ],
+        [
+          -84.688829,
+          40.494382
+        ],
+        [
+          -84.688799,
+          40.467267
+        ],
+        [
+          -84.688801,
+          40.465193
+        ],
+        [
+          -84.802835,
+          40.465386
+        ],
+        [
+          -84.803455,
+          40.46539
+        ],
+        [
+          -84.806209,
+          41.674584
+        ]
+      ]
+    ]
+  }
+}

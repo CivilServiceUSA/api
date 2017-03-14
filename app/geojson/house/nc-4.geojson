@@ -1,1 +1,505 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"North Carolina","state_name_slug":"north-carolina","state_code":"NC","state_code_slug":"nc","district":"4","at_large":false,"vacant":false,"bioguide":"P000523","thomas":"930","govtrack":"400326","opensecrets":"N00002260","votesmart":"119","fec":"H6NC04037","maplight":"420","wikidata":"Q984010","google_entity_id":"kg:/m/034dxn","title":"representative","party":"democrat","name":"David Price","name_slug":"david-price","first_name":"David","middle_name":null,"last_name":null,"name_suffix":"David","goes_by":null,"pronunciation":"DAY-vid PRICE","gender":"male","ethnicity":"white-american","religion":"baptist","openley_lgbtq":"no","date_of_birth":"1940-08-17","entered_office":"1987-01-06","term_end":"2019-01-03","biography":"David Price, a Representative from North Carolina; born in Erwin, Unicoi County, Tenn., August 17, 1940; graduated from Unicoi County High School, Erwin, Tenn., 1957; attended Mars Hill College, Mars Hill, N.C., 1957-1959; B.A., University of North Carolina, Chapel Hill, N.C., 1961; B.D., Yale University, New Haven, Conn., 1964; Ph.D., Yale University, New Haven, Conn., 1969; faculty, Yale University, New Haven, Conn., 1967-1973; staff, United States Senator Edward Lewis Bartlett of Alaska, 1963-1967; professor, Duke University, Durham, N.C., 1973-1986 and 1995-1996; staff director, commission on presidential nomination, Democratic National Committee, 1981-1982; chairman, North Carolina Democratic Party, 1983-1984; elected as a Democrat to the One Hundredth and to the three succeeding Congresses (January 3, 1987-January 3, 1995); unsuccessful candidate for reelection to the One Hundred Fourth Congress in 1994; elected as a Democrat to the One Hundred Fifth and to the ten succeeding Congresses (January 3, 1997-present).","phone":"202-225-1784","fax":"202.225.2014","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://priceforms.house.gov","contact_page":"https://priceforms.house.gov/contact/","facebook_url":null,"twitter_handle":"RepDavidEPrice","twitter_url":"https://twitter.com/RepDavidEPrice","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/david-price.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-79.264575,35.907924],[-79.256985,36.24337],[-79.256982,36.243432],[-78.95072,36.239322],[-78.950597,36.23932],[-79.009397,35.90299],[-79.0095,35.902401],[-78.957576,35.91954],[-78.957454,35.919548],[-78.895726,35.902541],[-78.895539,35.9025],[-78.882534,35.943418],[-78.882505,35.94358],[-78.840374,35.942911],[-78.840273,35.942913],[-78.843413,35.931066],[-78.843606,35.930648],[-78.728339,35.921241],[-78.727925,35.922445],[-78.629539,35.894037],[-78.62933,35.894],[-78.620879,35.868386],[-78.620824,35.86816],[-78.600828,35.86146],[-78.600426,35.861248],[-78.60105,35.907656],[-78.600658,35.908068],[-78.559435,35.893127],[-78.559399,35.893109],[-78.539683,35.909226],[-78.539074,35.909178],[-78.537906,35.88018],[-78.537634,35.880105],[-78.479778,35.907396],[-78.47956,35.907534],[-78.47497,35.880335],[-78.475012,35.879684],[-78.449973,35.878532],[-78.449704,35.878741],[-78.443741,35.864024],[-78.443701,35.86332],[-78.461429,35.776938],[-78.461638,35.776602],[-78.485161,35.763732],[-78.485388,35.763588],[-78.491644,35.777765],[-78.492025,35.777832],[-78.522306,35.769925],[-78.522603,35.769872],[-78.523814,35.712625],[-78.524197,35.712085],[-78.550075,35.692542],[-78.55009,35.692472],[-78.600633,35.701828],[-78.60164,35.702199],[-78.609641,35.660895],[-78.609688,35.660865],[-78.652845,35.682053],[-78.652905,35.682094],[-78.636133,35.700128],[-78.635805,35.700544],[-78.647427,35.699989],[-78.647661,35.700278],[-78.638567,35.71898],[-78.638509,35.719151],[-78.651,35.731091],[-78.651018,35.731266],[-78.68032,35.742995],[-78.680353,35.742998],[-78.686003,35.717712],[-78.685992,35.717627],[-78.70426,35.715614],[-78.704309,35.715619],[-78.732866,35.745874],[-78.73288,35.746038],[-78.736724,35.727726],[-78.736827,35.727499],[-78.759356,35.725256],[-78.759442,35.725271],[-78.752354,35.745592],[-78.752378,35.745781],[-78.779562,35.739905],[-78.779907,35.739692],[-78.782994,35.757576],[-78.78306,35.757919],[-78.816373,35.746147],[-78.816424,35.746122],[-78.792886,35.737419],[-78.792612,35.737344],[-78.822778,35.723681],[-78.822973,35.723632],[-78.802741,35.701519],[-78.802629,35.701185],[-78.809021,35.679811],[-78.80903,35.679645],[-78.833539,35.683282],[-78.833611,35.6833],[-78.85448,35.766528],[-78.854565,35.766604],[-78.936251,35.771887],[-78.936271,35.771898],[-78.906097,35.867918],[-78.906071,35.868096],[-79.081938,35.86078],[-79.082036,35.860776],[-79.249479,35.876804],[-79.249538,35.87681],[-79.264575,35.907924]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "North Carolina",
+    "state_name_slug": "north-carolina",
+    "state_code": "NC",
+    "state_code_slug": "nc",
+    "district": "4",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "P000523",
+    "thomas": "930",
+    "govtrack": "400326",
+    "opensecrets": "N00002260",
+    "votesmart": "119",
+    "fec": "H6NC04037",
+    "maplight": "420",
+    "wikidata": "Q984010",
+    "google_entity_id": "kg:/m/034dxn",
+    "title": "representative",
+    "party": "democrat",
+    "name": "David Price",
+    "name_slug": "david-price",
+    "first_name": "David",
+    "middle_name": null,
+    "last_name": "Price",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "DAY-vid PRICE",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "baptist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1940-08-17",
+    "entered_office": "1987-01-06",
+    "term_end": "2019-01-03",
+    "biography": "David Price, a Representative from North Carolina; born in Erwin, Unicoi County, Tenn., August 17, 1940; graduated from Unicoi County High School, Erwin, Tenn., 1957; attended Mars Hill College, Mars Hill, N.C., 1957-1959; B.A., University of North Carolina, Chapel Hill, N.C., 1961; B.D., Yale University, New Haven, Conn., 1964; Ph.D., Yale University, New Haven, Conn., 1969; faculty, Yale University, New Haven, Conn., 1967-1973; staff, United States Senator Edward Lewis Bartlett of Alaska, 1963-1967; professor, Duke University, Durham, N.C., 1973-1986 and 1995-1996; staff director, commission on presidential nomination, Democratic National Committee, 1981-1982; chairman, North Carolina Democratic Party, 1983-1984; elected as a Democrat to the One Hundredth and to the three succeeding Congresses (January 3, 1987-January 3, 1995); unsuccessful candidate for reelection to the One Hundred Fourth Congress in 1994; elected as a Democrat to the One Hundred Fifth and to the ten succeeding Congresses (January 3, 1997-present).",
+    "phone": "202-225-1784",
+    "fax": "202.225.2014",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://priceforms.house.gov",
+    "contact_page": "https://priceforms.house.gov/contact/",
+    "facebook_url": null,
+    "twitter_handle": "RepDavidEPrice",
+    "twitter_url": "https://twitter.com/RepDavidEPrice",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/david-price.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -79.264575,
+          35.907924
+        ],
+        [
+          -79.256985,
+          36.24337
+        ],
+        [
+          -79.256982,
+          36.243432
+        ],
+        [
+          -78.95072,
+          36.239322
+        ],
+        [
+          -78.950597,
+          36.23932
+        ],
+        [
+          -79.009397,
+          35.90299
+        ],
+        [
+          -79.0095,
+          35.902401
+        ],
+        [
+          -78.957576,
+          35.91954
+        ],
+        [
+          -78.957454,
+          35.919548
+        ],
+        [
+          -78.895726,
+          35.902541
+        ],
+        [
+          -78.895539,
+          35.9025
+        ],
+        [
+          -78.882534,
+          35.943418
+        ],
+        [
+          -78.882505,
+          35.94358
+        ],
+        [
+          -78.840374,
+          35.942911
+        ],
+        [
+          -78.840273,
+          35.942913
+        ],
+        [
+          -78.843413,
+          35.931066
+        ],
+        [
+          -78.843606,
+          35.930648
+        ],
+        [
+          -78.728339,
+          35.921241
+        ],
+        [
+          -78.727925,
+          35.922445
+        ],
+        [
+          -78.629539,
+          35.894037
+        ],
+        [
+          -78.62933,
+          35.894
+        ],
+        [
+          -78.620879,
+          35.868386
+        ],
+        [
+          -78.620824,
+          35.86816
+        ],
+        [
+          -78.600828,
+          35.86146
+        ],
+        [
+          -78.600426,
+          35.861248
+        ],
+        [
+          -78.60105,
+          35.907656
+        ],
+        [
+          -78.600658,
+          35.908068
+        ],
+        [
+          -78.559435,
+          35.893127
+        ],
+        [
+          -78.559399,
+          35.893109
+        ],
+        [
+          -78.539683,
+          35.909226
+        ],
+        [
+          -78.539074,
+          35.909178
+        ],
+        [
+          -78.537906,
+          35.88018
+        ],
+        [
+          -78.537634,
+          35.880105
+        ],
+        [
+          -78.479778,
+          35.907396
+        ],
+        [
+          -78.47956,
+          35.907534
+        ],
+        [
+          -78.47497,
+          35.880335
+        ],
+        [
+          -78.475012,
+          35.879684
+        ],
+        [
+          -78.449973,
+          35.878532
+        ],
+        [
+          -78.449704,
+          35.878741
+        ],
+        [
+          -78.443741,
+          35.864024
+        ],
+        [
+          -78.443701,
+          35.86332
+        ],
+        [
+          -78.461429,
+          35.776938
+        ],
+        [
+          -78.461638,
+          35.776602
+        ],
+        [
+          -78.485161,
+          35.763732
+        ],
+        [
+          -78.485388,
+          35.763588
+        ],
+        [
+          -78.491644,
+          35.777765
+        ],
+        [
+          -78.492025,
+          35.777832
+        ],
+        [
+          -78.522306,
+          35.769925
+        ],
+        [
+          -78.522603,
+          35.769872
+        ],
+        [
+          -78.523814,
+          35.712625
+        ],
+        [
+          -78.524197,
+          35.712085
+        ],
+        [
+          -78.550075,
+          35.692542
+        ],
+        [
+          -78.55009,
+          35.692472
+        ],
+        [
+          -78.600633,
+          35.701828
+        ],
+        [
+          -78.60164,
+          35.702199
+        ],
+        [
+          -78.609641,
+          35.660895
+        ],
+        [
+          -78.609688,
+          35.660865
+        ],
+        [
+          -78.652845,
+          35.682053
+        ],
+        [
+          -78.652905,
+          35.682094
+        ],
+        [
+          -78.636133,
+          35.700128
+        ],
+        [
+          -78.635805,
+          35.700544
+        ],
+        [
+          -78.647427,
+          35.699989
+        ],
+        [
+          -78.647661,
+          35.700278
+        ],
+        [
+          -78.638567,
+          35.71898
+        ],
+        [
+          -78.638509,
+          35.719151
+        ],
+        [
+          -78.651,
+          35.731091
+        ],
+        [
+          -78.651018,
+          35.731266
+        ],
+        [
+          -78.68032,
+          35.742995
+        ],
+        [
+          -78.680353,
+          35.742998
+        ],
+        [
+          -78.686003,
+          35.717712
+        ],
+        [
+          -78.685992,
+          35.717627
+        ],
+        [
+          -78.70426,
+          35.715614
+        ],
+        [
+          -78.704309,
+          35.715619
+        ],
+        [
+          -78.732866,
+          35.745874
+        ],
+        [
+          -78.73288,
+          35.746038
+        ],
+        [
+          -78.736724,
+          35.727726
+        ],
+        [
+          -78.736827,
+          35.727499
+        ],
+        [
+          -78.759356,
+          35.725256
+        ],
+        [
+          -78.759442,
+          35.725271
+        ],
+        [
+          -78.752354,
+          35.745592
+        ],
+        [
+          -78.752378,
+          35.745781
+        ],
+        [
+          -78.779562,
+          35.739905
+        ],
+        [
+          -78.779907,
+          35.739692
+        ],
+        [
+          -78.782994,
+          35.757576
+        ],
+        [
+          -78.78306,
+          35.757919
+        ],
+        [
+          -78.816373,
+          35.746147
+        ],
+        [
+          -78.816424,
+          35.746122
+        ],
+        [
+          -78.792886,
+          35.737419
+        ],
+        [
+          -78.792612,
+          35.737344
+        ],
+        [
+          -78.822778,
+          35.723681
+        ],
+        [
+          -78.822973,
+          35.723632
+        ],
+        [
+          -78.802741,
+          35.701519
+        ],
+        [
+          -78.802629,
+          35.701185
+        ],
+        [
+          -78.809021,
+          35.679811
+        ],
+        [
+          -78.80903,
+          35.679645
+        ],
+        [
+          -78.833539,
+          35.683282
+        ],
+        [
+          -78.833611,
+          35.6833
+        ],
+        [
+          -78.85448,
+          35.766528
+        ],
+        [
+          -78.854565,
+          35.766604
+        ],
+        [
+          -78.936251,
+          35.771887
+        ],
+        [
+          -78.936271,
+          35.771898
+        ],
+        [
+          -78.906097,
+          35.867918
+        ],
+        [
+          -78.906071,
+          35.868096
+        ],
+        [
+          -79.081938,
+          35.86078
+        ],
+        [
+          -79.082036,
+          35.860776
+        ],
+        [
+          -79.249479,
+          35.876804
+        ],
+        [
+          -79.249538,
+          35.87681
+        ],
+        [
+          -79.264575,
+          35.907924
+        ]
+      ]
+    ]
+  }
+}

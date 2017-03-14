@@ -1,1 +1,265 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Florida","state_name_slug":"florida","state_code":"FL","state_code_slug":"fl","district":"8","at_large":false,"vacant":false,"bioguide":"P000599","thomas":"1915","govtrack":"412309","opensecrets":"N00029662","votesmart":"24280","fec":"H8FL15107","maplight":"791","wikidata":"Q862373","google_entity_id":"kg:/m/0281vxy","title":"representative","party":"republican","name":"Bill Posey","name_slug":"bill-posey","first_name":"Bill","middle_name":null,"last_name":null,"name_suffix":"Bill","goes_by":null,"pronunciation":"BILL POH-zee","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1947-12-18","entered_office":"2009-01-06","term_end":"2019-01-03","biography":"Bill Posey, a Representative from Florida; born in Washington, D.C., December 18, 1947; graduated from Cocoa High School, Cocoa, Fla., 1966; A.A., Brevard Junior College (now Brevard Community College), Cocoa, Fla., 1969; realtor; member of the Rockledge, Fla., city council, 1976-1986; member of the Florida state house of representatives, 1992-2000; member of the Florida state senate, 2000-2008; elected as a Republican to the One Hundred Eleventh and to the four succeeding Congresses (January 3, 2009-present).","phone":"202-225-3671","fax":"202-225-3516","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://posey.house.gov","contact_page":"https://posey.house.gov/forms/writeyourrep/","facebook_url":"https://www.facebook.com/Congressman-Bill-Posey-101464786703/","twitter_handle":"congbillposey","twitter_url":"https://twitter.com/congbillposey","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/bill-posey.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-81.161243,28.452907],[-81.126602,28.539388],[-81.125,28.539384],[-81.149144,28.561313],[-81.149213,28.561388],[-81.112183,28.561949],[-81.111859,28.561924],[-81.128989,28.612481],[-81.129006,28.612535],[-80.964634,28.612972],[-80.964466,28.612992],[-80.967806,28.786469],[-80.967895,28.790197],[-80.675482,28.790701],[-80.663461,28.790588],[-80.524169,28.610179],[-80.522973,28.608238],[-80.474848,28.484449],[-80.470554,28.472329],[-80.479335,28.428748],[-80.481209,28.425511],[-80.516415,28.393913],[-80.519428,28.391084],[-80.543868,28.271948],[-80.543999,28.271092],[-80.499773,28.07726],[-80.499773,28.077233],[-80.334999,27.76492],[-80.332526,27.761157],[-80.263751,27.557428],[-80.263543,27.556782],[-80.765712,27.558853],[-80.777166,27.558733],[-80.777871,27.63218],[-80.778047,27.643195],[-80.869325,27.64228],[-80.87315,27.642288],[-80.881551,27.822406],[-80.881566,27.822511],[-80.874779,27.822515],[-80.868881,27.822522],[-80.862881,28.347439],[-80.862893,28.347476],[-81.094623,28.348105],[-81.094674,28.348105],[-81.095016,28.451619],[-81.095017,28.451715],[-81.161243,28.452907]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Florida",
+    "state_name_slug": "florida",
+    "state_code": "FL",
+    "state_code_slug": "fl",
+    "district": "8",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "P000599",
+    "thomas": "1915",
+    "govtrack": "412309",
+    "opensecrets": "N00029662",
+    "votesmart": "24280",
+    "fec": "H8FL15107",
+    "maplight": "791",
+    "wikidata": "Q862373",
+    "google_entity_id": "kg:/m/0281vxy",
+    "title": "representative",
+    "party": "republican",
+    "name": "Bill Posey",
+    "name_slug": "bill-posey",
+    "first_name": "Bill",
+    "middle_name": null,
+    "last_name": "Posey",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "BILL POH-zee",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1947-12-18",
+    "entered_office": "2009-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Bill Posey, a Representative from Florida; born in Washington, D.C., December 18, 1947; graduated from Cocoa High School, Cocoa, Fla., 1966; A.A., Brevard Junior College (now Brevard Community College), Cocoa, Fla., 1969; realtor; member of the Rockledge, Fla., city council, 1976-1986; member of the Florida state house of representatives, 1992-2000; member of the Florida state senate, 2000-2008; elected as a Republican to the One Hundred Eleventh and to the four succeeding Congresses (January 3, 2009-present).",
+    "phone": "202-225-3671",
+    "fax": "202-225-3516",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://posey.house.gov",
+    "contact_page": "https://posey.house.gov/forms/writeyourrep/",
+    "facebook_url": "https://www.facebook.com/Congressman-Bill-Posey-101464786703/",
+    "twitter_handle": "congbillposey",
+    "twitter_url": "https://twitter.com/congbillposey",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/bill-posey.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -81.161243,
+          28.452907
+        ],
+        [
+          -81.126602,
+          28.539388
+        ],
+        [
+          -81.125,
+          28.539384
+        ],
+        [
+          -81.149144,
+          28.561313
+        ],
+        [
+          -81.149213,
+          28.561388
+        ],
+        [
+          -81.112183,
+          28.561949
+        ],
+        [
+          -81.111859,
+          28.561924
+        ],
+        [
+          -81.128989,
+          28.612481
+        ],
+        [
+          -81.129006,
+          28.612535
+        ],
+        [
+          -80.964634,
+          28.612972
+        ],
+        [
+          -80.964466,
+          28.612992
+        ],
+        [
+          -80.967806,
+          28.786469
+        ],
+        [
+          -80.967895,
+          28.790197
+        ],
+        [
+          -80.675482,
+          28.790701
+        ],
+        [
+          -80.663461,
+          28.790588
+        ],
+        [
+          -80.524169,
+          28.610179
+        ],
+        [
+          -80.522973,
+          28.608238
+        ],
+        [
+          -80.474848,
+          28.484449
+        ],
+        [
+          -80.470554,
+          28.472329
+        ],
+        [
+          -80.479335,
+          28.428748
+        ],
+        [
+          -80.481209,
+          28.425511
+        ],
+        [
+          -80.516415,
+          28.393913
+        ],
+        [
+          -80.519428,
+          28.391084
+        ],
+        [
+          -80.543868,
+          28.271948
+        ],
+        [
+          -80.543999,
+          28.271092
+        ],
+        [
+          -80.499773,
+          28.07726
+        ],
+        [
+          -80.499773,
+          28.077233
+        ],
+        [
+          -80.334999,
+          27.76492
+        ],
+        [
+          -80.332526,
+          27.761157
+        ],
+        [
+          -80.263751,
+          27.557428
+        ],
+        [
+          -80.263543,
+          27.556782
+        ],
+        [
+          -80.765712,
+          27.558853
+        ],
+        [
+          -80.777166,
+          27.558733
+        ],
+        [
+          -80.777871,
+          27.63218
+        ],
+        [
+          -80.778047,
+          27.643195
+        ],
+        [
+          -80.869325,
+          27.64228
+        ],
+        [
+          -80.87315,
+          27.642288
+        ],
+        [
+          -80.881551,
+          27.822406
+        ],
+        [
+          -80.881566,
+          27.822511
+        ],
+        [
+          -80.874779,
+          27.822515
+        ],
+        [
+          -80.868881,
+          27.822522
+        ],
+        [
+          -80.862881,
+          28.347439
+        ],
+        [
+          -80.862893,
+          28.347476
+        ],
+        [
+          -81.094623,
+          28.348105
+        ],
+        [
+          -81.094674,
+          28.348105
+        ],
+        [
+          -81.095016,
+          28.451619
+        ],
+        [
+          -81.095017,
+          28.451715
+        ],
+        [
+          -81.161243,
+          28.452907
+        ]
+      ]
+    ]
+  }
+}

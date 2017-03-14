@@ -1,1 +1,345 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Texas","state_name_slug":"texas","state_code":"TX","state_code_slug":"tx","district":"24","at_large":false,"vacant":false,"bioguide":"M001158","thomas":"1806","govtrack":"400656","opensecrets":"N00026710","votesmart":"5549","fec":"H4TX24094","maplight":"661","wikidata":"Q368184","google_entity_id":"kg:/m/04cvjb","title":"representative","party":"republican","name":"Kenny Marchant","name_slug":"kenny-marchant","first_name":"Kenny","middle_name":null,"last_name":null,"name_suffix":"Kenny","goes_by":null,"pronunciation":"KEN-ee MAR-tchunt","gender":"male","ethnicity":"white-american","religion":"nazarene-christian","openley_lgbtq":"no","date_of_birth":"1951-02-23","entered_office":"2005-01-04","term_end":"2019-01-03","biography":"Kenny Marchant, a Representative from Texas; born in Bonham, Fannin County, Tex., February 23, 1951; B.A., South Nazarene University, Bethany, Okla., 1974; attended Nazarene Theological Seminary, Kansas City, Mo., 1975-1976; real estate developer; member of the Carrollton, Tex., city council, 1980-1984; mayor of Carrollton, Tex., 1984-1987; member of the Texas state house of representatives, 1987-2004; elected as a Republican to the One Hundred Ninth and to the six succeeding Congresses (January 3, 2005-present).","phone":"202-225-6605","fax":"202.225.0074","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://marchant.house.gov","contact_page":"https://marchant.house.gov/contact/","facebook_url":"https://www.facebook.com/RepKennyMarchant/","twitter_handle":"RepKenMarchant","twitter_url":"https://twitter.com/RepKenMarchant","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/kenny-marchant.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-97.212734,32.78079],[-97.209334,32.833197],[-97.209331,32.833379],[-97.193334,32.833342],[-97.192756,32.833342],[-97.186423,32.8555],[-97.18614,32.855733],[-97.202868,32.967307],[-97.202857,32.968136],[-97.161661,32.9754],[-97.161307,32.975396],[-97.180491,32.989691],[-97.180907,32.989813],[-97.169054,32.989791],[-97.167261,32.989802],[-97.167017,33.01059],[-97.167017,33.010745],[-97.133345,32.99187],[-97.12959,32.990011],[-96.959531,32.98572],[-96.958661,32.985702],[-96.939873,32.998237],[-96.939782,32.9985],[-96.95154,33.006175],[-96.951575,33.006335],[-96.944393,33.033447],[-96.944236,33.033609],[-96.876177,33.071825],[-96.876074,33.071871],[-96.858083,33.057864],[-96.857861,33.057844],[-96.842497,33.086275],[-96.841849,33.086456],[-96.843955,32.988981],[-96.843979,32.987554],[-96.803597,32.987004],[-96.803375,32.987003],[-96.811422,32.910956],[-96.811182,32.910714],[-96.847604,32.904578],[-96.847648,32.90448],[-96.826801,32.859212],[-96.826929,32.859119],[-96.85455,32.860038],[-96.854671,32.860104],[-96.881777,32.910953],[-96.881765,32.911158],[-96.897331,32.908267],[-96.898114,32.908161],[-96.900393,32.865116],[-96.900535,32.864776],[-96.877767,32.858362],[-96.877747,32.858268],[-96.904963,32.838883],[-96.905054,32.838793],[-96.951553,32.836629],[-96.952153,32.83663],[-96.959072,32.822844],[-96.959076,32.822142],[-97.005775,32.837111],[-97.009553,32.837103],[-97.008083,32.816421],[-97.00797,32.816105],[-97.168498,32.802135],[-97.16907,32.802117],[-97.179058,32.780257],[-97.179249,32.779657],[-97.212734,32.78079]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Texas",
+    "state_name_slug": "texas",
+    "state_code": "TX",
+    "state_code_slug": "tx",
+    "district": "24",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "M001158",
+    "thomas": "1806",
+    "govtrack": "400656",
+    "opensecrets": "N00026710",
+    "votesmart": "5549",
+    "fec": "H4TX24094",
+    "maplight": "661",
+    "wikidata": "Q368184",
+    "google_entity_id": "kg:/m/04cvjb",
+    "title": "representative",
+    "party": "republican",
+    "name": "Kenny Marchant",
+    "name_slug": "kenny-marchant",
+    "first_name": "Kenny",
+    "middle_name": null,
+    "last_name": "Marchant",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "KEN-ee MAR-tchunt",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "nazarene-christian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1951-02-23",
+    "entered_office": "2005-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Kenny Marchant, a Representative from Texas; born in Bonham, Fannin County, Tex., February 23, 1951; B.A., South Nazarene University, Bethany, Okla., 1974; attended Nazarene Theological Seminary, Kansas City, Mo., 1975-1976; real estate developer; member of the Carrollton, Tex., city council, 1980-1984; mayor of Carrollton, Tex., 1984-1987; member of the Texas state house of representatives, 1987-2004; elected as a Republican to the One Hundred Ninth and to the six succeeding Congresses (January 3, 2005-present).",
+    "phone": "202-225-6605",
+    "fax": "202.225.0074",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://marchant.house.gov",
+    "contact_page": "https://marchant.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepKennyMarchant/",
+    "twitter_handle": "RepKenMarchant",
+    "twitter_url": "https://twitter.com/RepKenMarchant",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/kenny-marchant.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -97.212734,
+          32.78079
+        ],
+        [
+          -97.209334,
+          32.833197
+        ],
+        [
+          -97.209331,
+          32.833379
+        ],
+        [
+          -97.193334,
+          32.833342
+        ],
+        [
+          -97.192756,
+          32.833342
+        ],
+        [
+          -97.186423,
+          32.8555
+        ],
+        [
+          -97.18614,
+          32.855733
+        ],
+        [
+          -97.202868,
+          32.967307
+        ],
+        [
+          -97.202857,
+          32.968136
+        ],
+        [
+          -97.161661,
+          32.9754
+        ],
+        [
+          -97.161307,
+          32.975396
+        ],
+        [
+          -97.180491,
+          32.989691
+        ],
+        [
+          -97.180907,
+          32.989813
+        ],
+        [
+          -97.169054,
+          32.989791
+        ],
+        [
+          -97.167261,
+          32.989802
+        ],
+        [
+          -97.167017,
+          33.01059
+        ],
+        [
+          -97.167017,
+          33.010745
+        ],
+        [
+          -97.133345,
+          32.99187
+        ],
+        [
+          -97.12959,
+          32.990011
+        ],
+        [
+          -96.959531,
+          32.98572
+        ],
+        [
+          -96.958661,
+          32.985702
+        ],
+        [
+          -96.939873,
+          32.998237
+        ],
+        [
+          -96.939782,
+          32.9985
+        ],
+        [
+          -96.95154,
+          33.006175
+        ],
+        [
+          -96.951575,
+          33.006335
+        ],
+        [
+          -96.944393,
+          33.033447
+        ],
+        [
+          -96.944236,
+          33.033609
+        ],
+        [
+          -96.876177,
+          33.071825
+        ],
+        [
+          -96.876074,
+          33.071871
+        ],
+        [
+          -96.858083,
+          33.057864
+        ],
+        [
+          -96.857861,
+          33.057844
+        ],
+        [
+          -96.842497,
+          33.086275
+        ],
+        [
+          -96.841849,
+          33.086456
+        ],
+        [
+          -96.843955,
+          32.988981
+        ],
+        [
+          -96.843979,
+          32.987554
+        ],
+        [
+          -96.803597,
+          32.987004
+        ],
+        [
+          -96.803375,
+          32.987003
+        ],
+        [
+          -96.811422,
+          32.910956
+        ],
+        [
+          -96.811182,
+          32.910714
+        ],
+        [
+          -96.847604,
+          32.904578
+        ],
+        [
+          -96.847648,
+          32.90448
+        ],
+        [
+          -96.826801,
+          32.859212
+        ],
+        [
+          -96.826929,
+          32.859119
+        ],
+        [
+          -96.85455,
+          32.860038
+        ],
+        [
+          -96.854671,
+          32.860104
+        ],
+        [
+          -96.881777,
+          32.910953
+        ],
+        [
+          -96.881765,
+          32.911158
+        ],
+        [
+          -96.897331,
+          32.908267
+        ],
+        [
+          -96.898114,
+          32.908161
+        ],
+        [
+          -96.900393,
+          32.865116
+        ],
+        [
+          -96.900535,
+          32.864776
+        ],
+        [
+          -96.877767,
+          32.858362
+        ],
+        [
+          -96.877747,
+          32.858268
+        ],
+        [
+          -96.904963,
+          32.838883
+        ],
+        [
+          -96.905054,
+          32.838793
+        ],
+        [
+          -96.951553,
+          32.836629
+        ],
+        [
+          -96.952153,
+          32.83663
+        ],
+        [
+          -96.959072,
+          32.822844
+        ],
+        [
+          -96.959076,
+          32.822142
+        ],
+        [
+          -97.005775,
+          32.837111
+        ],
+        [
+          -97.009553,
+          32.837103
+        ],
+        [
+          -97.008083,
+          32.816421
+        ],
+        [
+          -97.00797,
+          32.816105
+        ],
+        [
+          -97.168498,
+          32.802135
+        ],
+        [
+          -97.16907,
+          32.802117
+        ],
+        [
+          -97.179058,
+          32.780257
+        ],
+        [
+          -97.179249,
+          32.779657
+        ],
+        [
+          -97.212734,
+          32.78079
+        ]
+      ]
+    ]
+  }
+}

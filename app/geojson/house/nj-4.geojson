@@ -1,1 +1,473 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"New Jersey","state_name_slug":"new-jersey","state_code":"NJ","state_code_slug":"nj","district":"4","at_large":false,"vacant":false,"bioguide":"S000522","thomas":"1071","govtrack":"400380","opensecrets":"N00009816","votesmart":"26952","fec":"H8NJ04014","maplight":"469","wikidata":"Q981167","google_entity_id":"kg:/m/033f4d","title":"representative","party":"republican","name":"Christopher Smith","name_slug":"christopher-smith","first_name":"Christopher","middle_name":null,"last_name":null,"name_suffix":"Christopher","goes_by":"Chris","pronunciation":"KRISS SMITH","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1953-03-04","entered_office":"1981-01-05","term_end":"2019-01-03","biography":"Christopher Smith, a Representative from New Jersey; born in Rahway, Union County, N.J., March 4, 1953; graduated from St. Maryâ€™s High School, Perth Amboy, N.J., 1971; B.S., Trenton State College, Ewing, N.J., 1975; attended Worcester College, Worcester, England, 1974; businessman, family sporting goods company; legislative agent for New Jersey state legislature, 1979; unsuccessful candidate for election to the Ninety-sixth Congress in 1978; elected as a Republican to the Ninety-seventh and to the eighteen succeeding Congresses (January 3, 1981-present); chair, Committee on Veterans Affairs (One Hundred Seventh through One Hundred Eighth Congresses).","phone":"202-225-3765","fax":"202-225-7768","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://chrissmith.house.gov","contact_page":"http://chrissmith.house.gov/contact/zipauth.htm","facebook_url":"https://www.facebook.com/RepChrisSmith/","twitter_handle":"RepChrisSmith","twitter_url":"https://twitter.com/RepChrisSmith","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/christopher-smith.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-74.752766,40.198351],[-74.73289,40.203023],[-74.732565,40.203391],[-74.738558,40.234489],[-74.738563,40.234644],[-74.706854,40.268724],[-74.706731,40.268773],[-74.666747,40.268634],[-74.666722,40.268628],[-74.650074,40.241986],[-74.649937,40.241759],[-74.599624,40.247253],[-74.599285,40.24683],[-74.579991,40.266165],[-74.57995,40.266207],[-74.536457,40.232746],[-74.535915,40.232801],[-74.5433,40.216729],[-74.543268,40.216692],[-74.487828,40.240198],[-74.481476,40.24289],[-74.487404,40.253071],[-74.487407,40.253129],[-74.393612,40.279442],[-74.393482,40.279514],[-74.328078,40.344069],[-74.327377,40.344599],[-74.282546,40.313218],[-74.282476,40.313183],[-74.290251,40.293669],[-74.290268,40.293622],[-74.224689,40.279926],[-74.222881,40.278071],[-74.225221,40.33938],[-74.225295,40.339457],[-74.197504,40.34537],[-74.197471,40.345374],[-74.209029,40.404808],[-74.209053,40.405025],[-74.135305,40.426974],[-74.135275,40.427111],[-74.130642,40.408002],[-74.130508,40.407913],[-74.086004,40.404458],[-74.085802,40.404383],[-74.076933,40.356346],[-74.076797,40.35608],[-74.007416,40.383393],[-74.006764,40.383519],[-73.978046,40.383469],[-73.977528,40.383546],[-73.975726,40.366486],[-73.975661,40.366057],[-74.002685,40.334089],[-74.002658,40.334039],[-74.051099,40.315162],[-74.051111,40.315119],[-74.02762,40.27322],[-74.027625,40.272741],[-74.00299,40.276409],[-74.002889,40.276407],[-73.99975,40.262211],[-73.999732,40.262132],[-74.027207,40.224926],[-74.027287,40.224872],[-74.024964,40.213247],[-74.024954,40.213153],[-73.998844,40.216753],[-73.998521,40.216712],[-74.02828,40.117415],[-74.007179,40.097715],[-74.03268,40.100415],[-74.033165,40.100022],[-74.04438,40.058016],[-74.044497,40.057545],[-74.072696,40.05973],[-74.073031,40.059836],[-74.107624,40.137015],[-74.107667,40.13701],[-74.1551,40.098722],[-74.155142,40.098639],[-74.158935,40.02449],[-74.159094,40.023918],[-74.265365,40.055591],[-74.265425,40.05557],[-74.232463,39.999016],[-74.232504,39.998965],[-74.267338,39.990775],[-74.267787,39.990671],[-74.429021,39.859436],[-74.434223,39.855157],[-74.587808,40.138194],[-74.587835,40.138254],[-74.621795,40.141123],[-74.621945,40.141148],[-74.700267,40.183629],[-74.700421,40.183651],[-74.721146,40.150032],[-74.721689,40.150158],[-74.752766,40.198351]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "New Jersey",
+    "state_name_slug": "new-jersey",
+    "state_code": "NJ",
+    "state_code_slug": "nj",
+    "district": "4",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "S000522",
+    "thomas": "1071",
+    "govtrack": "400380",
+    "opensecrets": "N00009816",
+    "votesmart": "26952",
+    "fec": "H8NJ04014",
+    "maplight": "469",
+    "wikidata": "Q981167",
+    "google_entity_id": "kg:/m/033f4d",
+    "title": "representative",
+    "party": "republican",
+    "name": "Christopher Smith",
+    "name_slug": "christopher-smith",
+    "first_name": "Christopher",
+    "middle_name": null,
+    "last_name": "Smith",
+    "name_suffix": null,
+    "goes_by": "Chris",
+    "pronunciation": "KRISS SMITH",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1953-03-04",
+    "entered_office": "1981-01-05",
+    "term_end": "2019-01-03",
+    "biography": "Christopher Smith, a Representative from New Jersey; born in Rahway, Union County, N.J., March 4, 1953; graduated from St. Maryâ€™s High School, Perth Amboy, N.J., 1971; B.S., Trenton State College, Ewing, N.J., 1975; attended Worcester College, Worcester, England, 1974; businessman, family sporting goods company; legislative agent for New Jersey state legislature, 1979; unsuccessful candidate for election to the Ninety-sixth Congress in 1978; elected as a Republican to the Ninety-seventh and to the eighteen succeeding Congresses (January 3, 1981-present); chair, Committee on Veterans Affairs (One Hundred Seventh through One Hundred Eighth Congresses).",
+    "phone": "202-225-3765",
+    "fax": "202-225-7768",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://chrissmith.house.gov",
+    "contact_page": "http://chrissmith.house.gov/contact/zipauth.htm",
+    "facebook_url": "https://www.facebook.com/RepChrisSmith/",
+    "twitter_handle": "RepChrisSmith",
+    "twitter_url": "https://twitter.com/RepChrisSmith",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/christopher-smith.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -74.752766,
+          40.198351
+        ],
+        [
+          -74.73289,
+          40.203023
+        ],
+        [
+          -74.732565,
+          40.203391
+        ],
+        [
+          -74.738558,
+          40.234489
+        ],
+        [
+          -74.738563,
+          40.234644
+        ],
+        [
+          -74.706854,
+          40.268724
+        ],
+        [
+          -74.706731,
+          40.268773
+        ],
+        [
+          -74.666747,
+          40.268634
+        ],
+        [
+          -74.666722,
+          40.268628
+        ],
+        [
+          -74.650074,
+          40.241986
+        ],
+        [
+          -74.649937,
+          40.241759
+        ],
+        [
+          -74.599624,
+          40.247253
+        ],
+        [
+          -74.599285,
+          40.24683
+        ],
+        [
+          -74.579991,
+          40.266165
+        ],
+        [
+          -74.57995,
+          40.266207
+        ],
+        [
+          -74.536457,
+          40.232746
+        ],
+        [
+          -74.535915,
+          40.232801
+        ],
+        [
+          -74.5433,
+          40.216729
+        ],
+        [
+          -74.543268,
+          40.216692
+        ],
+        [
+          -74.487828,
+          40.240198
+        ],
+        [
+          -74.481476,
+          40.24289
+        ],
+        [
+          -74.487404,
+          40.253071
+        ],
+        [
+          -74.487407,
+          40.253129
+        ],
+        [
+          -74.393612,
+          40.279442
+        ],
+        [
+          -74.393482,
+          40.279514
+        ],
+        [
+          -74.328078,
+          40.344069
+        ],
+        [
+          -74.327377,
+          40.344599
+        ],
+        [
+          -74.282546,
+          40.313218
+        ],
+        [
+          -74.282476,
+          40.313183
+        ],
+        [
+          -74.290251,
+          40.293669
+        ],
+        [
+          -74.290268,
+          40.293622
+        ],
+        [
+          -74.224689,
+          40.279926
+        ],
+        [
+          -74.222881,
+          40.278071
+        ],
+        [
+          -74.225221,
+          40.33938
+        ],
+        [
+          -74.225295,
+          40.339457
+        ],
+        [
+          -74.197504,
+          40.34537
+        ],
+        [
+          -74.197471,
+          40.345374
+        ],
+        [
+          -74.209029,
+          40.404808
+        ],
+        [
+          -74.209053,
+          40.405025
+        ],
+        [
+          -74.135305,
+          40.426974
+        ],
+        [
+          -74.135275,
+          40.427111
+        ],
+        [
+          -74.130642,
+          40.408002
+        ],
+        [
+          -74.130508,
+          40.407913
+        ],
+        [
+          -74.086004,
+          40.404458
+        ],
+        [
+          -74.085802,
+          40.404383
+        ],
+        [
+          -74.076933,
+          40.356346
+        ],
+        [
+          -74.076797,
+          40.35608
+        ],
+        [
+          -74.007416,
+          40.383393
+        ],
+        [
+          -74.006764,
+          40.383519
+        ],
+        [
+          -73.978046,
+          40.383469
+        ],
+        [
+          -73.977528,
+          40.383546
+        ],
+        [
+          -73.975726,
+          40.366486
+        ],
+        [
+          -73.975661,
+          40.366057
+        ],
+        [
+          -74.002685,
+          40.334089
+        ],
+        [
+          -74.002658,
+          40.334039
+        ],
+        [
+          -74.051099,
+          40.315162
+        ],
+        [
+          -74.051111,
+          40.315119
+        ],
+        [
+          -74.02762,
+          40.27322
+        ],
+        [
+          -74.027625,
+          40.272741
+        ],
+        [
+          -74.00299,
+          40.276409
+        ],
+        [
+          -74.002889,
+          40.276407
+        ],
+        [
+          -73.99975,
+          40.262211
+        ],
+        [
+          -73.999732,
+          40.262132
+        ],
+        [
+          -74.027207,
+          40.224926
+        ],
+        [
+          -74.027287,
+          40.224872
+        ],
+        [
+          -74.024964,
+          40.213247
+        ],
+        [
+          -74.024954,
+          40.213153
+        ],
+        [
+          -73.998844,
+          40.216753
+        ],
+        [
+          -73.998521,
+          40.216712
+        ],
+        [
+          -74.02828,
+          40.117415
+        ],
+        [
+          -74.007179,
+          40.097715
+        ],
+        [
+          -74.03268,
+          40.100415
+        ],
+        [
+          -74.033165,
+          40.100022
+        ],
+        [
+          -74.04438,
+          40.058016
+        ],
+        [
+          -74.044497,
+          40.057545
+        ],
+        [
+          -74.072696,
+          40.05973
+        ],
+        [
+          -74.073031,
+          40.059836
+        ],
+        [
+          -74.107624,
+          40.137015
+        ],
+        [
+          -74.107667,
+          40.13701
+        ],
+        [
+          -74.1551,
+          40.098722
+        ],
+        [
+          -74.155142,
+          40.098639
+        ],
+        [
+          -74.158935,
+          40.02449
+        ],
+        [
+          -74.159094,
+          40.023918
+        ],
+        [
+          -74.265365,
+          40.055591
+        ],
+        [
+          -74.265425,
+          40.05557
+        ],
+        [
+          -74.232463,
+          39.999016
+        ],
+        [
+          -74.232504,
+          39.998965
+        ],
+        [
+          -74.267338,
+          39.990775
+        ],
+        [
+          -74.267787,
+          39.990671
+        ],
+        [
+          -74.429021,
+          39.859436
+        ],
+        [
+          -74.434223,
+          39.855157
+        ],
+        [
+          -74.587808,
+          40.138194
+        ],
+        [
+          -74.587835,
+          40.138254
+        ],
+        [
+          -74.621795,
+          40.141123
+        ],
+        [
+          -74.621945,
+          40.141148
+        ],
+        [
+          -74.700267,
+          40.183629
+        ],
+        [
+          -74.700421,
+          40.183651
+        ],
+        [
+          -74.721146,
+          40.150032
+        ],
+        [
+          -74.721689,
+          40.150158
+        ],
+        [
+          -74.752766,
+          40.198351
+        ]
+      ]
+    ]
+  }
+}

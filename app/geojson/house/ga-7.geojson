@@ -1,1 +1,385 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Georgia","state_name_slug":"georgia","state_code":"GA","state_code_slug":"ga","district":"7","at_large":false,"vacant":false,"bioguide":"W000810","thomas":"2008","govtrack":"412416","opensecrets":"N00032416","votesmart":"122251","fec":"H0GA07133","maplight":"1428","wikidata":"Q2156128","google_entity_id":"kg:/m/0cz8ryh","title":"representative","party":"republican","name":"Robert Woodall","name_slug":"robert-woodall","first_name":"Robert","middle_name":null,"last_name":null,"name_suffix":"Robert","goes_by":"Rob","pronunciation":"RAHB WOOD-awl","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1970-02-11","entered_office":"2011-01-05","term_end":"2019-01-03","biography":"Robert Woodall, a Representative from Georgia; born in Athens, Clarke County, Ga., February 11, 1970; graduated from Marist School, Atlanta, Ga., 1988; B.A., Furman University, Greenville, S.C., 1992; J.D., University of Georgia, Athens, Ga., 1998; staff, United States Representative John Linder, 1994-2010; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).","phone":"202-225-4272","fax":"202-225-4696","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://woodall.house.gov","contact_page":"https://woodall.house.gov/contact/email","facebook_url":"https://www.facebook.com/RepRobWoodall","twitter_handle":"RepRobWoodall","twitter_url":"https://twitter.com/RepRobWoodall","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/robert-woodall.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-84.277063,33.957623],[-84.248951,33.997761],[-84.248316,33.998262],[-84.214063,34.0039],[-84.212919,34.0039],[-84.192551,33.991136],[-84.192282,33.991217],[-84.169719,34.027791],[-84.169166,34.028344],[-84.09771,34.050627],[-84.097693,34.050708],[-84.143442,34.055315],[-84.143617,34.055374],[-84.258902,34.109494],[-84.258918,34.109505],[-84.258689,34.234249],[-84.258689,34.237094],[-84.17086,34.236064],[-84.170501,34.23561],[-84.131942,34.25848],[-84.131561,34.258575],[-84.076118,34.257431],[-84.074867,34.258029],[-84.059593,34.243732],[-84.059532,34.243309],[-84.072753,34.23151],[-84.073013,34.229385],[-84.058212,34.206062],[-84.057563,34.204849],[-84.062545,34.168116],[-84.062841,34.167873],[-83.891763,34.106787],[-83.890097,34.106179],[-83.926462,34.063019],[-83.926873,34.062262],[-83.91057,34.035968],[-83.91024,34.035613],[-83.942922,34.005723],[-83.942994,34.005526],[-83.92249,33.992529],[-83.920907,33.990757],[-83.937727,33.979068],[-83.939187,33.978601],[-83.914177,33.934977],[-83.914128,33.934846],[-83.931564,33.912917],[-83.933103,33.912367],[-83.855588,33.885354],[-83.855066,33.88531],[-83.908381,33.842908],[-83.908465,33.842845],[-83.97488,33.860692],[-83.97545,33.860517],[-83.984434,33.875913],[-83.984478,33.87606],[-83.993724,33.856121],[-83.993733,33.856012],[-84.036446,33.853157],[-84.03674,33.853108],[-84.033014,33.867936],[-84.032032,33.868441],[-84.065691,33.878825],[-84.065838,33.878929],[-84.091297,33.869323],[-84.093564,33.868186],[-84.104287,33.883915],[-84.104576,33.884319],[-84.124563,33.8721],[-84.125433,33.871234],[-84.133447,33.884902],[-84.13363,33.885099],[-84.153598,33.877349],[-84.153909,33.877469],[-84.163628,33.913467],[-84.163777,33.91352],[-84.236642,33.90474],[-84.237113,33.904447],[-84.277063,33.957623]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Georgia",
+    "state_name_slug": "georgia",
+    "state_code": "GA",
+    "state_code_slug": "ga",
+    "district": "7",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "W000810",
+    "thomas": "2008",
+    "govtrack": "412416",
+    "opensecrets": "N00032416",
+    "votesmart": "122251",
+    "fec": "H0GA07133",
+    "maplight": "1428",
+    "wikidata": "Q2156128",
+    "google_entity_id": "kg:/m/0cz8ryh",
+    "title": "representative",
+    "party": "republican",
+    "name": "Robert Woodall",
+    "name_slug": "robert-woodall",
+    "first_name": "Robert",
+    "middle_name": null,
+    "last_name": "Woodall",
+    "name_suffix": null,
+    "goes_by": "Rob",
+    "pronunciation": "RAHB WOOD-awl",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1970-02-11",
+    "entered_office": "2011-01-05",
+    "term_end": "2019-01-03",
+    "biography": "Robert Woodall, a Representative from Georgia; born in Athens, Clarke County, Ga., February 11, 1970; graduated from Marist School, Atlanta, Ga., 1988; B.A., Furman University, Greenville, S.C., 1992; J.D., University of Georgia, Athens, Ga., 1998; staff, United States Representative John Linder, 1994-2010; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).",
+    "phone": "202-225-4272",
+    "fax": "202-225-4696",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://woodall.house.gov",
+    "contact_page": "https://woodall.house.gov/contact/email",
+    "facebook_url": "https://www.facebook.com/RepRobWoodall",
+    "twitter_handle": "RepRobWoodall",
+    "twitter_url": "https://twitter.com/RepRobWoodall",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/robert-woodall.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -84.277063,
+          33.957623
+        ],
+        [
+          -84.248951,
+          33.997761
+        ],
+        [
+          -84.248316,
+          33.998262
+        ],
+        [
+          -84.214063,
+          34.0039
+        ],
+        [
+          -84.212919,
+          34.0039
+        ],
+        [
+          -84.192551,
+          33.991136
+        ],
+        [
+          -84.192282,
+          33.991217
+        ],
+        [
+          -84.169719,
+          34.027791
+        ],
+        [
+          -84.169166,
+          34.028344
+        ],
+        [
+          -84.09771,
+          34.050627
+        ],
+        [
+          -84.097693,
+          34.050708
+        ],
+        [
+          -84.143442,
+          34.055315
+        ],
+        [
+          -84.143617,
+          34.055374
+        ],
+        [
+          -84.258902,
+          34.109494
+        ],
+        [
+          -84.258918,
+          34.109505
+        ],
+        [
+          -84.258689,
+          34.234249
+        ],
+        [
+          -84.258689,
+          34.237094
+        ],
+        [
+          -84.17086,
+          34.236064
+        ],
+        [
+          -84.170501,
+          34.23561
+        ],
+        [
+          -84.131942,
+          34.25848
+        ],
+        [
+          -84.131561,
+          34.258575
+        ],
+        [
+          -84.076118,
+          34.257431
+        ],
+        [
+          -84.074867,
+          34.258029
+        ],
+        [
+          -84.059593,
+          34.243732
+        ],
+        [
+          -84.059532,
+          34.243309
+        ],
+        [
+          -84.072753,
+          34.23151
+        ],
+        [
+          -84.073013,
+          34.229385
+        ],
+        [
+          -84.058212,
+          34.206062
+        ],
+        [
+          -84.057563,
+          34.204849
+        ],
+        [
+          -84.062545,
+          34.168116
+        ],
+        [
+          -84.062841,
+          34.167873
+        ],
+        [
+          -83.891763,
+          34.106787
+        ],
+        [
+          -83.890097,
+          34.106179
+        ],
+        [
+          -83.926462,
+          34.063019
+        ],
+        [
+          -83.926873,
+          34.062262
+        ],
+        [
+          -83.91057,
+          34.035968
+        ],
+        [
+          -83.91024,
+          34.035613
+        ],
+        [
+          -83.942922,
+          34.005723
+        ],
+        [
+          -83.942994,
+          34.005526
+        ],
+        [
+          -83.92249,
+          33.992529
+        ],
+        [
+          -83.920907,
+          33.990757
+        ],
+        [
+          -83.937727,
+          33.979068
+        ],
+        [
+          -83.939187,
+          33.978601
+        ],
+        [
+          -83.914177,
+          33.934977
+        ],
+        [
+          -83.914128,
+          33.934846
+        ],
+        [
+          -83.931564,
+          33.912917
+        ],
+        [
+          -83.933103,
+          33.912367
+        ],
+        [
+          -83.855588,
+          33.885354
+        ],
+        [
+          -83.855066,
+          33.88531
+        ],
+        [
+          -83.908381,
+          33.842908
+        ],
+        [
+          -83.908465,
+          33.842845
+        ],
+        [
+          -83.97488,
+          33.860692
+        ],
+        [
+          -83.97545,
+          33.860517
+        ],
+        [
+          -83.984434,
+          33.875913
+        ],
+        [
+          -83.984478,
+          33.87606
+        ],
+        [
+          -83.993724,
+          33.856121
+        ],
+        [
+          -83.993733,
+          33.856012
+        ],
+        [
+          -84.036446,
+          33.853157
+        ],
+        [
+          -84.03674,
+          33.853108
+        ],
+        [
+          -84.033014,
+          33.867936
+        ],
+        [
+          -84.032032,
+          33.868441
+        ],
+        [
+          -84.065691,
+          33.878825
+        ],
+        [
+          -84.065838,
+          33.878929
+        ],
+        [
+          -84.091297,
+          33.869323
+        ],
+        [
+          -84.093564,
+          33.868186
+        ],
+        [
+          -84.104287,
+          33.883915
+        ],
+        [
+          -84.104576,
+          33.884319
+        ],
+        [
+          -84.124563,
+          33.8721
+        ],
+        [
+          -84.125433,
+          33.871234
+        ],
+        [
+          -84.133447,
+          33.884902
+        ],
+        [
+          -84.13363,
+          33.885099
+        ],
+        [
+          -84.153598,
+          33.877349
+        ],
+        [
+          -84.153909,
+          33.877469
+        ],
+        [
+          -84.163628,
+          33.913467
+        ],
+        [
+          -84.163777,
+          33.91352
+        ],
+        [
+          -84.236642,
+          33.90474
+        ],
+        [
+          -84.237113,
+          33.904447
+        ],
+        [
+          -84.277063,
+          33.957623
+        ]
+      ]
+    ]
+  }
+}

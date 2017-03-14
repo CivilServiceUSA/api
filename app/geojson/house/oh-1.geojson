@@ -1,1 +1,409 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Ohio","state_name_slug":"ohio","state_code":"OH","state_code_slug":"oh","district":"1","at_large":false,"vacant":false,"bioguide":"C000266","thomas":"186","govtrack":"400071","opensecrets":"N00003689","votesmart":"21790","fec":"H8OH01043","maplight":"188","wikidata":"Q506694","google_entity_id":"kg:/m/0343vk","title":"representative","party":"republican","name":"Steve Chabot","name_slug":"steve-chabot","first_name":"Steve","middle_name":null,"last_name":null,"name_suffix":"Steve","goes_by":null,"pronunciation":"STEEV SHA-buht","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1953-01-22","entered_office":"1995-01-04","term_end":"2019-01-03","biography":"Steve Chabot, a Representative from Ohio; born in Cincinnati, Hamilton County, Ohio, January 22, 1953; graduated from LaSalle High School, Cincinnati, Ohio; B.A., College of William and Mary, Williamsburg, Va., 1975; J.D., Salmon P. Chase College of Law, Highland Heights, Ky., 1978; teacher, 1975-1976; member of the Cincinnati, Ohio, city council, 1985-1990; Hamilton County, Ohio, commissioner, 1990-1994; elected as a Republican to the One Hundred Fourth and to the six succeeding Congresses (January 3, 1995-January 3, 2009); one of the managers appointed by the House of Representatives in 1998 to conduct the impeachment proceedings of President William Jefferson Clinton; unsuccessful candidate for reelection to the One Hundred Eleventh Congress in 2008; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present); chair, Committee on Small Business (One Hundred Fourteenth and One Hundred Fifteenth Congresses).","phone":"202-225-2216","fax":"202-225-3012","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://chabot.house.gov","contact_page":"http://chabot.house.gov/contact/","facebook_url":"https://www.facebook.com/RepSteveChabot","twitter_handle":"RepSteveChabot","twitter_url":"https://twitter.com/RepSteveChabot","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/steve-chabot.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-84.820293,39.156514],[-84.819391,39.304802],[-84.81945,39.305153],[-84.630364,39.312055],[-84.630047,39.312056],[-84.353324,39.292285],[-84.353209,39.292287],[-84.332046,39.548531],[-84.332038,39.548554],[-84.364348,39.543492],[-84.364736,39.543843],[-84.365213,39.588558],[-84.365232,39.589493],[-83.977145,39.569175],[-83.977005,39.569169],[-84.006779,39.255103],[-84.006782,39.255068],[-84.258893,39.270769],[-84.259431,39.270796],[-84.300545,39.287877],[-84.301808,39.288937],[-84.303253,39.25409],[-84.303182,39.253959],[-84.281475,39.255831],[-84.281338,39.254789],[-84.320028,39.222782],[-84.319986,39.22262],[-84.276198,39.201727],[-84.276286,39.200927],[-84.343643,39.139959],[-84.344643,39.139959],[-84.377046,39.158337],[-84.378375,39.158279],[-84.34514,39.194061],[-84.34444,39.19446],[-84.372614,39.23551],[-84.37274,39.236062],[-84.357554,39.276093],[-84.357337,39.277912],[-84.387768,39.275312],[-84.388141,39.275359],[-84.395049,39.249824],[-84.395194,39.248118],[-84.422742,39.23366],[-84.422942,39.23166],[-84.464244,39.235859],[-84.464797,39.23602],[-84.45062,39.263243],[-84.450622,39.263516],[-84.478143,39.272464],[-84.478014,39.273856],[-84.56422,39.279598],[-84.564245,39.279659],[-84.573767,39.210723],[-84.573749,39.210623],[-84.531059,39.216807],[-84.530823,39.216805],[-84.535811,39.202699],[-84.535787,39.202305],[-84.497567,39.199268],[-84.493941,39.199059],[-84.456374,39.211322],[-84.455429,39.211273],[-84.454879,39.178232],[-84.454893,39.178149],[-84.473695,39.161817],[-84.473769,39.161639],[-84.460696,39.142488],[-84.460703,39.142435],[-84.499697,39.118152],[-84.499964,39.118193],[-84.503117,39.096476],[-84.504085,39.096006],[-84.551063,39.099418],[-84.551359,39.09936],[-84.604376,39.073642],[-84.605336,39.073467],[-84.68553,39.100511],[-84.686073,39.100802],[-84.74179,39.147371],[-84.742785,39.147557],[-84.819977,39.10555],[-84.820157,39.105489],[-84.820293,39.156514]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Ohio",
+    "state_name_slug": "ohio",
+    "state_code": "OH",
+    "state_code_slug": "oh",
+    "district": "1",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "C000266",
+    "thomas": "186",
+    "govtrack": "400071",
+    "opensecrets": "N00003689",
+    "votesmart": "21790",
+    "fec": "H8OH01043",
+    "maplight": "188",
+    "wikidata": "Q506694",
+    "google_entity_id": "kg:/m/0343vk",
+    "title": "representative",
+    "party": "republican",
+    "name": "Steve Chabot",
+    "name_slug": "steve-chabot",
+    "first_name": "Steve",
+    "middle_name": null,
+    "last_name": "Chabot",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "STEEV SHA-buht",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1953-01-22",
+    "entered_office": "1995-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Steve Chabot, a Representative from Ohio; born in Cincinnati, Hamilton County, Ohio, January 22, 1953; graduated from LaSalle High School, Cincinnati, Ohio; B.A., College of William and Mary, Williamsburg, Va., 1975; J.D., Salmon P. Chase College of Law, Highland Heights, Ky., 1978; teacher, 1975-1976; member of the Cincinnati, Ohio, city council, 1985-1990; Hamilton County, Ohio, commissioner, 1990-1994; elected as a Republican to the One Hundred Fourth and to the six succeeding Congresses (January 3, 1995-January 3, 2009); one of the managers appointed by the House of Representatives in 1998 to conduct the impeachment proceedings of President William Jefferson Clinton; unsuccessful candidate for reelection to the One Hundred Eleventh Congress in 2008; elected as a Republican to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present); chair, Committee on Small Business (One Hundred Fourteenth and One Hundred Fifteenth Congresses).",
+    "phone": "202-225-2216",
+    "fax": "202-225-3012",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://chabot.house.gov",
+    "contact_page": "http://chabot.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepSteveChabot",
+    "twitter_handle": "RepSteveChabot",
+    "twitter_url": "https://twitter.com/RepSteveChabot",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/steve-chabot.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -84.820293,
+          39.156514
+        ],
+        [
+          -84.819391,
+          39.304802
+        ],
+        [
+          -84.81945,
+          39.305153
+        ],
+        [
+          -84.630364,
+          39.312055
+        ],
+        [
+          -84.630047,
+          39.312056
+        ],
+        [
+          -84.353324,
+          39.292285
+        ],
+        [
+          -84.353209,
+          39.292287
+        ],
+        [
+          -84.332046,
+          39.548531
+        ],
+        [
+          -84.332038,
+          39.548554
+        ],
+        [
+          -84.364348,
+          39.543492
+        ],
+        [
+          -84.364736,
+          39.543843
+        ],
+        [
+          -84.365213,
+          39.588558
+        ],
+        [
+          -84.365232,
+          39.589493
+        ],
+        [
+          -83.977145,
+          39.569175
+        ],
+        [
+          -83.977005,
+          39.569169
+        ],
+        [
+          -84.006779,
+          39.255103
+        ],
+        [
+          -84.006782,
+          39.255068
+        ],
+        [
+          -84.258893,
+          39.270769
+        ],
+        [
+          -84.259431,
+          39.270796
+        ],
+        [
+          -84.300545,
+          39.287877
+        ],
+        [
+          -84.301808,
+          39.288937
+        ],
+        [
+          -84.303253,
+          39.25409
+        ],
+        [
+          -84.303182,
+          39.253959
+        ],
+        [
+          -84.281475,
+          39.255831
+        ],
+        [
+          -84.281338,
+          39.254789
+        ],
+        [
+          -84.320028,
+          39.222782
+        ],
+        [
+          -84.319986,
+          39.22262
+        ],
+        [
+          -84.276198,
+          39.201727
+        ],
+        [
+          -84.276286,
+          39.200927
+        ],
+        [
+          -84.343643,
+          39.139959
+        ],
+        [
+          -84.344643,
+          39.139959
+        ],
+        [
+          -84.377046,
+          39.158337
+        ],
+        [
+          -84.378375,
+          39.158279
+        ],
+        [
+          -84.34514,
+          39.194061
+        ],
+        [
+          -84.34444,
+          39.19446
+        ],
+        [
+          -84.372614,
+          39.23551
+        ],
+        [
+          -84.37274,
+          39.236062
+        ],
+        [
+          -84.357554,
+          39.276093
+        ],
+        [
+          -84.357337,
+          39.277912
+        ],
+        [
+          -84.387768,
+          39.275312
+        ],
+        [
+          -84.388141,
+          39.275359
+        ],
+        [
+          -84.395049,
+          39.249824
+        ],
+        [
+          -84.395194,
+          39.248118
+        ],
+        [
+          -84.422742,
+          39.23366
+        ],
+        [
+          -84.422942,
+          39.23166
+        ],
+        [
+          -84.464244,
+          39.235859
+        ],
+        [
+          -84.464797,
+          39.23602
+        ],
+        [
+          -84.45062,
+          39.263243
+        ],
+        [
+          -84.450622,
+          39.263516
+        ],
+        [
+          -84.478143,
+          39.272464
+        ],
+        [
+          -84.478014,
+          39.273856
+        ],
+        [
+          -84.56422,
+          39.279598
+        ],
+        [
+          -84.564245,
+          39.279659
+        ],
+        [
+          -84.573767,
+          39.210723
+        ],
+        [
+          -84.573749,
+          39.210623
+        ],
+        [
+          -84.531059,
+          39.216807
+        ],
+        [
+          -84.530823,
+          39.216805
+        ],
+        [
+          -84.535811,
+          39.202699
+        ],
+        [
+          -84.535787,
+          39.202305
+        ],
+        [
+          -84.497567,
+          39.199268
+        ],
+        [
+          -84.493941,
+          39.199059
+        ],
+        [
+          -84.456374,
+          39.211322
+        ],
+        [
+          -84.455429,
+          39.211273
+        ],
+        [
+          -84.454879,
+          39.178232
+        ],
+        [
+          -84.454893,
+          39.178149
+        ],
+        [
+          -84.473695,
+          39.161817
+        ],
+        [
+          -84.473769,
+          39.161639
+        ],
+        [
+          -84.460696,
+          39.142488
+        ],
+        [
+          -84.460703,
+          39.142435
+        ],
+        [
+          -84.499697,
+          39.118152
+        ],
+        [
+          -84.499964,
+          39.118193
+        ],
+        [
+          -84.503117,
+          39.096476
+        ],
+        [
+          -84.504085,
+          39.096006
+        ],
+        [
+          -84.551063,
+          39.099418
+        ],
+        [
+          -84.551359,
+          39.09936
+        ],
+        [
+          -84.604376,
+          39.073642
+        ],
+        [
+          -84.605336,
+          39.073467
+        ],
+        [
+          -84.68553,
+          39.100511
+        ],
+        [
+          -84.686073,
+          39.100802
+        ],
+        [
+          -84.74179,
+          39.147371
+        ],
+        [
+          -84.742785,
+          39.147557
+        ],
+        [
+          -84.819977,
+          39.10555
+        ],
+        [
+          -84.820157,
+          39.105489
+        ],
+        [
+          -84.820293,
+          39.156514
+        ]
+      ]
+    ]
+  }
+}

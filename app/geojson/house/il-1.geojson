@@ -1,1 +1,457 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Illinois","state_name_slug":"illinois","state_code":"IL","state_code_slug":"il","district":"1","at_large":false,"vacant":false,"bioguide":"R000515","thomas":"1003","govtrack":"400350","opensecrets":"N00004887","votesmart":"26831","fec":"H2IL01042","maplight":"443","wikidata":"Q888599","google_entity_id":"kg:/m/0255x3","title":"representative","party":"democrat","name":"Bobby Rush","name_slug":"bobby-rush","first_name":"Bobby","middle_name":"L.","last_name":null,"name_suffix":"Bobby","goes_by":null,"pronunciation":"BAH-bee RUHSH","gender":"male","ethnicity":"african-american","religion":"baptist","openley_lgbtq":"no","date_of_birth":"1946-11-23","entered_office":"1993-01-05","term_end":"2019-01-03","biography":"Bobby Rush, a Representative from Illinois; born in Albany, Dougherty County, Ga., November 23, 1946; attended Marshall High School, Marshall, Ill.; B.A., Roosevelt University, Chicago, Ill., 1974; M.A., University of Illinois, Chicago, Ill., 1994; M.A., McCormick Theological Seminary, Chicago, Ill., 1998; United States Army, 1963-1968; insurance agent; alderman, Chicago, Ill., city council, 1983-1993; deputy chairman, Illinois Democratic Party, 1990; unsuccessful candidate for mayor of Chicago, Ill., 1999; minister; elected as a Democrat to the One Hundred Third and to the twelve succeeding Congresses (January 3, 1993-present).","phone":"202-225-4372","fax":"202-226-0333","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://rush.house.gov","contact_page":"https://rush.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/congressmanbobbyrush/","twitter_handle":"RepBobbyRush","twitter_url":"https://twitter.com/RepBobbyRush","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/bobby-rush.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-88.136331,41.42298],[-88.025421,41.438534],[-88.021164,41.438648],[-88.022326,41.475679],[-88.022539,41.482061],[-87.969966,41.497525],[-87.967657,41.497558],[-87.934102,41.541215],[-87.933914,41.541594],[-87.943041,41.555755],[-87.943051,41.556029],[-87.813723,41.558271],[-87.812262,41.558291],[-87.807982,41.594729],[-87.807983,41.594813],[-87.846789,41.594182],[-87.847662,41.594169],[-87.863187,41.622543],[-87.863201,41.622997],[-87.82987,41.652554],[-87.829884,41.652804],[-87.800929,41.653399],[-87.800284,41.653413],[-87.797098,41.680653],[-87.797104,41.680813],[-87.77339,41.688925],[-87.773444,41.690347],[-87.710833,41.69141],[-87.710579,41.691415],[-87.718541,41.677056],[-87.718523,41.676692],[-87.686586,41.677202],[-87.686363,41.677205],[-87.672421,41.734901],[-87.67309,41.73565],[-87.678266,41.715534],[-87.678211,41.713709],[-87.71089,41.706079],[-87.711123,41.706079],[-87.728283,41.716678],[-87.728526,41.716674],[-87.721435,41.734848],[-87.721436,41.734862],[-87.740968,41.737995],[-87.740975,41.738186],[-87.721922,41.742174],[-87.721679,41.742179],[-87.712722,41.77134],[-87.712724,41.771522],[-87.654358,41.765052],[-87.654116,41.765057],[-87.659486,41.784633],[-87.659496,41.784998],[-87.616212,41.791167],[-87.615889,41.791172],[-87.626254,41.845147],[-87.626265,41.845598],[-87.606613,41.811717],[-87.606605,41.811354],[-87.580262,41.804011],[-87.580031,41.803865],[-87.586141,41.758946],[-87.586136,41.758764],[-87.573118,41.730158],[-87.573109,41.729794],[-87.585012,41.715886],[-87.584987,41.715153],[-87.639142,41.714251],[-87.639385,41.714249],[-87.642388,41.69272],[-87.642378,41.692356],[-87.622664,41.678207],[-87.622658,41.678026],[-87.661404,41.651476],[-87.661428,41.651465],[-87.641455,41.630208],[-87.641451,41.629846],[-87.670318,41.631382],[-87.670507,41.631253],[-87.706608,41.588926],[-87.706586,41.586212],[-87.74014,41.577645],[-87.740243,41.577528],[-87.733136,41.558262],[-87.733136,41.558221],[-87.771188,41.553468],[-87.771203,41.553462],[-87.771079,41.52816],[-87.771079,41.528128],[-87.790342,41.528039],[-87.790408,41.528041],[-87.786223,41.385989],[-87.786184,41.383082],[-88.134328,41.378253],[-88.134658,41.378231],[-88.136331,41.42298]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Illinois",
+    "state_name_slug": "illinois",
+    "state_code": "IL",
+    "state_code_slug": "il",
+    "district": "1",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "R000515",
+    "thomas": "1003",
+    "govtrack": "400350",
+    "opensecrets": "N00004887",
+    "votesmart": "26831",
+    "fec": "H2IL01042",
+    "maplight": "443",
+    "wikidata": "Q888599",
+    "google_entity_id": "kg:/m/0255x3",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Bobby Rush",
+    "name_slug": "bobby-rush",
+    "first_name": "Bobby",
+    "middle_name": "L.",
+    "last_name": "Rush",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "BAH-bee RUHSH",
+    "gender": "male",
+    "ethnicity": "african-american",
+    "religion": "baptist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1946-11-23",
+    "entered_office": "1993-01-05",
+    "term_end": "2019-01-03",
+    "biography": "Bobby Rush, a Representative from Illinois; born in Albany, Dougherty County, Ga., November 23, 1946; attended Marshall High School, Marshall, Ill.; B.A., Roosevelt University, Chicago, Ill., 1974; M.A., University of Illinois, Chicago, Ill., 1994; M.A., McCormick Theological Seminary, Chicago, Ill., 1998; United States Army, 1963-1968; insurance agent; alderman, Chicago, Ill., city council, 1983-1993; deputy chairman, Illinois Democratic Party, 1990; unsuccessful candidate for mayor of Chicago, Ill., 1999; minister; elected as a Democrat to the One Hundred Third and to the twelve succeeding Congresses (January 3, 1993-present).",
+    "phone": "202-225-4372",
+    "fax": "202-226-0333",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://rush.house.gov",
+    "contact_page": "https://rush.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/congressmanbobbyrush/",
+    "twitter_handle": "RepBobbyRush",
+    "twitter_url": "https://twitter.com/RepBobbyRush",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/bobby-rush.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -88.136331,
+          41.42298
+        ],
+        [
+          -88.025421,
+          41.438534
+        ],
+        [
+          -88.021164,
+          41.438648
+        ],
+        [
+          -88.022326,
+          41.475679
+        ],
+        [
+          -88.022539,
+          41.482061
+        ],
+        [
+          -87.969966,
+          41.497525
+        ],
+        [
+          -87.967657,
+          41.497558
+        ],
+        [
+          -87.934102,
+          41.541215
+        ],
+        [
+          -87.933914,
+          41.541594
+        ],
+        [
+          -87.943041,
+          41.555755
+        ],
+        [
+          -87.943051,
+          41.556029
+        ],
+        [
+          -87.813723,
+          41.558271
+        ],
+        [
+          -87.812262,
+          41.558291
+        ],
+        [
+          -87.807982,
+          41.594729
+        ],
+        [
+          -87.807983,
+          41.594813
+        ],
+        [
+          -87.846789,
+          41.594182
+        ],
+        [
+          -87.847662,
+          41.594169
+        ],
+        [
+          -87.863187,
+          41.622543
+        ],
+        [
+          -87.863201,
+          41.622997
+        ],
+        [
+          -87.82987,
+          41.652554
+        ],
+        [
+          -87.829884,
+          41.652804
+        ],
+        [
+          -87.800929,
+          41.653399
+        ],
+        [
+          -87.800284,
+          41.653413
+        ],
+        [
+          -87.797098,
+          41.680653
+        ],
+        [
+          -87.797104,
+          41.680813
+        ],
+        [
+          -87.77339,
+          41.688925
+        ],
+        [
+          -87.773444,
+          41.690347
+        ],
+        [
+          -87.710833,
+          41.69141
+        ],
+        [
+          -87.710579,
+          41.691415
+        ],
+        [
+          -87.718541,
+          41.677056
+        ],
+        [
+          -87.718523,
+          41.676692
+        ],
+        [
+          -87.686586,
+          41.677202
+        ],
+        [
+          -87.686363,
+          41.677205
+        ],
+        [
+          -87.672421,
+          41.734901
+        ],
+        [
+          -87.67309,
+          41.73565
+        ],
+        [
+          -87.678266,
+          41.715534
+        ],
+        [
+          -87.678211,
+          41.713709
+        ],
+        [
+          -87.71089,
+          41.706079
+        ],
+        [
+          -87.711123,
+          41.706079
+        ],
+        [
+          -87.728283,
+          41.716678
+        ],
+        [
+          -87.728526,
+          41.716674
+        ],
+        [
+          -87.721435,
+          41.734848
+        ],
+        [
+          -87.721436,
+          41.734862
+        ],
+        [
+          -87.740968,
+          41.737995
+        ],
+        [
+          -87.740975,
+          41.738186
+        ],
+        [
+          -87.721922,
+          41.742174
+        ],
+        [
+          -87.721679,
+          41.742179
+        ],
+        [
+          -87.712722,
+          41.77134
+        ],
+        [
+          -87.712724,
+          41.771522
+        ],
+        [
+          -87.654358,
+          41.765052
+        ],
+        [
+          -87.654116,
+          41.765057
+        ],
+        [
+          -87.659486,
+          41.784633
+        ],
+        [
+          -87.659496,
+          41.784998
+        ],
+        [
+          -87.616212,
+          41.791167
+        ],
+        [
+          -87.615889,
+          41.791172
+        ],
+        [
+          -87.626254,
+          41.845147
+        ],
+        [
+          -87.626265,
+          41.845598
+        ],
+        [
+          -87.606613,
+          41.811717
+        ],
+        [
+          -87.606605,
+          41.811354
+        ],
+        [
+          -87.580262,
+          41.804011
+        ],
+        [
+          -87.580031,
+          41.803865
+        ],
+        [
+          -87.586141,
+          41.758946
+        ],
+        [
+          -87.586136,
+          41.758764
+        ],
+        [
+          -87.573118,
+          41.730158
+        ],
+        [
+          -87.573109,
+          41.729794
+        ],
+        [
+          -87.585012,
+          41.715886
+        ],
+        [
+          -87.584987,
+          41.715153
+        ],
+        [
+          -87.639142,
+          41.714251
+        ],
+        [
+          -87.639385,
+          41.714249
+        ],
+        [
+          -87.642388,
+          41.69272
+        ],
+        [
+          -87.642378,
+          41.692356
+        ],
+        [
+          -87.622664,
+          41.678207
+        ],
+        [
+          -87.622658,
+          41.678026
+        ],
+        [
+          -87.661404,
+          41.651476
+        ],
+        [
+          -87.661428,
+          41.651465
+        ],
+        [
+          -87.641455,
+          41.630208
+        ],
+        [
+          -87.641451,
+          41.629846
+        ],
+        [
+          -87.670318,
+          41.631382
+        ],
+        [
+          -87.670507,
+          41.631253
+        ],
+        [
+          -87.706608,
+          41.588926
+        ],
+        [
+          -87.706586,
+          41.586212
+        ],
+        [
+          -87.74014,
+          41.577645
+        ],
+        [
+          -87.740243,
+          41.577528
+        ],
+        [
+          -87.733136,
+          41.558262
+        ],
+        [
+          -87.733136,
+          41.558221
+        ],
+        [
+          -87.771188,
+          41.553468
+        ],
+        [
+          -87.771203,
+          41.553462
+        ],
+        [
+          -87.771079,
+          41.52816
+        ],
+        [
+          -87.771079,
+          41.528128
+        ],
+        [
+          -87.790342,
+          41.528039
+        ],
+        [
+          -87.790408,
+          41.528041
+        ],
+        [
+          -87.786223,
+          41.385989
+        ],
+        [
+          -87.786184,
+          41.383082
+        ],
+        [
+          -88.134328,
+          41.378253
+        ],
+        [
+          -88.134658,
+          41.378231
+        ],
+        [
+          -88.136331,
+          41.42298
+        ]
+      ]
+    ]
+  }
+}

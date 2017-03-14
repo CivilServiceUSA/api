@@ -1,1 +1,417 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"New York","state_name_slug":"new-york","state_code":"NY","state_code_slug":"ny","district":"18","at_large":false,"vacant":false,"bioguide":"M001185","thomas":"2150","govtrack":"412562","opensecrets":"N00034277","votesmart":"139760","fec":"H2NY22139","maplight":"1786","wikidata":"Q2262244","google_entity_id":"kg:/m/0b697g","title":"representative","party":"democrat","name":"Sean Patrick Maloney","name_slug":"sean-patrick-maloney","first_name":"Sean Patrick","middle_name":null,"last_name":null,"name_suffix":"Sean Patrick","goes_by":null,"pronunciation":"shawn PAT-chrik muh-LOH-nee","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"gay","date_of_birth":"1966-07-30","entered_office":"2013-01-03","term_end":"2019-01-03","biography":"Sean Patrick Maloney, a Representative from New York; born in Sherbrooke, Quebec, Canada, July 30, 1966; attended Georgetown University, Washington, D.C., 1986; B.A., University of Virginia, Charlottesville, Va., 1988; J.D., University of Virginia, Charlottesville, Va., 1992; campaign aide; lawyer, private practice; businessman; staff secretary to President William J. Clinton, 1997-2000; unsuccessful candidate for nomination for New York attorney general in 2006; first deputy secretary to New York Governor Eliot Spitzer, 2007-2008; elected as a Democrat to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).","phone":"202-225-5441","fax":"202-225-3289","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://seanmaloney.house.gov","contact_page":"https://seanmaloney.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/repseanmaloney/about/","twitter_handle":"RepSeanMaloney","twitter_url":"https://twitter.com/RepSeanMaloney","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/sean-patrick-maloney.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-74.762623,41.447703],[-74.752405,41.493707],[-74.752399,41.493743],[-74.476113,41.503955],[-74.475619,41.503953],[-74.418302,41.569651],[-74.418145,41.569769],[-74.264292,41.632629],[-74.264093,41.632738],[-74.263359,41.632597],[-74.250186,41.629324],[-74.251413,41.608666],[-74.251601,41.605374],[-74.187731,41.590864],[-74.187505,41.590793],[-74.128536,41.582955],[-74.126393,41.582544],[-74.133465,41.611433],[-74.134511,41.615695],[-74.089928,41.598646],[-74.089896,41.598602],[-74.069193,41.605596],[-74.068083,41.606001],[-74.053752,41.580641],[-74.053685,41.58061],[-73.959119,41.589345],[-73.953307,41.589977],[-73.941081,41.732693],[-73.941081,41.735993],[-73.896336,41.748994],[-73.896051,41.748994],[-73.897125,41.736692],[-73.897166,41.736634],[-73.878752,41.736191],[-73.878726,41.736122],[-73.889837,41.726618],[-73.890654,41.725986],[-73.834457,41.719687],[-73.833804,41.719786],[-73.833316,41.651569],[-73.834021,41.647618],[-73.814532,41.643766],[-73.814256,41.643734],[-73.83031,41.636554],[-73.830379,41.636514],[-73.76518,41.626384],[-73.765079,41.626365],[-73.709901,41.54871],[-73.713776,41.54427],[-73.674291,41.515766],[-73.673285,41.514701],[-73.535524,41.527091],[-73.530067,41.527194],[-73.549879,41.301522],[-73.550962,41.295421],[-73.483925,41.214312],[-73.482695,41.212772],[-73.695005,41.115773],[-73.695958,41.115304],[-73.693684,41.168044],[-73.693686,41.16869],[-73.713268,41.182883],[-73.716855,41.186595],[-73.713619,41.219703],[-73.713537,41.219844],[-73.769525,41.205581],[-73.769643,41.205594],[-73.761106,41.236031],[-73.760369,41.236411],[-73.779212,41.33742],[-73.780007,41.342492],[-73.982584,41.321693],[-73.981384,41.324693],[-74.231787,41.144694],[-74.234288,41.143008],[-74.696103,41.357356],[-74.696398,41.357339],[-74.690881,41.366948],[-74.691115,41.367343],[-74.73364,41.396975],[-74.736103,41.398398],[-74.735151,41.426494],[-74.73552,41.427466],[-74.754644,41.424997],[-74.75469,41.424973],[-74.762623,41.447703]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "New York",
+    "state_name_slug": "new-york",
+    "state_code": "NY",
+    "state_code_slug": "ny",
+    "district": "18",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "M001185",
+    "thomas": "2150",
+    "govtrack": "412562",
+    "opensecrets": "N00034277",
+    "votesmart": "139760",
+    "fec": "H2NY22139",
+    "maplight": "1786",
+    "wikidata": "Q2262244",
+    "google_entity_id": "kg:/m/0b697g",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Sean Patrick Maloney",
+    "name_slug": "sean-patrick-maloney",
+    "first_name": "Sean Patrick",
+    "middle_name": null,
+    "last_name": "Maloney",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "shawn PAT-chrik muh-LOH-nee",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "gay",
+    "date_of_birth": "1966-07-30",
+    "entered_office": "2013-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Sean Patrick Maloney, a Representative from New York; born in Sherbrooke, Quebec, Canada, July 30, 1966; attended Georgetown University, Washington, D.C., 1986; B.A., University of Virginia, Charlottesville, Va., 1988; J.D., University of Virginia, Charlottesville, Va., 1992; campaign aide; lawyer, private practice; businessman; staff secretary to President William J. Clinton, 1997-2000; unsuccessful candidate for nomination for New York attorney general in 2006; first deputy secretary to New York Governor Eliot Spitzer, 2007-2008; elected as a Democrat to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).",
+    "phone": "202-225-5441",
+    "fax": "202-225-3289",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://seanmaloney.house.gov",
+    "contact_page": "https://seanmaloney.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/repseanmaloney/about/",
+    "twitter_handle": "RepSeanMaloney",
+    "twitter_url": "https://twitter.com/RepSeanMaloney",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/sean-patrick-maloney.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -74.762623,
+          41.447703
+        ],
+        [
+          -74.752405,
+          41.493707
+        ],
+        [
+          -74.752399,
+          41.493743
+        ],
+        [
+          -74.476113,
+          41.503955
+        ],
+        [
+          -74.475619,
+          41.503953
+        ],
+        [
+          -74.418302,
+          41.569651
+        ],
+        [
+          -74.418145,
+          41.569769
+        ],
+        [
+          -74.264292,
+          41.632629
+        ],
+        [
+          -74.264093,
+          41.632738
+        ],
+        [
+          -74.263359,
+          41.632597
+        ],
+        [
+          -74.250186,
+          41.629324
+        ],
+        [
+          -74.251413,
+          41.608666
+        ],
+        [
+          -74.251601,
+          41.605374
+        ],
+        [
+          -74.187731,
+          41.590864
+        ],
+        [
+          -74.187505,
+          41.590793
+        ],
+        [
+          -74.128536,
+          41.582955
+        ],
+        [
+          -74.126393,
+          41.582544
+        ],
+        [
+          -74.133465,
+          41.611433
+        ],
+        [
+          -74.134511,
+          41.615695
+        ],
+        [
+          -74.089928,
+          41.598646
+        ],
+        [
+          -74.089896,
+          41.598602
+        ],
+        [
+          -74.069193,
+          41.605596
+        ],
+        [
+          -74.068083,
+          41.606001
+        ],
+        [
+          -74.053752,
+          41.580641
+        ],
+        [
+          -74.053685,
+          41.58061
+        ],
+        [
+          -73.959119,
+          41.589345
+        ],
+        [
+          -73.953307,
+          41.589977
+        ],
+        [
+          -73.941081,
+          41.732693
+        ],
+        [
+          -73.941081,
+          41.735993
+        ],
+        [
+          -73.896336,
+          41.748994
+        ],
+        [
+          -73.896051,
+          41.748994
+        ],
+        [
+          -73.897125,
+          41.736692
+        ],
+        [
+          -73.897166,
+          41.736634
+        ],
+        [
+          -73.878752,
+          41.736191
+        ],
+        [
+          -73.878726,
+          41.736122
+        ],
+        [
+          -73.889837,
+          41.726618
+        ],
+        [
+          -73.890654,
+          41.725986
+        ],
+        [
+          -73.834457,
+          41.719687
+        ],
+        [
+          -73.833804,
+          41.719786
+        ],
+        [
+          -73.833316,
+          41.651569
+        ],
+        [
+          -73.834021,
+          41.647618
+        ],
+        [
+          -73.814532,
+          41.643766
+        ],
+        [
+          -73.814256,
+          41.643734
+        ],
+        [
+          -73.83031,
+          41.636554
+        ],
+        [
+          -73.830379,
+          41.636514
+        ],
+        [
+          -73.76518,
+          41.626384
+        ],
+        [
+          -73.765079,
+          41.626365
+        ],
+        [
+          -73.709901,
+          41.54871
+        ],
+        [
+          -73.713776,
+          41.54427
+        ],
+        [
+          -73.674291,
+          41.515766
+        ],
+        [
+          -73.673285,
+          41.514701
+        ],
+        [
+          -73.535524,
+          41.527091
+        ],
+        [
+          -73.530067,
+          41.527194
+        ],
+        [
+          -73.549879,
+          41.301522
+        ],
+        [
+          -73.550962,
+          41.295421
+        ],
+        [
+          -73.483925,
+          41.214312
+        ],
+        [
+          -73.482695,
+          41.212772
+        ],
+        [
+          -73.695005,
+          41.115773
+        ],
+        [
+          -73.695958,
+          41.115304
+        ],
+        [
+          -73.693684,
+          41.168044
+        ],
+        [
+          -73.693686,
+          41.16869
+        ],
+        [
+          -73.713268,
+          41.182883
+        ],
+        [
+          -73.716855,
+          41.186595
+        ],
+        [
+          -73.713619,
+          41.219703
+        ],
+        [
+          -73.713537,
+          41.219844
+        ],
+        [
+          -73.769525,
+          41.205581
+        ],
+        [
+          -73.769643,
+          41.205594
+        ],
+        [
+          -73.761106,
+          41.236031
+        ],
+        [
+          -73.760369,
+          41.236411
+        ],
+        [
+          -73.779212,
+          41.33742
+        ],
+        [
+          -73.780007,
+          41.342492
+        ],
+        [
+          -73.982584,
+          41.321693
+        ],
+        [
+          -73.981384,
+          41.324693
+        ],
+        [
+          -74.231787,
+          41.144694
+        ],
+        [
+          -74.234288,
+          41.143008
+        ],
+        [
+          -74.696103,
+          41.357356
+        ],
+        [
+          -74.696398,
+          41.357339
+        ],
+        [
+          -74.690881,
+          41.366948
+        ],
+        [
+          -74.691115,
+          41.367343
+        ],
+        [
+          -74.73364,
+          41.396975
+        ],
+        [
+          -74.736103,
+          41.398398
+        ],
+        [
+          -74.735151,
+          41.426494
+        ],
+        [
+          -74.73552,
+          41.427466
+        ],
+        [
+          -74.754644,
+          41.424997
+        ],
+        [
+          -74.75469,
+          41.424973
+        ],
+        [
+          -74.762623,
+          41.447703
+        ]
+      ]
+    ]
+  }
+}

@@ -1,1 +1,417 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Indiana","state_name_slug":"indiana","state_code":"IN","state_code_slug":"in","district":"6","at_large":false,"vacant":false,"bioguide":"M001189","thomas":"2130","govtrack":"412540","opensecrets":"N00012546","votesmart":"33997","fec":"H0IN02125","maplight":"1764","wikidata":"Q3225316","google_entity_id":"kg:/m/0n48dw8","title":"republican-policy-committee-chairman","party":"republican","name":"Luke Messer","name_slug":"luke-messer","first_name":"Luke","middle_name":null,"last_name":null,"name_suffix":"Luke","goes_by":null,"pronunciation":"LOOK MEH-ser","gender":"male","ethnicity":"white-american","religion":"presbyterian","openley_lgbtq":"no","date_of_birth":"1969-02-27","entered_office":"2013-01-03","term_end":"2019-01-03","biography":"Luke Messer, a Representative from Indiana; born in Evansville, Vanderburgh County, Ind., February, 27, 1969; graduated from Greensburg Community High School, Greensburg, Ind., 1987; B.A., Wabash College, Crawfordsville, Ind., 1991; J.D., Vanderbilt University, Nashville, Tenn., 1994; lawyer, private practice; staff, United States Representative John J. Duncan, Jr., of Tennessee, 1997; staff, United States Representative Ed Bryant of Tennessee, 1998; staff, United States House of Representatives Committee on Government Reform, 1999; executive director, Indiana Republican Party, 2001-2005; member of the Indiana state house of representatives, 2003-2006; unsuccessful candidate for nomination to the One Hundred Seventh Congress in 2000; unsuccessful candidate for nomination to the One Hundred Twelfth in 2010; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).","phone":"202-225-3021","fax":"317-421-0739","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://messer.house.gov","contact_page":"https://messer.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/RepLukeMesser/","twitter_handle":"RepLukeMesser","twitter_url":"https://twitter.com/RepLukeMesser","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/luke-messer.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-86.085601,39.344189],[-85.952457,39.347361],[-85.952005,39.347373],[-85.954,39.86933],[-85.954013,39.869646],[-85.939822,39.869793],[-85.938067,39.869812],[-85.937379,39.926434],[-85.937587,39.927137],[-85.862385,39.936224],[-85.862489,39.943618],[-85.576579,39.945749],[-85.576192,39.945756],[-85.578616,40.379312],[-85.578589,40.379524],[-85.220046,40.379183],[-85.220027,40.379182],[-85.218843,40.311384],[-85.218758,40.306706],[-84.805808,40.310098],[-84.803672,40.310093],[-84.820157,39.105545],[-84.820157,39.105489],[-84.897307,39.055856],[-84.897318,39.055081],[-84.830274,38.973854],[-84.830049,38.97256],[-84.877266,38.910137],[-84.877276,38.90948],[-84.784655,38.876436],[-84.784592,38.875593],[-84.829413,38.831675],[-84.829968,38.830573],[-84.813938,38.785043],[-84.81472,38.784512],[-84.886629,38.794552],[-84.887285,38.794776],[-84.939821,38.776067],[-84.94176,38.775682],[-84.990336,38.778663],[-84.991927,38.778537],[-85.171235,38.688529],[-85.173048,38.688022],[-85.211075,38.694584],[-85.213053,38.695453],[-85.263649,38.738997],[-85.268441,38.740091],[-85.431451,38.730807],[-85.433939,38.72985],[-85.456793,38.690496],[-85.456913,38.688717],[-85.439227,38.659769],[-85.438705,38.658857],[-85.431015,38.5903],[-85.428283,38.586325],[-85.472497,38.586148],[-85.478762,38.586178],[-85.496631,38.606414],[-85.496666,38.606736],[-85.710017,38.605545],[-85.719718,38.60554],[-85.691005,38.622226],[-85.690891,38.622289],[-85.714229,38.660589],[-85.718837,38.660547],[-85.710206,38.693238],[-85.710209,38.693478],[-85.753046,38.693308],[-85.756567,38.693343],[-85.796282,38.725383],[-85.796691,38.725543],[-85.87114,38.728094],[-85.871637,38.728643],[-85.843113,38.73885],[-85.842325,38.739353],[-85.797671,38.804538],[-85.795357,38.807508],[-85.798801,39.068465],[-85.798804,39.068536],[-85.841128,39.063208],[-85.841638,39.06325],[-85.860498,39.040921],[-85.860573,39.04091],[-86.072748,39.03592],[-86.079844,39.035903],[-86.085601,39.344189]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Indiana",
+    "state_name_slug": "indiana",
+    "state_code": "IN",
+    "state_code_slug": "in",
+    "district": "6",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "M001189",
+    "thomas": "2130",
+    "govtrack": "412540",
+    "opensecrets": "N00012546",
+    "votesmart": "33997",
+    "fec": "H0IN02125",
+    "maplight": "1764",
+    "wikidata": "Q3225316",
+    "google_entity_id": "kg:/m/0n48dw8",
+    "title": "republican-policy-committee-chairman",
+    "party": "republican",
+    "name": "Luke Messer",
+    "name_slug": "luke-messer",
+    "first_name": "Luke",
+    "middle_name": null,
+    "last_name": "Messer",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "LOOK MEH-ser",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "presbyterian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1969-02-27",
+    "entered_office": "2013-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Luke Messer, a Representative from Indiana; born in Evansville, Vanderburgh County, Ind., February, 27, 1969; graduated from Greensburg Community High School, Greensburg, Ind., 1987; B.A., Wabash College, Crawfordsville, Ind., 1991; J.D., Vanderbilt University, Nashville, Tenn., 1994; lawyer, private practice; staff, United States Representative John J. Duncan, Jr., of Tennessee, 1997; staff, United States Representative Ed Bryant of Tennessee, 1998; staff, United States House of Representatives Committee on Government Reform, 1999; executive director, Indiana Republican Party, 2001-2005; member of the Indiana state house of representatives, 2003-2006; unsuccessful candidate for nomination to the One Hundred Seventh Congress in 2000; unsuccessful candidate for nomination to the One Hundred Twelfth in 2010; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present).",
+    "phone": "202-225-3021",
+    "fax": "317-421-0739",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://messer.house.gov",
+    "contact_page": "https://messer.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/RepLukeMesser/",
+    "twitter_handle": "RepLukeMesser",
+    "twitter_url": "https://twitter.com/RepLukeMesser",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/luke-messer.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -86.085601,
+          39.344189
+        ],
+        [
+          -85.952457,
+          39.347361
+        ],
+        [
+          -85.952005,
+          39.347373
+        ],
+        [
+          -85.954,
+          39.86933
+        ],
+        [
+          -85.954013,
+          39.869646
+        ],
+        [
+          -85.939822,
+          39.869793
+        ],
+        [
+          -85.938067,
+          39.869812
+        ],
+        [
+          -85.937379,
+          39.926434
+        ],
+        [
+          -85.937587,
+          39.927137
+        ],
+        [
+          -85.862385,
+          39.936224
+        ],
+        [
+          -85.862489,
+          39.943618
+        ],
+        [
+          -85.576579,
+          39.945749
+        ],
+        [
+          -85.576192,
+          39.945756
+        ],
+        [
+          -85.578616,
+          40.379312
+        ],
+        [
+          -85.578589,
+          40.379524
+        ],
+        [
+          -85.220046,
+          40.379183
+        ],
+        [
+          -85.220027,
+          40.379182
+        ],
+        [
+          -85.218843,
+          40.311384
+        ],
+        [
+          -85.218758,
+          40.306706
+        ],
+        [
+          -84.805808,
+          40.310098
+        ],
+        [
+          -84.803672,
+          40.310093
+        ],
+        [
+          -84.820157,
+          39.105545
+        ],
+        [
+          -84.820157,
+          39.105489
+        ],
+        [
+          -84.897307,
+          39.055856
+        ],
+        [
+          -84.897318,
+          39.055081
+        ],
+        [
+          -84.830274,
+          38.973854
+        ],
+        [
+          -84.830049,
+          38.97256
+        ],
+        [
+          -84.877266,
+          38.910137
+        ],
+        [
+          -84.877276,
+          38.90948
+        ],
+        [
+          -84.784655,
+          38.876436
+        ],
+        [
+          -84.784592,
+          38.875593
+        ],
+        [
+          -84.829413,
+          38.831675
+        ],
+        [
+          -84.829968,
+          38.830573
+        ],
+        [
+          -84.813938,
+          38.785043
+        ],
+        [
+          -84.81472,
+          38.784512
+        ],
+        [
+          -84.886629,
+          38.794552
+        ],
+        [
+          -84.887285,
+          38.794776
+        ],
+        [
+          -84.939821,
+          38.776067
+        ],
+        [
+          -84.94176,
+          38.775682
+        ],
+        [
+          -84.990336,
+          38.778663
+        ],
+        [
+          -84.991927,
+          38.778537
+        ],
+        [
+          -85.171235,
+          38.688529
+        ],
+        [
+          -85.173048,
+          38.688022
+        ],
+        [
+          -85.211075,
+          38.694584
+        ],
+        [
+          -85.213053,
+          38.695453
+        ],
+        [
+          -85.263649,
+          38.738997
+        ],
+        [
+          -85.268441,
+          38.740091
+        ],
+        [
+          -85.431451,
+          38.730807
+        ],
+        [
+          -85.433939,
+          38.72985
+        ],
+        [
+          -85.456793,
+          38.690496
+        ],
+        [
+          -85.456913,
+          38.688717
+        ],
+        [
+          -85.439227,
+          38.659769
+        ],
+        [
+          -85.438705,
+          38.658857
+        ],
+        [
+          -85.431015,
+          38.5903
+        ],
+        [
+          -85.428283,
+          38.586325
+        ],
+        [
+          -85.472497,
+          38.586148
+        ],
+        [
+          -85.478762,
+          38.586178
+        ],
+        [
+          -85.496631,
+          38.606414
+        ],
+        [
+          -85.496666,
+          38.606736
+        ],
+        [
+          -85.710017,
+          38.605545
+        ],
+        [
+          -85.719718,
+          38.60554
+        ],
+        [
+          -85.691005,
+          38.622226
+        ],
+        [
+          -85.690891,
+          38.622289
+        ],
+        [
+          -85.714229,
+          38.660589
+        ],
+        [
+          -85.718837,
+          38.660547
+        ],
+        [
+          -85.710206,
+          38.693238
+        ],
+        [
+          -85.710209,
+          38.693478
+        ],
+        [
+          -85.753046,
+          38.693308
+        ],
+        [
+          -85.756567,
+          38.693343
+        ],
+        [
+          -85.796282,
+          38.725383
+        ],
+        [
+          -85.796691,
+          38.725543
+        ],
+        [
+          -85.87114,
+          38.728094
+        ],
+        [
+          -85.871637,
+          38.728643
+        ],
+        [
+          -85.843113,
+          38.73885
+        ],
+        [
+          -85.842325,
+          38.739353
+        ],
+        [
+          -85.797671,
+          38.804538
+        ],
+        [
+          -85.795357,
+          38.807508
+        ],
+        [
+          -85.798801,
+          39.068465
+        ],
+        [
+          -85.798804,
+          39.068536
+        ],
+        [
+          -85.841128,
+          39.063208
+        ],
+        [
+          -85.841638,
+          39.06325
+        ],
+        [
+          -85.860498,
+          39.040921
+        ],
+        [
+          -85.860573,
+          39.04091
+        ],
+        [
+          -86.072748,
+          39.03592
+        ],
+        [
+          -86.079844,
+          39.035903
+        ],
+        [
+          -86.085601,
+          39.344189
+        ]
+      ]
+    ]
+  }
+}

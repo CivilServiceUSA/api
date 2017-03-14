@@ -1,1 +1,489 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Illinois","state_name_slug":"illinois","state_code":"IL","state_code_slug":"il","district":"8","at_large":false,"vacant":false,"bioguide":"K000391","thomas":null,"govtrack":"412701","opensecrets":"N00033240","votesmart":"117519","fec":"H6IL08147","maplight":"2213","wikidata":"Q7285471","google_entity_id":"kg:/m/064p225","title":"representative","party":"democrat","name":"Raja Krishnamoorthi","name_slug":"raja-krishnamoorthi","first_name":"Raja","middle_name":null,"last_name":null,"name_suffix":"Raja","goes_by":null,"pronunciation":"RAH-jah krish-nuh-MOR-thee","gender":"male","ethnicity":"asian-american","religion":"hindu","openley_lgbtq":"no","date_of_birth":"1973-07-19","entered_office":"2017-01-03","term_end":"2019-01-03","biography":"Raja Krishnamoorthi, a Representative from Illinois; born in New Delhi, India, July 19, 1973; graduated from Richwoods High School, Peoria, Ill., 1991; B.A., Princeton University, Princeton, N.J., 1995; J.D., Harvard Law School, Cambridge, Mass., 2000; lawyer, private practice; business executive; clerk, United States District Court for Northern District of Illinois, 2000-2002; campaign staff, Barack Obama, 2004, 2008; staff, Illinois housing development authority, 2005-2007; Illinois special assistant attorney general, 2006-2007; deputy state treasurer of Illinois, 2008-2009; unsuccessful candidate for Illinois state comptroller, 2010; unsuccessful candidate for nomination to the One Hundred Thirteenth Congress in 2012; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).","phone":"202-225-3711","fax":null,"latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://krishnamoorthi.house.gov","contact_page":"https://krishnamoorthi.house.gov/contact/email","facebook_url":"https://www.facebook.com/congressmanraja","twitter_handle":"congressmanraja","twitter_url":"https://twitter.com/congressmanraja","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/raja-krishnamoorthi.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-88.33937,42.023117],[-88.320462,42.026105],[-88.320249,42.026039],[-88.315925,42.066541],[-88.315949,42.066943],[-88.269555,42.06639],[-88.269398,42.066387],[-88.267217,42.095907],[-88.267201,42.096079],[-88.292567,42.112309],[-88.292933,42.113037],[-88.25767,42.151215],[-88.257689,42.154073],[-88.239579,42.154192],[-88.238369,42.154253],[-88.238289,42.092408],[-88.238291,42.092348],[-88.123349,42.095463],[-88.123219,42.095449],[-88.121696,42.067403],[-88.121676,42.067109],[-88.065198,42.067075],[-88.062517,42.067069],[-88.067819,42.076722],[-88.067766,42.078112],[-88.034754,42.066728],[-88.03443,42.066726],[-88.023778,42.153123],[-88.02375,42.153735],[-87.946304,42.153171],[-87.946149,42.153173],[-87.951096,42.128556],[-87.951066,42.127937],[-88.00439,42.131729],[-88.004693,42.131734],[-88.004962,42.067348],[-88.00497,42.066636],[-87.994896,42.052181],[-87.993897,42.051461],[-87.931193,42.047841],[-87.931006,42.04784],[-87.920464,42.005629],[-87.920443,42.005355],[-87.940034,41.998223],[-87.940032,41.998131],[-87.927644,41.99368],[-87.92067,41.994031],[-87.919994,41.95522],[-87.919993,41.95503],[-87.920249,41.941905],[-87.920251,41.9416],[-87.938368,41.941164],[-87.939618,41.941136],[-87.967517,41.960926],[-87.969119,41.961168],[-87.966596,41.924909],[-87.966549,41.924214],[-87.948808,41.917214],[-87.948612,41.917003],[-87.970212,41.846808],[-87.970164,41.846281],[-88.025882,41.852575],[-88.026659,41.852539],[-88.033599,41.837732],[-88.033749,41.837727],[-88.039898,41.864931],[-88.039699,41.865456],[-88.009722,41.880724],[-88.0083,41.880766],[-88.007986,41.904085],[-88.007981,41.904818],[-88.087176,41.902522],[-88.087651,41.902497],[-88.106542,41.888109],[-88.106819,41.888098],[-88.101036,41.916938],[-88.101035,41.916968],[-88.128878,41.914756],[-88.129768,41.91473],[-88.14013,41.938842],[-88.140136,41.939924],[-88.167215,41.941851],[-88.167351,41.94186],[-88.164805,41.959851],[-88.164649,41.966441],[-88.180396,41.966034],[-88.18388,41.966026],[-88.170788,41.975181],[-88.170769,41.975247],[-88.185454,41.992201],[-88.185597,41.992218],[-88.174246,42.001333],[-88.174142,42.002396],[-88.216063,42.012541],[-88.217287,42.012862],[-88.261407,41.98625],[-88.262876,41.986227],[-88.263249,42.015444],[-88.263255,42.015492],[-88.301464,41.995933],[-88.301688,41.995937],[-88.332539,42.007094],[-88.336191,42.007028],[-88.33937,42.023117]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Illinois",
+    "state_name_slug": "illinois",
+    "state_code": "IL",
+    "state_code_slug": "il",
+    "district": "8",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "K000391",
+    "thomas": null,
+    "govtrack": "412701",
+    "opensecrets": "N00033240",
+    "votesmart": "117519",
+    "fec": "H6IL08147",
+    "maplight": "2213",
+    "wikidata": "Q7285471",
+    "google_entity_id": "kg:/m/064p225",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Raja Krishnamoorthi",
+    "name_slug": "raja-krishnamoorthi",
+    "first_name": "Raja",
+    "middle_name": null,
+    "last_name": "Krishnamoorthi",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "RAH-jah krish-nuh-MOR-thee",
+    "gender": "male",
+    "ethnicity": "asian-american",
+    "religion": "hindu",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1973-07-19",
+    "entered_office": "2017-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Raja Krishnamoorthi, a Representative from Illinois; born in New Delhi, India, July 19, 1973; graduated from Richwoods High School, Peoria, Ill., 1991; B.A., Princeton University, Princeton, N.J., 1995; J.D., Harvard Law School, Cambridge, Mass., 2000; lawyer, private practice; business executive; clerk, United States District Court for Northern District of Illinois, 2000-2002; campaign staff, Barack Obama, 2004, 2008; staff, Illinois housing development authority, 2005-2007; Illinois special assistant attorney general, 2006-2007; deputy state treasurer of Illinois, 2008-2009; unsuccessful candidate for Illinois state comptroller, 2010; unsuccessful candidate for nomination to the One Hundred Thirteenth Congress in 2012; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).",
+    "phone": "202-225-3711",
+    "fax": null,
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://krishnamoorthi.house.gov",
+    "contact_page": "https://krishnamoorthi.house.gov/contact/email",
+    "facebook_url": "https://www.facebook.com/congressmanraja",
+    "twitter_handle": "congressmanraja",
+    "twitter_url": "https://twitter.com/congressmanraja",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/raja-krishnamoorthi.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -88.33937,
+          42.023117
+        ],
+        [
+          -88.320462,
+          42.026105
+        ],
+        [
+          -88.320249,
+          42.026039
+        ],
+        [
+          -88.315925,
+          42.066541
+        ],
+        [
+          -88.315949,
+          42.066943
+        ],
+        [
+          -88.269555,
+          42.06639
+        ],
+        [
+          -88.269398,
+          42.066387
+        ],
+        [
+          -88.267217,
+          42.095907
+        ],
+        [
+          -88.267201,
+          42.096079
+        ],
+        [
+          -88.292567,
+          42.112309
+        ],
+        [
+          -88.292933,
+          42.113037
+        ],
+        [
+          -88.25767,
+          42.151215
+        ],
+        [
+          -88.257689,
+          42.154073
+        ],
+        [
+          -88.239579,
+          42.154192
+        ],
+        [
+          -88.238369,
+          42.154253
+        ],
+        [
+          -88.238289,
+          42.092408
+        ],
+        [
+          -88.238291,
+          42.092348
+        ],
+        [
+          -88.123349,
+          42.095463
+        ],
+        [
+          -88.123219,
+          42.095449
+        ],
+        [
+          -88.121696,
+          42.067403
+        ],
+        [
+          -88.121676,
+          42.067109
+        ],
+        [
+          -88.065198,
+          42.067075
+        ],
+        [
+          -88.062517,
+          42.067069
+        ],
+        [
+          -88.067819,
+          42.076722
+        ],
+        [
+          -88.067766,
+          42.078112
+        ],
+        [
+          -88.034754,
+          42.066728
+        ],
+        [
+          -88.03443,
+          42.066726
+        ],
+        [
+          -88.023778,
+          42.153123
+        ],
+        [
+          -88.02375,
+          42.153735
+        ],
+        [
+          -87.946304,
+          42.153171
+        ],
+        [
+          -87.946149,
+          42.153173
+        ],
+        [
+          -87.951096,
+          42.128556
+        ],
+        [
+          -87.951066,
+          42.127937
+        ],
+        [
+          -88.00439,
+          42.131729
+        ],
+        [
+          -88.004693,
+          42.131734
+        ],
+        [
+          -88.004962,
+          42.067348
+        ],
+        [
+          -88.00497,
+          42.066636
+        ],
+        [
+          -87.994896,
+          42.052181
+        ],
+        [
+          -87.993897,
+          42.051461
+        ],
+        [
+          -87.931193,
+          42.047841
+        ],
+        [
+          -87.931006,
+          42.04784
+        ],
+        [
+          -87.920464,
+          42.005629
+        ],
+        [
+          -87.920443,
+          42.005355
+        ],
+        [
+          -87.940034,
+          41.998223
+        ],
+        [
+          -87.940032,
+          41.998131
+        ],
+        [
+          -87.927644,
+          41.99368
+        ],
+        [
+          -87.92067,
+          41.994031
+        ],
+        [
+          -87.919994,
+          41.95522
+        ],
+        [
+          -87.919993,
+          41.95503
+        ],
+        [
+          -87.920249,
+          41.941905
+        ],
+        [
+          -87.920251,
+          41.9416
+        ],
+        [
+          -87.938368,
+          41.941164
+        ],
+        [
+          -87.939618,
+          41.941136
+        ],
+        [
+          -87.967517,
+          41.960926
+        ],
+        [
+          -87.969119,
+          41.961168
+        ],
+        [
+          -87.966596,
+          41.924909
+        ],
+        [
+          -87.966549,
+          41.924214
+        ],
+        [
+          -87.948808,
+          41.917214
+        ],
+        [
+          -87.948612,
+          41.917003
+        ],
+        [
+          -87.970212,
+          41.846808
+        ],
+        [
+          -87.970164,
+          41.846281
+        ],
+        [
+          -88.025882,
+          41.852575
+        ],
+        [
+          -88.026659,
+          41.852539
+        ],
+        [
+          -88.033599,
+          41.837732
+        ],
+        [
+          -88.033749,
+          41.837727
+        ],
+        [
+          -88.039898,
+          41.864931
+        ],
+        [
+          -88.039699,
+          41.865456
+        ],
+        [
+          -88.009722,
+          41.880724
+        ],
+        [
+          -88.0083,
+          41.880766
+        ],
+        [
+          -88.007986,
+          41.904085
+        ],
+        [
+          -88.007981,
+          41.904818
+        ],
+        [
+          -88.087176,
+          41.902522
+        ],
+        [
+          -88.087651,
+          41.902497
+        ],
+        [
+          -88.106542,
+          41.888109
+        ],
+        [
+          -88.106819,
+          41.888098
+        ],
+        [
+          -88.101036,
+          41.916938
+        ],
+        [
+          -88.101035,
+          41.916968
+        ],
+        [
+          -88.128878,
+          41.914756
+        ],
+        [
+          -88.129768,
+          41.91473
+        ],
+        [
+          -88.14013,
+          41.938842
+        ],
+        [
+          -88.140136,
+          41.939924
+        ],
+        [
+          -88.167215,
+          41.941851
+        ],
+        [
+          -88.167351,
+          41.94186
+        ],
+        [
+          -88.164805,
+          41.959851
+        ],
+        [
+          -88.164649,
+          41.966441
+        ],
+        [
+          -88.180396,
+          41.966034
+        ],
+        [
+          -88.18388,
+          41.966026
+        ],
+        [
+          -88.170788,
+          41.975181
+        ],
+        [
+          -88.170769,
+          41.975247
+        ],
+        [
+          -88.185454,
+          41.992201
+        ],
+        [
+          -88.185597,
+          41.992218
+        ],
+        [
+          -88.174246,
+          42.001333
+        ],
+        [
+          -88.174142,
+          42.002396
+        ],
+        [
+          -88.216063,
+          42.012541
+        ],
+        [
+          -88.217287,
+          42.012862
+        ],
+        [
+          -88.261407,
+          41.98625
+        ],
+        [
+          -88.262876,
+          41.986227
+        ],
+        [
+          -88.263249,
+          42.015444
+        ],
+        [
+          -88.263255,
+          42.015492
+        ],
+        [
+          -88.301464,
+          41.995933
+        ],
+        [
+          -88.301688,
+          41.995937
+        ],
+        [
+          -88.332539,
+          42.007094
+        ],
+        [
+          -88.336191,
+          42.007028
+        ],
+        [
+          -88.33937,
+          42.023117
+        ]
+      ]
+    ]
+  }
+}

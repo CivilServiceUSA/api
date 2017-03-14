@@ -1,1 +1,393 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"32","at_large":false,"vacant":false,"bioguide":"N000179","thomas":"1602","govtrack":"400290","opensecrets":"N00006789","votesmart":"8393","fec":"H8CA34068","maplight":"386","wikidata":"Q469139","google_entity_id":"kg:/m/024v0s","title":"representative","party":"democrat","name":"Grace Napolitano","name_slug":"grace-napolitano","first_name":"Grace","middle_name":null,"last_name":null,"name_suffix":"Grace","goes_by":null,"pronunciation":"GRACE nuh-pol-ee-TAN-oh [O is unrounded]","gender":"female","ethnicity":"hispanic-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1936-12-04","entered_office":"1999-01-06","term_end":"2019-01-03","biography":"Grace Napolitano, a Representative from California; born in Brownsville, Cameron County, Tex., December 4, 1936; graduated from Brownsville High School, Brownsville, Tex., 1954; attended Cerritos College, Norwalk, Calif.; attended Texas Southmost College, Brownsville, Tex.; member of the Norwalk, Calif., city council, 1986; Mayor of Norwalk, Calif., 1989-1990; member of the California state assembly, 1992-1998; elected as a Democrat to the One Hundred Sixth and to the nine succeeding Congresses (January 3, 1999-present).","phone":"202-225-5256","fax":"202-225-0027","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://napolitano.house.gov","contact_page":"https://napolitano.house.gov/contact-me/email-me","facebook_url":"https://www.facebook.com/RepGraceNapolitano/","twitter_handle":"gracenapolitano","twitter_url":"https://twitter.com/gracenapolitano","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/grace-napolitano.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-118.072927,34.072266],[-118.020321,34.099324],[-118.020269,34.099349],[-118.000072,34.09961],[-117.99753,34.098739],[-118.000724,34.087876],[-117.998926,34.087265],[-117.995434,34.099019],[-117.995093,34.099719],[-118.015284,34.102989],[-118.015551,34.102902],[-118.006751,34.129307],[-118.006732,34.129339],[-118.019401,34.130168],[-118.020009,34.130164],[-118.021235,34.152987],[-118.02123,34.154535],[-117.994031,34.16101],[-117.993861,34.161024],[-117.951559,34.143688],[-117.951284,34.143688],[-117.959693,34.162245],[-117.95972,34.165159],[-117.94227,34.170225],[-117.942434,34.179485],[-117.954636,34.179556],[-117.959915,34.179586],[-117.95999,34.194125],[-117.959989,34.194165],[-117.932927,34.19403],[-117.925524,34.193957],[-117.924796,34.165506],[-117.924796,34.16531],[-117.891067,34.165123],[-117.890048,34.165121],[-117.890035,34.132801],[-117.890035,34.132787],[-117.862988,34.117376],[-117.862623,34.117281],[-117.811839,34.125336],[-117.811789,34.125325],[-117.802747,34.162209],[-117.802727,34.16513],[-117.781991,34.165175],[-117.780936,34.16518],[-117.780978,34.15043],[-117.780987,34.146907],[-117.75541,34.165358],[-117.75473,34.165366],[-117.747685,34.139922],[-117.747667,34.137566],[-117.756134,34.090029],[-117.756134,34.089966],[-117.766588,34.09381],[-117.769925,34.095848],[-117.788557,34.07343],[-117.789476,34.072893],[-117.887112,34.043561],[-117.888921,34.043481],[-117.895492,34.026644],[-117.895429,34.026448],[-117.868121,34.015915],[-117.86788,34.015693],[-117.869916,33.992945],[-117.87001,33.992911],[-117.931609,33.990991],[-117.931749,33.990977],[-118.004303,34.031212],[-118.004738,34.031263],[-118.011022,34.009531],[-118.01225,34.007519],[-118.037308,34.02323],[-118.037379,34.02355],[-118.052316,34.013379],[-118.055716,34.011063],[-118.037288,34.031291],[-118.037666,34.032769],[-118.005822,34.037038],[-118.005042,34.037303],[-118.072927,34.072266]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "32",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "N000179",
+    "thomas": "1602",
+    "govtrack": "400290",
+    "opensecrets": "N00006789",
+    "votesmart": "8393",
+    "fec": "H8CA34068",
+    "maplight": "386",
+    "wikidata": "Q469139",
+    "google_entity_id": "kg:/m/024v0s",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Grace Napolitano",
+    "name_slug": "grace-napolitano",
+    "first_name": "Grace",
+    "middle_name": null,
+    "last_name": "Napolitano",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "GRACE nuh-pol-ee-TAN-oh [O is unrounded]",
+    "gender": "female",
+    "ethnicity": "hispanic-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1936-12-04",
+    "entered_office": "1999-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Grace Napolitano, a Representative from California; born in Brownsville, Cameron County, Tex., December 4, 1936; graduated from Brownsville High School, Brownsville, Tex., 1954; attended Cerritos College, Norwalk, Calif.; attended Texas Southmost College, Brownsville, Tex.; member of the Norwalk, Calif., city council, 1986; Mayor of Norwalk, Calif., 1989-1990; member of the California state assembly, 1992-1998; elected as a Democrat to the One Hundred Sixth and to the nine succeeding Congresses (January 3, 1999-present).",
+    "phone": "202-225-5256",
+    "fax": "202-225-0027",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://napolitano.house.gov",
+    "contact_page": "https://napolitano.house.gov/contact-me/email-me",
+    "facebook_url": "https://www.facebook.com/RepGraceNapolitano/",
+    "twitter_handle": "gracenapolitano",
+    "twitter_url": "https://twitter.com/gracenapolitano",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/grace-napolitano.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -118.072927,
+          34.072266
+        ],
+        [
+          -118.020321,
+          34.099324
+        ],
+        [
+          -118.020269,
+          34.099349
+        ],
+        [
+          -118.000072,
+          34.09961
+        ],
+        [
+          -117.99753,
+          34.098739
+        ],
+        [
+          -118.000724,
+          34.087876
+        ],
+        [
+          -117.998926,
+          34.087265
+        ],
+        [
+          -117.995434,
+          34.099019
+        ],
+        [
+          -117.995093,
+          34.099719
+        ],
+        [
+          -118.015284,
+          34.102989
+        ],
+        [
+          -118.015551,
+          34.102902
+        ],
+        [
+          -118.006751,
+          34.129307
+        ],
+        [
+          -118.006732,
+          34.129339
+        ],
+        [
+          -118.019401,
+          34.130168
+        ],
+        [
+          -118.020009,
+          34.130164
+        ],
+        [
+          -118.021235,
+          34.152987
+        ],
+        [
+          -118.02123,
+          34.154535
+        ],
+        [
+          -117.994031,
+          34.16101
+        ],
+        [
+          -117.993861,
+          34.161024
+        ],
+        [
+          -117.951559,
+          34.143688
+        ],
+        [
+          -117.951284,
+          34.143688
+        ],
+        [
+          -117.959693,
+          34.162245
+        ],
+        [
+          -117.95972,
+          34.165159
+        ],
+        [
+          -117.94227,
+          34.170225
+        ],
+        [
+          -117.942434,
+          34.179485
+        ],
+        [
+          -117.954636,
+          34.179556
+        ],
+        [
+          -117.959915,
+          34.179586
+        ],
+        [
+          -117.95999,
+          34.194125
+        ],
+        [
+          -117.959989,
+          34.194165
+        ],
+        [
+          -117.932927,
+          34.19403
+        ],
+        [
+          -117.925524,
+          34.193957
+        ],
+        [
+          -117.924796,
+          34.165506
+        ],
+        [
+          -117.924796,
+          34.16531
+        ],
+        [
+          -117.891067,
+          34.165123
+        ],
+        [
+          -117.890048,
+          34.165121
+        ],
+        [
+          -117.890035,
+          34.132801
+        ],
+        [
+          -117.890035,
+          34.132787
+        ],
+        [
+          -117.862988,
+          34.117376
+        ],
+        [
+          -117.862623,
+          34.117281
+        ],
+        [
+          -117.811839,
+          34.125336
+        ],
+        [
+          -117.811789,
+          34.125325
+        ],
+        [
+          -117.802747,
+          34.162209
+        ],
+        [
+          -117.802727,
+          34.16513
+        ],
+        [
+          -117.781991,
+          34.165175
+        ],
+        [
+          -117.780936,
+          34.16518
+        ],
+        [
+          -117.780978,
+          34.15043
+        ],
+        [
+          -117.780987,
+          34.146907
+        ],
+        [
+          -117.75541,
+          34.165358
+        ],
+        [
+          -117.75473,
+          34.165366
+        ],
+        [
+          -117.747685,
+          34.139922
+        ],
+        [
+          -117.747667,
+          34.137566
+        ],
+        [
+          -117.756134,
+          34.090029
+        ],
+        [
+          -117.756134,
+          34.089966
+        ],
+        [
+          -117.766588,
+          34.09381
+        ],
+        [
+          -117.769925,
+          34.095848
+        ],
+        [
+          -117.788557,
+          34.07343
+        ],
+        [
+          -117.789476,
+          34.072893
+        ],
+        [
+          -117.887112,
+          34.043561
+        ],
+        [
+          -117.888921,
+          34.043481
+        ],
+        [
+          -117.895492,
+          34.026644
+        ],
+        [
+          -117.895429,
+          34.026448
+        ],
+        [
+          -117.868121,
+          34.015915
+        ],
+        [
+          -117.86788,
+          34.015693
+        ],
+        [
+          -117.869916,
+          33.992945
+        ],
+        [
+          -117.87001,
+          33.992911
+        ],
+        [
+          -117.931609,
+          33.990991
+        ],
+        [
+          -117.931749,
+          33.990977
+        ],
+        [
+          -118.004303,
+          34.031212
+        ],
+        [
+          -118.004738,
+          34.031263
+        ],
+        [
+          -118.011022,
+          34.009531
+        ],
+        [
+          -118.01225,
+          34.007519
+        ],
+        [
+          -118.037308,
+          34.02323
+        ],
+        [
+          -118.037379,
+          34.02355
+        ],
+        [
+          -118.052316,
+          34.013379
+        ],
+        [
+          -118.055716,
+          34.011063
+        ],
+        [
+          -118.037288,
+          34.031291
+        ],
+        [
+          -118.037666,
+          34.032769
+        ],
+        [
+          -118.005822,
+          34.037038
+        ],
+        [
+          -118.005042,
+          34.037303
+        ],
+        [
+          -118.072927,
+          34.072266
+        ]
+      ]
+    ]
+  }
+}

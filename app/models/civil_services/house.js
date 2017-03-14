@@ -65,6 +65,7 @@ var db = require('../../config/sequelize');
  * @property {string} twitter_handle - Twitter Handle of Senator ( not always available )
  * @property {string} twitter_url - Twitter URL of Senator ( not always available )
  * @property {string} photo_url - Photo URL of Senator ( not always available )
+ * @property {geometry} shape - GeoJSON Shape Data
  */
 var House = db.dbApi.define('house', {
   id: {
@@ -296,6 +297,10 @@ var House = db.dbApi.define('house', {
   photo_url: {
     type: DataTypes.STRING(255),
     allowNull: true
+  },
+  shape: {
+    type: DataTypes.GEOMETRY,
+    allowNull: false
   }
 }, {
   indexes: [
@@ -326,6 +331,10 @@ var House = db.dbApi.define('house', {
     },
     {
       fields: ['openly_lgbtq']
+    },
+    {
+      fields: ['shape'],
+      type: 'spatial'
     }
   ]
 });

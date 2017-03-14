@@ -1,1 +1,201 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"34","at_large":false,"vacant":true,"bioguide":null,"thomas":null,"govtrack":null,"opensecrets":null,"votesmart":null,"fec":null,"maplight":null,"wikidata":null,"google_entity_id":null,"title":"representative","party":null,"name":" ","name_slug":null,"first_name":null,"middle_name":null,"last_name":null,"name_suffix":null,"goes_by":null,"pronunciation":null,"gender":null,"ethnicity":null,"religion":null,"openley_lgbtq":null,"date_of_birth":null,"entered_office":null,"term_end":null,"biography":null,"phone":null,"fax":null,"latitude":null,"longitude":null,"address_complete":null,"address_number":null,"address_prefix":null,"address_street":null,"address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":null,"address_state":null,"address_zipcode":null,"address_type":null,"website":null,"contact_page":null,"facebook_url":null,"twitter_handle":null,"twitter_url":null,"photo_url":null},"geometry":{"type":"Polygon","coordinates":[[[-118.323075,34.054491],[-118.318733,34.081689],[-118.318739,34.083501],[-118.256418,34.067922],[-118.256226,34.067847],[-118.244685,34.095438],[-118.244702,34.095645],[-118.226702,34.082812],[-118.226361,34.082718],[-118.253688,34.118473],[-118.254135,34.11886],[-118.226939,34.14861],[-118.226231,34.149789],[-118.188964,34.149074],[-118.183878,34.149081],[-118.18604,34.133833],[-118.186097,34.133732],[-118.165809,34.125621],[-118.165786,34.125554],[-118.177996,34.098728],[-118.177994,34.098595],[-118.15529,34.098672],[-118.155289,34.098627],[-118.16823,34.047879],[-118.168228,34.047848],[-118.192423,34.038577],[-118.192446,34.038577],[-118.191418,34.013116],[-118.191416,34.012859],[-118.316847,34.036691],[-118.317685,34.036589],[-118.323075,34.054491]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "34",
+    "at_large": false,
+    "vacant": true,
+    "bioguide": null,
+    "thomas": null,
+    "govtrack": null,
+    "opensecrets": null,
+    "votesmart": null,
+    "fec": null,
+    "maplight": null,
+    "wikidata": null,
+    "google_entity_id": null,
+    "title": "representative",
+    "party": null,
+    "name": " ",
+    "name_slug": null,
+    "first_name": null,
+    "middle_name": null,
+    "last_name": null,
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": null,
+    "gender": null,
+    "ethnicity": null,
+    "religion": null,
+    "openly_lgbtq": null,
+    "date_of_birth": null,
+    "entered_office": null,
+    "term_end": null,
+    "biography": null,
+    "phone": null,
+    "fax": null,
+    "latitude": null,
+    "longitude": null,
+    "address_complete": null,
+    "address_number": null,
+    "address_prefix": null,
+    "address_street": null,
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": null,
+    "address_state": null,
+    "address_zipcode": null,
+    "address_type": null,
+    "website": null,
+    "contact_page": null,
+    "facebook_url": null,
+    "twitter_handle": null,
+    "twitter_url": null,
+    "photo_url": null
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -118.323075,
+          34.054491
+        ],
+        [
+          -118.318733,
+          34.081689
+        ],
+        [
+          -118.318739,
+          34.083501
+        ],
+        [
+          -118.256418,
+          34.067922
+        ],
+        [
+          -118.256226,
+          34.067847
+        ],
+        [
+          -118.244685,
+          34.095438
+        ],
+        [
+          -118.244702,
+          34.095645
+        ],
+        [
+          -118.226702,
+          34.082812
+        ],
+        [
+          -118.226361,
+          34.082718
+        ],
+        [
+          -118.253688,
+          34.118473
+        ],
+        [
+          -118.254135,
+          34.11886
+        ],
+        [
+          -118.226939,
+          34.14861
+        ],
+        [
+          -118.226231,
+          34.149789
+        ],
+        [
+          -118.188964,
+          34.149074
+        ],
+        [
+          -118.183878,
+          34.149081
+        ],
+        [
+          -118.18604,
+          34.133833
+        ],
+        [
+          -118.186097,
+          34.133732
+        ],
+        [
+          -118.165809,
+          34.125621
+        ],
+        [
+          -118.165786,
+          34.125554
+        ],
+        [
+          -118.177996,
+          34.098728
+        ],
+        [
+          -118.177994,
+          34.098595
+        ],
+        [
+          -118.15529,
+          34.098672
+        ],
+        [
+          -118.155289,
+          34.098627
+        ],
+        [
+          -118.16823,
+          34.047879
+        ],
+        [
+          -118.168228,
+          34.047848
+        ],
+        [
+          -118.192423,
+          34.038577
+        ],
+        [
+          -118.192446,
+          34.038577
+        ],
+        [
+          -118.191418,
+          34.013116
+        ],
+        [
+          -118.191416,
+          34.012859
+        ],
+        [
+          -118.316847,
+          34.036691
+        ],
+        [
+          -118.317685,
+          34.036589
+        ],
+        [
+          -118.323075,
+          34.054491
+        ]
+      ]
+    ]
+  }
+}

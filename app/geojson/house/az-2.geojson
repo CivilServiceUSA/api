@@ -1,1 +1,417 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Arizona","state_name_slug":"arizona","state_code":"AZ","state_code_slug":"az","district":"2","at_large":false,"vacant":false,"bioguide":"M001197","thomas":"2225","govtrack":"412611","opensecrets":"N00033982","votesmart":"137299","fec":"H2AZ08102","maplight":"2067","wikidata":"Q6774492","google_entity_id":"kg:/m/027fybv","title":"representative","party":"republican","name":"Martha McSally","name_slug":"martha-mcsally","first_name":"Martha","middle_name":null,"last_name":null,"name_suffix":"Martha","goes_by":null,"pronunciation":"MAR-thuh mik-SAL-ee","gender":"female","ethnicity":"white-american","religion":"christian","openley_lgbtq":"no","date_of_birth":"1966-03-22","entered_office":"2015-01-06","term_end":"2019-01-03","biography":"Martha McSally, a Representative from Arizona; born in Warwick, Kent County, R.I., March 22, 1966; B.S., United States Air Force Academy, Colorado Springs, Colo., 1988; M.P.P., John F. Kennedy School of Government, Harvard University, Cambridge, Mass., 1990; United States Air Force, 1988-2010; fighter pilot; professor; unsuccessful candidate for nomination for special election to the One Hundred Twelfth Congress in 2012; unsuccessful candidate for election to the One Hundred Thirteenth Congress in 2012; elected as a Republican to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).","phone":"202-225-2542","fax":"202-225-0378","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://mcsally.house.gov","contact_page":"https://mcsally.house.gov/contact","facebook_url":"https://www.facebook.com/RepMcSally/","twitter_handle":"RepMcSally","twitter_url":"https://twitter.com/RepMcSally","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/martha-mcsally.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-111.093531,31.870879],[-111.064127,31.87009],[-111.062539,31.870062],[-111.080105,31.905324],[-111.08011,31.905623],[-111.058804,31.917872],[-111.058722,31.9181],[-111.062891,31.953554],[-111.062892,31.953634],[-110.987983,31.957869],[-110.98785,31.957869],[-110.99202,32.001395],[-110.992023,32.001505],[-110.927376,32.009111],[-110.926905,32.009115],[-110.926007,32.075538],[-110.926039,32.07576],[-110.874908,32.07573],[-110.857976,32.075671],[-110.875054,32.148035],[-110.875044,32.148606],[-110.943414,32.207888],[-110.943563,32.207973],[-110.944103,32.250076],[-110.944084,32.250263],[-111.041506,32.250707],[-111.041672,32.25071],[-111.045939,32.279242],[-111.045935,32.27982],[-111.034064,32.279736],[-111.033942,32.279737],[-111.061593,32.294217],[-111.062793,32.294217],[-111.062874,32.308654],[-111.062875,32.308733],[-111.037693,32.323224],[-111.037356,32.32322],[-111.041111,32.337768],[-111.04102,32.337859],[-111.08584,32.357357],[-111.086748,32.35821],[-111.067618,32.352078],[-111.067473,32.35207],[-111.060473,32.406205],[-111.059776,32.4062],[-111.02113,32.395325],[-111.021025,32.395327],[-111.009173,32.373665],[-111.009166,32.373544],[-110.995936,32.379747],[-110.995765,32.379745],[-110.979022,32.344331],[-110.979032,32.344048],[-110.961536,32.344602],[-110.961182,32.344589],[-110.961147,32.380764],[-110.961147,32.380901],[-110.934285,32.393112],[-110.929328,32.392896],[-110.931694,32.40696],[-110.931717,32.407861],[-110.900707,32.409856],[-110.893103,32.409842],[-110.85869,32.509258],[-110.85872,32.511223],[-110.455111,32.513996],[-110.451218,32.513995],[-110.451454,32.430161],[-110.451503,32.427354],[-109.053747,32.426355],[-109.047918,32.426376],[-109.050045,31.336676],[-109.050044,31.332502],[-110.438589,31.332845],[-110.460172,31.332827],[-110.451725,31.730663],[-110.451736,31.731267],[-111.05723,31.726234],[-111.05804,31.72623],[-111.039857,31.757712],[-111.039617,31.758176],[-111.061006,31.768507],[-111.06221,31.768494],[-111.062607,31.835926],[-111.062599,31.836882],[-111.093531,31.870879]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Arizona",
+    "state_name_slug": "arizona",
+    "state_code": "AZ",
+    "state_code_slug": "az",
+    "district": "2",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "M001197",
+    "thomas": "2225",
+    "govtrack": "412611",
+    "opensecrets": "N00033982",
+    "votesmart": "137299",
+    "fec": "H2AZ08102",
+    "maplight": "2067",
+    "wikidata": "Q6774492",
+    "google_entity_id": "kg:/m/027fybv",
+    "title": "representative",
+    "party": "republican",
+    "name": "Martha McSally",
+    "name_slug": "martha-mcsally",
+    "first_name": "Martha",
+    "middle_name": null,
+    "last_name": "McSally",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "MAR-thuh mik-SAL-ee",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "christian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1966-03-22",
+    "entered_office": "2015-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Martha McSally, a Representative from Arizona; born in Warwick, Kent County, R.I., March 22, 1966; B.S., United States Air Force Academy, Colorado Springs, Colo., 1988; M.P.P., John F. Kennedy School of Government, Harvard University, Cambridge, Mass., 1990; United States Air Force, 1988-2010; fighter pilot; professor; unsuccessful candidate for nomination for special election to the One Hundred Twelfth Congress in 2012; unsuccessful candidate for election to the One Hundred Thirteenth Congress in 2012; elected as a Republican to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).",
+    "phone": "202-225-2542",
+    "fax": "202-225-0378",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://mcsally.house.gov",
+    "contact_page": "https://mcsally.house.gov/contact",
+    "facebook_url": "https://www.facebook.com/RepMcSally/",
+    "twitter_handle": "RepMcSally",
+    "twitter_url": "https://twitter.com/RepMcSally",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/martha-mcsally.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -111.093531,
+          31.870879
+        ],
+        [
+          -111.064127,
+          31.87009
+        ],
+        [
+          -111.062539,
+          31.870062
+        ],
+        [
+          -111.080105,
+          31.905324
+        ],
+        [
+          -111.08011,
+          31.905623
+        ],
+        [
+          -111.058804,
+          31.917872
+        ],
+        [
+          -111.058722,
+          31.9181
+        ],
+        [
+          -111.062891,
+          31.953554
+        ],
+        [
+          -111.062892,
+          31.953634
+        ],
+        [
+          -110.987983,
+          31.957869
+        ],
+        [
+          -110.98785,
+          31.957869
+        ],
+        [
+          -110.99202,
+          32.001395
+        ],
+        [
+          -110.992023,
+          32.001505
+        ],
+        [
+          -110.927376,
+          32.009111
+        ],
+        [
+          -110.926905,
+          32.009115
+        ],
+        [
+          -110.926007,
+          32.075538
+        ],
+        [
+          -110.926039,
+          32.07576
+        ],
+        [
+          -110.874908,
+          32.07573
+        ],
+        [
+          -110.857976,
+          32.075671
+        ],
+        [
+          -110.875054,
+          32.148035
+        ],
+        [
+          -110.875044,
+          32.148606
+        ],
+        [
+          -110.943414,
+          32.207888
+        ],
+        [
+          -110.943563,
+          32.207973
+        ],
+        [
+          -110.944103,
+          32.250076
+        ],
+        [
+          -110.944084,
+          32.250263
+        ],
+        [
+          -111.041506,
+          32.250707
+        ],
+        [
+          -111.041672,
+          32.25071
+        ],
+        [
+          -111.045939,
+          32.279242
+        ],
+        [
+          -111.045935,
+          32.27982
+        ],
+        [
+          -111.034064,
+          32.279736
+        ],
+        [
+          -111.033942,
+          32.279737
+        ],
+        [
+          -111.061593,
+          32.294217
+        ],
+        [
+          -111.062793,
+          32.294217
+        ],
+        [
+          -111.062874,
+          32.308654
+        ],
+        [
+          -111.062875,
+          32.308733
+        ],
+        [
+          -111.037693,
+          32.323224
+        ],
+        [
+          -111.037356,
+          32.32322
+        ],
+        [
+          -111.041111,
+          32.337768
+        ],
+        [
+          -111.04102,
+          32.337859
+        ],
+        [
+          -111.08584,
+          32.357357
+        ],
+        [
+          -111.086748,
+          32.35821
+        ],
+        [
+          -111.067618,
+          32.352078
+        ],
+        [
+          -111.067473,
+          32.35207
+        ],
+        [
+          -111.060473,
+          32.406205
+        ],
+        [
+          -111.059776,
+          32.4062
+        ],
+        [
+          -111.02113,
+          32.395325
+        ],
+        [
+          -111.021025,
+          32.395327
+        ],
+        [
+          -111.009173,
+          32.373665
+        ],
+        [
+          -111.009166,
+          32.373544
+        ],
+        [
+          -110.995936,
+          32.379747
+        ],
+        [
+          -110.995765,
+          32.379745
+        ],
+        [
+          -110.979022,
+          32.344331
+        ],
+        [
+          -110.979032,
+          32.344048
+        ],
+        [
+          -110.961536,
+          32.344602
+        ],
+        [
+          -110.961182,
+          32.344589
+        ],
+        [
+          -110.961147,
+          32.380764
+        ],
+        [
+          -110.961147,
+          32.380901
+        ],
+        [
+          -110.934285,
+          32.393112
+        ],
+        [
+          -110.929328,
+          32.392896
+        ],
+        [
+          -110.931694,
+          32.40696
+        ],
+        [
+          -110.931717,
+          32.407861
+        ],
+        [
+          -110.900707,
+          32.409856
+        ],
+        [
+          -110.893103,
+          32.409842
+        ],
+        [
+          -110.85869,
+          32.509258
+        ],
+        [
+          -110.85872,
+          32.511223
+        ],
+        [
+          -110.455111,
+          32.513996
+        ],
+        [
+          -110.451218,
+          32.513995
+        ],
+        [
+          -110.451454,
+          32.430161
+        ],
+        [
+          -110.451503,
+          32.427354
+        ],
+        [
+          -109.053747,
+          32.426355
+        ],
+        [
+          -109.047918,
+          32.426376
+        ],
+        [
+          -109.050045,
+          31.336676
+        ],
+        [
+          -109.050044,
+          31.332502
+        ],
+        [
+          -110.438589,
+          31.332845
+        ],
+        [
+          -110.460172,
+          31.332827
+        ],
+        [
+          -110.451725,
+          31.730663
+        ],
+        [
+          -110.451736,
+          31.731267
+        ],
+        [
+          -111.05723,
+          31.726234
+        ],
+        [
+          -111.05804,
+          31.72623
+        ],
+        [
+          -111.039857,
+          31.757712
+        ],
+        [
+          -111.039617,
+          31.758176
+        ],
+        [
+          -111.061006,
+          31.768507
+        ],
+        [
+          -111.06221,
+          31.768494
+        ],
+        [
+          -111.062607,
+          31.835926
+        ],
+        [
+          -111.062599,
+          31.836882
+        ],
+        [
+          -111.093531,
+          31.870879
+        ]
+      ]
+    ]
+  }
+}

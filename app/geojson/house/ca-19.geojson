@@ -1,1 +1,585 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"19","at_large":false,"vacant":false,"bioguide":"L000397","thomas":"701","govtrack":"400245","opensecrets":"N00007479","votesmart":"21899","fec":"H4CA16049","maplight":"345","wikidata":"Q218217","google_entity_id":"kg:/m/024t94","title":"representative","party":"democrat","name":"Zoe Lofgren","name_slug":"zoe-lofgren","first_name":"Zoe","middle_name":null,"last_name":null,"name_suffix":"Zoe","goes_by":null,"pronunciation":"ZOH LAWF-gren","gender":"female","ethnicity":"white-american","religion":"lutheran","openley_lgbtq":"no","date_of_birth":"1947-12-21","entered_office":"1995-01-04","term_end":"2019-01-03","biography":"Zoe Lofgren, a Representative from California; born in San Mateo, San Mateo County, Calif., December 21, 1947; B.A., Stanford University, Stanford, Calif., 1970; J.D., Santa Clara University School of Law, Santa Clara, Calif., 1975; lawyer, private practice; faculty, Santa Clara University School of Law, Santa Clara, Calif., 1978-1980; staff, United States Representative William Donlon (Don) Edwards of California, 1970-1978; executive director, Community Housing Developers; elected as a Democrat to the One Hundred Fourth and to the eleven succeeding Congresses (January 3, 1995-present); one of the managers appointed by the House of Representatives in 2009 to conduct the impeachment proceedings of Samuel B. Kent, judge of the United States District Court for the Southern District of Texas; chair, Committee on Standards of Official Conduct (One Hundred Eleventh Congress).","phone":"202-225-3072","fax":null,"latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://lofgren.house.gov","contact_page":"https://lofgren.house.gov/contact/","facebook_url":"https://www.facebook.com/zoelofgren/","twitter_handle":"RepZoeLofgren","twitter_url":"https://twitter.com/RepZoeLofgren","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/zoe-lofgren.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-121.94752,37.37775],[-121.861135,37.358439],[-121.860698,37.357988],[-121.826374,37.381066],[-121.826348,37.381072],[-121.825969,37.39694],[-121.825879,37.396986],[-121.785104,37.396515],[-121.784994,37.3964],[-121.806024,37.431868],[-121.806144,37.432003],[-121.840039,37.444156],[-121.84062,37.44439],[-121.85578,37.48442],[-121.855762,37.484537],[-121.475527,37.482337],[-121.472952,37.482333],[-121.485929,37.475533],[-121.486775,37.475652],[-121.463652,37.45194],[-121.462917,37.451489],[-121.472204,37.424131],[-121.472606,37.423345],[-121.458251,37.398135],[-121.456651,37.395535],[-121.409346,37.38132],[-121.409075,37.380672],[-121.422742,37.360955],[-121.42365,37.358837],[-121.406204,37.311826],[-121.405753,37.31099],[-121.459051,37.282739],[-121.459068,37.282319],[-121.448834,37.237616],[-121.448744,37.237277],[-121.417235,37.211885],[-121.416869,37.211262],[-121.40653,37.158835],[-121.406012,37.157887],[-121.384234,37.151566],[-121.383551,37.151487],[-121.362437,37.183831],[-121.360942,37.184321],[-121.331878,37.170011],[-121.328409,37.16595],[-121.299133,37.165789],[-121.298552,37.165963],[-121.282271,37.183675],[-121.281107,37.183603],[-121.262293,37.159473],[-121.262093,37.159323],[-121.23711,37.157204],[-121.236629,37.156675],[-121.217559,37.123162],[-121.217339,37.123042],[-121.245384,37.089501],[-121.245484,37.089148],[-121.208228,37.062013],[-121.208178,37.061665],[-121.248067,37.033541],[-121.248647,37.03368],[-121.233588,37.01203],[-121.233337,37.011746],[-121.246568,36.985228],[-121.245887,36.983036],[-121.215945,36.961761],[-121.215406,36.961248],[-121.418247,36.960567],[-121.418246,36.960549],[-121.449119,36.988211],[-121.450607,36.988944],[-121.499712,36.973486],[-121.501488,36.971895],[-121.49184,36.9881],[-121.49092,36.98861],[-121.54786,37.052474],[-121.54795,37.05264],[-121.58609,37.04148],[-121.58622,37.041489],[-121.59738,37.02374],[-121.59772,37.02359],[-121.56691,36.99998],[-121.56578,37.00026],[-121.5734,36.98313],[-121.57341,36.98279],[-121.553091,36.968864],[-121.55304,36.96886],[-121.54699,36.92805],[-121.546941,36.927861],[-121.57564,36.892976],[-121.575725,36.893],[-121.590321,36.925022],[-121.590354,36.926151],[-121.62112,36.937477],[-121.624755,36.940451],[-121.645744,36.932328],[-121.645791,36.93233],[-121.695265,36.98293],[-121.695358,36.98515],[-121.738642,36.989976],[-121.738697,36.989991],[-121.718868,37.007462],[-121.718762,37.007557],[-121.727815,37.009862],[-121.736186,37.015342],[-121.72667,37.02197],[-121.72678,37.02209],[-121.846148,37.096841],[-121.84629,37.09702],[-121.823762,37.138567],[-121.820767,37.143976],[-121.837108,37.162363],[-121.837116,37.162382],[-121.814642,37.1859],[-121.814508,37.186037],[-121.759331,37.185418],[-121.759364,37.185524],[-121.785986,37.214257],[-121.786088,37.214309],[-121.874824,37.242604],[-121.874926,37.242606],[-121.876761,37.275664],[-121.876789,37.2757],[-121.923102,37.278462],[-121.923501,37.278353],[-121.91237,37.305849],[-121.912268,37.306348],[-121.94752,37.37775]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "19",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "L000397",
+    "thomas": "701",
+    "govtrack": "400245",
+    "opensecrets": "N00007479",
+    "votesmart": "21899",
+    "fec": "H4CA16049",
+    "maplight": "345",
+    "wikidata": "Q218217",
+    "google_entity_id": "kg:/m/024t94",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Zoe Lofgren",
+    "name_slug": "zoe-lofgren",
+    "first_name": "Zoe",
+    "middle_name": null,
+    "last_name": "Lofgren",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "ZOH LAWF-gren",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "lutheran",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1947-12-21",
+    "entered_office": "1995-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Zoe Lofgren, a Representative from California; born in San Mateo, San Mateo County, Calif., December 21, 1947; B.A., Stanford University, Stanford, Calif., 1970; J.D., Santa Clara University School of Law, Santa Clara, Calif., 1975; lawyer, private practice; faculty, Santa Clara University School of Law, Santa Clara, Calif., 1978-1980; staff, United States Representative William Donlon (Don) Edwards of California, 1970-1978; executive director, Community Housing Developers; elected as a Democrat to the One Hundred Fourth and to the eleven succeeding Congresses (January 3, 1995-present); one of the managers appointed by the House of Representatives in 2009 to conduct the impeachment proceedings of Samuel B. Kent, judge of the United States District Court for the Southern District of Texas; chair, Committee on Standards of Official Conduct (One Hundred Eleventh Congress).",
+    "phone": "202-225-3072",
+    "fax": null,
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://lofgren.house.gov",
+    "contact_page": "https://lofgren.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/zoelofgren/",
+    "twitter_handle": "RepZoeLofgren",
+    "twitter_url": "https://twitter.com/RepZoeLofgren",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/zoe-lofgren.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -121.94752,
+          37.37775
+        ],
+        [
+          -121.861135,
+          37.358439
+        ],
+        [
+          -121.860698,
+          37.357988
+        ],
+        [
+          -121.826374,
+          37.381066
+        ],
+        [
+          -121.826348,
+          37.381072
+        ],
+        [
+          -121.825969,
+          37.39694
+        ],
+        [
+          -121.825879,
+          37.396986
+        ],
+        [
+          -121.785104,
+          37.396515
+        ],
+        [
+          -121.784994,
+          37.3964
+        ],
+        [
+          -121.806024,
+          37.431868
+        ],
+        [
+          -121.806144,
+          37.432003
+        ],
+        [
+          -121.840039,
+          37.444156
+        ],
+        [
+          -121.84062,
+          37.44439
+        ],
+        [
+          -121.85578,
+          37.48442
+        ],
+        [
+          -121.855762,
+          37.484537
+        ],
+        [
+          -121.475527,
+          37.482337
+        ],
+        [
+          -121.472952,
+          37.482333
+        ],
+        [
+          -121.485929,
+          37.475533
+        ],
+        [
+          -121.486775,
+          37.475652
+        ],
+        [
+          -121.463652,
+          37.45194
+        ],
+        [
+          -121.462917,
+          37.451489
+        ],
+        [
+          -121.472204,
+          37.424131
+        ],
+        [
+          -121.472606,
+          37.423345
+        ],
+        [
+          -121.458251,
+          37.398135
+        ],
+        [
+          -121.456651,
+          37.395535
+        ],
+        [
+          -121.409346,
+          37.38132
+        ],
+        [
+          -121.409075,
+          37.380672
+        ],
+        [
+          -121.422742,
+          37.360955
+        ],
+        [
+          -121.42365,
+          37.358837
+        ],
+        [
+          -121.406204,
+          37.311826
+        ],
+        [
+          -121.405753,
+          37.31099
+        ],
+        [
+          -121.459051,
+          37.282739
+        ],
+        [
+          -121.459068,
+          37.282319
+        ],
+        [
+          -121.448834,
+          37.237616
+        ],
+        [
+          -121.448744,
+          37.237277
+        ],
+        [
+          -121.417235,
+          37.211885
+        ],
+        [
+          -121.416869,
+          37.211262
+        ],
+        [
+          -121.40653,
+          37.158835
+        ],
+        [
+          -121.406012,
+          37.157887
+        ],
+        [
+          -121.384234,
+          37.151566
+        ],
+        [
+          -121.383551,
+          37.151487
+        ],
+        [
+          -121.362437,
+          37.183831
+        ],
+        [
+          -121.360942,
+          37.184321
+        ],
+        [
+          -121.331878,
+          37.170011
+        ],
+        [
+          -121.328409,
+          37.16595
+        ],
+        [
+          -121.299133,
+          37.165789
+        ],
+        [
+          -121.298552,
+          37.165963
+        ],
+        [
+          -121.282271,
+          37.183675
+        ],
+        [
+          -121.281107,
+          37.183603
+        ],
+        [
+          -121.262293,
+          37.159473
+        ],
+        [
+          -121.262093,
+          37.159323
+        ],
+        [
+          -121.23711,
+          37.157204
+        ],
+        [
+          -121.236629,
+          37.156675
+        ],
+        [
+          -121.217559,
+          37.123162
+        ],
+        [
+          -121.217339,
+          37.123042
+        ],
+        [
+          -121.245384,
+          37.089501
+        ],
+        [
+          -121.245484,
+          37.089148
+        ],
+        [
+          -121.208228,
+          37.062013
+        ],
+        [
+          -121.208178,
+          37.061665
+        ],
+        [
+          -121.248067,
+          37.033541
+        ],
+        [
+          -121.248647,
+          37.03368
+        ],
+        [
+          -121.233588,
+          37.01203
+        ],
+        [
+          -121.233337,
+          37.011746
+        ],
+        [
+          -121.246568,
+          36.985228
+        ],
+        [
+          -121.245887,
+          36.983036
+        ],
+        [
+          -121.215945,
+          36.961761
+        ],
+        [
+          -121.215406,
+          36.961248
+        ],
+        [
+          -121.418247,
+          36.960567
+        ],
+        [
+          -121.418246,
+          36.960549
+        ],
+        [
+          -121.449119,
+          36.988211
+        ],
+        [
+          -121.450607,
+          36.988944
+        ],
+        [
+          -121.499712,
+          36.973486
+        ],
+        [
+          -121.501488,
+          36.971895
+        ],
+        [
+          -121.49184,
+          36.9881
+        ],
+        [
+          -121.49092,
+          36.98861
+        ],
+        [
+          -121.54786,
+          37.052474
+        ],
+        [
+          -121.54795,
+          37.05264
+        ],
+        [
+          -121.58609,
+          37.04148
+        ],
+        [
+          -121.58622,
+          37.041489
+        ],
+        [
+          -121.59738,
+          37.02374
+        ],
+        [
+          -121.59772,
+          37.02359
+        ],
+        [
+          -121.56691,
+          36.99998
+        ],
+        [
+          -121.56578,
+          37.00026
+        ],
+        [
+          -121.5734,
+          36.98313
+        ],
+        [
+          -121.57341,
+          36.98279
+        ],
+        [
+          -121.553091,
+          36.968864
+        ],
+        [
+          -121.55304,
+          36.96886
+        ],
+        [
+          -121.54699,
+          36.92805
+        ],
+        [
+          -121.546941,
+          36.927861
+        ],
+        [
+          -121.57564,
+          36.892976
+        ],
+        [
+          -121.575725,
+          36.893
+        ],
+        [
+          -121.590321,
+          36.925022
+        ],
+        [
+          -121.590354,
+          36.926151
+        ],
+        [
+          -121.62112,
+          36.937477
+        ],
+        [
+          -121.624755,
+          36.940451
+        ],
+        [
+          -121.645744,
+          36.932328
+        ],
+        [
+          -121.645791,
+          36.93233
+        ],
+        [
+          -121.695265,
+          36.98293
+        ],
+        [
+          -121.695358,
+          36.98515
+        ],
+        [
+          -121.738642,
+          36.989976
+        ],
+        [
+          -121.738697,
+          36.989991
+        ],
+        [
+          -121.718868,
+          37.007462
+        ],
+        [
+          -121.718762,
+          37.007557
+        ],
+        [
+          -121.727815,
+          37.009862
+        ],
+        [
+          -121.736186,
+          37.015342
+        ],
+        [
+          -121.72667,
+          37.02197
+        ],
+        [
+          -121.72678,
+          37.02209
+        ],
+        [
+          -121.846148,
+          37.096841
+        ],
+        [
+          -121.84629,
+          37.09702
+        ],
+        [
+          -121.823762,
+          37.138567
+        ],
+        [
+          -121.820767,
+          37.143976
+        ],
+        [
+          -121.837108,
+          37.162363
+        ],
+        [
+          -121.837116,
+          37.162382
+        ],
+        [
+          -121.814642,
+          37.1859
+        ],
+        [
+          -121.814508,
+          37.186037
+        ],
+        [
+          -121.759331,
+          37.185418
+        ],
+        [
+          -121.759364,
+          37.185524
+        ],
+        [
+          -121.785986,
+          37.214257
+        ],
+        [
+          -121.786088,
+          37.214309
+        ],
+        [
+          -121.874824,
+          37.242604
+        ],
+        [
+          -121.874926,
+          37.242606
+        ],
+        [
+          -121.876761,
+          37.275664
+        ],
+        [
+          -121.876789,
+          37.2757
+        ],
+        [
+          -121.923102,
+          37.278462
+        ],
+        [
+          -121.923501,
+          37.278353
+        ],
+        [
+          -121.91237,
+          37.305849
+        ],
+        [
+          -121.912268,
+          37.306348
+        ],
+        [
+          -121.94752,
+          37.37775
+        ]
+      ]
+    ]
+  }
+}

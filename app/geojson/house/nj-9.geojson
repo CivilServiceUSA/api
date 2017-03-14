@@ -1,1 +1,313 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"New Jersey","state_name_slug":"new-jersey","state_code":"NJ","state_code_slug":"nj","district":"9","at_large":false,"vacant":false,"bioguide":"P000096","thomas":"1510","govtrack":"400309","opensecrets":"N00000751","votesmart":"478","fec":"H6NJ08118","maplight":"403","wikidata":"Q529090","google_entity_id":"kg:/m/03txs_","title":"representative","party":"democrat","name":"Bill Pascrell","name_slug":"bill-pascrell","first_name":"Bill","middle_name":null,"last_name":"Jr.","name_suffix":"Bill","goes_by":null,"pronunciation":"BILL PASS-KRELL [equal stress]","gender":"male","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1937-01-25","entered_office":"1997-01-07","term_end":"2019-01-03","biography":"Bill Pascrell, a Representative from New Jersey; born in Paterson, Passaic County, N.J., January 25, 1937; graduated from St. John the Baptist High School, Paterson, N.J., 1955; B.A., Fordham University, New York, N.Y., 1959; M.A., Fordham University, New York, N.Y., 1961; United States Army, 1961-1962; United States Army Reserve, 1962-1967; teacher; president of the Paterson, N.J., board of education, 1979-1982; member of the New Jersey state general assembly, 1988-1996, minority leader pro tempore; mayor of Paterson, N.J., 1990-1996; elected as a Democrat to the One Hundred Fifth and to the ten succeeding Congresses (January 3, 1997-present).","phone":"202-225-5751","fax":"202-225-5782","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://pascrell.house.gov","contact_page":"https://pascrell.house.gov/contact/email-me","facebook_url":"https://www.facebook.com/pascrell","twitter_handle":"BillPascrell","twitter_url":"https://twitter.com/BillPascrell","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/bill-pascrell.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-74.206136,40.916953],[-74.196373,40.944971],[-74.196403,40.94647],[-74.170697,40.946355],[-74.169074,40.946542],[-74.17055,40.981738],[-74.170275,40.983904],[-74.141094,40.966374],[-74.141048,40.966348],[-74.140253,40.924036],[-74.140218,40.924002],[-74.088838,40.919016],[-74.088784,40.918962],[-74.078822,40.894623],[-74.078859,40.894433],[-74.097492,40.874357],[-74.09864,40.87302],[-74.08761,40.861442],[-74.087541,40.861402],[-74.0685,40.875613],[-74.068305,40.876049],[-74.039655,40.860797],[-74.038268,40.858881],[-74.020249,40.86537],[-74.015737,40.864699],[-73.975696,40.953083],[-73.975693,40.953107],[-73.936275,40.939074],[-73.93577,40.938779],[-73.940134,40.930104],[-73.942234,40.926084],[-73.927199,40.917418],[-73.919898,40.913604],[-73.984407,40.798198],[-73.984794,40.797687],[-73.998125,40.808387],[-73.998303,40.808477],[-73.99084,40.821391],[-73.990798,40.821441],[-74.017637,40.823422],[-74.017819,40.823341],[-74.043166,40.807585],[-74.044923,40.807555],[-74.033835,40.803349],[-74.033678,40.803264],[-74.039985,40.78261],[-74.040469,40.781856],[-74.087226,40.749316],[-74.090644,40.748802],[-74.105228,40.777126],[-74.105337,40.777159],[-74.160148,40.763207],[-74.160325,40.763293],[-74.130031,40.819962],[-74.129909,40.819994],[-74.197786,40.857006],[-74.197872,40.857053],[-74.174164,40.901224],[-74.174122,40.901346],[-74.206136,40.916953]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "New Jersey",
+    "state_name_slug": "new-jersey",
+    "state_code": "NJ",
+    "state_code_slug": "nj",
+    "district": "9",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "P000096",
+    "thomas": "1510",
+    "govtrack": "400309",
+    "opensecrets": "N00000751",
+    "votesmart": "478",
+    "fec": "H6NJ08118",
+    "maplight": "403",
+    "wikidata": "Q529090",
+    "google_entity_id": "kg:/m/03txs_",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Bill Pascrell",
+    "name_slug": "bill-pascrell",
+    "first_name": "Bill",
+    "middle_name": null,
+    "last_name": "Pascrell",
+    "name_suffix": "Jr.",
+    "goes_by": null,
+    "pronunciation": "BILL PASS-KRELL [equal stress]",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1937-01-25",
+    "entered_office": "1997-01-07",
+    "term_end": "2019-01-03",
+    "biography": "Bill Pascrell, a Representative from New Jersey; born in Paterson, Passaic County, N.J., January 25, 1937; graduated from St. John the Baptist High School, Paterson, N.J., 1955; B.A., Fordham University, New York, N.Y., 1959; M.A., Fordham University, New York, N.Y., 1961; United States Army, 1961-1962; United States Army Reserve, 1962-1967; teacher; president of the Paterson, N.J., board of education, 1979-1982; member of the New Jersey state general assembly, 1988-1996, minority leader pro tempore; mayor of Paterson, N.J., 1990-1996; elected as a Democrat to the One Hundred Fifth and to the ten succeeding Congresses (January 3, 1997-present).",
+    "phone": "202-225-5751",
+    "fax": "202-225-5782",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://pascrell.house.gov",
+    "contact_page": "https://pascrell.house.gov/contact/email-me",
+    "facebook_url": "https://www.facebook.com/pascrell",
+    "twitter_handle": "BillPascrell",
+    "twitter_url": "https://twitter.com/BillPascrell",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/bill-pascrell.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -74.206136,
+          40.916953
+        ],
+        [
+          -74.196373,
+          40.944971
+        ],
+        [
+          -74.196403,
+          40.94647
+        ],
+        [
+          -74.170697,
+          40.946355
+        ],
+        [
+          -74.169074,
+          40.946542
+        ],
+        [
+          -74.17055,
+          40.981738
+        ],
+        [
+          -74.170275,
+          40.983904
+        ],
+        [
+          -74.141094,
+          40.966374
+        ],
+        [
+          -74.141048,
+          40.966348
+        ],
+        [
+          -74.140253,
+          40.924036
+        ],
+        [
+          -74.140218,
+          40.924002
+        ],
+        [
+          -74.088838,
+          40.919016
+        ],
+        [
+          -74.088784,
+          40.918962
+        ],
+        [
+          -74.078822,
+          40.894623
+        ],
+        [
+          -74.078859,
+          40.894433
+        ],
+        [
+          -74.097492,
+          40.874357
+        ],
+        [
+          -74.09864,
+          40.87302
+        ],
+        [
+          -74.08761,
+          40.861442
+        ],
+        [
+          -74.087541,
+          40.861402
+        ],
+        [
+          -74.0685,
+          40.875613
+        ],
+        [
+          -74.068305,
+          40.876049
+        ],
+        [
+          -74.039655,
+          40.860797
+        ],
+        [
+          -74.038268,
+          40.858881
+        ],
+        [
+          -74.020249,
+          40.86537
+        ],
+        [
+          -74.015737,
+          40.864699
+        ],
+        [
+          -73.975696,
+          40.953083
+        ],
+        [
+          -73.975693,
+          40.953107
+        ],
+        [
+          -73.936275,
+          40.939074
+        ],
+        [
+          -73.93577,
+          40.938779
+        ],
+        [
+          -73.940134,
+          40.930104
+        ],
+        [
+          -73.942234,
+          40.926084
+        ],
+        [
+          -73.927199,
+          40.917418
+        ],
+        [
+          -73.919898,
+          40.913604
+        ],
+        [
+          -73.984407,
+          40.798198
+        ],
+        [
+          -73.984794,
+          40.797687
+        ],
+        [
+          -73.998125,
+          40.808387
+        ],
+        [
+          -73.998303,
+          40.808477
+        ],
+        [
+          -73.99084,
+          40.821391
+        ],
+        [
+          -73.990798,
+          40.821441
+        ],
+        [
+          -74.017637,
+          40.823422
+        ],
+        [
+          -74.017819,
+          40.823341
+        ],
+        [
+          -74.043166,
+          40.807585
+        ],
+        [
+          -74.044923,
+          40.807555
+        ],
+        [
+          -74.033835,
+          40.803349
+        ],
+        [
+          -74.033678,
+          40.803264
+        ],
+        [
+          -74.039985,
+          40.78261
+        ],
+        [
+          -74.040469,
+          40.781856
+        ],
+        [
+          -74.087226,
+          40.749316
+        ],
+        [
+          -74.090644,
+          40.748802
+        ],
+        [
+          -74.105228,
+          40.777126
+        ],
+        [
+          -74.105337,
+          40.777159
+        ],
+        [
+          -74.160148,
+          40.763207
+        ],
+        [
+          -74.160325,
+          40.763293
+        ],
+        [
+          -74.130031,
+          40.819962
+        ],
+        [
+          -74.129909,
+          40.819994
+        ],
+        [
+          -74.197786,
+          40.857006
+        ],
+        [
+          -74.197872,
+          40.857053
+        ],
+        [
+          -74.174164,
+          40.901224
+        ],
+        [
+          -74.174122,
+          40.901346
+        ],
+        [
+          -74.206136,
+          40.916953
+        ]
+      ]
+    ]
+  }
+}

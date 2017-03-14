@@ -1,1 +1,321 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Texas","state_name_slug":"texas","state_code":"TX","state_code_slug":"tx","district":"3","at_large":false,"vacant":false,"bioguide":"J000174","thomas":"603","govtrack":"400206","opensecrets":"N00008028","votesmart":"27079","fec":"H2TX03118","maplight":"307","wikidata":"Q539470","google_entity_id":"kg:/m/02_21s","title":"representative","party":"republican","name":"Sam Johnson","name_slug":"sam-johnson","first_name":"Sam","middle_name":null,"last_name":null,"name_suffix":"Sam","goes_by":null,"pronunciation":"SAM JAHN-suhn","gender":"male","ethnicity":"white-american","religion":"methodist","openley_lgbtq":"no","date_of_birth":"1930-10-11","entered_office":"1991-01-03","term_end":"2019-01-03","biography":"Sam Johnson, a Representative from Texas; born in San Antonio, Bexar County, Tex., October 11, 1930; graduated from Woodrow Wilson High School, Dallas, Tex.; B.B.A., Southern Methodist University, Dallas, Tex., 1951; M.S.I.A., George Washington University, Washington, D.C., 1974; United States Air Force, 1950-1979; prisoner of war during the Vietnam War, 1966-1973; decorated combat veteran, received two Silver Stars, two Legions of Merit, the Distinguished Flying Cross, one Bronze Star with Valor, two Purple Hearts, four Air Medals, and three outstanding unit awards; member of the Texas state house of representatives, 1985-1991; elected as a Republican to the One Hundred Second Congress, by special election, to fill the vacancy caused by the resignation of United States Representative Harry Stephen (Steve) Bartlett, and reelected to the One Hundred Third and to the twelve succeeding Congresses (May 8, 1991-present).","phone":"202-225-4201","fax":"469-304-0392","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://samjohnson.house.gov","contact_page":"http://samjohnson.house.gov/contact-me/ema-l-me.htm","facebook_url":"https://www.facebook.com/pages/Sam-Johnson/52454091867","twitter_handle":"SamsPressShop","twitter_url":"https://twitter.com/SamsPressShop","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/sam-johnson.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-96.843983,32.997242],[-96.837823,33.261877],[-96.837795,33.262835],[-96.679995,33.260074],[-96.67994,33.259973],[-96.679632,33.276102],[-96.679654,33.276232],[-96.640235,33.27469],[-96.636856,33.27438],[-96.635982,33.30482],[-96.635961,33.306161],[-96.606507,33.305207],[-96.606439,33.305196],[-96.602319,33.288393],[-96.602239,33.288429],[-96.586788,33.34497],[-96.586678,33.345602],[-96.483265,33.347842],[-96.482997,33.347847],[-96.481866,33.332704],[-96.481779,33.332583],[-96.45508,33.332195],[-96.455004,33.3322],[-96.458785,33.347552],[-96.459016,33.347549],[-96.430374,33.363486],[-96.430283,33.363487],[-96.429972,33.352544],[-96.429953,33.352303],[-96.401018,33.357065],[-96.400846,33.357065],[-96.397331,33.309128],[-96.396984,33.305509],[-96.418208,33.298684],[-96.418269,33.298551],[-96.405487,33.285587],[-96.405316,33.285455],[-96.415731,33.242249],[-96.41572,33.242164],[-96.402294,33.214422],[-96.402373,33.214302],[-96.373326,33.212967],[-96.373163,33.212948],[-96.359757,33.175088],[-96.359748,33.174975],[-96.402828,33.159535],[-96.403843,33.159578],[-96.391132,33.149237],[-96.390794,33.149033],[-96.409759,33.125558],[-96.409885,33.125214],[-96.424917,33.043631],[-96.424962,33.043444],[-96.443545,33.030113],[-96.443726,33.026181],[-96.602223,33.046224],[-96.60317,33.046241],[-96.595581,32.994829],[-96.595591,32.993736],[-96.613371,32.984206],[-96.613377,32.984021],[-96.843983,32.997242]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Texas",
+    "state_name_slug": "texas",
+    "state_code": "TX",
+    "state_code_slug": "tx",
+    "district": "3",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "J000174",
+    "thomas": "603",
+    "govtrack": "400206",
+    "opensecrets": "N00008028",
+    "votesmart": "27079",
+    "fec": "H2TX03118",
+    "maplight": "307",
+    "wikidata": "Q539470",
+    "google_entity_id": "kg:/m/02_21s",
+    "title": "representative",
+    "party": "republican",
+    "name": "Sam Johnson",
+    "name_slug": "sam-johnson",
+    "first_name": "Sam",
+    "middle_name": null,
+    "last_name": "Johnson",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "SAM JAHN-suhn",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1930-10-11",
+    "entered_office": "1991-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Sam Johnson, a Representative from Texas; born in San Antonio, Bexar County, Tex., October 11, 1930; graduated from Woodrow Wilson High School, Dallas, Tex.; B.B.A., Southern Methodist University, Dallas, Tex., 1951; M.S.I.A., George Washington University, Washington, D.C., 1974; United States Air Force, 1950-1979; prisoner of war during the Vietnam War, 1966-1973; decorated combat veteran, received two Silver Stars, two Legions of Merit, the Distinguished Flying Cross, one Bronze Star with Valor, two Purple Hearts, four Air Medals, and three outstanding unit awards; member of the Texas state house of representatives, 1985-1991; elected as a Republican to the One Hundred Second Congress, by special election, to fill the vacancy caused by the resignation of United States Representative Harry Stephen (Steve) Bartlett, and reelected to the One Hundred Third and to the twelve succeeding Congresses (May 8, 1991-present).",
+    "phone": "202-225-4201",
+    "fax": "469-304-0392",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://samjohnson.house.gov",
+    "contact_page": "http://samjohnson.house.gov/contact-me/ema-l-me.htm",
+    "facebook_url": "https://www.facebook.com/pages/Sam-Johnson/52454091867",
+    "twitter_handle": "SamsPressShop",
+    "twitter_url": "https://twitter.com/SamsPressShop",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/sam-johnson.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -96.843983,
+          32.997242
+        ],
+        [
+          -96.837823,
+          33.261877
+        ],
+        [
+          -96.837795,
+          33.262835
+        ],
+        [
+          -96.679995,
+          33.260074
+        ],
+        [
+          -96.67994,
+          33.259973
+        ],
+        [
+          -96.679632,
+          33.276102
+        ],
+        [
+          -96.679654,
+          33.276232
+        ],
+        [
+          -96.640235,
+          33.27469
+        ],
+        [
+          -96.636856,
+          33.27438
+        ],
+        [
+          -96.635982,
+          33.30482
+        ],
+        [
+          -96.635961,
+          33.306161
+        ],
+        [
+          -96.606507,
+          33.305207
+        ],
+        [
+          -96.606439,
+          33.305196
+        ],
+        [
+          -96.602319,
+          33.288393
+        ],
+        [
+          -96.602239,
+          33.288429
+        ],
+        [
+          -96.586788,
+          33.34497
+        ],
+        [
+          -96.586678,
+          33.345602
+        ],
+        [
+          -96.483265,
+          33.347842
+        ],
+        [
+          -96.482997,
+          33.347847
+        ],
+        [
+          -96.481866,
+          33.332704
+        ],
+        [
+          -96.481779,
+          33.332583
+        ],
+        [
+          -96.45508,
+          33.332195
+        ],
+        [
+          -96.455004,
+          33.3322
+        ],
+        [
+          -96.458785,
+          33.347552
+        ],
+        [
+          -96.459016,
+          33.347549
+        ],
+        [
+          -96.430374,
+          33.363486
+        ],
+        [
+          -96.430283,
+          33.363487
+        ],
+        [
+          -96.429972,
+          33.352544
+        ],
+        [
+          -96.429953,
+          33.352303
+        ],
+        [
+          -96.401018,
+          33.357065
+        ],
+        [
+          -96.400846,
+          33.357065
+        ],
+        [
+          -96.397331,
+          33.309128
+        ],
+        [
+          -96.396984,
+          33.305509
+        ],
+        [
+          -96.418208,
+          33.298684
+        ],
+        [
+          -96.418269,
+          33.298551
+        ],
+        [
+          -96.405487,
+          33.285587
+        ],
+        [
+          -96.405316,
+          33.285455
+        ],
+        [
+          -96.415731,
+          33.242249
+        ],
+        [
+          -96.41572,
+          33.242164
+        ],
+        [
+          -96.402294,
+          33.214422
+        ],
+        [
+          -96.402373,
+          33.214302
+        ],
+        [
+          -96.373326,
+          33.212967
+        ],
+        [
+          -96.373163,
+          33.212948
+        ],
+        [
+          -96.359757,
+          33.175088
+        ],
+        [
+          -96.359748,
+          33.174975
+        ],
+        [
+          -96.402828,
+          33.159535
+        ],
+        [
+          -96.403843,
+          33.159578
+        ],
+        [
+          -96.391132,
+          33.149237
+        ],
+        [
+          -96.390794,
+          33.149033
+        ],
+        [
+          -96.409759,
+          33.125558
+        ],
+        [
+          -96.409885,
+          33.125214
+        ],
+        [
+          -96.424917,
+          33.043631
+        ],
+        [
+          -96.424962,
+          33.043444
+        ],
+        [
+          -96.443545,
+          33.030113
+        ],
+        [
+          -96.443726,
+          33.026181
+        ],
+        [
+          -96.602223,
+          33.046224
+        ],
+        [
+          -96.60317,
+          33.046241
+        ],
+        [
+          -96.595581,
+          32.994829
+        ],
+        [
+          -96.595591,
+          32.993736
+        ],
+        [
+          -96.613371,
+          32.984206
+        ],
+        [
+          -96.613377,
+          32.984021
+        ],
+        [
+          -96.843983,
+          32.997242
+        ]
+      ]
+    ]
+  }
+}

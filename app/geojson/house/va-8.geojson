@@ -1,1 +1,281 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Virginia","state_name_slug":"virginia","state_code":"VA","state_code_slug":"va","district":"8","at_large":false,"vacant":false,"bioguide":"B001292","thomas":"2272","govtrack":"412657","opensecrets":"N00036018","votesmart":"1707","fec":"H4VA08224","maplight":"2113","wikidata":"Q3036086","google_entity_id":"kg:/m/053g16","title":"representative","party":"democrat","name":"Don Beyer","name_slug":"don-beyer","first_name":"Don","middle_name":null,"last_name":null,"name_suffix":"Don","goes_by":null,"pronunciation":"DAHN BAHY-er [Rhymes with Buyer]","gender":"male","ethnicity":"white-american","religion":"episcopalian","openley_lgbtq":"no","date_of_birth":"1950-06-20","entered_office":"2015-01-06","term_end":"2019-01-03","biography":"Don Beyer, a Representative from Virginia; born in Trieste, Italy, June 20, 1950; graduated from Gonzaga College High School, Washington, D.C., 1968; B.A., Williams College, Williamstown, Mass., 1972; automobile dealer; lieutenant governor of Virginia, 1990-1998; unsuccessful candidate for Governor of Virginia in 1997; United States Ambassador to Switzerland and Liechtenstein, 2009-2013; elected as a Democrat to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).","phone":"202-225-4376","fax":"202-225-0017","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://beyer.house.gov","contact_page":"http://beyer.house.gov/contact/","facebook_url":"https://www.facebook.com/RepDonBeyer/","twitter_handle":"RepDonBeyer","twitter_url":"https://twitter.com/RepDonBeyer","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/don-beyer.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-77.245756,38.672273],[-77.213957,38.719477],[-77.212675,38.719676],[-77.226957,38.757515],[-77.226974,38.757526],[-77.199356,38.764642],[-77.198895,38.764636],[-77.21878,38.792722],[-77.218782,38.792764],[-77.184397,38.801655],[-77.18427,38.802013],[-77.210126,38.811671],[-77.210097,38.811744],[-77.196888,38.83038],[-77.196813,38.830515],[-77.175323,38.825544],[-77.175065,38.825479],[-77.17378,38.839684],[-77.173774,38.83979],[-77.140785,38.845311],[-77.140593,38.845463],[-77.15619,38.872264],[-77.156335,38.872372],[-77.196933,38.853425],[-77.197175,38.853351],[-77.219838,38.865856],[-77.21997,38.865854],[-77.210365,38.93124],[-77.21023,38.931487],[-77.19642,38.923738],[-77.196244,38.923473],[-77.166983,38.942608],[-77.166596,38.942634],[-77.121179,38.933287],[-77.119759,38.934343],[-77.067826,38.899607],[-77.067742,38.899535],[-77.032147,38.850313],[-77.032143,38.850287],[-77.048009,38.841266],[-77.04802,38.841261],[-77.043338,38.718468],[-77.043344,38.71844],[-77.12253,38.685324],[-77.122632,38.685256],[-77.129719,38.634782],[-77.129682,38.634704],[-77.216195,38.610975],[-77.225503,38.605617],[-77.218989,38.644511],[-77.219262,38.646432],[-77.245756,38.672273]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Virginia",
+    "state_name_slug": "virginia",
+    "state_code": "VA",
+    "state_code_slug": "va",
+    "district": "8",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "B001292",
+    "thomas": "2272",
+    "govtrack": "412657",
+    "opensecrets": "N00036018",
+    "votesmart": "1707",
+    "fec": "H4VA08224",
+    "maplight": "2113",
+    "wikidata": "Q3036086",
+    "google_entity_id": "kg:/m/053g16",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Don Beyer",
+    "name_slug": "don-beyer",
+    "first_name": "Don",
+    "middle_name": null,
+    "last_name": "Beyer",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "DAHN BAHY-er [Rhymes with Buyer]",
+    "gender": "male",
+    "ethnicity": "white-american",
+    "religion": "episcopalian",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1950-06-20",
+    "entered_office": "2015-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Don Beyer, a Representative from Virginia; born in Trieste, Italy, June 20, 1950; graduated from Gonzaga College High School, Washington, D.C., 1968; B.A., Williams College, Williamstown, Mass., 1972; automobile dealer; lieutenant governor of Virginia, 1990-1998; unsuccessful candidate for Governor of Virginia in 1997; United States Ambassador to Switzerland and Liechtenstein, 2009-2013; elected as a Democrat to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).",
+    "phone": "202-225-4376",
+    "fax": "202-225-0017",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://beyer.house.gov",
+    "contact_page": "http://beyer.house.gov/contact/",
+    "facebook_url": "https://www.facebook.com/RepDonBeyer/",
+    "twitter_handle": "RepDonBeyer",
+    "twitter_url": "https://twitter.com/RepDonBeyer",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/don-beyer.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -77.245756,
+          38.672273
+        ],
+        [
+          -77.213957,
+          38.719477
+        ],
+        [
+          -77.212675,
+          38.719676
+        ],
+        [
+          -77.226957,
+          38.757515
+        ],
+        [
+          -77.226974,
+          38.757526
+        ],
+        [
+          -77.199356,
+          38.764642
+        ],
+        [
+          -77.198895,
+          38.764636
+        ],
+        [
+          -77.21878,
+          38.792722
+        ],
+        [
+          -77.218782,
+          38.792764
+        ],
+        [
+          -77.184397,
+          38.801655
+        ],
+        [
+          -77.18427,
+          38.802013
+        ],
+        [
+          -77.210126,
+          38.811671
+        ],
+        [
+          -77.210097,
+          38.811744
+        ],
+        [
+          -77.196888,
+          38.83038
+        ],
+        [
+          -77.196813,
+          38.830515
+        ],
+        [
+          -77.175323,
+          38.825544
+        ],
+        [
+          -77.175065,
+          38.825479
+        ],
+        [
+          -77.17378,
+          38.839684
+        ],
+        [
+          -77.173774,
+          38.83979
+        ],
+        [
+          -77.140785,
+          38.845311
+        ],
+        [
+          -77.140593,
+          38.845463
+        ],
+        [
+          -77.15619,
+          38.872264
+        ],
+        [
+          -77.156335,
+          38.872372
+        ],
+        [
+          -77.196933,
+          38.853425
+        ],
+        [
+          -77.197175,
+          38.853351
+        ],
+        [
+          -77.219838,
+          38.865856
+        ],
+        [
+          -77.21997,
+          38.865854
+        ],
+        [
+          -77.210365,
+          38.93124
+        ],
+        [
+          -77.21023,
+          38.931487
+        ],
+        [
+          -77.19642,
+          38.923738
+        ],
+        [
+          -77.196244,
+          38.923473
+        ],
+        [
+          -77.166983,
+          38.942608
+        ],
+        [
+          -77.166596,
+          38.942634
+        ],
+        [
+          -77.121179,
+          38.933287
+        ],
+        [
+          -77.119759,
+          38.934343
+        ],
+        [
+          -77.067826,
+          38.899607
+        ],
+        [
+          -77.067742,
+          38.899535
+        ],
+        [
+          -77.032147,
+          38.850313
+        ],
+        [
+          -77.032143,
+          38.850287
+        ],
+        [
+          -77.048009,
+          38.841266
+        ],
+        [
+          -77.04802,
+          38.841261
+        ],
+        [
+          -77.043338,
+          38.718468
+        ],
+        [
+          -77.043344,
+          38.71844
+        ],
+        [
+          -77.12253,
+          38.685324
+        ],
+        [
+          -77.122632,
+          38.685256
+        ],
+        [
+          -77.129719,
+          38.634782
+        ],
+        [
+          -77.129682,
+          38.634704
+        ],
+        [
+          -77.216195,
+          38.610975
+        ],
+        [
+          -77.225503,
+          38.605617
+        ],
+        [
+          -77.218989,
+          38.644511
+        ],
+        [
+          -77.219262,
+          38.646432
+        ],
+        [
+          -77.245756,
+          38.672273
+        ]
+      ]
+    ]
+  }
+}

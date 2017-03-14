@@ -1,1 +1,313 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"Florida","state_name_slug":"florida","state_code":"FL","state_code_slug":"fl","district":"7","at_large":false,"vacant":false,"bioguide":"M001202","thomas":null,"govtrack":"412694","opensecrets":"N00040133","votesmart":"173426","fec":"H6FL07140","maplight":"2206","wikidata":"Q27804538","google_entity_id":null,"title":"representative","party":"democrat","name":"Stephanie Murphy","name_slug":"stephanie-murphy","first_name":"Stephanie","middle_name":null,"last_name":null,"name_suffix":"Stephanie","goes_by":null,"pronunciation":"STEFF-uh-nee MUR-fee","gender":"female","ethnicity":"asian-american","religion":"unspecified","openley_lgbtq":"no","date_of_birth":"1978-09-16","entered_office":"2017-01-03","term_end":"2019-01-03","biography":"Stephanie Murphy, a Representative from Florida; born in Ho Chi Minh City, Vietnam, September 16, 1978; B.A., College of William and Mary, Williamsburg, Va., 2000; M.S.F.S., Georgetown University, Washington, D.C., 2004; consultant; businesswoman; foreign affairs specialist, United States Department of Defense, 2004-2008; faculty, Rollins College, Winter Park, Fla., 2014-2016; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).","phone":"202-225-4035","fax":"202-226-0821","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://stephaniemurphy.house.gov","contact_page":"https://stephaniemurphy.house.gov/contact","facebook_url":"https://www.facebook.com/SMurphyCongress/","twitter_handle":"SMurphyCongress","twitter_url":"https://twitter.com/SMurphyCongress","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/stephanie-murphy.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-81.459727,28.642611],[-81.459198,28.713112],[-81.4592,28.713207],[-81.441786,28.714957],[-81.441592,28.715126],[-81.418373,28.754969],[-81.416102,28.755702],[-81.417562,28.822727],[-81.416846,28.824569],[-81.367036,28.878779],[-81.36694,28.879227],[-81.358715,28.848284],[-81.358027,28.847804],[-81.226375,28.832644],[-81.226003,28.83263],[-81.213845,28.804591],[-81.213717,28.804212],[-81.181505,28.796918],[-81.180999,28.79661],[-81.179539,28.782083],[-81.178936,28.781886],[-81.136184,28.792212],[-81.136167,28.792222],[-81.120502,28.825677],[-81.119782,28.826157],[-81.076661,28.819517],[-81.076085,28.819325],[-81.055743,28.785584],[-81.055525,28.784839],[-81.061091,28.756744],[-81.06111,28.750001],[-81.021446,28.701143],[-81.020825,28.700501],[-81.007047,28.637108],[-81.007099,28.636326],[-80.986904,28.618109],[-80.986868,28.617907],[-81.128586,28.612539],[-81.129006,28.612535],[-81.11195,28.5623],[-81.111859,28.561924],[-81.176625,28.565426],[-81.17818,28.565408],[-81.184145,28.542767],[-81.184312,28.542724],[-81.302145,28.539042],[-81.302974,28.539027],[-81.330793,28.495457],[-81.33077,28.495064],[-81.368547,28.494241],[-81.368801,28.494237],[-81.385994,28.592604],[-81.38618,28.593292],[-81.37567,28.620693],[-81.375672,28.620771],[-81.406519,28.621724],[-81.410927,28.621776],[-81.40698,28.639669],[-81.407633,28.640104],[-81.459727,28.642611]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "Florida",
+    "state_name_slug": "florida",
+    "state_code": "FL",
+    "state_code_slug": "fl",
+    "district": "7",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "M001202",
+    "thomas": null,
+    "govtrack": "412694",
+    "opensecrets": "N00040133",
+    "votesmart": "173426",
+    "fec": "H6FL07140",
+    "maplight": "2206",
+    "wikidata": "Q27804538",
+    "google_entity_id": null,
+    "title": "representative",
+    "party": "democrat",
+    "name": "Stephanie Murphy",
+    "name_slug": "stephanie-murphy",
+    "first_name": "Stephanie",
+    "middle_name": null,
+    "last_name": "Murphy",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "STEFF-uh-nee MUR-fee",
+    "gender": "female",
+    "ethnicity": "asian-american",
+    "religion": "unspecified",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1978-09-16",
+    "entered_office": "2017-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Stephanie Murphy, a Representative from Florida; born in Ho Chi Minh City, Vietnam, September 16, 1978; B.A., College of William and Mary, Williamsburg, Va., 2000; M.S.F.S., Georgetown University, Washington, D.C., 2004; consultant; businesswoman; foreign affairs specialist, United States Department of Defense, 2004-2008; faculty, Rollins College, Winter Park, Fla., 2014-2016; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).",
+    "phone": "202-225-4035",
+    "fax": "202-226-0821",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://stephaniemurphy.house.gov",
+    "contact_page": "https://stephaniemurphy.house.gov/contact",
+    "facebook_url": "https://www.facebook.com/SMurphyCongress/",
+    "twitter_handle": "SMurphyCongress",
+    "twitter_url": "https://twitter.com/SMurphyCongress",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/stephanie-murphy.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -81.459727,
+          28.642611
+        ],
+        [
+          -81.459198,
+          28.713112
+        ],
+        [
+          -81.4592,
+          28.713207
+        ],
+        [
+          -81.441786,
+          28.714957
+        ],
+        [
+          -81.441592,
+          28.715126
+        ],
+        [
+          -81.418373,
+          28.754969
+        ],
+        [
+          -81.416102,
+          28.755702
+        ],
+        [
+          -81.417562,
+          28.822727
+        ],
+        [
+          -81.416846,
+          28.824569
+        ],
+        [
+          -81.367036,
+          28.878779
+        ],
+        [
+          -81.36694,
+          28.879227
+        ],
+        [
+          -81.358715,
+          28.848284
+        ],
+        [
+          -81.358027,
+          28.847804
+        ],
+        [
+          -81.226375,
+          28.832644
+        ],
+        [
+          -81.226003,
+          28.83263
+        ],
+        [
+          -81.213845,
+          28.804591
+        ],
+        [
+          -81.213717,
+          28.804212
+        ],
+        [
+          -81.181505,
+          28.796918
+        ],
+        [
+          -81.180999,
+          28.79661
+        ],
+        [
+          -81.179539,
+          28.782083
+        ],
+        [
+          -81.178936,
+          28.781886
+        ],
+        [
+          -81.136184,
+          28.792212
+        ],
+        [
+          -81.136167,
+          28.792222
+        ],
+        [
+          -81.120502,
+          28.825677
+        ],
+        [
+          -81.119782,
+          28.826157
+        ],
+        [
+          -81.076661,
+          28.819517
+        ],
+        [
+          -81.076085,
+          28.819325
+        ],
+        [
+          -81.055743,
+          28.785584
+        ],
+        [
+          -81.055525,
+          28.784839
+        ],
+        [
+          -81.061091,
+          28.756744
+        ],
+        [
+          -81.06111,
+          28.750001
+        ],
+        [
+          -81.021446,
+          28.701143
+        ],
+        [
+          -81.020825,
+          28.700501
+        ],
+        [
+          -81.007047,
+          28.637108
+        ],
+        [
+          -81.007099,
+          28.636326
+        ],
+        [
+          -80.986904,
+          28.618109
+        ],
+        [
+          -80.986868,
+          28.617907
+        ],
+        [
+          -81.128586,
+          28.612539
+        ],
+        [
+          -81.129006,
+          28.612535
+        ],
+        [
+          -81.11195,
+          28.5623
+        ],
+        [
+          -81.111859,
+          28.561924
+        ],
+        [
+          -81.176625,
+          28.565426
+        ],
+        [
+          -81.17818,
+          28.565408
+        ],
+        [
+          -81.184145,
+          28.542767
+        ],
+        [
+          -81.184312,
+          28.542724
+        ],
+        [
+          -81.302145,
+          28.539042
+        ],
+        [
+          -81.302974,
+          28.539027
+        ],
+        [
+          -81.330793,
+          28.495457
+        ],
+        [
+          -81.33077,
+          28.495064
+        ],
+        [
+          -81.368547,
+          28.494241
+        ],
+        [
+          -81.368801,
+          28.494237
+        ],
+        [
+          -81.385994,
+          28.592604
+        ],
+        [
+          -81.38618,
+          28.593292
+        ],
+        [
+          -81.37567,
+          28.620693
+        ],
+        [
+          -81.375672,
+          28.620771
+        ],
+        [
+          -81.406519,
+          28.621724
+        ],
+        [
+          -81.410927,
+          28.621776
+        ],
+        [
+          -81.40698,
+          28.639669
+        ],
+        [
+          -81.407633,
+          28.640104
+        ],
+        [
+          -81.459727,
+          28.642611
+        ]
+      ]
+    ]
+  }
+}

@@ -1,1 +1,377 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"53","at_large":false,"vacant":false,"bioguide":"D000598","thomas":"1641","govtrack":"400097","opensecrets":"N00009604","votesmart":"8168","fec":"H0CA49055","maplight":"207","wikidata":"Q460675","google_entity_id":"kg:/m/024xs5","title":"representative","party":"democrat","name":"Susan Davis","name_slug":"susan-davis","first_name":"Susan","middle_name":null,"last_name":null,"name_suffix":"Susan","goes_by":null,"pronunciation":"SOO-zuhn DAY-viss","gender":"female","ethnicity":"white-american","religion":"jewish","openley_lgbtq":"no","date_of_birth":"1944-04-13","entered_office":"2001-01-03","term_end":"2019-01-03","biography":"Susan Davis, a Representative from California; born in Cambridge, Middlesex County, Mass., April 13, 1944; B.A., University of California, Berkeley, Calif., 1965; M.S.W., University of North Carolina, Chapel Hill, N.C., 1968; member of the San Diego, Calif., board of education, 1983-1992, president, San Diego, Calif., board of education 1989-1992; executive director, Aaron Price Fellows, 1990-1994; member of the California state assembly, 1994-2000; elected as a Democrat to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).","phone":"202-225-2040","fax":"202-225-2948","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://susandavis.house.gov","contact_page":"https://susandavis.house.gov/contact","facebook_url":"https://www.facebook.com/RepSusanDavis/","twitter_handle":"RepSusanDavis","twitter_url":"https://twitter.com/RepSusanDavis","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/susan-davis.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-117.203719,32.752449],[-117.162673,32.758965],[-117.161561,32.758795],[-117.16159,32.771047],[-117.161457,32.771526],[-117.182535,32.766164],[-117.183634,32.766265],[-117.189036,32.792269],[-117.18901,32.792533],[-117.15357,32.811045],[-117.153535,32.81118],[-117.113927,32.810453],[-117.11384,32.810474],[-117.108846,32.795479],[-117.104576,32.795349],[-117.088092,32.815421],[-117.087519,32.81599],[-117.047202,32.817975],[-117.047115,32.818033],[-117.028699,32.79643],[-117.028627,32.796408],[-117.005813,32.802634],[-117.005705,32.80261],[-117.000704,32.82821],[-117.000705,32.82832],[-116.964034,32.82956],[-116.963614,32.82956],[-116.949898,32.77868],[-116.949904,32.778595],[-116.927875,32.776049],[-116.927875,32.775835],[-116.961024,32.764729],[-116.96104,32.764701],[-116.940618,32.733434],[-116.940591,32.733375],[-116.96447,32.705505],[-116.964809,32.705656],[-116.949577,32.685407],[-116.949539,32.677988],[-116.927752,32.674692],[-116.927715,32.66865],[-116.94054,32.649382],[-116.94226,32.648304],[-116.931014,32.647328],[-116.930839,32.647283],[-116.930048,32.601354],[-116.928892,32.598545],[-116.999211,32.578076],[-116.99963,32.577965],[-117.032582,32.587525],[-117.035537,32.587505],[-117.063873,32.651264],[-117.064023,32.651872],[-117.050133,32.66678],[-117.05019,32.667008],[-117.064825,32.662652],[-117.065428,32.662415],[-117.064107,32.688222],[-117.064344,32.688864],[-117.076233,32.690406],[-117.076648,32.691917],[-117.047122,32.714537],[-117.046612,32.715133],[-117.04978,32.732641],[-117.049762,32.733346],[-117.06262,32.729494],[-117.064445,32.729469],[-117.051905,32.743085],[-117.052018,32.743228],[-117.11921,32.755246],[-117.11953,32.75525],[-117.117826,32.717267],[-117.117821,32.717199],[-117.142203,32.713289],[-117.144,32.713261],[-117.203719,32.752449]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "53",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "D000598",
+    "thomas": "1641",
+    "govtrack": "400097",
+    "opensecrets": "N00009604",
+    "votesmart": "8168",
+    "fec": "H0CA49055",
+    "maplight": "207",
+    "wikidata": "Q460675",
+    "google_entity_id": "kg:/m/024xs5",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Susan Davis",
+    "name_slug": "susan-davis",
+    "first_name": "Susan",
+    "middle_name": null,
+    "last_name": "Davis",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "SOO-zuhn DAY-viss",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "jewish",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1944-04-13",
+    "entered_office": "2001-01-03",
+    "term_end": "2019-01-03",
+    "biography": "Susan Davis, a Representative from California; born in Cambridge, Middlesex County, Mass., April 13, 1944; B.A., University of California, Berkeley, Calif., 1965; M.S.W., University of North Carolina, Chapel Hill, N.C., 1968; member of the San Diego, Calif., board of education, 1983-1992, president, San Diego, Calif., board of education 1989-1992; executive director, Aaron Price Fellows, 1990-1994; member of the California state assembly, 1994-2000; elected as a Democrat to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).",
+    "phone": "202-225-2040",
+    "fax": "202-225-2948",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://susandavis.house.gov",
+    "contact_page": "https://susandavis.house.gov/contact",
+    "facebook_url": "https://www.facebook.com/RepSusanDavis/",
+    "twitter_handle": "RepSusanDavis",
+    "twitter_url": "https://twitter.com/RepSusanDavis",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/susan-davis.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -117.203719,
+          32.752449
+        ],
+        [
+          -117.162673,
+          32.758965
+        ],
+        [
+          -117.161561,
+          32.758795
+        ],
+        [
+          -117.16159,
+          32.771047
+        ],
+        [
+          -117.161457,
+          32.771526
+        ],
+        [
+          -117.182535,
+          32.766164
+        ],
+        [
+          -117.183634,
+          32.766265
+        ],
+        [
+          -117.189036,
+          32.792269
+        ],
+        [
+          -117.18901,
+          32.792533
+        ],
+        [
+          -117.15357,
+          32.811045
+        ],
+        [
+          -117.153535,
+          32.81118
+        ],
+        [
+          -117.113927,
+          32.810453
+        ],
+        [
+          -117.11384,
+          32.810474
+        ],
+        [
+          -117.108846,
+          32.795479
+        ],
+        [
+          -117.104576,
+          32.795349
+        ],
+        [
+          -117.088092,
+          32.815421
+        ],
+        [
+          -117.087519,
+          32.81599
+        ],
+        [
+          -117.047202,
+          32.817975
+        ],
+        [
+          -117.047115,
+          32.818033
+        ],
+        [
+          -117.028699,
+          32.79643
+        ],
+        [
+          -117.028627,
+          32.796408
+        ],
+        [
+          -117.005813,
+          32.802634
+        ],
+        [
+          -117.005705,
+          32.80261
+        ],
+        [
+          -117.000704,
+          32.82821
+        ],
+        [
+          -117.000705,
+          32.82832
+        ],
+        [
+          -116.964034,
+          32.82956
+        ],
+        [
+          -116.963614,
+          32.82956
+        ],
+        [
+          -116.949898,
+          32.77868
+        ],
+        [
+          -116.949904,
+          32.778595
+        ],
+        [
+          -116.927875,
+          32.776049
+        ],
+        [
+          -116.927875,
+          32.775835
+        ],
+        [
+          -116.961024,
+          32.764729
+        ],
+        [
+          -116.96104,
+          32.764701
+        ],
+        [
+          -116.940618,
+          32.733434
+        ],
+        [
+          -116.940591,
+          32.733375
+        ],
+        [
+          -116.96447,
+          32.705505
+        ],
+        [
+          -116.964809,
+          32.705656
+        ],
+        [
+          -116.949577,
+          32.685407
+        ],
+        [
+          -116.949539,
+          32.677988
+        ],
+        [
+          -116.927752,
+          32.674692
+        ],
+        [
+          -116.927715,
+          32.66865
+        ],
+        [
+          -116.94054,
+          32.649382
+        ],
+        [
+          -116.94226,
+          32.648304
+        ],
+        [
+          -116.931014,
+          32.647328
+        ],
+        [
+          -116.930839,
+          32.647283
+        ],
+        [
+          -116.930048,
+          32.601354
+        ],
+        [
+          -116.928892,
+          32.598545
+        ],
+        [
+          -116.999211,
+          32.578076
+        ],
+        [
+          -116.99963,
+          32.577965
+        ],
+        [
+          -117.032582,
+          32.587525
+        ],
+        [
+          -117.035537,
+          32.587505
+        ],
+        [
+          -117.063873,
+          32.651264
+        ],
+        [
+          -117.064023,
+          32.651872
+        ],
+        [
+          -117.050133,
+          32.66678
+        ],
+        [
+          -117.05019,
+          32.667008
+        ],
+        [
+          -117.064825,
+          32.662652
+        ],
+        [
+          -117.065428,
+          32.662415
+        ],
+        [
+          -117.064107,
+          32.688222
+        ],
+        [
+          -117.064344,
+          32.688864
+        ],
+        [
+          -117.076233,
+          32.690406
+        ],
+        [
+          -117.076648,
+          32.691917
+        ],
+        [
+          -117.047122,
+          32.714537
+        ],
+        [
+          -117.046612,
+          32.715133
+        ],
+        [
+          -117.04978,
+          32.732641
+        ],
+        [
+          -117.049762,
+          32.733346
+        ],
+        [
+          -117.06262,
+          32.729494
+        ],
+        [
+          -117.064445,
+          32.729469
+        ],
+        [
+          -117.051905,
+          32.743085
+        ],
+        [
+          -117.052018,
+          32.743228
+        ],
+        [
+          -117.11921,
+          32.755246
+        ],
+        [
+          -117.11953,
+          32.75525
+        ],
+        [
+          -117.117826,
+          32.717267
+        ],
+        [
+          -117.117821,
+          32.717199
+        ],
+        [
+          -117.142203,
+          32.713289
+        ],
+        [
+          -117.144,
+          32.713261
+        ],
+        [
+          -117.203719,
+          32.752449
+        ]
+      ]
+    ]
+  }
+}

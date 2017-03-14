@@ -1,1 +1,329 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"California","state_name_slug":"california","state_code":"CA","state_code_slug":"ca","district":"45","at_large":false,"vacant":false,"bioguide":"W000820","thomas":"2232","govtrack":"412618","opensecrets":"N00035391","votesmart":null,"fec":"H4CA45097","maplight":"2074","wikidata":"Q6862199","google_entity_id":"kg:/m/077r0l","title":"representative","party":"republican","name":"Mimi Walters","name_slug":"mimi-walters","first_name":"Mimi","middle_name":null,"last_name":null,"name_suffix":"Mimi","goes_by":null,"pronunciation":"MEE-mee WAWL-terz","gender":"female","ethnicity":"white-american","religion":"roman-catholic","openley_lgbtq":"no","date_of_birth":"1962-05-14","entered_office":"2015-01-06","term_end":"2019-01-03","biography":"Mimi Walters, a Representative from California; born in Pasadena, Los Angeles County, Calif., May 14, 1962; B.A., University of California, Los Angeles, Calif., 1984; sales representative; business executive; member of the Laguna Niguel, Calif., city council, 1996-2004; Mayor of Laguna Niguel, Calif., 2000; member of the California state assembly, 2005-2008; member of the California state senate, 2008-2015; elected as a Republican to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).","phone":"202-225-5611","fax":"202-225-9177","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://walters.house.gov","contact_page":"https://walters.house.gov/contact/email","facebook_url":"https://www.facebook.com/RepMimiWalters/","twitter_handle":"RepMimiWalters","twitter_url":"https://twitter.com/RepMimiWalters","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/mimi-walters.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-117.868742,33.689638],[-117.837836,33.71106],[-117.83764,33.71126],[-117.834341,33.838335],[-117.834116,33.838691],[-117.791125,33.845712],[-117.790324,33.845735],[-117.746197,33.878971],[-117.745831,33.879235],[-117.675621,33.86922],[-117.675092,33.869172],[-117.580539,33.76891],[-117.580136,33.767988],[-117.537712,33.75789],[-117.536448,33.757665],[-117.534006,33.710421],[-117.533999,33.710355],[-117.489227,33.704912],[-117.474573,33.703811],[-117.413019,33.65907],[-117.412987,33.659045],[-117.469534,33.591708],[-117.469784,33.591578],[-117.514268,33.59354],[-117.514429,33.593416],[-117.538239,33.611978],[-117.538553,33.612241],[-117.532366,33.625655],[-117.532314,33.625728],[-117.549782,33.625786],[-117.550199,33.625787],[-117.550028,33.643196],[-117.552502,33.643485],[-117.575836,33.602348],[-117.576356,33.601852],[-117.580057,33.557444],[-117.581195,33.556503],[-117.603982,33.567924],[-117.606248,33.569594],[-117.600234,33.589333],[-117.599948,33.589382],[-117.61949,33.58743],[-117.619731,33.587468],[-117.618859,33.5996],[-117.619599,33.599996],[-117.66844,33.55631],[-117.669129,33.555566],[-117.672571,33.568475],[-117.672571,33.568492],[-117.691663,33.558815],[-117.691851,33.558835],[-117.722674,33.607278],[-117.723416,33.607785],[-117.748244,33.597779],[-117.751597,33.598849],[-117.75314,33.626734],[-117.754003,33.628128],[-117.771489,33.622803],[-117.772787,33.622422],[-117.77391,33.59925],[-117.77435,33.59927],[-117.85164,33.634732],[-117.852306,33.635177],[-117.868742,33.689638]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "California",
+    "state_name_slug": "california",
+    "state_code": "CA",
+    "state_code_slug": "ca",
+    "district": "45",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "W000820",
+    "thomas": "2232",
+    "govtrack": "412618",
+    "opensecrets": "N00035391",
+    "votesmart": null,
+    "fec": "H4CA45097",
+    "maplight": "2074",
+    "wikidata": "Q6862199",
+    "google_entity_id": "kg:/m/077r0l",
+    "title": "representative",
+    "party": "republican",
+    "name": "Mimi Walters",
+    "name_slug": "mimi-walters",
+    "first_name": "Mimi",
+    "middle_name": null,
+    "last_name": "Walters",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "MEE-mee WAWL-terz",
+    "gender": "female",
+    "ethnicity": "white-american",
+    "religion": "roman-catholic",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1962-05-14",
+    "entered_office": "2015-01-06",
+    "term_end": "2019-01-03",
+    "biography": "Mimi Walters, a Representative from California; born in Pasadena, Los Angeles County, Calif., May 14, 1962; B.A., University of California, Los Angeles, Calif., 1984; sales representative; business executive; member of the Laguna Niguel, Calif., city council, 1996-2004; Mayor of Laguna Niguel, Calif., 2000; member of the California state assembly, 2005-2008; member of the California state senate, 2008-2015; elected as a Republican to the One Hundred Fourteenth and to the succeeding Congress (January 3, 2015-present).",
+    "phone": "202-225-5611",
+    "fax": "202-225-9177",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://walters.house.gov",
+    "contact_page": "https://walters.house.gov/contact/email",
+    "facebook_url": "https://www.facebook.com/RepMimiWalters/",
+    "twitter_handle": "RepMimiWalters",
+    "twitter_url": "https://twitter.com/RepMimiWalters",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/mimi-walters.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -117.868742,
+          33.689638
+        ],
+        [
+          -117.837836,
+          33.71106
+        ],
+        [
+          -117.83764,
+          33.71126
+        ],
+        [
+          -117.834341,
+          33.838335
+        ],
+        [
+          -117.834116,
+          33.838691
+        ],
+        [
+          -117.791125,
+          33.845712
+        ],
+        [
+          -117.790324,
+          33.845735
+        ],
+        [
+          -117.746197,
+          33.878971
+        ],
+        [
+          -117.745831,
+          33.879235
+        ],
+        [
+          -117.675621,
+          33.86922
+        ],
+        [
+          -117.675092,
+          33.869172
+        ],
+        [
+          -117.580539,
+          33.76891
+        ],
+        [
+          -117.580136,
+          33.767988
+        ],
+        [
+          -117.537712,
+          33.75789
+        ],
+        [
+          -117.536448,
+          33.757665
+        ],
+        [
+          -117.534006,
+          33.710421
+        ],
+        [
+          -117.533999,
+          33.710355
+        ],
+        [
+          -117.489227,
+          33.704912
+        ],
+        [
+          -117.474573,
+          33.703811
+        ],
+        [
+          -117.413019,
+          33.65907
+        ],
+        [
+          -117.412987,
+          33.659045
+        ],
+        [
+          -117.469534,
+          33.591708
+        ],
+        [
+          -117.469784,
+          33.591578
+        ],
+        [
+          -117.514268,
+          33.59354
+        ],
+        [
+          -117.514429,
+          33.593416
+        ],
+        [
+          -117.538239,
+          33.611978
+        ],
+        [
+          -117.538553,
+          33.612241
+        ],
+        [
+          -117.532366,
+          33.625655
+        ],
+        [
+          -117.532314,
+          33.625728
+        ],
+        [
+          -117.549782,
+          33.625786
+        ],
+        [
+          -117.550199,
+          33.625787
+        ],
+        [
+          -117.550028,
+          33.643196
+        ],
+        [
+          -117.552502,
+          33.643485
+        ],
+        [
+          -117.575836,
+          33.602348
+        ],
+        [
+          -117.576356,
+          33.601852
+        ],
+        [
+          -117.580057,
+          33.557444
+        ],
+        [
+          -117.581195,
+          33.556503
+        ],
+        [
+          -117.603982,
+          33.567924
+        ],
+        [
+          -117.606248,
+          33.569594
+        ],
+        [
+          -117.600234,
+          33.589333
+        ],
+        [
+          -117.599948,
+          33.589382
+        ],
+        [
+          -117.61949,
+          33.58743
+        ],
+        [
+          -117.619731,
+          33.587468
+        ],
+        [
+          -117.618859,
+          33.5996
+        ],
+        [
+          -117.619599,
+          33.599996
+        ],
+        [
+          -117.66844,
+          33.55631
+        ],
+        [
+          -117.669129,
+          33.555566
+        ],
+        [
+          -117.672571,
+          33.568475
+        ],
+        [
+          -117.672571,
+          33.568492
+        ],
+        [
+          -117.691663,
+          33.558815
+        ],
+        [
+          -117.691851,
+          33.558835
+        ],
+        [
+          -117.722674,
+          33.607278
+        ],
+        [
+          -117.723416,
+          33.607785
+        ],
+        [
+          -117.748244,
+          33.597779
+        ],
+        [
+          -117.751597,
+          33.598849
+        ],
+        [
+          -117.75314,
+          33.626734
+        ],
+        [
+          -117.754003,
+          33.628128
+        ],
+        [
+          -117.771489,
+          33.622803
+        ],
+        [
+          -117.772787,
+          33.622422
+        ],
+        [
+          -117.77391,
+          33.59925
+        ],
+        [
+          -117.77435,
+          33.59927
+        ],
+        [
+          -117.85164,
+          33.634732
+        ],
+        [
+          -117.852306,
+          33.635177
+        ],
+        [
+          -117.868742,
+          33.689638
+        ]
+      ]
+    ]
+  }
+}

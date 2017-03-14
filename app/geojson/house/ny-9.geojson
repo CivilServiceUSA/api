@@ -1,1 +1,121 @@
-{"type":"Feature","provider":{"name":"Civil Services","email":"hello@civil.services","twitter":"https://twitter.com/CivilServiceUSA","homepage":"https://civil.services","repository":"https://github.com/CivilServiceUSA/us-house"},"properties":{"state_name":"New York","state_name_slug":"new-york","state_code":"NY","state_code_slug":"ny","district":"9","at_large":false,"vacant":false,"bioguide":"C001067","thomas":"1864","govtrack":"412221","opensecrets":"N00026961","votesmart":"44741","fec":"H4NY11138","maplight":"706","wikidata":"Q461679","google_entity_id":"kg:/m/06h90t","title":"representative","party":"democrat","name":"Yvette Clarke","name_slug":"yvette-clarke","first_name":"Yvette","middle_name":"D.","last_name":null,"name_suffix":"Yvette","goes_by":null,"pronunciation":"ee-VET KLARK","gender":"female","ethnicity":"african-american","religion":"african-methodist","openley_lgbtq":"no","date_of_birth":"1964-11-21","entered_office":"2007-01-04","term_end":"2019-01-03","biography":"Yvette Clarke, a Representative from New York; born in Brooklyn, Kings County, N.Y., November 21, 1964; attended Oberlin College, Oberlin, N.Y., 1982-1986; childcare specialist; staff, state senator Velmanette Montgomery, 1989-1991; executive assistant, New York state Workersâ€™ Compensation Board, 1992-1993; youth program director; business development director; member of the New York, N.Y., city council, 2002-2007; unsuccessful candidate for nomination for the One Hundred Ninth Congress in 2004; elected as a Democrat to the One Hundred Tenth and to the five succeeding Congresses (January 3, 2007-present).","phone":"202-225-6231","fax":"202-226-0112","latitude":"38.8863235","longitude":"-77.011373","address_complete":"2436 Rayburn Hob, Washington, DC 20515","address_number":"2436","address_prefix":null,"address_street":"Rayburn Hob","address_sec_unit_type":null,"address_sec_unit_num":null,"address_city":"Washington","address_state":"DC","address_zipcode":"20515","address_type":null,"website":"https://clarke.house.gov","contact_page":"https://clarke.house.gov/contact/email","facebook_url":"https://www.facebook.com/repyvettedclarke","twitter_handle":"RepYvetteClarke","twitter_url":"https://twitter.com/RepYvetteClarke","photo_url":"https://cdn.civil.services/us-house/headshots/512x512/yvette-clarke.jpg"},"geometry":{"type":"Polygon","coordinates":[[[-73.98784,40.659816],[-73.978743,40.68376],[-73.978337,40.684395],[-73.90158,40.660451],[-73.901186,40.658915],[-73.939157,40.6256],[-73.939968,40.625546],[-73.917872,40.585975],[-73.917663,40.585605],[-73.948662,40.584894],[-73.94987,40.584856],[-73.98784,40.659816]]]}}
+{
+  "type": "Feature",
+  "provider": {
+    "name": "Civil Services",
+    "email": "hello@civil.services",
+    "twitter": "https://twitter.com/CivilServiceUSA",
+    "homepage": "https://civil.services",
+    "repository": "https://github.com/CivilServiceUSA/us-house"
+  },
+  "properties": {
+    "state_name": "New York",
+    "state_name_slug": "new-york",
+    "state_code": "NY",
+    "state_code_slug": "ny",
+    "district": "9",
+    "at_large": false,
+    "vacant": false,
+    "bioguide": "C001067",
+    "thomas": "1864",
+    "govtrack": "412221",
+    "opensecrets": "N00026961",
+    "votesmart": "44741",
+    "fec": "H4NY11138",
+    "maplight": "706",
+    "wikidata": "Q461679",
+    "google_entity_id": "kg:/m/06h90t",
+    "title": "representative",
+    "party": "democrat",
+    "name": "Yvette Clarke",
+    "name_slug": "yvette-clarke",
+    "first_name": "Yvette",
+    "middle_name": "D.",
+    "last_name": "Clarke",
+    "name_suffix": null,
+    "goes_by": null,
+    "pronunciation": "ee-VET KLARK",
+    "gender": "female",
+    "ethnicity": "african-american",
+    "religion": "african-methodist",
+    "openly_lgbtq": "no",
+    "date_of_birth": "1964-11-21",
+    "entered_office": "2007-01-04",
+    "term_end": "2019-01-03",
+    "biography": "Yvette Clarke, a Representative from New York; born in Brooklyn, Kings County, N.Y., November 21, 1964; attended Oberlin College, Oberlin, N.Y., 1982-1986; childcare specialist; staff, state senator Velmanette Montgomery, 1989-1991; executive assistant, New York state Workersâ€™ Compensation Board, 1992-1993; youth program director; business development director; member of the New York, N.Y., city council, 2002-2007; unsuccessful candidate for nomination for the One Hundred Ninth Congress in 2004; elected as a Democrat to the One Hundred Tenth and to the five succeeding Congresses (January 3, 2007-present).",
+    "phone": "202-225-6231",
+    "fax": "202-226-0112",
+    "latitude": "38.8863235",
+    "longitude": "-77.011373",
+    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+    "address_number": "2436",
+    "address_prefix": null,
+    "address_street": "Rayburn Hob",
+    "address_sec_unit_type": null,
+    "address_sec_unit_num": null,
+    "address_city": "Washington",
+    "address_state": "DC",
+    "address_zipcode": "20515",
+    "address_type": null,
+    "website": "https://clarke.house.gov",
+    "contact_page": "https://clarke.house.gov/contact/email",
+    "facebook_url": "https://www.facebook.com/repyvettedclarke",
+    "twitter_handle": "RepYvetteClarke",
+    "twitter_url": "https://twitter.com/RepYvetteClarke",
+    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/yvette-clarke.jpg"
+  },
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          -73.98784,
+          40.659816
+        ],
+        [
+          -73.978743,
+          40.68376
+        ],
+        [
+          -73.978337,
+          40.684395
+        ],
+        [
+          -73.90158,
+          40.660451
+        ],
+        [
+          -73.901186,
+          40.658915
+        ],
+        [
+          -73.939157,
+          40.6256
+        ],
+        [
+          -73.939968,
+          40.625546
+        ],
+        [
+          -73.917872,
+          40.585975
+        ],
+        [
+          -73.917663,
+          40.585605
+        ],
+        [
+          -73.948662,
+          40.584894
+        ],
+        [
+          -73.94987,
+          40.584856
+        ],
+        [
+          -73.98784,
+          40.659816
+        ]
+      ]
+    ]
+  }
+}
