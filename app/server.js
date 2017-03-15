@@ -184,6 +184,9 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use('/', express.static(__dirname + '/static'));
+app.use('/assets', express.static(__dirname + '/static/assets'));
+app.use('/index.html', express.static(__dirname + '/static/index.html'));
 app.use('/favicon.ico', express.static(__dirname + '/static/favicon.ico'));
 app.use('/robots.txt', express.static(__dirname + '/static/robots.txt'));
 app.use('/humans.txt', express.static(__dirname + '/static/humans.txt'));
