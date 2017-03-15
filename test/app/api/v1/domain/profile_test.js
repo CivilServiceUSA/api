@@ -65,7 +65,7 @@ describe('Domain Profile', function() {
 
       this.activityFindStub.returns(Promise.reject('No activity found for user ' + fakeUserID));
 
-      profile.getActivity()
+      profile.getActivity(fakeUserID)
         .catch(function(error) {
           assert.isDefined(error);
           done();

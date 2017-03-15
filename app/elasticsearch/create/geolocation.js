@@ -35,13 +35,6 @@ mapping.body[indexType] = {
     zipcode: {
       type: 'string'
     },
-    type: {
-      type: 'string'
-    },
-    decommissioned: {
-      type: 'boolean',
-      index: 'no'
-    },
     primary_city: {
       type: 'string'
     },
@@ -63,13 +56,6 @@ mapping.body[indexType] = {
       type: 'string'
     },
     area_codes: {
-      type: 'string'
-    },
-    world_region: {
-      type: 'string',
-      index: 'no'
-    },
-    country: {
       type: 'string'
     },
     latitude: {

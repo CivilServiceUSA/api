@@ -33,13 +33,11 @@ module.exports = {
       'alternate_city_names',
       'area_codes',
       'city',
-      'country',
       'county',
       'estimated_population',
       'location',
       'state',
       'timezone',
-      'type',
       'zipcode'
     ];
 
@@ -59,9 +57,7 @@ module.exports = {
       alternate_city_names: data.acceptable_cities.split(', '),
       area_codes: data.area_codes.split(','),
       city: data.primary_city,
-      country: data.country,
       county: data.county,
-      decommissioned: data.decommissioned,
       estimated_population: data.estimated_population,
       id: data.id,
       latitude: data.latitude,
@@ -72,8 +68,6 @@ module.exports = {
       longitude: data.longitude,
       state: data.state,
       timezone: data.timezone,
-      type: data.type.toLowerCase(),
-      world_region: data.world_region,
       zipcode: data.zipcode
     };
   },

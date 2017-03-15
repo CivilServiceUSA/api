@@ -44,7 +44,6 @@ describe('Domain Geolocation', function() {
         alternate_city_names: ['Acmar'],
         area_codes: ['205'],
         city: 'Moody',
-        country: 'US',
         county: 'St Clair County',
         created_at: '2016-10-10T22:47:38.000Z',
         estimated_population: 10090,
@@ -53,7 +52,6 @@ describe('Domain Geolocation', function() {
         modified_at: '2016-10-10T22:47:38.000Z',
         state: 'AL',
         timezone: 'America/Chicago',
-        type: 'standard',
         zipcode: '35004'
       }
     };
@@ -63,26 +61,22 @@ describe('Domain Geolocation', function() {
     assert.isDefined(output.alternate_city_names);
     assert.isDefined(output.area_codes);
     assert.isDefined(output.city);
-    assert.isDefined(output.country);
     assert.isDefined(output.county);
     assert.isDefined(output.estimated_population);
     assert.isDefined(output.location);
     assert.isDefined(output.state);
     assert.isDefined(output.timezone);
-    assert.isDefined(output.type);
     assert.isDefined(output.zipcode);
 
     assert.isTrue(output.alternate_city_names[0] === 'Acmar');
     assert.isTrue(output.area_codes[0] === '205');
     assert.isTrue(output.city === 'Moody');
-    assert.isTrue(output.country === 'US');
     assert.isTrue(output.county === 'St Clair County');
     assert.isTrue(output.estimated_population === 10090);
     assert.isTrue(output.location.lat === 33.59);
     assert.isTrue(output.location.lon === -86.49);
     assert.isTrue(output.state === 'AL');
     assert.isTrue(output.timezone === 'America/Chicago');
-    assert.isTrue(output.type === 'standard');
     assert.isTrue(output.zipcode === '35004');
 
     assert.isUndefined(output.id);
@@ -96,10 +90,8 @@ describe('Domain Geolocation', function() {
       acceptable_cities: 'Acmar',
       area_codes: '205',
       primary_city: 'Moody',
-      country: 'US',
       county: 'St Clair County',
       created_at: '2016-10-10T22:47:38.000Z',
-      decommissioned: false,
       estimated_population: 10090,
       id: 1,
       latitude: 33.59,
@@ -107,8 +99,6 @@ describe('Domain Geolocation', function() {
       modified_at: '2016-10-10T22:47:38.000Z',
       state: 'AL',
       timezone: 'America/Chicago',
-      type: 'standard',
-      world_region: 'US',
       zipcode: '35004'
     });
 
@@ -116,26 +106,20 @@ describe('Domain Geolocation', function() {
     assert.isDefined(output.alternate_city_names);
     assert.isDefined(output.area_codes);
     assert.isDefined(output.city);
-    assert.isDefined(output.country);
     assert.isDefined(output.county);
-    assert.isDefined(output.decommissioned);
     assert.isDefined(output.estimated_population);
     assert.isDefined(output.latitude);
     assert.isDefined(output.location);
     assert.isDefined(output.longitude);
     assert.isDefined(output.state);
     assert.isDefined(output.timezone);
-    assert.isDefined(output.type);
-    assert.isDefined(output.world_region);
     assert.isDefined(output.zipcode);
 
     assert.isTrue(output.id === 1);
     assert.isTrue(output.alternate_city_names[0] === 'Acmar');
     assert.isTrue(output.area_codes[0] === '205');
     assert.isTrue(output.city === 'Moody');
-    assert.isTrue(output.country === 'US');
     assert.isTrue(output.county === 'St Clair County');
-    assert.isTrue(output.decommissioned === false);
     assert.isTrue(output.estimated_population === 10090);
     assert.isTrue(output.latitude === 33.59);
     assert.isTrue(output.location.lat === 33.59);
@@ -143,8 +127,6 @@ describe('Domain Geolocation', function() {
     assert.isTrue(output.longitude === -86.49);
     assert.isTrue(output.state === 'AL');
     assert.isTrue(output.timezone === 'America/Chicago');
-    assert.isTrue(output.type === 'standard');
-    assert.isTrue(output.world_region === 'US');
     assert.isTrue(output.zipcode === '35004');
 
     assert.isUndefined(output.created_at);
@@ -183,8 +165,8 @@ describe('Domain Geolocation', function() {
           assert.isDefined(results.errors);
           assert.isDefined(results.data);
 
-          assert.isTrue(results.error);
-          assert.isTrue(results.errors === 'Fake Error');
+          assert.isTrue(results.errors.length === 1);
+          assert.isTrue(results.errors[0] === 'Fake Error');
           assert.isTrue(results.data === null);
 
           done();
@@ -208,7 +190,6 @@ describe('Domain Geolocation', function() {
       city: 'North Hollywood',
       county: 'Los Angeles County',
       state: 'CA',
-      type: 'standard',
       areaCode: '818',
       timezone: 'America/Los_Angeles',
       minPopulation: 1000,

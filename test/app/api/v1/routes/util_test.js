@@ -3,51 +3,43 @@ var util = require('../../../../../app/api/v1/routes/util');
 
 describe('Routes Util Tests', function() {
   describe('createAPIResponse', function() {
-    it('should mark "error" as false by default', function() {
+    it('should not have errors by default', function() {
       var response = util.createAPIResponse();
-      assert.isFalse(response.error);
+      assert.isTrue(response.errors.length === 0);
     });
 
-    it('should mark "error" as true is any general errors are present', function() {
+    it('should have one error in response', function() {
       var response = util.createAPIResponse({
         errors: ['You did a thing wrong']
       });
-      assert.isTrue(response.error);
+      assert.isTrue(response.errors.length === 1);
+      assert.isTrue(response.errors[0] === 'You did a thing wrong');
     });
 
-    it('should not mark "error" as true for empty general error array', function() {
-      var response = util.createAPIResponse({
-        errors: []
-      });
-      assert.isFalse(response.error);
+    it('should not have notices by default', function() {
+      var response = util.createAPIResponse();
+      assert.isTrue(response.notices.length === 0);
     });
 
-    it('should mark "error" as true is any field errors are present', function() {
+    it('should have one notice in response', function() {
       var response = util.createAPIResponse({
-        field_errors: {
-          username: ['Your username is too weird']
-        }
+        notices: ['Just a heads up']
       });
-      assert.isTrue(response.error);
+      assert.isTrue(response.notices.length === 1);
+      assert.isTrue(response.notices[0] === 'Just a heads up');
     });
 
-    it('should not mark "error" as true is field error array is empty', function() {
-      var response = util.createAPIResponse({
-        field_errors: {
-          password: []
-        }
-      });
-      assert.isFalse(response.error);
+    it('should not have warnings by default', function() {
+      var response = util.createAPIResponse();
+      assert.isTrue(response.warnings.length === 0);
     });
 
-    it('should mark "error" as true for a mix of field and general errors', function() {
+    it('should have one warning in response', function() {
       var response = util.createAPIResponse({
-        errors: ['You dont know how to use the internet'],
-        field_errors: {
-          email: ['Thats not your real email address']
-        }
+        warnings: ['Things could have gone better']
       });
-      assert.isTrue(response.error);
+      assert.isTrue(response.warnings.length === 1);
+      assert.isTrue(response.warnings[0] === 'Things could have gone better');
     });
   });
 });

@@ -91,7 +91,6 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
  * @property {string} [city] - City to use as Filter
  * @property {string} [county] - County to use as Filter
  * @property {string} [state] - State to use as Filter
- * @property {string} [type] - Type to use as Filter ['UNIQUE','PO BOX','STANDARD','MILITARY']
  * @property {number} [areaCode] - Area Code of Phone Number to use as Filter
  * @property {string} [timezone] - Time Zone of Location ( e.g. America/New_York )
  * @property {number} [minPopulation] - Minimum Population of Location
