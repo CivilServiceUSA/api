@@ -34,13 +34,11 @@ router.route('/settings').get(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -70,13 +68,11 @@ router.route('/settings/profile').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -108,13 +104,11 @@ router.route('/settings/social-links').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -145,13 +139,11 @@ router.route('/settings/email-notifications').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -182,13 +174,11 @@ router.route('/settings/web-notifications').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }

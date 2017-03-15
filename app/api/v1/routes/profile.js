@@ -34,13 +34,11 @@ router.route('/profile/activity').get(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -69,13 +67,11 @@ router.route('/profile/notifications').get(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }

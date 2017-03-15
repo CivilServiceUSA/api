@@ -186,7 +186,6 @@ router.route('/user/logout').post(function(request, response) {
       });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -213,7 +212,6 @@ router.route('/user/update').post(function(request, response) {
         // Check for Invalid User Account
         if (error) {
           response.json(util.createAPIResponse({
-            error: true,
             errors: ['Incorrect Password']
           }));
         } else {
@@ -234,7 +232,6 @@ router.route('/user/update').post(function(request, response) {
               .catch(function(errors) {
                 response.status(400);
                 response.json(util.createAPIResponse({
-                  error: true,
                   errors: [errors.toString()]
                 }));
               });
@@ -250,7 +247,6 @@ router.route('/user/update').post(function(request, response) {
             if( !registration.validUserName(request.body.new_username)){
               response.status(400);
               response.json(util.createAPIResponse({
-                error: true,
                 errors: ['Invalid Username. Required Length: 3-30, Allowed Characters: a-Z0-9_']
               }));
               return;
@@ -260,7 +256,6 @@ router.route('/user/update').post(function(request, response) {
             if(request.body.username.toLowerCase() === request.body.new_username.toLowerCase()){
               response.status(400);
               response.json(util.createAPIResponse({
-                error: true,
                 errors: ['New Username and Current Username are identical.']
               }));
               return;
@@ -271,7 +266,6 @@ router.route('/user/update').post(function(request, response) {
               if(inUse){
                 response.status(400);
                 response.json(util.createAPIResponse({
-                  error: true,
                   errors: ['Username already in use.']
                 }));
                 return;
@@ -293,7 +287,6 @@ router.route('/user/update').post(function(request, response) {
             if(request.body.email.toLowerCase() === request.body.new_email.toLowerCase()){
               response.status(400);
               response.json(util.createAPIResponse({
-                error: true,
                 errors: ['New Email Address and Current Email Address are identical.']
               }));
               return;
@@ -304,7 +297,6 @@ router.route('/user/update').post(function(request, response) {
               if(inUse){
                 response.status(400);
                 response.json(util.createAPIResponse({
-                  error: true,
                   errors: ['Email Address already in use.']
                 }));
                 return;
@@ -324,7 +316,6 @@ router.route('/user/update').post(function(request, response) {
             if(request.body.password.length < 6){
               response.status(400);
               response.json(util.createAPIResponse({
-                error: true,
                 errors: ['Minimum Password Length is 6 characters.']
               }));
 
@@ -334,7 +325,6 @@ router.route('/user/update').post(function(request, response) {
               // Check if old an new passwords are identical
               response.status(400);
               response.json(util.createAPIResponse({
-                error: true,
                 errors: ['New Password and Current Password are identical.']
               }));
 
@@ -355,7 +345,6 @@ router.route('/user/update').post(function(request, response) {
 
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -376,7 +365,6 @@ router.route('/user/delete').delete(function(request, response) {
       passport.authenticate('local', function(error, account, info) {
         if (error) {
           response.json(util.createAPIResponse({
-            error: true,
             errors: ['Incorrect Password']
           }));
         } else {
@@ -391,7 +379,6 @@ router.route('/user/delete').delete(function(request, response) {
           .catch(function(errors) {
             response.status(400);
             response.json(util.createAPIResponse({
-              error: true,
               errors: [errors.toString()]
             }));
           });
@@ -399,7 +386,6 @@ router.route('/user/delete').delete(function(request, response) {
       })(request, response);
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -471,7 +457,6 @@ router.route('/user/forgot-password').post(function(request, response) {
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
-      error: true,
       errors: [errors.toString()]
     }));
   });
@@ -504,7 +489,6 @@ router.route('/user/reset-password').post(function(request, response) {
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
-      error: true,
       errors: [errors.toString()]
     }));
   });
@@ -527,7 +511,6 @@ router.route('/user/resend-confirmation/:id').get(function(request, response) {
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
-      error: true,
       errors: [errors.toString()]
     }));
   });
@@ -586,7 +569,6 @@ router.route('/user/:username/profile').get(function(request, response) {
           pages: 1,
           page: 1
         },
-        error: true,
         errors: ['No Matching Username'],
         data: []
       }));
@@ -613,7 +595,6 @@ router.route('/user/:username/follow').post(function(request, response) {
 
       if( !request.params.username){
         response.json(util.createAPIResponse({
-          error: true,
           errors: ['Missing Username']
         }));
       }
@@ -629,13 +610,11 @@ router.route('/user/:username/follow').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -656,7 +635,6 @@ router.route('/user/:username/unfollow').post(function(request, response) {
 
       if( !request.params.username){
         response.json(util.createAPIResponse({
-          error: true,
           errors: ['Missing Username']
         }));
       }
@@ -670,13 +648,11 @@ router.route('/user/:username/unfollow').post(function(request, response) {
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
-            error: true,
             errors: [errors.toString()]
           }));
         });
     } else {
       response.json(util.createAPIResponse({
-        error: true,
         errors: ['Invalid API Authorization Token']
       }));
     }
@@ -693,7 +669,6 @@ router.route('/user/:username/unfollow').post(function(request, response) {
 router.route('/user/:username/followers').get(function(request, response) {
   if( !request.params.username){
     response.json(util.createAPIResponse({
-      error: true,
       errors: ['Missing Username']
     }));
   }
@@ -707,7 +682,6 @@ router.route('/user/:username/followers').get(function(request, response) {
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
-        error: true,
         errors: [errors.toString()]
       }));
     });
@@ -723,7 +697,6 @@ router.route('/user/:username/followers').get(function(request, response) {
 router.route('/user/:username/following').get(function(request, response) {
   if( !request.params.username){
     response.json(util.createAPIResponse({
-      error: true,
       errors: ['Missing Username']
     }));
   }
@@ -737,7 +710,6 @@ router.route('/user/:username/following').get(function(request, response) {
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
-        error: true,
         errors: [errors.toString()]
       }));
     });

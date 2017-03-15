@@ -8,7 +8,7 @@ HOST: https://api.civil.services/v1
 Civil Services is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 * _Maintained By:_ __[Peter Schmalfeldt](mailto:me@peterschmalfeldt.com)__
-* _Last Modified:_ __February 24th, 2017__
+* _Last Modified:_ __March 14th, 2017__
 * _Current API Version:_ __v1.0.0__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use.  If you are interested in obtaining an API Key ( required for access ), please contact [hello@civil.services](mailto:hello@civil.services) or [Join us on Slack](https://slack.civil.services/bkx7n2).
@@ -55,9 +55,10 @@ Our API requires an API Key to use.  We are not providing API Keys to the genera
 The following parameters are available on every API endpoint and used for pagination
 for if there are a lot of results.
 
-+ `error` (boolean) - Whether or not there were errors in the API call.
-+ `errors` (array) - An array of general errors.
-+ `field_errors` (object) - If the error was in regards to data entry, any errors specific to an input field will return here with the input name and error message.
++ `notices` (array, optional) - An array of API Notices.  These notices are for the API to let the Developer know something that might be helpful, but will not impact the API results. 
++ `warnings` (array, optional) - An array of API Warnings.  These warnings explain why the API might have had issues returning results.
++ `errors` (array, optional) - An array of API Errors.  These errors explain why the API prevented returning results.
++ `field_errors` (object, optional) - If the error was in regards to data entry, any errors specific to an input field will return here with the input name and error message.
 + `meta` (object) - The META data object that contains the basic information about the API response.
 + `meta.total` (number) - Total number of all results.  Not just the number returned in the API call.
 + `meta.showing` (number) - Number of results returned in the current API call ( may be less than total results ).
@@ -70,6 +71,8 @@ __Response 200:__ (application/json)
         {
             "error": false,
             "errors": [],
+            "notice": false,
+            "notices": [],
             "field_errors": {},
             "meta": {
                 "total": 97,
@@ -87,6 +90,8 @@ __Response 403:__ (application/json)
         {
             "error": true,
             "errors": ["Missing API Key"],
+            "notice": false,
+            "notices": [],
             "field_errors": {},
             "meta": {
                 "total": 0,
@@ -99,7 +104,7 @@ __Response 403:__ (application/json)
 
 ### Optional API Params
 
-The following parameters are available on every API endpoint and used for pagination
+The following parameters are available on most API endpoint and used for pagination
 for if there are a lot of results.
 
 + `pageSize` (number, optional) - How many results to return in a single API call. Defaults to 30
@@ -115,1375 +120,6 @@ An example API Header would look like this:
 ```
 curl --data '' https://api.civil.services/v1/user/refresh/ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNDUxNzEyNzg0LCJleHAiOjE0NTIzMTc1ODQsImlzcyI6IkRvaW5nIEFQSSJ9.x3eJutiulLnJCJkl_jP9ETj43ihePVeMtaWgWF0I60w"
 ```
-
-
-# Group API Access
-
-If you are using the API to access User Endpoints ( https://api.civil.services/v1/user/* ) you will want to create a
-`token` to manage the users sessions.  This is not the same as an `apikey` which is required for all API endpoints.  This
-token is specifically for individual users and acts as a session id.
-
-## Token [/token]
-
-Once a user has logged in, you will need to send over their Authentication
-Token in the HTTP Header.  A `token` is returned with a successful login.  A session
-token is valid for 7 days.  You can refresh your token to prevent having to log in
-again by either adding the Request Authorization Header below, or using the
-`/api/0.1/user/refresh/` endpoint.
-
-### Get Token [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0NTU1MTQ2NzIsImV4cCI6MTQ1NjExOTQ3MiwiaXNzIjoiQ29kZXJzIEJ1aWxkIEFQSSJ9.PZagWEzVC2sr_QjcwvqvUB9lUUlFSNIT9gzY80XWAn4"
-          }
-        }
-
-## Refresh Session [/user/refresh]
-
-A `token` is returned with a successful login.  A session token is valid for 7 days.
-You can refresh your token to prevent having to log in again by either adding the
-Request Authorization Header below. `token` should be the string returned in the
-`token` parameter from a successful login.
-
-* __Authorization:__ Bearer `token`
-
-### Refresh Session [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOjIsImlhdCI6MTQ1MTc5ODYyMSwiZXhwIjoxNDUyNDAzNDIxLCJpc3MiOiJEb2luZyBBUEkifQ.za4PspEZfeVxydO3QHSFBLm_9PcrCBRwK9HLofBY74s"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid or expired token"
-          ],
-          "meta": {},
-          "data": []
-        }
-
-
-# Group Account Management
-
-The following endpoints are specifically setup to manage the logged in users account.
-
-__IMPORTANT:__ Account Creation is not enabled by default for API Users.  If you believe your application should be allowed to create user accounts, please contact us to let us know why.
-
-## Register [/user/register/?username={username}&password={password}&retype_password={retype_password}&inviteCode={inviteCode}&first_name={first_name}&last_name={last_name}&email={email}&agree={agree}]
-
-API Endpoint to register new users. This should set the user's `activated` field
-to `true` unless they've included their email address. If so, `activated` is
-`false` and the user will be sent an email with a `new_email_key` key to confirm
-their email address to complete registration.
-
-+ Parameters
-    + username (string, required) - The username or email address of the account
-        + Min Length: __3__
-        + Max Length: __30__
-        + Characters Allowed: __a-zA-Z0-9___
-        + Case Insensitive
-    + password (string, required) - The password to the account
-        + Min Length: __6__
-        + No Other Password Requirements :)
-    + retype_password (string, required) - The password to the account
-        + Min Length: __6__
-        + No Other Password Requirements :)
-    + inviteCode (string, required) - During Alpha / Beta testing, an Invitation Code is Required for registration
-        + Length: __6__
-        + Existing Users: __hash_id__
-    + first_name (string, optional) - First Name - NOTE: Apple does not like requiring personal info for registration
-        + Min Length: __1__
-        + Max Length: __50__
-    + last_name (string, optional) - Last Name - NOTE: Apple does not like requiring personal info for registration
-        + Min Length: __1__
-        + Max Length: __50__
-    + email (string, optional) - Email Address - NOTE: Apple does not like requiring personal info for registration
-        + Min Length: __1__
-        + Max Length: __100__
-    + agree (string, required) - Agree to TOS - User Agreed to Terms of Service
-
-### User Register [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "banned": false,
-            "id": "5",
-            "username": "test",
-            "first_name": "Test",
-            "last_name": "User",
-            "email": "test@email.com",
-            "activated": false,
-            "new_email_key": "TriqG3m344N8",
-            "modified": "2016-01-03T03:59:45.465Z",
-            "created": "2016-01-03T03:59:45.465Z",
-            "banned_reason": null,
-            "new_password_key": null,
-            "new_password_requested": null,
-            "new_email": null,
-            "profile_photo": null
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [],
-          "field_errors": {
-            "username": [
-              "Username is already in use"
-            ],
-            "email": [
-              "Email is already in use"
-            ]
-          },
-          "meta": {},
-          "data": []
-        }
-
-## Confirm Account [/user/confirm/account/?key={key}]
-
-During account registration, new users will be sent a link to confirm their
-email address.  The users account will be disabled until the user confirms the email
-address.
-
-
-+ Parameters
-    + key (required, string) - The `new_email_key` stored for the user
-
-### Confirm Account [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "id": "5",
-            "username": "test",
-            "email": "test@email.com",
-            "first_name": "Test",
-            "last_name": "User",
-            "activated": true,
-            "banned": false,
-            "banned_reason": null,
-            "new_password_key": null,
-            "new_password_requested": null,
-            "new_email": null,
-            "new_email_key": null,
-            "profile_photo": null,
-            "created": "2016-01-02T06:00:54.303Z",
-            "modified": "2016-01-02T06:01:35.207Z",
-            "banned": false
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": ["Error Saving User Account"],
-          "meta": {},
-          "data": []
-        }
-
-## Confirm Email Change [/user/confirm/email/?key={key}]
-
-When a user changes their email, they will be sent a confirmation email to both
-their new and old email address assuring it was them that requested the email
-change.
-
-
-+ Parameters
-    + key (required, string) - The `new_email_key` stored for the user
-
-### Confirm Email Change [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "id": "5",
-            "username": "test",
-            "email": "test@email.com",
-            "first_name": "Test",
-            "last_name": "User",
-            "activated": true,
-            "banned": false,
-            "banned_reason": null,
-            "new_password_key": null,
-            "new_password_requested": null,
-            "new_email": null,
-            "new_email_key": null,
-            "profile_photo": null,
-            "created": "2016-01-02T06:00:54.303Z",
-            "modified": "2016-01-02T06:01:35.207Z",
-            "banned": false
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": ["Error Confirming Account"],
-          "meta": {},
-          "data": []
-        }
-
-## Confirm Password Change [/user/confirm/password/?key={key}]
-
-When a user changes their password, they will be sent a confirmation email assuring
-it was them that requested the password change.
-
-
-+ Parameters
-    + key (required, string) - The `new_email_key` stored for the user
-
-### Confirm Password Change [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "id": "5",
-            "username": "test",
-            "email": "test@email.com",
-            "first_name": "Test",
-            "last_name": "User",
-            "activated": true,
-            "banned": false,
-            "banned_reason": null,
-            "new_password_key": null,
-            "new_password_requested": null,
-            "new_email": null,
-            "new_email_key": null,
-            "profile_photo": null,
-            "created": "2016-01-02T06:00:54.303Z",
-            "modified": "2016-01-02T06:01:35.207Z",
-            "banned": false
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": ["Error Confirming Account"],
-          "meta": {},
-          "data": []
-        }
-
-## Login [/user/login/?username={username}&password={password}]
-
-Some of the API endpoints will require authentication. Those endpoints will
-require the `token` returned from a succesful login.
-
-To access authentication-protected endpoints, you will need to include an
-`Authorization` HTTP header in the format: `Bearer (token)`.
-
-+ Parameters
-    + username (string, required) - The username of the account
-    + password (string, required) - The password to the account
-
-### User Login [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "id": "5",
-            "username": "test",
-            "email": "test@email.com",
-            "first_name": "Test",
-            "last_name": "User",
-            "activated": true,
-            "banned": false,
-            "banned_reason": null,
-            "new_password_key": null,
-            "new_password_requested": null,
-            "new_email": null,
-            "new_email_key": "TriqG3m344N8",
-            "profile_photo": null,
-            "created": "2016-01-03T03:59:45.465Z",
-            "modified": "2016-01-03T03:59:45.465Z",
-            "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI1IiwiaWF0IjoxNDUxNzk0OTI2LCJleHAiOjE0NTIzOTk3MjYsImlzcyI6IkRvaW5nIEFQSSJ9.Y-ALQxsdTCf8zJvD-IUeobGTbgKbtNTvt3_JrUMOyXA"
-          }
-        }
-
-+ Response 200 (application/json)
-
-        {
-          "error": true,
-          "errors": ["User not active"],
-          "meta": {},
-          "data": []
-        }
-
-+ Response 200 (application/json)
-
-        {
-          "error": true,
-          "errors": ["No user found with that username"],
-          "meta": {},
-          "data": []
-        }
-
-## Logout [/user/logout]
-
-Tell API that the user has logged out
-
-### User Logout [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {},
-          "data": {
-            "success": true
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": ["Invalid API Authorization Token"],
-          "meta": {},
-          "data": []
-        }
-
-## Forgot Password [/user/forgot-password/?email={email}]
-
-Forgot password will require an email address that is requesting for the password
-reset link.
-
-+ Parameters
-    + email (required, string) - The email address of the account
-
-### User Forgot Password [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "message": "Check your email to obtain instructions on password reset."
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "We could not find that email address in our system."
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Reset Password [/user/reset-password/?token={token}&password={password}&retype_password={retype_password}]
-
-Reset password will check the token against the `new_password_key` column for that user.  We will also likely want to make sure that `new_password_requested` is less than a certain age to prevent open password change requests.
-
-+ Parameters
-    + token (required, string) - This is the token that is sent from the link in the email address.
-    + password (required, string) - This is the new password that the user wants to reset
-    + retype_password (required, string) - This should be the same as 'password' and is the confirmation of the password
-
-### User Reset Password [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "message": "You may now login with your new password."
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid Reset Password token."
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Resend Email Confirmation [/user/resend-confirmation/{hash_id}]
-
-If the user needs to resend their email confirmation, this is the endpoint to use.
-
-+ Parameters
-    + hash_id (required, string) - This is the hash id of the user
-
-### Resend Email Confirmation [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "message": "You may now login with your new password."
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid Reset Password token."
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Update Account [/user/update/?current_password={current_password}&username={username}&email={email}&password_new={password_new}&password_new_retype={password_new_retype}]
-
-This endpoint will allow the logged in user to update their own account.  This uses the current Authentication Bearer Token to lookup who's account to update.
-
-The Bearer Token is created during login and contains the users ID from our database.  You will not be able to use this endpoint to manage anyone else's account except your own.
-
-IMPORTANT NOTES ABOUT THIS ENDPOINT:
-
-1. Changing the username will immediately make the old username available to the world for use.  We do check to make sure that the new username being requested is available.
-2. We do not immediately change the email when requested.  Instead we send a confirmation email to both the new and old email to confirm the requested change.
-3. We do not immediately change the password when requested.  We first send a confirmation email to the users current email to confirm that they made the requested change.
-
-+ Parameters
-    + current_password (required, string) - Current Account Password ( required to make any changes on this endpoint )
-    + username (optional, string) - New Username user wishes to change their username to
-    + email (optional, string) - New Email Address user wishes to associate with their account
-    + password_new (optional, string) - New Password user wishes to use for their account
-    + password_new_retype (optional, string) - Repeat the new password to make sure they match so they don't get locked out
-
-### Update Account [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Username is not available"
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Delete Account [/user/delete/?username={username}&password={password}]
-
-This endpoint only works for the currently logged in user using the Authorization
-Bearer Header Token.  Once that is verified there is a second check to require the
-account holders username and password to double check that they just did not steal
-the Authentication Header to try to steal / delete the users account.
-
-IMPORTANT NOTES ABOUT THIS ENDPOINT:
-
-1. This will permanently delete the users account
-2. This will also permanently delete all data generated by the user
-3. There is no way to undo this
-
-+ Parameters
-    + username (required, string) - Current Account User
-    + password (required, string) - Current Account Password
-
-### Delete Account [DELETE]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Incorrect Password"
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-
-# Group User Interaction
-
-The following endpoints are for accessing specific public data about a given
-username.  No private information is accessible from these endpoints.
-
-## Get User Profile [/user/{username}/profile]
-
-Get a public profile for given `username`.
-
-+ Parameters
-    + username (required, string) - Username for requested profile
-
-### Get User Profile [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "No Matching User Found"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-## Follow User [/user/{username}/follow]
-
-Add's `username` to the current logged in users follow list.
-
-+ Parameters
-    + username (required, string) - Username of user you wish to follow
-
-### Follow User [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "No Matching User Found"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-## Unfollow User [/user/{username}/unfollow]
-
-Removes `username` from the current logged in users follow list.
-
-+ Parameters
-    + username (required, string) - Username of user you wish to unfollow
-
-### Unfollow User [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "No Matching User Found"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-## Get Followers [/user/{username}/followers]
-
-Fetches list of users that is following `username`
-
-+ Parameters
-    + username (required, string) - Username to get followers list for
-
-### Get Followers [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "error": false,
-            "errors": [],
-            "field_errors": { },
-            "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-            },
-            "data": [
-                {
-                    "id": 2,
-                    "username": "manifestinteractive",
-                    "profile_name": "Peter Schmalfeldt",
-                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
-                    "followed_on": "2016-03-05T08:30:04.000Z"
-                }
-            ]
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Missing Username"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-## Get Following [/user/{username}/following]
-
-Fetches list of users `username` is following
-
-+ Parameters
-    + username (required, string) - Username to get following list for
-
-### Get Following [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "error": false,
-            "errors": [],
-            "field_errors": { },
-            "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-            },
-            "data": [
-                {
-                    "id": 2,
-                    "username": "manifestinteractive",
-                    "profile_name": "Peter Schmalfeldt",
-                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
-                    "followed_on": "2016-03-05T08:30:04.000Z"
-                }
-            ]
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Missing Username"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-## Get Invitations [/user/invite/{key}]
-
-Fetches list of users that have registered using the provided invite `key`
-
-+ Parameters
-    + key (required, string) - Invitation Key ( users hash_id )
-
-### Get Invitations [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "error": false,
-            "errors": [],
-            "field_errors": { },
-            "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-            },
-            "data": [
-                {
-                    "id": 2,
-                    "username": "manifestinteractive",
-                    "profile_name": "Peter Schmalfeldt",
-                    "profile_photo": "https://peterschmalfeldt.com/images/me.jpg",
-                    "followed_on": "2016-03-05T08:30:04.000Z"
-                }
-            ]
-        }
-
-+ Response 400 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Missing Username"
-          ],
-          "field_errors": {},
-          "meta": {
-            "total": 0,
-            "showing": 0,
-            "pages": 1,
-            "page": 1
-          },
-          "data": []
-        }
-
-
-# Group User Settings
-
-The following endpoints for accessing & managing settings for the current logged
-in user.  These endpoints only work for the user associated with the Authorization
-Bearer Token sent in the header.  This uses the current Authentication Bearer Token
-to lookup who's account to update. The Bearer Token is created during login and contains
-the users ID from our database.  You will not be able to use this endpoint to manage
-anyone elses account except your own.
-
-## Get User Settings [/settings]
-
-Gets account settings for current logged in user
-
-### Get User Settings [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [
-
-          ],
-          "field_errors": {
-
-          },
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "notifications": {
-              "email_comment_left": true,
-              "email_comment_liked": false,
-              "email_mentioned_in_comment": true,
-              "email_someone_follows": true,
-              "newsletter": true,
-              "web_comment_left": true,
-              "web_comment_liked": true,
-              "web_mentioned_in_comment": true,
-              "web_someone_follows": false
-            }
-          }
-        }
-
-## Update Profile [/settings/profile/?profile_photo={profile_photo}&profile_name={profile_name}&location={location}&company_name={company_name}&first_name={first_name}&last_name={last_name}&bio={bio}]
-
-This endpoint will allow the logged in user to update their own account profile.
-
-+ Parameters
-    + profile_photo (optional, string) - absolute path to location of User Avatar ( must be HTTPS to prevent issues )
-        + Max Length: `255`
-        + Default: null
-    + profile_name (optional, string) - Public Display Name of User
-        + Max Length: `100`
-        + Default: Users Username
-    + location (optional, string) - Public Pysical Location of User
-        + Max Length: `50`
-        + Default: null
-    + company_name (optional, string) - Public Company the User works for
-        + Max Length: `100`
-        + Default: null
-    + first_name (optional, string) - Private First Name ( never shown on site - for internal use only )
-        + Max Length: `100`
-        + Default: null
-    + last_name (optional, string) - Private Last Name ( never shown on site - for internal use only )
-        + Max Length: `100`
-        + Default: null
-    + bio (optional, string) - Public User Bio to display on website
-        + Max Length: `255`
-        + Default: null
-
-### Update Profile [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "bio": "Front End Designer",
-            "company_name": "Awesome Company",
-            "email": "me@email.com",
-            "first_name": "Jane",
-            "hash_id": "yRdRYJ",
-            "join_date": "2016-02-15T02:51:52.000Z",
-            "last_name": "Doe",
-            "location": "St. Petersburg, FL",
-            "profile_link_1": "http://mywebsite.com",
-            "profile_link_2": null,
-            "profile_link_3": null,
-            "profile_link_twitter": null,
-            "profile_link_website": null,
-            "profile_name": "Jane Doe",
-            "profile_photo": null,
-            "username": "janedoe"
-          }
-        }
-
-
-## Update Social Links [/settings/social-links/?profile_link_github={profile_link_github}&profile_link_bitbucket={profile_link_bitbucket}&profile_link_twitter={profile_link_twitter}&profile_link_1={profile_link_1}&profile_link_2={profile_link_2}&profile_link_3={profile_link_3}]
-
-This endpoint will allow the logged in user to update their own accounts Social Links.
-
-+ Parameters
-    + profile_link_github (optional, string) - Absolute URL to Github Profile Page
-        + Max Length: `100`
-        + Default: null
-    + profile_link_bitbucket (optional, string) - Absolute URL to Bitbucket Profile Page
-        + Max Length: `100`
-        + Default: null
-    + profile_link_twitter (optional, string) - Absolute URL to Twitter Profile Page
-        + Max Length: `100`
-        + Default: null
-    + profile_link_1 (optional, string) - Absolute URL to a URL of the Users Choosing
-        + Max Length: `100`
-        + Default: null
-    + profile_link_2 (optional, string) - Absolute URL to a URL of the Users Choosing
-        + Max Length: `100`
-        + Default: null
-    + profile_link_3 (optional, string) - Absolute URL to a URL of the Users Choosing
-        + Max Length: `100`
-        + Default: null
-
-### Update Social Links [POST]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid API Authorization Token"
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Update Email Notifications [/settings/email-notifications/?email_comment_left={email_comment_left}&email_comment_liked={email_comment_liked}&email_project_liked={email_project_liked}&email_someone_follows={email_someone_follows}&email_mentioned_in_comment={email_mentioned_in_comment}]
-
-This endpoint will allow the logged in user to update their own accounts email notification settings.
-
-+ Parameters
-    + email_comment_left (boolean, optional) - DATA
-        + Default: true
-    + email_comment_liked (boolean, optional) - DATA
-        + Default: true
-    + email_project_liked (boolean, optional) - DATA
-        + Default: true
-    + email_someone_follows (boolean, optional) - DATA
-        + Default: true
-    + email_mentioned_in_comment (boolean, optional) - DATA
-        + Default: true
-
-### Update Email Notifications [POST]
-
-+ Response 200 (application/json)
-
-        {
-            "error": false,
-            "errors": [],
-            "field_errors": {},
-            "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-            },
-            "data": {
-                "email_comment_left": true,
-                "email_comment_liked": false,
-                "email_mentioned_in_comment": true,
-                "email_project_liked": false,
-                "email_someone_follows": true,
-                "newsletter": true,
-                "web_comment_left": true,
-                "web_comment_liked": true,
-                "web_mentioned_in_comment": true,
-                "web_project_liked": false,
-                "web_someone_follows": false
-            }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid API Authorization Token"
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-## Update Web Notifications [/settings/web-notifications/?web_comment_left={web_comment_left}&web_comment_liked={web_comment_liked}&web_project_liked={web_project_liked}&web_someone_follows={web_someone_follows}&web_mentioned_in_comment={web_mentioned_in_comment}]
-
-This endpoint will allow the logged in user to update their own accounts web notification settings.
-
-+ Parameters
-    + web_comment_left (boolean, optional) - DATA
-        + Default: true
-    + web_comment_liked (boolean, optional) - DATA
-        + Default: true
-    + web_project_liked (boolean, optional) - DATA
-        + Default: true
-    + web_someone_follows (boolean, optional) - DATA
-        + Default: true
-    + web_mentioned_in_comment (boolean, optional) - DATA
-        + Default: true
-
-### Update Web Notifications [POST]
-
-+ Response 200 (application/json)
-
-        {
-            "error": false,
-            "errors": [],
-            "field_errors": {},
-            "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-            },
-            "data": {
-                "email_comment_left": true,
-                "email_comment_liked": false,
-                "email_mentioned_in_comment": true,
-                "email_project_liked": false,
-                "email_someone_follows": true,
-                "newsletter": true,
-                "web_comment_left": true,
-                "web_comment_liked": true,
-                "web_mentioned_in_comment": true,
-                "web_project_liked": false,
-                "web_someone_follows": false
-            }
-        }
-
-+ Response 403 (application/json)
-
-        {
-          "error": true,
-          "errors": [
-            "Invalid API Authorization Token"
-          ],
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {}
-        }
-
-
-# Group Application Data Endpoints
-
-## Categories [/categories/{slug}]
-
-Fetch a list of all categories.  Optionally, you can pass over a `slug` for a category to get a list of subcategories for that category.
-
-+ Parameters
-    + slug (optional, string) - Main category `slug` that will return subcategories
-
-### Get Categories [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 2,
-            "showing": 2,
-            "pages": 1,
-            "page": 1
-          },
-          "data": [
-            {
-              "id": 1,
-              "parent_id": null,
-              "name": "Category One",
-              "slug": "category-one",
-              "subcategories": [
-                {
-                  "id": 3,
-                  "parent_id": 1,
-                  "name": "Subcategory One",
-                  "slug": "subcategory-one"
-                },
-                {
-                  "id": 4,
-                  "parent_id": 1,
-                  "name": "Subcategory Two",
-                  "slug": "subcategory-two"
-                },
-                {
-                  "id": 5,
-                  "parent_id": 1,
-                  "name": "Subcategory Three",
-                  "slug": "subcategory-three"
-                }
-              ]
-            },
-            {
-              "id": 2,
-              "parent_id": null,
-              "name": "Category Two",
-              "slug": "category-two",
-              "subcategories": [
-                {
-                  "id": 6,
-                  "parent_id": 2,
-                  "name": "Subcategory One",
-                  "slug": "subcategory-one"
-                },
-                {
-                  "id": 7,
-                  "parent_id": 2,
-                  "name": "Subcategory Two",
-                  "slug": "subcategory-two"
-                },
-                {
-                  "id": 8,
-                  "parent_id": 2,
-                  "name": "Subcategory Three",
-                  "slug": "subcategory-three"
-                }
-              ]
-            }
-          ]
-        }
-
-## Tags [/tags]
-
-Fetch a list of all tags being used.
-
-### Get Tags [GET]
-
-+ Response 200 (application/json)
-
-        {
-          "error": false,
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 3,
-            "showing": 3,
-            "pages": 1,
-            "page": 1
-          },
-          "data": [
-            {
-              "id": 1,
-              "name": "Tag One",
-              "slug": "tag-one"
-            },
-            {
-              "id": 2,
-              "name": "Tag Two",
-              "slug": "tag-two"
-            },
-            {
-              "id": 3,
-              "name": "Tag Three",
-              "slug": "tag-three"
-            }
-          ]
-        }
 
 # Group Geolocation Endpoints
 
@@ -1503,6 +139,8 @@ Fetch details for Specific Zipcode
         {
           "error": false,
           "errors": [],
+          "notice": false,
+          "notices": [],
           "field_errors": {},
           "meta": {
             "total": 1,
@@ -1512,26 +150,34 @@ Fetch details for Specific Zipcode
           },
           "data": [
             {
-              "type": "standard",
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
               "city": "Saint Petersburg",
-              "state": "FL",
-              "zipcode": "33701",
-              "county": "Pinellas County",
               "country": "US",
-              "timezone": "America/New_York",
+              "county": "Pinellas County",
+              "estimated_population": 12000,
               "location": {
                 "lat": 27.75,
                 "lon": -82.64
               },
-              "area_codes": [
-                "727"
-              ],
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "estimated_population": 12000
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33701"
             }
-          ]
+          ],
+          "attribution": {
+            "text": "Data Provided by Civil Services",
+            "website": "https://civil.services",
+            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+            "logo": "https://cdn.civil.services/common/logo.png",
+            "icon": "https://cdn.civil.services/common/icon.png"
+          }
         }
 
 ## IP Address [/geolocation/ip/{ipaddress}]
@@ -1548,82 +194,100 @@ Fetch details for Specific IP Address
 
 
         {
+          "error": false,
+          "errors": [],
+          "notice": false,
+          "notices": [],
+          "field_errors": {},
+          "meta": {
+            "total": 1,
+            "showing": 1,
+            "pages": 1,
+            "page": 1
+          },
+          "data": {
             "city": {
-                "geoname_id": 5037649,
-                "names": {
-                    "de": "Minneapolis",
-                    "en": "Minneapolis",
-                    "es": "Mineápolis",
-                    "fr": "Minneapolis",
-                    "ja": "ミネアポリス",
-                    "pt-BR": "Minneapolis",
-                    "ru": "Миннеаполис",
-                    "zh-CN": "明尼阿波利斯"
-                }
+              "geoname_id": 4171563,
+              "names": {
+                "en": "St. Petersburg"
+              }
             },
             "continent": {
-                "code": "NA",
-                "geoname_id": 6255149,
-                "names": {
-                    "de": "Nordamerika",
-                    "en": "North America",
-                    "es": "Norteamérica",
-                    "fr": "Amérique du Nord",
-                    "ja": "北アメリカ",
-                    "pt-BR": "América do Norte",
-                    "ru": "Северная Америка",
-                    "zh-CN": "北美洲"
-                }
+              "code": "NA",
+              "geoname_id": 6255149,
+              "names": {
+                "de": "Nordamerika",
+                "en": "North America",
+                "es": "Norteamérica",
+                "fr": "Amérique du Nord",
+                "ja": "北アメリカ",
+                "pt-BR": "América do Norte",
+                "ru": "Северная Америка",
+                "zh-CN": "北美洲"
+              }
             },
             "country": {
-                "geoname_id": 6252001,
-                "iso_code": "US",
-                "names": {
-                    "de": "USA",
-                    "en": "United States",
-                    "es": "Estados Unidos",
-                    "fr": "États-Unis",
-                    "ja": "アメリカ合衆国",
-                    "pt-BR": "Estados Unidos",
-                    "ru": "США",
-                    "zh-CN": "美国"
-                }
+              "geoname_id": 6252001,
+              "iso_code": "US",
+              "names": {
+                "de": "USA",
+                "en": "United States",
+                "es": "Estados Unidos",
+                "fr": "États-Unis",
+                "ja": "アメリカ合衆国",
+                "pt-BR": "Estados Unidos",
+                "ru": "США",
+                "zh-CN": "美国"
+              }
             },
             "location": {
-                "latitude": 44.9759,
-                "longitude": -93.2166,
-                "metro_code": "613",
-                "time_zone": "America/Chicago"
+              "accuracy_radius": 1,
+              "latitude": 27.7723,
+              "longitude": -82.6341,
+              "metro_code": 539,
+              "time_zone": "America/New_York"
             },
             "postal": {
-                "code": "55414"
+              "code": "33701"
             },
             "registered_country": {
-                "geoname_id": 6252001,
-                "iso_code": "US",
-                "names": {
-                    "de": "USA",
-                    "en": "United States",
-                    "es": "Estados Unidos",
-                    "fr": "États-Unis",
-                    "ja": "アメリカ合衆国",
-                    "pt-BR": "Estados Unidos",
-                    "ru": "США",
-                    "zh-CN": "美国"
-                }
+              "geoname_id": 6252001,
+              "iso_code": "US",
+              "names": {
+                "de": "USA",
+                "en": "United States",
+                "es": "Estados Unidos",
+                "fr": "États-Unis",
+                "ja": "アメリカ合衆国",
+                "pt-BR": "Estados Unidos",
+                "ru": "США",
+                "zh-CN": "美国"
+              }
             },
             "subdivisions": [
-                {
-                    "geoname_id": 5037779,
-                    "iso_code": "MN",
-                    "names": {
-                        "en": "Minnesota",
-                        "es": "Minnesota",
-                        "ja": "ミネソタ州",
-                        "ru": "Миннесота"
-                    }
+              {
+                "geoname_id": 4155751,
+                "iso_code": "FL",
+                "names": {
+                  "en": "Florida",
+                  "es": "Florida",
+                  "fr": "Floride",
+                  "ja": "フロリダ州",
+                  "pt-BR": "Flórida",
+                  "ru": "Флорида",
+                  "zh-CN": "佛罗里达州"
                 }
+              }
             ]
+          },
+          "attribution": {
+            "text": "Data Provided by Civil Services",
+            "website": "https://civil.services",
+            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+            "logo": "https://cdn.civil.services/common/logo.png",
+            "icon": "https://cdn.civil.services/common/icon.png"
+          }
         }
 
 ## Geolocation [/geolocation/?zipcode={zipcode}&city={city}&county={county}&state={state}&type={type}&areaCode={areaCode}&timezone={timezone}&minPopulation={minPopulation}&maxPopulation={maxPopulation}&latitude={latitude}&longitude={longitude}&distance={distance}]
@@ -1635,7 +299,6 @@ Get Location Specific Data using any combination of filters.
     + city (optional, string) - City to use as Filter
     + county (optional, string) - County to use as Filter
     + state (optional, string) - State to use as Filter
-    + type (optional, string) - Type to use as Filter ['UNIQUE','PO BOX','STANDARD','MILITARY']
     + areaCode (optional, number) - Area Code of Phone Number to use as Filter
     + timezone (optional, string) - Time Zone of Location ( e.g. America/New_York )
     + minPopulation (optional, number) - Minimum Population of Location
@@ -1651,97 +314,655 @@ Get Location Specific Data using any combination of filters.
         {
           "error": false,
           "errors": [],
+          "notice": false,
+          "notices": [],
           "field_errors": {},
           "meta": {
-            "total": 4,
-            "showing": 4,
-            "pages": 1,
+            "total": 73,
+            "showing": 30,
+            "pages": 3,
             "page": 1
           },
           "data": [
             {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 12000,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
               "type": "standard",
-              "city": "Portland",
-              "state": "OR",
-              "zipcode": "97214",
-              "county": "Multnomah County",
-              "country": "US",
-              "timezone": "America/Los_Angeles",
-              "location": {
-                "lat": 45.51,
-                "lon": -122.64
-              },
-              "area_codes": [
-                "503",
-                "971"
-              ],
-              "alternate_city_names": [
-                ""
-              ],
-              "estimated_population": 21730
+              "zipcode": "33701"
             },
             {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 25220,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
               "type": "standard",
-              "city": "Portland",
-              "state": "OR",
-              "zipcode": "97232",
-              "county": "Multnomah County",
-              "country": "US",
-              "timezone": "America/Los_Angeles",
-              "location": {
-                "lat": 45.52,
-                "lon": -122.64
-              },
-              "area_codes": [
-                "971",
-                "503"
-              ],
-              "alternate_city_names": [
-                ""
-              ],
-              "estimated_population": 10780
+              "zipcode": "33702"
             },
             {
-              "type": "po box",
-              "city": "Portland",
-              "state": "OR",
-              "zipcode": "97283",
-              "county": "Multnomah County",
-              "country": "US",
-              "timezone": "America/Los_Angeles",
-              "location": {
-                "lat": 45.53,
-                "lon": -122.65
-              },
-              "area_codes": [
-                "971"
-              ],
               "alternate_city_names": [
-                ""
+                "St Petersburg"
               ],
-              "estimated_population": 426
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 20650,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33703"
             },
             {
-              "type": "po box",
-              "city": "Portland",
-              "state": "OR",
-              "zipcode": "97293",
-              "county": "Multnomah County",
-              "country": "US",
-              "timezone": "America/Los_Angeles",
-              "location": {
-                "lat": 45.51,
-                "lon": -122.64
-              },
-              "area_codes": [
-                "971"
+              "alternate_city_names": [
+                "St Petersburg"
               ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 14520,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33704"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 21220,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33705"
+            },
+            {
+              "alternate_city_names": [
+                "Pass A Grille",
+                "Pass A Grille Beach",
+                "Saint Pete Beach",
+                "St Pete Bch",
+                "St Pete Beach",
+                "St Petersburg",
+                "St Petersburg Beach",
+                "Treasure Is",
+                "Treasure Island"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 12770,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33706"
+            },
+            {
+              "alternate_city_names": [
+                "Gulfport",
+                "S Pasadena",
+                "South Pasadena",
+                "St Pete Beach",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 19010,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33707"
+            },
+            {
+              "alternate_city_names": [
+                "Madeira Beach",
+                "N Redngtn Bch",
+                "North Redington Beach",
+                "Redingtn Shor",
+                "Redington Bch",
+                "Redington Beach",
+                "Redington Shores",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 12810,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33708"
+            },
+            {
+              "alternate_city_names": [
+                "Kenneth City",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 19720,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33709"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 29140,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33710"
+            },
+            {
+              "alternate_city_names": [
+                "Gulfport",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 14720,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33711"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 21690,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33712"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 25810,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33713"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 14240,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33714"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg",
+                "Tierra Verde"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 6370,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33715"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 13940,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33716"
+            },
+            {
+              "alternate_city_names": [
+                "Home Shopping",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 0,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "unique",
+              "zipcode": "33729"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 0,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "standard",
+              "zipcode": "33730"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 821,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33731"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 445,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33732"
+            },
+            {
+              "alternate_city_names": [
+                "St Pete",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 2058,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33733"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 512,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33734"
+            },
+            {
+              "alternate_city_names": [
+                "St Pete Beach",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 437,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33736"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 47,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33737"
+            },
+            {
+              "alternate_city_names": [
+                "Madeira Beach",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 338,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33738"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg",
+                "Treasure Is",
+                "Treasure Island"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 69,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33740"
+            },
+            {
+              "alternate_city_names": [
+                "Pass A Grille",
+                "Pass A Grille Beach",
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 94,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33741"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 666,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33742"
+            },
+            {
+              "alternate_city_names": [
+                "St Petersburg"
+              ],
+              "area_codes": [
+                "727"
+              ],
+              "city": "Saint Petersburg",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 891,
+              "location": {
+                "lat": 27.75,
+                "lon": -82.64
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33743"
+            },
+            {
               "alternate_city_names": [
                 ""
               ],
-              "estimated_population": 410
+              "area_codes": [
+                "727"
+              ],
+              "city": "Bay Pines",
+              "country": "US",
+              "county": "Pinellas County",
+              "estimated_population": 268,
+              "location": {
+                "lat": 27.81,
+                "lon": -82.77
+              },
+              "state": "FL",
+              "timezone": "America/New_York",
+              "type": "po box",
+              "zipcode": "33744"
             }
-          ]
+          ],
+          "attribution": {
+            "text": "Data Provided by Civil Services",
+            "website": "https://civil.services",
+            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+            "logo": "https://cdn.civil.services/common/logo.png",
+            "icon": "https://cdn.civil.services/common/icon.png"
+          }
         }
 
 # Group Legislator Endpoints
@@ -1764,6 +985,8 @@ Search for Legislators for a Given Location
         {
           "error": false,
           "errors": [],
+          "notice": false,
+          "notices": [],
           "field_errors": {},
           "meta": {
             "total": 1,
@@ -1773,168 +996,184 @@ Search for Legislators for a Given Location
           },
           "data": {
             "request": {
-              "latitude": 45.52,
-              "longitude": -122.64,
-              "zipcode": "97232"
+              "city": "Saint Petersburg",
+              "state": "FL",
+              "latitude": 27.75,
+              "longitude": -82.64,
+              "zipcode": "33701"
             },
             "results": [
               {
-                "last_name": "Nosse",
-                "updated_at": "2016-05-12 07:27:47",
+                "last_name": "Newton",
+                "updated_at": "2017-03-14 06:47:57",
                 "sources": [
                   {
-                    "url": "http://www.oregonlegislature.gov/house/Pages/RepresentativesAll.aspx"
+                    "url": "http://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4659&LegislativeTermId=87"
+                  },
+                  {
+                    "url": "http://www.flhouse.gov/Sections/Representatives/representatives.aspx"
                   }
                 ],
-                "full_name": "Rob Nosse",
-                "old_roles": {
-                  "2013-2014": [
-                    {
-                      "term": "2013-2014",
-                      "end_date": null,
-                      "district": "42",
-                      "chamber": "lower",
-                      "state": "or",
-                      "party": "Democrat",
-                      "type": "member",
-                      "start_date": null
-                    }
-                  ]
-                },
-                "id": "ORL000259",
-                "first_name": "Rob",
+                "full_name": "Newton, Sr., Wengay M. \"Newt\"",
+                "id": "FLL000443",
+                "first_name": "Wengay M. \"Newt\"",
                 "middle_name": "",
-                "district": "42",
-                "state": "or",
-                "boundary_id": "ocd-division/country:us/state:or/sldl:42",
-                "email": "Rep.RobNosse@state.or.us",
+                "district": "70",
+                "state": "fl",
+                "boundary_id": "ocd-division/country:us/state:fl/sldl:70",
+                "email": "",
                 "all_ids": [
-                  "ORL000259",
-                  "ORL000340"
+                  "FLL000443"
                 ],
-                "leg_id": "ORL000259",
-                "party": "Democrat",
+                "leg_id": "FLL000443",
+                "party": "Democratic",
                 "active": true,
-                "transparencydata_id": "",
-                "nickname": "",
-                "photo_url": "http://www.oregonlegislature.gov/house/MemberPhotos/nosse.jpg",
+                "photo_url": "http://www.flhouse.gov/FileStores/Web/Imaging/Member/4659.jpg",
                 "roles": [
                   {
-                    "term": "2015-2016",
+                    "term": "2017-2018",
                     "end_date": null,
-                    "district": "42",
+                    "district": "70",
                     "chamber": "lower",
-                    "state": "or",
-                    "party": "Democrat",
+                    "state": "fl",
+                    "party": "Democratic",
                     "type": "member",
                     "start_date": null
+                  },
+                  {
+                    "term": "2017-2018",
+                    "committee_id": "FLC000167",
+                    "chamber": "lower",
+                    "state": "fl",
+                    "subcommittee": "Transportation & Infrastructure Subcommittee",
+                    "committee": "Government Accountability Committee",
+                    "position": "member",
+                    "type": "committee member"
+                  },
+                  {
+                    "term": "2017-2018",
+                    "committee_id": "FLC000173",
+                    "chamber": "lower",
+                    "state": "fl",
+                    "subcommittee": "PreK-12 Appropriations Subcommittee",
+                    "committee": "Appropriations Committee",
+                    "position": "member",
+                    "type": "committee member"
+                  },
+                  {
+                    "term": "2017-2018",
+                    "committee_id": "FLC000189",
+                    "chamber": "lower",
+                    "state": "fl",
+                    "subcommittee": "Health Quality Subcommittee",
+                    "committee": "Health & Human Services Committee",
+                    "position": "member",
+                    "type": "committee member"
+                  },
+                  {
+                    "term": "2017-2018",
+                    "committee_id": "FLC000198",
+                    "chamber": "lower",
+                    "state": "fl",
+                    "subcommittee": null,
+                    "committee": "Government Accountability Committee",
+                    "position": "member",
+                    "type": "committee member"
                   }
                 ],
-                "url": "http://www.oregonlegislature.gov/nosse",
-                "created_at": "2014-07-07 23:28:46",
+                "url": "http://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4659&LegislativeTermId=87",
+                "created_at": "2017-02-24 03:13:55",
                 "chamber": "lower",
                 "offices": [
                   {
                     "fax": null,
+                    "name": "District Office",
+                    "phone": "727-892-2468",
+                    "address": "Suite 108\n695 Central Avenue\nSt. Petersburg, FL 33701-3662",
+                    "type": "district",
+                    "email": null
+                  },
+                  {
+                    "fax": null,
                     "name": "Capitol Office",
-                    "phone": "503-986-1442",
-                    "address": "900 Court St NE, H-472, Salem, OR 97301",
+                    "phone": "850-717-5070",
+                    "address": "1302 The Capitol\n402 South Monroe Street\nTallahassee, FL 32399-1300",
                     "type": "capitol",
-                    "email": "Rep.RobNosse@state.or.us"
+                    "email": null
                   }
                 ],
                 "suffixes": ""
               },
               {
-                "last_name": "Rosenbaum",
-                "+capitol_address": "900 Court St NE, S-223, Salem, OR 97301",
-                "updated_at": "2016-05-12 07:27:47",
+                "last_name": "Rouson",
+                "updated_at": "2017-03-14 06:47:24",
                 "sources": [
                   {
-                    "url": "http://www.oregonlegislature.gov/senate/Pages/SenatorsAll.aspx"
+                    "url": "http://www.flsenate.gov/Senators/"
+                  },
+                  {
+                    "url": "http://www.flsenate.gov/Senators/s19"
                   }
                 ],
-                "full_name": "Diane Rosenbaum",
-                "old_roles": {
-                  "2013-2014": [
-                    {
-                      "term": "2013-2014",
-                      "end_date": null,
-                      "district": "21",
-                      "chamber": "upper",
-                      "state": "or",
-                      "party": "Democrat",
-                      "type": "member",
-                      "start_date": null
-                    }
-                  ],
-                  "2011-2012": [
-                    {
-                      "term": "2011-2012",
-                      "end_date": null,
-                      "district": "21",
-                      "chamber": "upper",
-                      "state": "or",
-                      "party": "Democratic",
-                      "type": "member",
-                      "start_date": null
-                    }
-                  ]
-                },
-                "+district_address": "1125 SE Madison St., Suite 100B, Portland, OR 97214",
-                "first_name": "Diane",
+                "full_name": "Rouson, Darryl Ervin",
+                "id": "FLL000440",
+                "first_name": "Darryl Ervin",
                 "middle_name": "",
-                "district": "21",
-                "id": "ORL000023",
-                "state": "or",
-                "votesmart_id": "23660",
-                "party": "Democrat",
-                "+district_phone": "503-231-9970",
-                "email": "Sen.DianeRosenbaum@state.or.us",
-                "+oregon_member_id": "48",
+                "district": "19",
+                "state": "fl",
+                "boundary_id": "ocd-division/country:us/state:fl/sldu:19",
+                "email": "rouson.darryl.web@flsenate.gov",
                 "all_ids": [
-                  "ORL000023",
-                  "ORL000183",
-                  "ORL000282"
+                  "FLL000440"
                 ],
-                "leg_id": "ORL000023",
-                "boundary_id": "ocd-division/country:us/state:or/sldu:21",
+                "leg_id": "FLL000440",
+                "party": "Democratic",
                 "active": true,
-                "transparencydata_id": "1490a9c428bf4603a3832f5387222f5c",
-                "nickname": "",
-                "photo_url": "http://www.oregonlegislature.gov/senate/MemberPhotos/rosenbaum.jpg",
-                "+phone": "503-986-1700",
+                "photo_url": "http://www.flsenate.gov/PublishedContent/Senators/2016-2018/Photos/s19_5203.jpg",
                 "roles": [
                   {
-                    "term": "2015-2016",
+                    "term": "2017-2018",
                     "end_date": null,
-                    "district": "21",
+                    "district": "19",
                     "chamber": "upper",
-                    "state": "or",
-                    "party": "Democrat",
+                    "state": "fl",
+                    "party": "Democratic",
                     "type": "member",
                     "start_date": null
                   }
                 ],
-                "level": "state",
-                "url": "http://www.oregonlegislature.gov/rosenbaum",
-                "country": "us",
-                "created_at": "2011-06-13 14:45:49",
+                "url": "http://www.flsenate.gov/Senators/s19",
+                "created_at": "2017-02-24 03:13:55",
                 "chamber": "upper",
-                "+website": "http://www.leg.state.or.us/rosenbaum",
                 "offices": [
                   {
                     "fax": null,
+                    "name": "District Office",
+                    "phone": "727-822-6828",
+                    "address": "535 Central Avenue\nSuite 302\nSt. Petersburg, FL 33701",
+                    "type": "district",
+                    "email": null
+                  },
+                  {
+                    "fax": null,
                     "name": "Capitol Office",
-                    "phone": "503-986-1721",
-                    "address": "900 Court St NE, S-213, Salem, OR, 97301",
+                    "phone": "850-487-5019",
+                    "address": "212 Senate Office Building\n404 South Monroe Street\nTallahassee, FL 32399-1100",
                     "type": "capitol",
-                    "email": "Sen.DianeRosenbaum@state.or.us"
+                    "email": null
                   }
                 ],
                 "suffixes": ""
               }
             ]
+          },
+          "attribution": {
+            "text": "Data Provided by Civil Services",
+            "website": "https://civil.services",
+            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+            "logo": "https://cdn.civil.services/common/logo.png",
+            "icon": "https://cdn.civil.services/common/icon.png"
           }
         }
 
@@ -1945,14 +1184,14 @@ View Contact Information for United States Senators, including: Phone Number, Ma
 
 ## Senate [/senate/?state={state}&class={class}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
 
-Search for Senator using any combination of search parameters.  
+Search for Senator using any combination of search parameters.
 
 + Parameters
     + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
     + class (optional, enum)
-        
+
         Senate to be divided into three classes for purposes of elections. Using a comma to filter with multiple options, e.g. `?title=I,III`
-        
+
         + Values
             + `I`
             + `II`
@@ -1967,19 +1206,19 @@ Search for Senator using any combination of search parameters.
     + wikidata (optional, string) - The numeric ID for this Senator on wikidata.org
     + googleEntityId (optional, string) - Google Integration
     + title (optional, enum)
-        
+
         Title of Senator. Using a comma to filter with multiple options, e.g. `?title=senate-majority-leader,senate-minority-leader`
-        
+
         + Values
             + `senator`
             + `senate-majority-leader`
             + `senate_majority-whip`
             + `senate-minority-leader`
             + `senate-minority-whip`
-    + party (optional, enum) - 
-        
+    + party (optional, enum) -
+
         Political Party of Senator. Using a comma to filter with multiple options, e.g. `?title=democrat,republican`
-        
+
         + Values
             + `constitution`
             + `democrat`
@@ -1990,17 +1229,17 @@ Search for Senator using any combination of search parameters.
             + `republican`
     + name (optional, string) - Full Name of Senator
     + gender (optional, enum)
-        
+
         Gender of Senator. Using a comma to filter with multiple options, e.g. `?title=african-american,asian-american`
-        
+
         + Values
             + `female`
             + `male`
             + `unspecified`
     + ethnicity (optional, enum)
-        
+
         Ethnicity of Senator
-        
+
         + Values
             + `african-american`
             + `asian-american`
@@ -2012,9 +1251,9 @@ Search for Senator using any combination of search parameters.
             + `white-american`
             + `unspecified`
     + religion (optional, enum)
-        
+
         Religion of Senator. Using a comma to filter with multiple options, e.g. `?title=muslim,jewish`
-        
+
         + Values
             + `african-methodist`
             + `anglican`
@@ -2051,9 +1290,9 @@ Search for Senator using any combination of search parameters.
             + `unitarian-universalist`
             + `unspecified`
     + openlyLGBTQ (optional, enum)
-        
+
         Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?title=lesbian,gay`
-        
+
         + Values
             + `no`
             + `lesbian`
@@ -2072,6 +1311,8 @@ Search for Senator using any combination of search parameters.
         {
           "error": false,
           "errors": [],
+          "notice": false,
+          "notices": [],
           "field_errors": {},
           "meta": {
             "total": 2,
@@ -2095,7 +1336,6 @@ Search for Senator using any combination of search parameters.
               "biography": "Marco Rubio, a Senator from Florida; born in Miami, Fla., May 28, 1971; graduated University of Florida, B.S., 1993; graduated University of Miami, J.D., 1996; lawyer; West Miami City Commission 1998-2000; member of the Florida house of representatives 2000-2008; majority leader 2003-2006; speaker 2006-2008; elected as a Republican to the United States Senate for the term ending January 3, 2017.",
               "bioguide": "R000595",
               "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=R000595",
-              "class": "III",
               "contact_page": "https://www.rubio.senate.gov/public/index.cfm/contact",
               "date_of_birth": "1971-05-28T00:00:00.000Z",
               "entered_office": "2011-01-03T00:00:00.000Z",
@@ -2185,7 +1425,6 @@ Search for Senator using any combination of search parameters.
               "biography": "Bill Nelson, a Senator and a Representative from Florida; born in Miami, Dade County, Fla., September 29, 1942; attended the Brevard County public schools; graduated from Melbourne High School 1960; B.A., Yale University 1965; J.D., University of Virginia School of Law 1968; admitted to the Florida bar in 1968 and commenced practice in Melbourne in 1970; served in United States Army Reserve 1965-1971; United States Army, active duty, 1968-1970, achieving rank of captain; legislative assistant to Governor Reubin Askew 1971; elected to Florida State house of representatives in 1972 and reelected in 1974 and 1976; elected as a Democrat to the Ninety-sixth and to the five succeeding Congresses (January 3, 1979-January 3, 1991); was not a candidate for reelection in 1990 to the House of Representatives, but was a candidate for nomination for governor of Florida; crewmember on the twenty-fourth flight of the Space Shuttle Columbia, January 12-18, 1986; Florida treasurer and insurance commissioner 1995-2000; elected to the United States Senate in 2000 for the term commencing January 3, 2001; reelected in 2006 and again in 2012 for the term ending January 3, 2019; Chair, Special Committee on Aging (One Hundred Thirteenth Congress).",
               "bioguide": "N000032",
               "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=N000032",
-              "class": "I",
               "contact_page": "https://www.billnelson.senate.gov/contact-bill",
               "date_of_birth": "1942-09-29T00:00:00.000Z",
               "entered_office": "2001-01-03T00:00:00.000Z",
@@ -2277,7 +1516,7 @@ View Contact Information for United States House Representatives, including: Pho
 
 ## House [/house/?state={state}&district={district}&atLarge={atLarge}&vacant={vacant}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
 
-Search for House Representative using any combination of search parameters.  
+Search for House Representative using any combination of search parameters.
 
 + Parameters
     + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
@@ -2294,9 +1533,9 @@ Search for House Representative using any combination of search parameters.
     + wikidata (optional, string) - The numeric ID for this Senator on wikidata.org
     + googleEntityId (optional, string) - Google Integration
     + title (optional, enum)
-        
+
         Title of Senator. Using a comma to filter with multiple options, e.g. `?title=house-majority-leader,house-minority-leader`
-        
+
         + Values
             + `representative`
             + `house-speaker`
@@ -2308,10 +1547,10 @@ Search for House Representative using any combination of search parameters.
             + `republican-policy-committee-chairman`
             + `assistant-democratic-leader`
             + `democratic-caucus-chairman`
-    + party (optional, enum) - 
-        
+    + party (optional, enum) -
+
         Political Party of Senator. Using a comma to filter with multiple options, e.g. `?title=democrat,republican`
-        
+
         + Values
             + `constitution`
             + `democrat`
@@ -2322,17 +1561,17 @@ Search for House Representative using any combination of search parameters.
             + `republican`
     + name (optional, string) - Full Name of Senator
     + gender (optional, enum)
-        
+
         Gender of Senator. Using a comma to filter with multiple options, e.g. `?title=african-american,asian-american`
-        
+
         + Values
             + `female`
             + `male`
             + `unspecified`
     + ethnicity (optional, enum)
-        
+
         Ethnicity of Senator
-        
+
         + Values
             + `african-american`
             + `asian-american`
@@ -2344,9 +1583,9 @@ Search for House Representative using any combination of search parameters.
             + `white-american`
             + `unspecified`
     + religion (optional, enum)
-        
+
         Religion of Senator. Using a comma to filter with multiple options, e.g. `?title=muslim,jewish`
-        
+
         + Values
             + `african-methodist`
             + `anglican`
@@ -2383,9 +1622,9 @@ Search for House Representative using any combination of search parameters.
             + `unitarian-universalist`
             + `unspecified`
     + openlyLGBTQ (optional, enum)
-        
+
         Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?title=lesbian,gay`
-        
+
         + Values
             + `no`
             + `lesbian`
@@ -2404,6 +1643,8 @@ Search for House Representative using any combination of search parameters.
         {
           "error": false,
           "errors": [],
+          "notice": false,
+          "notices": [],
           "field_errors": {},
           "meta": {
             "total": 2,
@@ -2423,86 +1664,86 @@ Search for House Representative using any combination of search parameters.
               "address_street": "Rayburn Hob",
               "address_type": null,
               "address_zipcode": "20515",
-              "age": 56,
+              "age": 55,
               "at_large": false,
-              "biography": "Susan Brooks, a Representative from Indiana; born in Auburn, Dekalb County, Ind., August 25, 1960; B.A., Miami University, Oxford, Ohio, 1982; J.D., Indiana University, Indianapolis, Ind., 1985; lawyer, private practice; Indianapolis, Ind., deputy mayor, 1998-1999; U.S. attorney for the Southern District of Indiana, 2001-2007; administrator, Ivy Tech Community College, Indianapolis, Ind.; elected as a Republican to the One Hundred Thirteenth and to the two succeeding Congresses (January 3, 2013-present); chair, Committee on Ethics (One Hundred Fifteenth Congress).",
-              "bioguide": "B001284",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B001284",
-              "contact_page": "https://susanwbrooks.house.gov/contact/email-me",
-              "date_of_birth": "1960-08-25T00:00:00.000Z",
-              "district": 5,
-              "entered_office": "2013-01-03T00:00:00.000Z",
+              "biography": "David Cicilline, a Representative from Rhode Island; born in Providence, Providence County, R.I., July 15, 1961; graduated from Narragansett High School, Providence, R.I., 1979; B.A., Brown University, Providence, R.I., 1983; J.D., Georgetown University, Washington, D.C., 1986; public defender, Washington, D.C., 1986-1987; lawyer, private practice; lawyer, public advocate; faculty, Roger Williams Law School, Bristol, R.I.; unsuccessful nominee to the Rhode Island state senate in 1992; member of the Rhode Island state house of representatives, 1995-2003; Delegate, Democratic National Convention, 2008; Mayor of Providence R.I., 2003-2011; elected as a Democrat to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).",
+              "bioguide": "C001084",
+              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=C001084",
+              "contact_page": "https://cicilline.house.gov/contact-me/email-me",
+              "date_of_birth": "1961-07-15T00:00:00.000Z",
+              "district": 1,
+              "entered_office": "2011-01-05T00:00:00.000Z",
               "ethnicity": "white-american",
-              "facebook_url": "https://www.facebook.com/CongresswomanSusanWBrooks/",
-              "fax": "202-225-0016",
-              "fec": "H2IN05082",
-              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H2IN05082",
-              "first_name": "Susan",
-              "gender": "female",
+              "facebook_url": "https://www.facebook.com/CongressmanDavidCicilline/",
+              "fax": "202-225-3290",
+              "fec": "H0RI01073",
+              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H0RI01073",
+              "first_name": "David",
+              "gender": "male",
               "goes_by": null,
-              "google_entity_id": "kg:/m/0jt8ng2",
-              "govtrack": "412539",
-              "govtrack_url": "https://www.govtrack.us/congress/members/412539",
+              "google_entity_id": "kg:/m/04t97v",
+              "govtrack": "412470",
+              "govtrack_url": "https://www.govtrack.us/congress/members/412470",
               "last_name": null,
               "latitude": 38.8863,
               "longitude": -77.0114,
-              "maplight": "1763",
-              "maplight_url": "http://maplight.org/us-congress/legislator/1763",
-              "middle_name": "W.",
-              "name": "Susan Brooks",
-              "name_slug": "susan-brooks",
-              "name_suffix": "Susan",
-              "openly_lgbtq": "no",
-              "opensecrets": "N00033495",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00033495",
+              "maplight": "1475",
+              "maplight_url": "http://maplight.org/us-congress/legislator/1475",
+              "middle_name": null,
+              "name": "David Cicilline",
+              "name_slug": "david-cicilline",
+              "name_suffix": "David",
+              "openly_lgbtq": "gay",
+              "opensecrets": "N00032019",
+              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00032019",
               "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00033495",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00033495",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00033495",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00033495",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00033495",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00033495",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00033495",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00033495",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00033495",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00033495"
+                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00032019",
+                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00032019",
+                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00032019",
+                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00032019",
+                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00032019",
+                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00032019",
+                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00032019",
+                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00032019",
+                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00032019",
+                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00032019"
               },
-              "party": "republican",
-              "phone": "202-225-2276",
-              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/susan-brooks.jpg",
+              "party": "democrat",
+              "phone": "202-225-4911",
+              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/david-cicilline.jpg",
               "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/susan-brooks.jpg",
-                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/susan-brooks.jpg",
-                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/susan-brooks.jpg",
-                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/susan-brooks.jpg",
-                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/susan-brooks.jpg"
+                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/david-cicilline.jpg",
+                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/david-cicilline.jpg",
+                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/david-cicilline.jpg",
+                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/david-cicilline.jpg",
+                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/david-cicilline.jpg"
               },
-              "pronunciation": "SOO-zin BROOKS",
-              "religion": "roman-catholic",
-              "state_code": "IN",
-              "state_code_slug": "in",
-              "state_name": "Indiana",
-              "state_name_slug": "indiana",
+              "pronunciation": "DAY-vid sih-sih-LEE-nee",
+              "religion": "jewish",
+              "state_code": "RI",
+              "state_code_slug": "ri",
+              "state_name": "Rhode Island",
+              "state_name_slug": "rhode-island",
               "term_end": "2019-01-03T00:00:00.000Z",
-              "thomas": "2129",
+              "thomas": "2055",
               "title": "representative",
-              "twitter_handle": "SusanWBrooks",
-              "twitter_url": "https://twitter.com/SusanWBrooks",
+              "twitter_handle": "RepCicilline",
+              "twitter_url": "https://twitter.com/RepCicilline",
               "vacant": false,
-              "votesmart": "135988",
-              "votesmart_url": "http://votesmart.org/candidate/135988",
+              "votesmart": "7349",
+              "votesmart_url": "http://votesmart.org/candidate/7349",
               "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/135988",
-                "bio": "http://votesmart.org/candidate/biography/135988",
-                "votes": "http://votesmart.org/candidate/key-votes/135988",
-                "positions": "http://votesmart.org/candidate/political-courage-test/135988",
-                "ratings": "http://votesmart.org/candidate/evaluations/135988",
-                "speeches": "http://votesmart.org/candidate/public-statements/135988",
-                "funding": "http://votesmart.org/candidate/campaign-finance/135988"
+                "summary": "http://votesmart.org/candidate/7349",
+                "bio": "http://votesmart.org/candidate/biography/7349",
+                "votes": "http://votesmart.org/candidate/key-votes/7349",
+                "positions": "http://votesmart.org/candidate/political-courage-test/7349",
+                "ratings": "http://votesmart.org/candidate/evaluations/7349",
+                "speeches": "http://votesmart.org/candidate/public-statements/7349",
+                "funding": "http://votesmart.org/candidate/campaign-finance/7349"
               },
-              "website": "https://susanwbrooks.house.gov",
-              "wikidata": "Q3225324",
-              "wikidata_url": "https://www.wikidata.org/wiki/Q3225324"
+              "website": "https://cicilline.house.gov",
+              "wikidata": "Q938498",
+              "wikidata_url": "https://www.wikidata.org/wiki/Q938498"
             },
             {
               "address_city": "Washington",
@@ -2515,86 +1756,86 @@ Search for House Representative using any combination of search parameters.
               "address_street": "Rayburn Hob",
               "address_type": null,
               "address_zipcode": "20515",
-              "age": 72,
+              "age": 52,
               "at_large": false,
-              "biography": "Susan Davis, a Representative from California; born in Cambridge, Middlesex County, Mass., April 13, 1944; B.A., University of California, Berkeley, Calif., 1965; M.S.W., University of North Carolina, Chapel Hill, N.C., 1968; member of the San Diego, Calif., board of education, 1983-1992, president, San Diego, Calif., board of education 1989-1992; executive director, Aaron Price Fellows, 1990-1994; member of the California state assembly, 1994-2000; elected as a Democrat to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).",
-              "bioguide": "D000598",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=D000598",
-              "contact_page": "https://susandavis.house.gov/contact",
-              "date_of_birth": "1944-04-13T00:00:00.000Z",
-              "district": 53,
+              "biography": "Jim Langevin, a Representative from Rhode Island; born in Providence, Providence County, R.I., April 22, 1964; B.A., Rhode Island College, Providence, R.I., 1990; M.A., Harvard University, Cambridge, Mass., 1994; member of the Rhode Island state house of representatives, 1988-1994; Rhode Island secretary of state, 1994-2001; elected as a Democrat to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).",
+              "bioguide": "L000559",
+              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=L000559",
+              "contact_page": "https://langevin.house.gov/contact-me/email-me",
+              "date_of_birth": "1964-04-22T00:00:00.000Z",
+              "district": 2,
               "entered_office": "2001-01-03T00:00:00.000Z",
               "ethnicity": "white-american",
-              "facebook_url": "https://www.facebook.com/RepSusanDavis/",
-              "fax": "202-225-2948",
-              "fec": "H0CA49055",
-              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H0CA49055",
-              "first_name": "Susan",
-              "gender": "female",
+              "facebook_url": "https://www.facebook.com/CongressmanJimLangevin/",
+              "fax": "202-225-5976",
+              "fec": "H0RI02139",
+              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H0RI02139",
+              "first_name": "Jim",
+              "gender": "male",
               "goes_by": null,
-              "google_entity_id": "kg:/m/024xs5",
-              "govtrack": "400097",
-              "govtrack_url": "https://www.govtrack.us/congress/members/400097",
+              "google_entity_id": "kg:/m/02tvqy",
+              "govtrack": "400230",
+              "govtrack_url": "https://www.govtrack.us/congress/members/400230",
               "last_name": null,
               "latitude": 38.8863,
               "longitude": -77.0114,
-              "maplight": "207",
-              "maplight_url": "http://maplight.org/us-congress/legislator/207",
+              "maplight": "331",
+              "maplight_url": "http://maplight.org/us-congress/legislator/331",
               "middle_name": null,
-              "name": "Susan Davis",
-              "name_slug": "susan-davis",
-              "name_suffix": "Susan",
+              "name": "Jim Langevin",
+              "name_slug": "jim-langevin",
+              "name_suffix": "Jim",
               "openly_lgbtq": "no",
-              "opensecrets": "N00009604",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009604",
+              "opensecrets": "N00009724",
+              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009724",
               "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009604",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009604",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009604",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009604",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009604",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009604",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009604",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009604",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009604",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009604"
+                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009724",
+                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009724",
+                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009724",
+                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009724",
+                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009724",
+                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009724",
+                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009724",
+                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009724",
+                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009724",
+                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009724"
               },
               "party": "democrat",
-              "phone": "202-225-2040",
-              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/susan-davis.jpg",
+              "phone": "202-225-2735",
+              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/jim-langevin.jpg",
               "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/susan-davis.jpg",
-                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/susan-davis.jpg",
-                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/susan-davis.jpg",
-                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/susan-davis.jpg",
-                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/susan-davis.jpg"
+                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/jim-langevin.jpg",
+                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/jim-langevin.jpg",
+                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/jim-langevin.jpg",
+                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/jim-langevin.jpg",
+                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/jim-langevin.jpg"
               },
-              "pronunciation": "SOO-zuhn DAY-viss",
-              "religion": "jewish",
-              "state_code": "CA",
-              "state_code_slug": "ca",
-              "state_name": "California",
-              "state_name_slug": "california",
+              "pronunciation": "JIM LAN-juh-vin",
+              "religion": "roman-catholic",
+              "state_code": "RI",
+              "state_code_slug": "ri",
+              "state_name": "Rhode Island",
+              "state_name_slug": "rhode-island",
               "term_end": "2019-01-03T00:00:00.000Z",
-              "thomas": "1641",
+              "thomas": "1668",
               "title": "representative",
-              "twitter_handle": "RepSusanDavis",
-              "twitter_url": "https://twitter.com/RepSusanDavis",
+              "twitter_handle": "jimlangevin",
+              "twitter_url": "https://twitter.com/jimlangevin",
               "vacant": false,
-              "votesmart": "8168",
-              "votesmart_url": "http://votesmart.org/candidate/8168",
+              "votesmart": "55787",
+              "votesmart_url": "http://votesmart.org/candidate/55787",
               "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/8168",
-                "bio": "http://votesmart.org/candidate/biography/8168",
-                "votes": "http://votesmart.org/candidate/key-votes/8168",
-                "positions": "http://votesmart.org/candidate/political-courage-test/8168",
-                "ratings": "http://votesmart.org/candidate/evaluations/8168",
-                "speeches": "http://votesmart.org/candidate/public-statements/8168",
-                "funding": "http://votesmart.org/candidate/campaign-finance/8168"
+                "summary": "http://votesmart.org/candidate/55787",
+                "bio": "http://votesmart.org/candidate/biography/55787",
+                "votes": "http://votesmart.org/candidate/key-votes/55787",
+                "positions": "http://votesmart.org/candidate/political-courage-test/55787",
+                "ratings": "http://votesmart.org/candidate/evaluations/55787",
+                "speeches": "http://votesmart.org/candidate/public-statements/55787",
+                "funding": "http://votesmart.org/candidate/campaign-finance/55787"
               },
-              "website": "https://susandavis.house.gov",
-              "wikidata": "Q460675",
-              "wikidata_url": "https://www.wikidata.org/wiki/Q460675"
+              "website": "https://langevin.house.gov",
+              "wikidata": "Q1397290",
+              "wikidata_url": "https://www.wikidata.org/wiki/Q1397290"
             }
           ],
           "attribution": {

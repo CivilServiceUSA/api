@@ -23,13 +23,11 @@ router.route('/city-council/:state/:city').get(function(request, response) {
   CityCouncilDomain.search(request.params.state, request.params.city, request.query)
     .then(function(results){
       response.json(util.createAPIResponse({
-        error: false,
         data: results
       }));
     })
     .catch(function(error){
       response.json(util.createAPIResponse({
-        error: true,
         errors: [error]
       }));
     });

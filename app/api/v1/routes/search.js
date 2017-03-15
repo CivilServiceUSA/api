@@ -31,7 +31,6 @@ router.route('/search').get(function(request, response) {
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
-        error: true,
         errors: [errors.toString()]
       }));
     });
@@ -57,7 +56,6 @@ router.route('/search/user').get(function(request, response) {
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
-        error: true,
         errors: [errors.toString()]
       }));
     });

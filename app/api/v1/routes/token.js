@@ -22,7 +22,6 @@ router.route('/token').get(function(request, response) {
   var ipAddress = request.headers['x-forwarded-for'];
   var token = auth.createWebsiteToken(ipAddress);
   response.json(util.createAPIResponse({
-    error: false,
     data: {
       token: token
     }

@@ -19,7 +19,8 @@ module.exports = {
    * Default Response Template
    */
   defaultResponse: {
-    error: false,
+    notices: [],
+    warnings: [],
     errors: [],
     field_errors: {},
     meta: {
@@ -44,8 +45,6 @@ module.exports = {
     });
 
     errors.push(response.errors.length > 0);
-
-    response.error = _.some(errors, Boolean);
 
     // Sort Data if a single object
     if (data && !_.isArray(data.data) && _.isObject(data.data)){

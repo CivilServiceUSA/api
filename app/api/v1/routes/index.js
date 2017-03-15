@@ -8,6 +8,7 @@ var express = require('express');
 var config = require('../../../config');
 var cityCouncil = require('./city_council');
 var zipcode = require('./geolocation');
+var government = require('./government');
 var legislators = require('./legislators');
 var unauthorized = require('./unauthorized');
 var categories = require('./categories');
@@ -27,6 +28,7 @@ var router = express.Router(config.router);
 
 router.use('/' + API_VERSION + '/', cityCouncil);
 router.use('/' + API_VERSION + '/', zipcode);
+router.use('/' + API_VERSION + '/', government);
 router.use('/' + API_VERSION + '/', legislators);
 router.use('/' + API_VERSION + '/', unauthorized);
 router.use('/' + API_VERSION + '/', categories);

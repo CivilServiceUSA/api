@@ -31,13 +31,11 @@ router.route('/geolocation/zipcode/:zipcode').get(function(request, response) {
     GeolocationDomain.getZipcode(request.params.zipcode, request.query)
       .then(function(results){
         response.json(util.createAPIResponse({
-          error: false,
           data: results.data
         }));
       });
   } else {
     response.json(util.createAPIResponse({
-      error: true,
       errors: ['Invalid Zip Code'],
       data: []
     }));
@@ -76,16 +74,12 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
       })
       .catch(function (error) {
         response.json(util.createAPIResponse({
-          error: true,
-          errors: [error],
-          data: []
+          errors: [error]
         }));
       });
   } else {
     response.json(util.createAPIResponse({
-      error: true,
-      errors: ['Invalid IP Address'],
-      data: []
+      errors: ['Invalid IP Address']
     }));
   }
 });

@@ -565,8 +565,7 @@ module.exports = {
       })
       .catch(function(error) {
         return util.createAPIResponse({
-          error: true,
-          errors: error
+          errors: [error]
         });
       });
   }

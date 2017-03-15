@@ -12,6 +12,7 @@ module.exports = {
   Category: require('./category'),
   Email: require('./email'),
   Geolocation: require('./geolocation'),
+  Government: require('./government'),
   Profile: require('./profile'),
   Search: require('./search'),
   House: require('./house'),

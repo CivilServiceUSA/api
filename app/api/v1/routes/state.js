@@ -24,7 +24,6 @@ router.route('/state/:state').get(function(request, response) {
   StateDomain.getState(request.params.state)
     .then(function(results){
       response.json(util.createAPIResponse({
-        error: false,
         data: results
       }));
     });

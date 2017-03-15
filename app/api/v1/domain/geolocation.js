@@ -101,15 +101,12 @@ module.exports = {
       .then(function(result) {
         var data = result.hits.hits.map(self.prepareForAPIOutput);
         return {
-          error: false,
-          errors: null,
           data: data
         };
       })
       .catch(function(error) {
         return {
-          error: true,
-          errors: error,
+          errors: [error],
           data: null
         };
       });
@@ -306,8 +303,7 @@ module.exports = {
       })
       .catch(function(error) {
         return util.createAPIResponse({
-          error: true,
-          errors: error
+          errors: [error]
         });
       });
   },
