@@ -20,7 +20,7 @@ var getZipCode = function(zipcode) {
   return new Promise(function (resolve, reject) {
     GeolocationDomain.getZipcode(zipcode, null)
     .then(function(results){
-      return resolve(results.data)
+      return resolve(results.data);
     });
   });
 };
@@ -111,15 +111,15 @@ module.exports = {
       }).then(function(){
         return getState(state_code).then(function(response){
           government.data.state = response;
-        })
+        });
       }).then(function(){
         return getHouseData(zipcode).then(function(response){
           government.data.house = response;
-        })
+        });
       }).then(function(){
         return getSenateData(state_code).then(function(response){
           government.data.senate = response;
-        })
+        });
       }).then(function(){
         resolve(government);
       });
