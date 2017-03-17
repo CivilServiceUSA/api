@@ -20501,7 +20501,7 @@ module.exports = {
         last_name: "O'Rourke",
         name_suffix: null,
         goes_by: null,
-        pronunciation: "BEH-toh oh-RORK [uses an alveolar stop /t/ instead of flap /\u027e/]",
+        pronunciation: "BEH-toh oh-RORK",
         gender: "male",
         ethnicity: "white-american",
         religion: "roman-catholic",
