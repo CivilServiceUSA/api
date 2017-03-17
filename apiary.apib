@@ -46,6 +46,7 @@ Our API requires an API Key to use.  We are not providing API Keys to the genera
 
 __NOTE:__  If you are testing our API in Apiary, you will need to add an `API-Key` Header to your Request ( using the `apikey` GET param does not always work within Apiary, so its best to test using this custom header ):
 
+[![Apiary Add Custom Header](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/headers.png)](http://docs.civilservices.apiary.io/#reference/government-endpoints/government/get-house-representatives?console=1)
 
 1. Select Endpoint
 2. Click `Switch to Console`
@@ -54,8 +55,6 @@ __NOTE:__  If you are testing our API in Apiary, you will need to add an `API-Ke
 5. Replace `New item` with the label `API-Key`
 6. Replace `null` with your API Key
 7. Click the Green `Call Resource` button once you are ready to make an API call
-
-[![Apiary Add Custom Header](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/headers.png)](http://docs.civilservices.apiary.io/#reference/government-endpoints/government/get-house-representatives?console=1)
 
 
 #### GET Parameter:
@@ -82,37 +81,41 @@ for if there are a lot of results.
 
 __Response 200:__ (application/json)
 
-        {
-            "notices": [],
-            "warnings": [],
-            "errors": [],
-            "field_errors": {},
-            "meta": {
-                "total": 97,
-                "showing": 30,
-                "pages": 4,
-                "page": 1
-            },
-            "data": [
-                ...
-            ]
-        }
+```json
+{
+    "notices": [],
+    "warnings": [],
+    "errors": [],
+    "field_errors": {},
+    "meta": {
+        "total": 97,
+        "showing": 30,
+        "pages": 4,
+        "page": 1
+    },
+    "data": [
+        ...
+    ]
+}
+```
 
 __Response 403:__ (application/json)
 
-        {
-            "notices": [],
-            "warnings": [],
-            "errors": ["Missing API Key"],
-            "field_errors": {},
-            "meta": {
-                "total": 0,
-                "showing": 0,
-                "pages": 1,
-                "page": 1
-            },
-            "data": []
-        }
+```json
+{
+    "notices": [],
+    "warnings": [],
+    "errors": ["Missing API Key"],
+    "field_errors": {},
+    "meta": {
+        "total": 0,
+        "showing": 0,
+        "pages": 1,
+        "page": 1
+    },
+    "data": []
+}
+```
 
 ### Optional API Params
 
@@ -123,15 +126,6 @@ for if there are a lot of results.
 + `page` (number, optional) - If there is more than one page of results, you can set which page to load here
 + `pretty` (optional) - If you want to format the JSON response to be human readable, just add a `pretty` param in the API call ( it does not need a value )
 
-### Request Authorization Header
-
-* __Authorization:__ Bearer `token`
-
-An example API Header would look like this:
-
-```
-curl --data '' https://api.civil.services/v1/user/refresh/ -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiIyIiwiaWF0IjoxNDUxNzEyNzg0LCJleHAiOjE0NTIzMTc1ODQsImlzcyI6IkRvaW5nIEFQSSJ9.x3eJutiulLnJCJkl_jP9ETj43ihePVeMtaWgWF0I60w"
-```
 
 # Group Geolocation Endpoints
 
