@@ -9,6 +9,7 @@ var express = require('express');
 var config = require('../../../config');
 var util = require('./util');
 var ipaddr = require('ipaddr.js');
+var analytics = require('../../../analytics');
 
 var router = express.Router(config.router);
 var GeolocationDomain = require('../domain/geolocation');
@@ -30,11 +31,17 @@ router.route('/geolocation/zipcode/:zipcode').get(function(request, response) {
   if (valid) {
     GeolocationDomain.getZipcode(request.params.zipcode, request.query)
       .then(function(results){
+        var apikey = (request.header('API-Key')) || request.query.apikey || null;
+        analytics.trackEvent(apikey, 'Geolocation', 'Zip Code', request.params.zipcode, results.length);
+
         response.json(util.createAPIResponse({
           data: results.data
         }));
       });
   } else {
+    var apikey = (request.header('API-Key')) || request.query.apikey || null;
+    analytics.trackEvent(apikey, 'Geolocation', 'Invalid Zip Code', request.params.zipcode);
+
     response.json(util.createAPIResponse({
       errors: ['Invalid Zip Code'],
       data: []
@@ -68,16 +75,25 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
   if (addr && valid) {
     GeolocationDomain.getIpAddress(addr, 'cities')
       .then(function (results) {
+        var apikey = (request.header('API-Key')) || request.query.apikey || null;
+        analytics.trackEvent(apikey, 'Geolocation', 'IP Address', request.query.apikey, results.length);
+
         response.json(util.createAPIResponse({
           data: results
         }));
       })
       .catch(function (error) {
+        var apikey = (request.header('API-Key')) || request.query.apikey || null;
+        analytics.trackEvent(apikey, 'Geolocation', 'Error - IP Address', error.toString());
+
         response.json(util.createAPIResponse({
           errors: [error]
         }));
       });
   } else {
+    var apikey = (request.header('API-Key')) || request.query.apikey || null;
+    analytics.trackEvent(apikey, 'Geolocation', 'Error - IP Address', 'Invalid IP Address');
+
     response.json(util.createAPIResponse({
       errors: ['Invalid IP Address']
     }));
@@ -106,7 +122,18 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
 router.route('/geolocation').get(function(request, response) {
   GeolocationDomain.getLocation(request.query)
     .then(function(results){
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'Geolocation', 'Search Results', JSON.stringify(request.query));
+
       response.json(util.createAPIResponse(results));
+    })
+    .catch(function (error) {
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'Geolocation', 'Error', error.toString());
+
+      response.json(util.createAPIResponse({
+        errors: [error]
+      }));
     });
 });
 

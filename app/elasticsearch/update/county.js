@@ -1,5 +1,5 @@
 /**
- * @module elasticsearch/update/geolocation
+ * @module elasticsearch/update/county
  * @version 1.0.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -8,18 +8,18 @@ var _ = require('lodash');
 var debug = require('../../debug');
 var config = require('../../config');
 var elasticsearchClient = require('../client');
-var ZipCodeModel = require('../../models/civil_services/zipcode');
-var GeolocationDomain = require('../../api/v1/domain/geolocation');
+var CountyModel = require('../../models/civil_services/county');
+var CountyDomain = require('../../api/v1/domain/county');
 
 var env = config.get('env');
-var indexType = env + '_geolocation';
+var indexType = env + '_county';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 /**
- * Update Geolocation Index
- * @type {{update: GeolocationES.update}}
+ * Update County Index
+ * @type {{update: CountyES.update}}
  */
-var GeolocationES = {
+var CountyES = {
   update: function(){
     elasticsearchClient.search({
       index: indexName,
@@ -29,14 +29,13 @@ var GeolocationES = {
     .then(function() {
       var params = {};
 
-      return ZipCodeModel.findAll(params);
+      return CountyModel.findAll(params);
     })
-    .then(function(geo) {
-
-      if (geo.length) {
+    .then(function(data) {
+      if (data.length) {
         var bulkActions = [];
 
-        _.each(geo, function(evt) {
+        _.each(data, function(evt) {
           bulkActions.push({
             index: {
               _index: indexName,
@@ -45,7 +44,7 @@ var GeolocationES = {
             }
           });
 
-          bulkActions.push(GeolocationDomain.prepareForElasticSearch(evt));
+          bulkActions.push(CountyDomain.prepareForElasticSearch(evt));
         });
 
         elasticsearchClient
@@ -67,7 +66,7 @@ var GeolocationES = {
           })
           .catch(function(error) {
             debug.error('Error indexing ' + indexType);
-            debug.error(error.status + ' ' + error.message);
+            debug.error(error);
           });
 
       } else {
@@ -75,9 +74,9 @@ var GeolocationES = {
       }
     })
     .catch(function(error) {
-      debug.error('Error indexing ' + indexName + ' ' + error);
+      debug.error(error);
     });
   }
 };
 
-module.exports = GeolocationES;
+module.exports = CountyES;

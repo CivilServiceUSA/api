@@ -1,5 +1,5 @@
 /**
- * @module elasticsearch/delete/senate
+ * @module elasticsearch/delete/state
  * @version 1.0.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -9,14 +9,14 @@ var client = require('./../client');
 var debug = require('../../debug');
 
 var env = config.get('env');
-var indexType = env + '_senate';
+var indexType = env + '_state';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 /**
- * Delete Senate Index
+ * Delete State Index
  * @type {object}
  */
-var Senate = client.indices.delete({
+var State = client.indices.delete({
   index: indexName
 })
 .then(function() {
@@ -26,4 +26,4 @@ var Senate = client.indices.delete({
   debug.error(error.status + ' ' + error.message);
 });
 
-module.exports = Senate;
+module.exports = State;

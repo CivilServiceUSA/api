@@ -54,8 +54,8 @@ module.exports = {
    */
   prepareForElasticSearch: function(data) {
     return {
-      alternate_city_names: data.acceptable_cities.split(', '),
-      area_codes: data.area_codes.split(','),
+      alternate_city_names: (data.acceptable_cities && data.acceptable_cities.length > 0) ? data.acceptable_cities.split(', ') : [],
+      area_codes: (data.area_codes && data.area_codes.length > 0) ? data.area_codes.split(',') : [],
       city: data.primary_city,
       county: data.county,
       estimated_population: data.estimated_population,

@@ -13,6 +13,38 @@ var State = require('../../../models/civil_services/state');
  */
 module.exports = {
   /**
+   * Prepare For Elastic Search
+   * @param {object} data - Data to be Processed for Elastic Search
+   * @return {object}
+   */
+  prepareForElasticSearch: function(data) {
+    return {
+      state_name: data.state_name,
+      state_name_slug: data.state_name_slug,
+      state_code: data.state_code,
+      state_code_slug: data.state_code_slug,
+      nickname: data.nickname,
+      website: data.website,
+      admission_date: data.admission_date,
+      admission_number: data.admission_number,
+      capital_city: data.capital_city,
+      capital_url: data.capital_url,
+      population: data.population,
+      population_rank: data.population_rank,
+      constitution_url: data.constitution_url,
+      state_flag_url: data.state_flag_url,
+      state_seal_url: data.state_seal_url,
+      map_image_url: data.map_image_url,
+      landscape_background_url: data.landscape_background_url,
+      skyline_background_url: data.skyline_background_url,
+      twitter_handle: data.twitter_handle,
+      twitter_url: data.twitter_url,
+      facebook_url: data.facebook_url,
+      shape: data.shape
+    };
+  },
+
+  /**
    * Get State
    * @param {number} state - State
    * @returns {*}

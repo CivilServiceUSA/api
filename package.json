@@ -45,7 +45,7 @@
   "homepage": "https://github.com/civilserviceusa/api#readme",
   "dependencies": {
     "@turf/turf": "^3.7.0",
-    "async": "^2.1.2",
+    "async": "^2.1.5",
     "bcrypt": "^0.8.7",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",

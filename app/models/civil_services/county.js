@@ -8,7 +8,7 @@ var DataTypes = require('sequelize');
 var db = require('../../config/sequelize');
 
 /**
- * Shape Zip Codes
+ * County
  * @type {object}
  * @property {number} id - Unique ID
  * @property {string} fips - Federal Information Processing Standards Code

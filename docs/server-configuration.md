@@ -28,6 +28,8 @@ nano ~/.bash_profile
 #### API Environmental Variables
 
 ```bash
+export API_DEV_FLAG_BUGSNAG=true;
+export API_DEV_FLAG_ANALYTICS=true;
 export API_API_DATABASE='CHANGE_ME';
 export API_API_HOST='locahost';
 export API_API_PASSWORD='CHANGE_ME';
@@ -36,7 +38,7 @@ export API_API_VERSION='v1'
 export API_APP_SECRET='CHANGE_ME';
 export API_BUGSNAG='CHANGE_ME';
 export API_DEBUG=true;
-export API_DEBUG_KEY='CHANGE_ME7';
+export API_DEBUG_KEY='CHANGE_ME';
 export API_ELASTIC_SEARCH='http://localhost:9200';
 export API_HASH_ID_ALPHABET='BCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz';
 export API_HASH_ID_LENGTH=6;

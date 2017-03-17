@@ -32,6 +32,7 @@ var db = require('../../config/sequelize');
  * @property {string} [twitter_handle] - Official State Twitter Handle
  * @property {string} [twitter_url] - Official State Twitter URL
  * @property {string} [facebook_url] - Official State Facebook URL
+ * @property {geometry} shape - GeoJSON Shape Data
  */
 var State = db.dbApi.define('state', {
   id: {
@@ -123,12 +124,20 @@ var State = db.dbApi.define('state', {
   facebook_url: {
     type: DataTypes.STRING(100),
     allowNull: true
+  },
+  shape: {
+    type: DataTypes.GEOMETRY,
+    allowNull: false
   }
 }, {
   indexes: [
     {
       fields: ['state_name'],
       unique: true
+    },
+    {
+      fields: ['shape'],
+      type: 'spatial'
     }
   ]
 });

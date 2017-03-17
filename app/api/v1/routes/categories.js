@@ -13,6 +13,8 @@ var elasticsearchClient = require('../../../elasticsearch/client');
 var domain = require('../domain');
 var util = require('./util');
 var router = express.Router(config.router);
+var analytics = require('../../../analytics');
+
 
 var DEFAULT_PAGE_SIZE = 30;
 
@@ -72,6 +74,9 @@ router.route('/categories/:slug?').get(function(request, response) {
   elasticsearchClient
     .search(searchParams)
     .then(function(result) {
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'Categories', 'Results', 'Params: ' + JSON.stringify(request.params), result.hits.total);
+
       response.json(util.createAPIResponse({
         meta: {
           total: result.hits.total,
@@ -83,6 +88,9 @@ router.route('/categories/:slug?').get(function(request, response) {
       }));
     })
     .catch(function(error) {
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'Categories', 'Error', error.toString());
+
       response.json(util.createAPIResponse({
         errors: [error]
       }));

@@ -80,6 +80,7 @@ module.exports = {
         website: 'https://civil.services',
         link: '<a href="https://civil.services">Data Provided by Civil Services</a>',
         license: 'https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE',
+        report_bug: 'https://github.com/CivilServiceUSA/api/issues/new',
         logo: 'https://cdn.civil.services/common/logo.png',
         icon: 'https://cdn.civil.services/common/icon.png'
       };
@@ -198,5 +199,14 @@ module.exports = {
     } else {
       return callback(false);
     }
+  },
+
+  /**
+   * Convert String to Title Case
+   * @param str
+   * @returns {string}
+   */
+  titleCase: function(str) {
+    return str.replace(/-/g, ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 };

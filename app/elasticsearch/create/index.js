@@ -10,9 +10,11 @@
  */
 module.exports = {
   Category: require('./category'),
+  County: require('./county'),
   Geolocation: require('./geolocation'),
   House: require('./house'),
   Senate: require('./senate'),
+  State: require('./state'),
   Tag: require('./tag'),
   User: require('./user')
 };

@@ -10,6 +10,7 @@
 module.exports = {
   CityCouncil: require('./city_council'),
   Category: require('./category'),
+  County: require('./county'),
   Email: require('./email'),
   Geolocation: require('./geolocation'),
   Government: require('./government'),

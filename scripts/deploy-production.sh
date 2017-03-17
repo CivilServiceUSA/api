@@ -16,10 +16,24 @@ echo -e "\n\033[38;5;34m✓ Civil Services › Update NPM Package\033[0m\n"
 
 npm install --no-optional
 
-echo -e "\n\033[38;5;34m✓ Civil Services › Update Data\033[0m\n"
+echo -e "\n\033[38;5;34m✓ Civil Services › Migrate Database\033[0m\n"
 
 npm run migrate
+
+echo -e "\n\033[38;5;34m✓ Civil Services › Seed Database\033[0m\n"
+
 npm run seed
+
+echo -e "\n\033[38;5;34m✓ Civil Services › Update Elasticsearch\033[0m\n"
+
+npm run elasticsearch:delete
+npm run elasticsearch:create
+npm run elasticsearch:update
+
+echo -e "\n\033[38;5;34m✓ Civil Services › Generate Documentation\033[0m\n"
+
+npm run docs:clean
+npm run docs
 
 echo -e "\n\033[38;5;34m✓ Civil Services › Deployment Complete\033[0m\n"
 

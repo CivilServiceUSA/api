@@ -7,6 +7,7 @@
 
 var express = require('express');
 var config = require('../../../config');
+var analytics = require('../../../analytics');
 var util = require('./util');
 
 var router = express.Router(config.router);
@@ -23,6 +24,9 @@ var StateDomain = require('../domain/state');
 router.route('/state/:state').get(function(request, response) {
   StateDomain.getState(request.params.state)
     .then(function(results){
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'State', util.titleCase(request.params.state), request.params, results.length);
+
       response.json(util.createAPIResponse({
         data: results
       }));

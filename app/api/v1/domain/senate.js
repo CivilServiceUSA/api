@@ -10,6 +10,7 @@ var moment = require('moment');
 var util = require('./util');
 var config = require('../../../config');
 var elasticsearchClient = require('../../../elasticsearch/client');
+var ZipCode = require('../../../models/civil_services/zipcode');
 
 var env = config.get('env');
 var indexType = env + '_senate';
@@ -156,7 +157,8 @@ module.exports = {
       location: {
         lat: data.latitude,
         lon: data.longitude
-      }
+      },
+      shape: data.shape
     };
   },
 
@@ -243,6 +245,12 @@ module.exports = {
       }
 
       return _.get(searchParams, 'body.query.bool.must');
+    }
+
+    function setGeoFilters(filter) {
+      if (!_.get(searchParams, 'body.query.filtered.filter')) {
+        _.set(searchParams, 'body.query.filtered.filter', filter);
+      }
     }
 
     // Page size
@@ -519,25 +527,99 @@ module.exports = {
       });
     }
 
-    return elasticsearchClient.search(searchParams)
-      .then(function(result) {
-        var data = result.hits.hits.map(self.prepareForAPIOutput);
-        var extended = self.extendData(data);
-
-        return {
-          meta: {
-            total: result.hits.total,
-            showing: result.hits.hits.length,
-            pages: Math.ceil(result.hits.total / searchParams.size),
-            page: page
-          },
-          data: extended
-        };
-      })
-      .catch(function(error) {
-        return util.createAPIResponse({
-          errors: [error]
-        });
+    /**
+     * Filter By Latitude & Longitude
+     */
+    if (query.latitude && query.longitude) {
+      setGeoFilters({
+        geo_shape: {
+          shape: {
+            shape: {
+              coordinates: [
+                query.longitude, //-82.6321373,
+                query.latitude // 27.7812652
+              ],
+              type: 'point'
+            }
+          }
+        }
       });
+    }
+
+    /**
+     * Filter By Latitude & Longitude
+     */
+    if (query.zipcode) {
+      return ZipCode.findOne({
+        where: {
+          zipcode: query.zipcode
+        }
+      })
+        .then(function(zipcode) {
+
+          if (zipcode && zipcode.shape && zipcode.shape.coordinates) {
+            setGeoFilters({
+              geo_shape: {
+                shape: {
+                  shape: {
+                    coordinates: zipcode.shape.coordinates,
+                    type: 'polygon'
+                  }
+                }
+              }
+            });
+
+            return elasticsearchClient.search(searchParams)
+              .then(function(result) {
+                var data = result.hits.hits.map(self.prepareForAPIOutput);
+                var extended = self.extendData(data);
+
+                return {
+                  meta: {
+                    total: result.hits.total,
+                    showing: result.hits.hits.length,
+                    pages: Math.ceil(result.hits.total / searchParams.size),
+                    page: page
+                  },
+                  data: extended
+                };
+              })
+              .catch(function(error) {
+                return util.createAPIResponse({
+                  errors: [ query.zipcode + ' Zip Code Not Found' ]
+                });
+              });
+          } else {
+            return {
+              errors: [ query.zipcode + ' Zip Code Not Found' ]
+            };
+          }
+        }).catch(function(error) {
+          return {
+            errors: [ query.zipcode + ' Zip Code Not Found' ]
+          };
+        });
+    } else {
+      return elasticsearchClient.search(searchParams)
+        .then(function(result) {
+          var data = result.hits.hits.map(self.prepareForAPIOutput);
+          var extended = self.extendData(data);
+
+          return {
+            meta: {
+              total: result.hits.total,
+              showing: result.hits.hits.length,
+              pages: Math.ceil(result.hits.total / searchParams.size),
+              page: page
+            },
+            data: extended
+          };
+        })
+        .catch(function(error) {
+          return util.createAPIResponse({
+            errors: [error]
+          });
+        });
+    }
   }
 };

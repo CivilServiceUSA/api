@@ -4,5 +4,11 @@ machine:
 deployment:
   production:
     branch: master
+    owner: CivilServiceUSA
     commands:
       - ./scripts/deploy-production.sh
+general:
+  branches:
+    only:
+      - master
+      - staging

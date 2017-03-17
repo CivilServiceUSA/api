@@ -10,7 +10,7 @@ var rateLimit = require('express-rate-limit');
 var express = require('express');
 var compression = require('compression');
 var bodyParser = require('body-parser');
-var debug = require('debug')('express:blackdove');
+var debug = require('debug')('express:civilservices');
 var config = require('./config');
 var router = require('./router');
 var bugsnag = require('bugsnag');
@@ -18,6 +18,7 @@ var session = require('express-session');
 var uuid = require('uuid');
 var model = require('./models');
 var logger = require('./logger');
+var analytics = require('./analytics');
 var app = express();
 var apiUser = {};
 var apiLimit = {
@@ -30,6 +31,8 @@ var limiter = rateLimit(apiLimit);
 var routerUtil = require('./api/v1/routes/util.js');
 
 process.title = 'api';
+
+var sess;
 
 // Setup Bugsnag
 bugsnag.register(config.get('bugsnag'), {
@@ -57,6 +60,8 @@ function setupAPI(request, response, next) {
   }
 
   if (request.query.apikey) {
+
+    analytics.trackEvent(request.query.apikey, 'API Key', request.query.apikey, request.url);
 
     return model.API.ApiAuthentication.findOne({ where: { api_key: request.query.apikey }}).then(function(user){
 
@@ -94,24 +99,30 @@ function setupAPI(request, response, next) {
         }
 
         if (!settings.allow_api_get && request.method === 'GET') {
+          analytics.trackEvent(request.query.apikey, request.method, 'Request Denied', request.url);
           return response.status(403).end(JSON.stringify(routerUtil.createAPIResponse({
             errors: ['API Key does not support GET Requests']
           })));
         }
 
         if (!settings.allow_api_post && request.method === 'POST') {
+          analytics.trackEvent(request.query.apikey, request.method, 'Request Denied', request.url);
+
           return response.status(403).end(JSON.stringify(routerUtil.createAPIResponse({
             errors: ['API Key does not support POST Requests']
           })));
         }
 
         if (!settings.allow_api_put && request.method === 'PUT') {
+          analytics.trackEvent(request.query.apikey, request.method, 'Request Denied', request.url);
+
           return response.status(403).end(JSON.stringify(routerUtil.createAPIResponse({
             errors: ['API Key does not support PUT Requests']
           })));
         }
 
         if (!settings.allow_api_delete && request.method === 'DELETE') {
+          analytics.trackEvent(request.query.apikey, request.method, 'Request Denied', request.url);
           return response.status(403).end(JSON.stringify(routerUtil.createAPIResponse({
             errors: ['API Key does not support DELETE Requests']
           })));
@@ -130,6 +141,7 @@ function setupAPI(request, response, next) {
           }
 
           if( !validHost) {
+            analytics.trackEvent(request.query.apikey, 'Invalid Host', apiUser.host, request.url);
             return response.status(401).send(JSON.stringify(routerUtil.createAPIResponse({
               errors: ['Invalid Host for API Key']
             })));
@@ -143,16 +155,19 @@ function setupAPI(request, response, next) {
         next();
 
       } else {
+        analytics.trackEvent(request.query.apikey, request.method, 'Invalid API Key', request.url);
         return response.status(401).end(JSON.stringify(routerUtil.createAPIResponse({
           errors: ['Invalid API Key']
         })));
       }
     }).catch(function(err){
+      analytics.trackEvent(request.query.apikey, request.method, 'Invalid API Authentication', request.url);
       return response.status(401).end(JSON.stringify(routerUtil.createAPIResponse({
         errors: ['Invalid API Authentication']
       })));
     });
   } else {
+    analytics.trackEvent(request.query.apikey, request.method, 'Missing API Key', request.url);
     return response.status(401).end(JSON.stringify(routerUtil.createAPIResponse({
       errors: ['Missing API Key']
     })));
@@ -168,6 +183,10 @@ app.enable('trust proxy');
  */
 app.use(function(req, res, next){
   res.setTimeout(5000, function(){
+    if(req.header('API-Key')){
+      req.query.apikey = req.header('API-Key');
+    }
+    analytics.trackEvent(req.query.apikey, 'Error', 'Request Timed Out', req.url);
     res.status(408).end(JSON.stringify(routerUtil.createAPIResponse({
       errors: ['Request Timed Out']
     })));
@@ -203,6 +222,11 @@ app.use(router);
 
 // Fallback for Possible Routes used that do not exist
 app.get('*', function (req, res) {
+  if(req.header('API-Key')){
+    req.query.apikey = req.header('API-Key');
+  }
+
+  analytics.trackEvent(req.query.apikey, req.method, 'Invalid URL', req.url);
   res.status(404).end(JSON.stringify(routerUtil.createAPIResponse({
     errors: [
       'The API Endpoint you are trying to access does not exist.',

@@ -1,5 +1,5 @@
 /**
- * @module elasticsearch/update/geolocation
+ * @module elasticsearch/update/state
  * @version 1.0.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -8,18 +8,18 @@ var _ = require('lodash');
 var debug = require('../../debug');
 var config = require('../../config');
 var elasticsearchClient = require('../client');
-var ZipCodeModel = require('../../models/civil_services/zipcode');
-var GeolocationDomain = require('../../api/v1/domain/geolocation');
+var StateModel = require('../../models/civil_services/state');
+var StateDomain = require('../../api/v1/domain/state');
 
 var env = config.get('env');
-var indexType = env + '_geolocation';
+var indexType = env + '_state';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 /**
- * Update Geolocation Index
- * @type {{update: GeolocationES.update}}
+ * Update State Index
+ * @type {{update: StateES.update}}
  */
-var GeolocationES = {
+var StateES = {
   update: function(){
     elasticsearchClient.search({
       index: indexName,
@@ -29,14 +29,14 @@ var GeolocationES = {
     .then(function() {
       var params = {};
 
-      return ZipCodeModel.findAll(params);
+      return StateModel.findAll(params);
     })
-    .then(function(geo) {
+    .then(function(data) {
 
-      if (geo.length) {
+      if (data.length) {
         var bulkActions = [];
 
-        _.each(geo, function(evt) {
+        _.each(data, function(evt) {
           bulkActions.push({
             index: {
               _index: indexName,
@@ -45,7 +45,7 @@ var GeolocationES = {
             }
           });
 
-          bulkActions.push(GeolocationDomain.prepareForElasticSearch(evt));
+          bulkActions.push(StateDomain.prepareForElasticSearch(evt));
         });
 
         elasticsearchClient
@@ -75,9 +75,9 @@ var GeolocationES = {
       }
     })
     .catch(function(error) {
-      debug.error('Error indexing ' + indexName + ' ' + error);
+      debug.error(error);
     });
   }
 };
 
-module.exports = GeolocationES;
+module.exports = StateES;

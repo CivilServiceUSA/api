@@ -8,6 +8,9 @@ var convict = require('convict');
 /**
  * Default API Configuration
  * @type {object}
+ * @property {object} devFlags - Developer Flags
+ * @property {boolean} devFlags.enableBugTracking=false - Enable Bugsnag
+ * @property {boolean} devFlags.enableGoogleAnalytics=false - Enable Google Analytics
  * @property {boolean} debug=false - Whether debugging is on or off
  * @property {string} debugKey - Allow for apiDevKey param in API to check API results without token
  * @property {enum} env=local - The current application environment ['local', 'mobile', 'staging', 'production' ]
@@ -38,6 +41,20 @@ var convict = require('convict');
  * @property {string} mandrill.key - API Key for Mandrill, which is used for sending email. Can be retrieved/changed at: {@link https://mandrillapp.com/settings/}
  */
 var config = convict({
+  devFlags: {
+    enableBugTracking: {
+      doc: 'Enable Bug Tracking',
+      format: Boolean,
+      default: false,
+      env: 'API_DEV_FLAG_BUGSNAG'
+    },
+    enableGoogleAnalytics: {
+      doc: 'Enable Google Analytics',
+      format: Boolean,
+      default: false,
+      env: 'API_DEV_FLAG_ANALYTICS'
+    }
+  },
   debug: {
     doc: 'Whether debugging is on or off',
     format: Boolean,
@@ -91,6 +108,12 @@ var config = convict({
     format: String,
     default: '',
     env: 'API_BUGSNAG'
+  },
+  analytics: {
+    doc: 'Google Analytics API Key',
+    format: String,
+    default: '',
+    env: 'API_GOOGLE_ANALYTICS'
   },
   hashID: {
     secret: {
