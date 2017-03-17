@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ssh -v civilservices@67.205.176.176 << EOF
+ssh -i id_6b807e557c63097610e78edbac36506f civilservices@67.205.176.176 << EOF
 export API_NODE_ENV=production
 
 echo '1. Updating sources'
