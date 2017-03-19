@@ -142,9 +142,11 @@
             position: fixed;
             bottom: 0;
             left: 0;
-            background-color: #131313;
+            background-color: #262c39;
+            border-top: 1px solid #373b48;
             z-index: 1000;
             text-align: center;
+            white-space: nowrap;
         }
         .api-footer a {
             width: 50px;
@@ -152,7 +154,7 @@
             display: inline-block;
             text-decoration: none;
             color: #fff;
-            opacity: 0.25;
+            opacity: 0.33;
             transition: opacity 0.25s ease-in-out;
             padding: 0;
             margin: 0 5px;
@@ -163,7 +165,7 @@
         .api-footer a i {
             line-height: 50px;
             text-align: center;
-            font-size: 30px;
+            font-size: 24px;
         }
     </style>
 </head>
@@ -184,13 +186,16 @@
 <script>
   var embed = new Apiary.Embed({
     subdomain: 'civilservices',
-    element: '.api-docs',
     header: '.api-footer',
+    element: '.api-docs',
     preferences: {
+      displayHttpMethods: true,
+      permalinks: true,
       collapseMachineColumnByDefault: true,
       fluidHumanColumn: true
     },
     theme: {
+      fontFamily: 'Open Sans',
       humanColumn: {
         content: {
           section: {
@@ -202,6 +207,9 @@
           }
         }
       }
+    },
+    customFonts: {
+      googleFonts: 'https://fonts.googleapis.com/css?family=Open+Sans'
     }
   });
 </script>
