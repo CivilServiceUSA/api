@@ -212,6 +212,7 @@ app.use('/humans.txt', express.static(__dirname + '/static/humans.txt'));
 app.use('/docs.js', express.static(__dirname + '/static/docs.js'));
 app.use('/docs.css', express.static(__dirname + '/static/docs.css'));
 app.use('/docs', express.static(__dirname + '/static/docs'));
+app.use('/guide', express.static(__dirname + '/static/guide'));
 
 app.use(setupAPI);
 app.use(compression());
