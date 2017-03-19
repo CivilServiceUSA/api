@@ -2,7 +2,7 @@
 <html lang="en-us" class="no-js">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Security-Policy" content="img-src *; default-src * 'self' gap: ws:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.apiary.io;">
+    <meta http-equiv="Content-Security-Policy" content="img-src *; default-src * 'self' gap: ws:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' data: https://fonts.gstatic.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://api.apiary.io;">
 
     <title>Civil Services - API Guide</title>
 
@@ -115,27 +115,93 @@
     <link rel="apple-touch-icon" sizes="72x72" href="https://api.civil.services/assets/images/favicon-standard-ipad.png">
     <link rel="apple-touch-icon" sizes="57x57" href="https://api.civil.services/assets/images/favicon-standard-iphone.png">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         html, body {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             width: 100%;
             height: 100%;
+            position: relative;
             overflow: hidden;
+        }
+        .api-docs {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 50px);
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .api-footer {
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #131313;
+            z-index: 1000;
+            text-align: center;
+        }
+        .api-footer a {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.25;
+            transition: opacity 0.25s ease-in-out;
+            padding: 0;
+            margin: 0 5px;
+        }
+        .api-footer a:hover {
+            opacity: 1;
+        }
+        .api-footer a i {
+            line-height: 50px;
+            text-align: center;
+            font-size: 30px;
         }
     </style>
 </head>
 <body>
+
+<div class="api-docs"></div>
+
+<footer class="api-footer">
+    <a href="https://github.com/CivilServiceUSA/api" target="_blank" title="Github"><i class="fa fa-github"></i></a>
+    <a href="https://civil-services.slack.com" target="_blank" title="Slack"><i class="fa fa-slack"></i></a>
+    <a href="https://twitter.com/CivilServiceUSA" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+    <a href="https://github.com/CivilServiceUSA/api/issues/new" target="_blank" title="Report Bug"><i class="fa fa-bug"></i></a>
+    <a href="https://github.com/CivilServiceUSA/api/issues" target="_blank" title="Get Help"><i class="fa fa-question-circle"></i></a>
+</footer>
 
 <!-- Embed -->
 <script src="https://api.apiary.io/seeds/embed.js"></script>
 <script>
   var embed = new Apiary.Embed({
     subdomain: 'civilservices',
-
+    element: '.api-docs',
+    header: '.api-footer',
     preferences: {
       collapseMachineColumnByDefault: true,
       fluidHumanColumn: true
+    },
+    theme: {
+      humanColumn: {
+        content: {
+          section: {
+            apiDescription: {
+              img: {
+                maxWidth: '100%'
+              }
+            }
+          }
+        }
+      }
     }
   });
 </script>
