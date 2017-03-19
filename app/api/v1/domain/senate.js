@@ -528,6 +528,98 @@ module.exports = {
     }
 
     /**
+     * Filter By Term End Date
+     */
+    if (query.termEnds) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          term_end: {
+            lte: (parseInt(query.termEnd, 0) + 1).toString(),
+            gte: parseInt(query.termEnd, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
+     * Filter By Term End Before Date
+     */
+    if (query.termEndsBefore) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          term_end: {
+            lt: parseInt(query.termEndsBefore, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
+     * Filter By Term End After Date
+     */
+    if (query.termEndsAfter) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          term_end: {
+            gt: parseInt(query.termEndsAfter, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
+     * Filter By Entered Office Date
+     */
+    if (query.enteredOffice) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          entered_office: {
+            lte: (parseInt(query.enteredOffice, 0) + 1).toString(),
+            gte: parseInt(query.enteredOffice, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
+     * Filter By Entered Office Before Date
+     */
+    if (query.enteredOfficeBefore) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          entered_office: {
+            lt: parseInt(query.enteredOfficeBefore, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
+     * Filter By Entered Office After Date
+     */
+    if (query.enteredOfficeAfter) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        range: {
+          entered_office: {
+            gt: parseInt(query.enteredOfficeAfter, 0).toString(),
+            format: 'yyyy'
+          }
+        }
+      });
+    }
+
+    /**
      * Filter By Latitude & Longitude
      */
     if (query.latitude && query.longitude) {

@@ -9,7 +9,7 @@ Civil Services is a collection of tools that make it possible for citizens to be
 
 * _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__
 * _Last Modified:_ __March 17th, 2017__
-* _Current API Version:_ __v1.0.0__
+* _Current API Version:_ __v1.0.1__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use. You can __[Register for an API Key](https://api.civil.services)__ if you would like access to our API. We typically review applications within a business day.
 
@@ -294,7 +294,7 @@ Fetch details for Specific IP Address
           }
         }
 
-## Geolocation [/geolocation/?zipcode={zipcode}&city={city}&county={county}&state={state}&type={type}&areaCode={areaCode}&timezone={timezone}&minPopulation={minPopulation}&maxPopulation={maxPopulation}&latitude={latitude}&longitude={longitude}&distance={distance}]
+## Geolocation [/geolocation/{?zipcode,city,county,state,type,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
 
 Get Location Specific Data using any combination of filters.
 
@@ -972,7 +972,7 @@ Get Location Specific Data using any combination of filters.
 
 The following endpoints convert location data into parameters that can fetch Legislators from Open States.
 
-## Legislators [/legislators/?zipcode={zipcode}&latitude={latitude}&longitude={longitude}]
+## Legislators [/legislators/{?zipcode,latitude,longitude}]
 
 Search for Legislators for a Given Location
 
@@ -1184,7 +1184,7 @@ Search for Legislators for a Given Location
 
 View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/senate/?zipcode={zipcode}&latitude={latitude}&longitude={longitude}&state={state}&class={class}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&wikidata={wikidata}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
+## Senate [/senate/{?zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Senator using any combination of search parameters.
 
@@ -1308,6 +1308,12 @@ Search for Senator using any combination of search parameters.
     + age (optional, number) - Age of Senator
     + minAge (optional, number) - Minimum Age of Senator
     + maxAge (optional, number) - Maximum Age of Senator
+    + termEnds (optional, number) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number) - Entered Office After this Year ( formatted `YYYY` )
 
 ### Get Senators [GET]
 
@@ -1518,7 +1524,7 @@ Search for Senator using any combination of search parameters.
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/?zipcode={zipcode}&latitude={latitude}&longitude={longitude}&state={state}&district={district}&atLarge={atLarge}&vacant={vacant}&bioguide={bioguide}&thomas={thomas}&govtrack={govtrack}&opensecrets={opensecrets}&votesmart={votesmart}&fec={fec}&maplight={maplight}&wikidata={wikidata}&googleEntityId={googleEntityId}&title={title}&party={party}&name={name}&gender={gender}&ethnicity={ethnicity}&religion={religion}&openlyLGBTQ={openlyLGBTQ}&age={age}&minAge={minAge}&maxAge={maxAge}]
+## House [/house/{?zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
@@ -1642,6 +1648,12 @@ Search for House Representative using any combination of search parameters.
     + age (optional, number) - Age of Senator
     + minAge (optional, number) - Minimum Age of Senator
     + maxAge (optional, number) - Maximum Age of Senator
+    + termEnds (optional, number) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number) - Entered Office After this Year ( formatted `YYYY` )
 
 ### Get House Representatives [GET]
 
@@ -1858,7 +1870,7 @@ Search for House Representative using any combination of search parameters.
 
 This returns data for both the `/senate` & `/house` endpoints with one call.
 
-## Government [/government/?zipcode={zipcode}&latitude={latitude}&longitude={longitude}&state={state}]
+## Government [/government/{?zipcode,latitude,longitude,state}]
 
 Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
 
