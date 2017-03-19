@@ -11,7 +11,7 @@ __Civil Services__ is a collection of tools that make it possible for citizens t
 Using our API
 ---
 
-Our API is __[Fully Documented](http://docs.civilservices.apiary.io)__ on Apiary. Currently, our API is only open for select non-commercial use.  If you are interested in obtaining an API Key ( required for access ), please contact [hello@civil.services](mailto:hello@civil.services) or [Join us on Slack](https://slack.civil.services/bkx7n2).
+Our API is __[Fully Documented](https://api.civil.services/guide/)__ using Apiary. Currently, our API is only open for select non-commercial use.  If you are interested in obtaining an API Key ( required for access ), please contact [hello@civil.services](mailto:hello@civil.services) or [Join us on Slack](https://slack.civil.services/bkx7n2).
 
 [![API Documentation](docs/img/apiary.jpg)](http://docs.civilservices.apiary.io)
 
