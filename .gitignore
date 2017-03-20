@@ -7,3 +7,4 @@ Thumbs.db
 *.log
 app/static/docs
 coverage
+dredd.yml
