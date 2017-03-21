@@ -26,13 +26,13 @@ router.route('/search').get(function(request, response) {
     .then(function(users) {
       response.json(util.createAPIResponse({
         data: users
-      }));
+      }, request.query.fields));
     })
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
         errors: [errors.toString()]
-      }));
+      }, request.query.fields));
     });
 });
 
@@ -51,13 +51,13 @@ router.route('/search/user').get(function(request, response) {
     .then(function(users) {
       response.json(util.createAPIResponse({
         data: users
-      }));
+      }, request.query.fields));
     })
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
         errors: [errors.toString()]
-      }));
+      }, request.query.fields));
     });
 });
 

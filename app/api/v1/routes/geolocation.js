@@ -19,6 +19,7 @@ var GeolocationDomain = require('../domain/geolocation');
  * @memberof module:routes/geolocation
  * @name [GET] /geolocation/zipcode/:zipcode
  * @property {string} zipcode - Zipcode to Search For
+ * @property {string} [fields] - Comma Separated List of fields you want in the response
  * @property {number} [pageSize=30] - Set Number of Results per Page
  * @property {number} [page=1] - Result Page to Load
  * @property {boolean} [pretty=false] - Format JSON response to be human readable
@@ -36,7 +37,7 @@ router.route('/geolocation/zipcode/:zipcode').get(function(request, response) {
 
         response.json(util.createAPIResponse({
           data: results.data
-        }));
+        }, request.query.fields));
       });
   } else {
     var apikey = (request.header('API-Key')) || request.query.apikey || null;
@@ -45,7 +46,7 @@ router.route('/geolocation/zipcode/:zipcode').get(function(request, response) {
     response.json(util.createAPIResponse({
       errors: ['Invalid Zip Code'],
       data: []
-    }));
+    }, request.query.fields));
   }
 });
 
@@ -80,7 +81,7 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
 
         response.json(util.createAPIResponse({
           data: results
-        }));
+        }, request.query.fields));
       })
       .catch(function (error) {
         var apikey = (request.header('API-Key')) || request.query.apikey || null;
@@ -88,7 +89,7 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
 
         response.json(util.createAPIResponse({
           errors: [error]
-        }));
+        }, request.query.fields));
       });
   } else {
     var apikey = (request.header('API-Key')) || request.query.apikey || null;
@@ -96,7 +97,7 @@ router.route('/geolocation/ip/:ipaddress?').get(function(request, response) {
 
     response.json(util.createAPIResponse({
       errors: ['Invalid IP Address']
-    }));
+    }, request.query.fields));
   }
 });
 
@@ -125,7 +126,7 @@ router.route('/geolocation').get(function(request, response) {
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
       analytics.trackEvent(apikey, 'Geolocation', 'Search Results', JSON.stringify(request.query));
 
-      response.json(util.createAPIResponse(results));
+      response.json(util.createAPIResponse(results, request.query.fields));
     })
     .catch(function (error) {
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
@@ -133,7 +134,7 @@ router.route('/geolocation').get(function(request, response) {
 
       response.json(util.createAPIResponse({
         errors: [error]
-      }));
+      }, request.query.fields));
     });
 });
 

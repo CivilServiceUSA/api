@@ -25,7 +25,7 @@ router.route('/token').get(function(request, response) {
     data: {
       token: token
     }
-  }));
+  }, request.query.fields));
 });
 
 module.exports = router;

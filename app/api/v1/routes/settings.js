@@ -29,18 +29,18 @@ router.route('/settings').get(function(request, response) {
         .then(function(settings) {
           response.json(util.createAPIResponse({
             data: settings
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -63,18 +63,18 @@ router.route('/settings/profile').post(function(request, response) {
         .then(function(user) {
           response.json(util.createAPIResponse({
             data: user.publicJSON()
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -99,18 +99,18 @@ router.route('/settings/social-links').post(function(request, response) {
         .then(function(user) {
           response.json(util.createAPIResponse({
             data: user.publicJSON()
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -134,18 +134,18 @@ router.route('/settings/email-notifications').post(function(request, response) {
         .then(function(settings) {
           response.json(util.createAPIResponse({
             data: settings.dataValues
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -169,18 +169,18 @@ router.route('/settings/web-notifications').post(function(request, response) {
         .then(function(settings) {
           response.json(util.createAPIResponse({
             data: settings.dataValues
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });

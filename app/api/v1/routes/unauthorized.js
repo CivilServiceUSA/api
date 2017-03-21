@@ -21,7 +21,7 @@ router.route('/unauthorized/').get(function(request, response) {
     error_messages: [
       'Invalid API Request. Either your API Key is invalid, or you are accessing our API from an invalid source.'
     ]
-  }));
+  }, request.query.fields));
 });
 
 module.exports = router;

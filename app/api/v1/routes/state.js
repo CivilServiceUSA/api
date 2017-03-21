@@ -29,7 +29,7 @@ router.route('/state/:state').get(function(request, response) {
 
       response.json(util.createAPIResponse({
         data: results
-      }));
+      }, request.query.fields));
     });
 });
 

@@ -39,14 +39,14 @@ router.route('/user/register').post(function(request, response) {
     util.trackActivity(data.id, 'created_account', null, function(){
       response.json(util.createAPIResponse({
         data: data
-      }));
+      }, request.query.fields));
     });
   })
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
       field_errors: errors
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -68,13 +68,13 @@ router.route('/user/confirm/account').post(function(request, response) {
     data.token = auth.createUserToken(user);
     response.json(util.createAPIResponse({
       data: data
-    }));
+    }, request.query.fields));
   })
   .catch(function(error) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: error ? [error] : []
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -95,14 +95,14 @@ router.route('/user/confirm/email').post(function(request, response) {
     util.trackActivity(data.id, 'changed_email', null, function(){
       response.json(util.createAPIResponse({
         data: data
-      }));
+      }, request.query.fields));
     });
   })
   .catch(function(error) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: error ? [error] : []
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -123,14 +123,14 @@ router.route('/user/confirm/password').post(function(request, response) {
     util.trackActivity(data.id, 'changed_password', null, function(){
       response.json(util.createAPIResponse({
         data: data
-      }));
+      }, request.query.fields));
     });
   })
   .catch(function(error) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: error ? [error] : []
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -150,7 +150,7 @@ router.route('/user/login').post(function(request, response) {
         .status(401)
         .json(util.createAPIResponse({
           errors: error ? [error] : []
-        }));
+        }, request.query.fields));
       return;
     }
 
@@ -163,7 +163,7 @@ router.route('/user/login').post(function(request, response) {
 
     response.json(util.createAPIResponse({
       data: data
-    }));
+    }, request.query.fields));
 
   })(request, response);
 });
@@ -182,12 +182,12 @@ router.route('/user/logout').post(function(request, response) {
           data: {
             success: true
           }
-        }));
+        }, request.query.fields));
       });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -213,7 +213,7 @@ router.route('/user/update').post(function(request, response) {
         if (error) {
           response.json(util.createAPIResponse({
             errors: ['Incorrect Password']
-          }));
+          }, request.query.fields));
         } else {
 
           var usernameChecked = false;
@@ -227,13 +227,13 @@ router.route('/user/update').post(function(request, response) {
               .then(function(updated) {
                 response.json(util.createAPIResponse({
                   data: updated
-                }));
+                }, request.query.fields));
               })
               .catch(function(errors) {
                 response.status(400);
                 response.json(util.createAPIResponse({
                   errors: [errors.toString()]
-                }));
+                }, request.query.fields));
               });
             }
           };
@@ -248,7 +248,7 @@ router.route('/user/update').post(function(request, response) {
               response.status(400);
               response.json(util.createAPIResponse({
                 errors: ['Invalid Username. Required Length: 3-30, Allowed Characters: a-Z0-9_']
-              }));
+              }, request.query.fields));
               return;
             }
 
@@ -257,7 +257,7 @@ router.route('/user/update').post(function(request, response) {
               response.status(400);
               response.json(util.createAPIResponse({
                 errors: ['New Username and Current Username are identical.']
-              }));
+              }, request.query.fields));
               return;
             }
 
@@ -267,7 +267,7 @@ router.route('/user/update').post(function(request, response) {
                 response.status(400);
                 response.json(util.createAPIResponse({
                   errors: ['Username already in use.']
-                }));
+                }, request.query.fields));
                 return;
               } else {
 
@@ -288,7 +288,7 @@ router.route('/user/update').post(function(request, response) {
               response.status(400);
               response.json(util.createAPIResponse({
                 errors: ['New Email Address and Current Email Address are identical.']
-              }));
+              }, request.query.fields));
               return;
             }
 
@@ -298,7 +298,7 @@ router.route('/user/update').post(function(request, response) {
                 response.status(400);
                 response.json(util.createAPIResponse({
                   errors: ['Email Address already in use.']
-                }));
+                }, request.query.fields));
                 return;
               } else {
                 emailChecked = true;
@@ -317,7 +317,7 @@ router.route('/user/update').post(function(request, response) {
               response.status(400);
               response.json(util.createAPIResponse({
                 errors: ['Minimum Password Length is 6 characters.']
-              }));
+              }, request.query.fields));
 
               return;
             } else if(request.body.password === request.body.new_password){
@@ -326,7 +326,7 @@ router.route('/user/update').post(function(request, response) {
               response.status(400);
               response.json(util.createAPIResponse({
                 errors: ['New Password and Current Password are identical.']
-              }));
+              }, request.query.fields));
 
               return;
 
@@ -346,7 +346,7 @@ router.route('/user/update').post(function(request, response) {
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -366,7 +366,7 @@ router.route('/user/delete').delete(function(request, response) {
         if (error) {
           response.json(util.createAPIResponse({
             errors: ['Incorrect Password']
-          }));
+          }, request.query.fields));
         } else {
           user.deleteAccount(account)
           .then(function() {
@@ -374,20 +374,20 @@ router.route('/user/delete').delete(function(request, response) {
               response.json(util.createAPIResponse({
                 data: account.publicJSON()
               }));
-            });
+            }, request.query.fields);
           })
           .catch(function(errors) {
             response.status(400);
             response.json(util.createAPIResponse({
               errors: [errors.toString()]
-            }));
+            }, request.query.fields));
           });
         }
       })(request, response);
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -417,7 +417,7 @@ router.route('/user/refresh').post(function(request, response) {
             data: {
               token: newToken
             }
-          }));
+          }, request.query.fields));
           return;
         } else {
           errorMessage = 'Invalid or expired token';
@@ -452,13 +452,13 @@ router.route('/user/forgot-password').post(function(request, response) {
 
     response.json(util.createAPIResponse({
       data: user.publicJSON()
-    }));
+    }, request.query.fields));
   })
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: [errors.toString()]
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -483,14 +483,14 @@ router.route('/user/reset-password').post(function(request, response) {
     util.trackActivity(data.id, 'reset_password', null, function(){
       response.json(util.createAPIResponse({
         data: data
-      }));
+      }, request.query.fields));
     });
   })
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: [errors.toString()]
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -506,13 +506,13 @@ router.route('/user/resend-confirmation/:id').get(function(request, response) {
   .then(function(message) {
     response.json(util.createAPIResponse({
       data: message
-    }));
+    }, request.query.fields));
   })
   .catch(function(errors) {
     response.status(400);
     response.json(util.createAPIResponse({
       errors: [errors.toString()]
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -559,7 +559,7 @@ router.route('/user/:username/profile').get(function(request, response) {
           page: page
         },
         data: data[0]
-      }));
+      }, request.query.fields));
     } else {
       response.status(400);
       response.json(util.createAPIResponse({
@@ -571,13 +571,13 @@ router.route('/user/:username/profile').get(function(request, response) {
         },
         errors: ['No Matching Username'],
         data: []
-      }));
+      }, request.query.fields));
     }
   })
   .catch(function(error) {
     response.json(util.createAPIResponse({
       errors: [error]
-    }));
+    }, request.query.fields));
   });
 });
 
@@ -596,7 +596,7 @@ router.route('/user/:username/follow').post(function(request, response) {
       if( !request.params.username){
         response.json(util.createAPIResponse({
           errors: ['Missing Username']
-        }));
+        }, request.query.fields));
       }
 
       user.followUser(validUserId, request.params.username)
@@ -604,19 +604,19 @@ router.route('/user/:username/follow').post(function(request, response) {
           util.trackActivity(validUserId, 'followed_user', followedUser, function(){
             response.json(util.createAPIResponse({
               data: followedUser
-            }));
+            }, request.query.fields));
           });
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -636,25 +636,25 @@ router.route('/user/:username/unfollow').post(function(request, response) {
       if( !request.params.username){
         response.json(util.createAPIResponse({
           errors: ['Missing Username']
-        }));
+        }, request.query.fields));
       }
 
       user.unfollowUser(validUserId, request.params.username)
         .then(function(unfollowedUser) {
           response.json(util.createAPIResponse({
             data: unfollowedUser.dataValues
-          }));
+          }, request.query.fields));
         })
         .catch(function(errors) {
           response.status(400);
           response.json(util.createAPIResponse({
             errors: [errors.toString()]
-          }));
+          }, request.query.fields));
         });
     } else {
       response.json(util.createAPIResponse({
         errors: ['Invalid API Authorization Token']
-      }));
+      }, request.query.fields));
     }
   });
 });
@@ -670,20 +670,20 @@ router.route('/user/:username/followers').get(function(request, response) {
   if( !request.params.username){
     response.json(util.createAPIResponse({
       errors: ['Missing Username']
-    }));
+    }, request.query.fields));
   }
 
   user.getFollowers(request.params.username)
     .then(function(followers) {
       response.json(util.createAPIResponse({
         data: followers
-      }));
+      }, request.query.fields));
     })
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
         errors: [errors.toString()]
-      }));
+      }, request.query.fields));
     });
 });
 
@@ -698,20 +698,20 @@ router.route('/user/:username/following').get(function(request, response) {
   if( !request.params.username){
     response.json(util.createAPIResponse({
       errors: ['Missing Username']
-    }));
+    }, request.query.fields));
   }
 
   user.getFollowing(request.params.username)
     .then(function(following) {
       response.json(util.createAPIResponse({
         data: following
-      }));
+      }, request.query.fields));
     })
     .catch(function(errors) {
       response.status(400);
       response.json(util.createAPIResponse({
         errors: [errors.toString()]
-      }));
+      }, request.query.fields));
     });
 });
 
@@ -727,13 +727,13 @@ router.route('/user/invite/:key').get(function(request, response) {
     .then(function(invites) {
       response.json(util.createAPIResponse({
         data: invites
-      }));
+      }, request.query.fields));
     })
     .catch(function(error) {
       response.status(400);
       response.json(util.createAPIResponse({
         errors: [error]
-      }));
+      }, request.query.fields));
     });
 });
 

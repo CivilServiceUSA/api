@@ -66,12 +66,12 @@ router.route('/tags').get(function(request, response) {
           page: page
         },
         data: result.hits.hits.map(domain.Tag.prepareForAPIOutput)
-      }));
+      }, request.query.fields));
     })
     .catch(function(error) {
       response.json(util.createAPIResponse({
         errors: [error]
-      }));
+      }, request.query.fields));
     });
 });
 

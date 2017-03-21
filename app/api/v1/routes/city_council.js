@@ -28,7 +28,7 @@ router.route('/city-council/:state/:city').get(function(request, response) {
 
       response.json(util.createAPIResponse({
         data: results
-      }));
+      }, request.query.fields));
     })
     .catch(function(error){
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
@@ -36,7 +36,7 @@ router.route('/city-council/:state/:city').get(function(request, response) {
 
       response.json(util.createAPIResponse({
         errors: [error]
-      }));
+      }, request.query.fields));
     });
 });
 

@@ -27,15 +27,15 @@ router.route('/government').get(function(request, response) {
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
       analytics.trackEvent(apikey, 'Government', 'Search Results', request.query, results.length);
 
-      response.json(util.createAPIResponse(results));
+      response.json(util.createAPIResponse(results, request.query.fields));
     }).catch(function(error){
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
       analytics.trackEvent(apikey, 'Government', 'Error', error.toString());
 
       response.json(util.createAPIResponse({
         errors: [error]
-      }
-    ));
+      }, request.query.fields)
+    );
   });
 });
 

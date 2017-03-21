@@ -93,7 +93,7 @@ router.route('/categories/:slug?').get(function(request, response) {
 
       response.json(util.createAPIResponse({
         errors: [error]
-      }));
+      }, request.query.fields));
     });
 });
 

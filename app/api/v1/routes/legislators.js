@@ -35,7 +35,7 @@ router.route('/legislators').get(function(request, response) {
       if (json && json[0] === 'Bad Request') {
         response.json(util.createAPIResponse({
           errors: json
-        }));
+        }, request.query.fields));
       } else {
         response.json(util.createAPIResponse({
           data: {
@@ -48,12 +48,12 @@ router.route('/legislators').get(function(request, response) {
               zipcode: null
             }
           }
-        }));
+        }, request.query.fields));
       }
     }).catch(function (error){
       response.json(util.createAPIResponse({
         errors: ['Unable to Fetch Open States Data']
-      }));
+      }, request.query.fields));
     });
   } else if (request.query.zipcode && validator.isNumeric(request.query.zipcode) && validator.isLength(request.query.zipcode, { min: 5, max: 5})) {
     GeolocationDomain.getLocation({ zipcode: request.query.zipcode })
@@ -68,7 +68,7 @@ router.route('/legislators').get(function(request, response) {
           if (json && json[0] === 'Bad Request') {
             response.json(util.createAPIResponse({
               errors: json
-            }));
+            }, request.query.fields));
           } else {
             response.json(util.createAPIResponse({
               data: {
@@ -81,23 +81,23 @@ router.route('/legislators').get(function(request, response) {
                   zipcode: request.query.zipcode
                 }
               }
-            }));
+            }, request.query.fields));
           }
         }).catch(function (error){
           response.json(util.createAPIResponse({
             errors: ['Unable to Fetch Open States Data']
-          }));
+          }, request.query.fields));
         });
       })
       .catch(function (error) {
         response.json(util.createAPIResponse({
           errors: ['Unable to Fetch Open States Data']
-        }));
+        }, request.query.fields));
       });
   } else {
     response.json(util.createAPIResponse({
       errors: ['Invalid Request. Requires `latitude` & `longitude` or `zipcode`.']
-    }));
+    }, request.query.fields));
   }
 });
 

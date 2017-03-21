@@ -122,6 +122,7 @@ __Response 403:__ (application/json)
 The following parameters are available on most API endpoint and used for pagination
 for if there are a lot of results.
 
++ `fields` (string) - Comma Separated List of fields you want in the response.  By default all public fields will be returned, but if you only need specific fields you can greatly simplify your API response by specifying them.
 + `pageSize` (number, optional) - How many results to return in a single API call. Defaults to 30
 + `page` (number, optional) - If there is more than one page of results, you can set which page to load here
 + `pretty` (optional) - If you want to format the JSON response to be human readable, just add a `pretty` param in the API call ( it does not need a value )
@@ -131,1069 +132,587 @@ for if there are a lot of results.
 
 The following endpoints are for specific data related to Zip Codes and Geolocation data.
 
-## Zipcode [/geolocation/zipcode/{zipcode}]
+## Zipcode [/geolocation/zipcode/{zipcode}{?page,pageSize,fields}]
 
 Fetch details for Specific Zipcode
 
 + Parameters
-    + zipcode (string) -  Unique Zip Code
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `city,state,location`) - Comma Separated List of fields you want in the response
+    + zipcode (string, `97232`) - Unique Zip Code
 
-### Get Zipcode [GET]
+### Zipcode [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + zipcode: 97232
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": [
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + zipcode: 97232
+        
+    + Body
+    
             {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 12000,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
               },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33701"
+              "data": [
+                {
+                  "alternate_city_names": [],
+                  "area_codes": [
+                    "971",
+                    "503"
+                  ],
+                  "city": "Portland",
+                  "county": "Multnomah County",
+                  "estimated_population": 10780,
+                  "location": {
+                    "lat": 45.52,
+                    "lon": -122.64
+                  },
+                  "state": "OR",
+                  "timezone": "America/Los_Angeles",
+                  "zipcode": "97232"
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
             }
-          ],
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
 
-## IP Address [/geolocation/ip/{ipaddress}]
+## IP Address [/geolocation/ip/{ipaddress}{?page,pageSize,fields}]
 
 Fetch details for Specific IP Address
 
 + Parameters
-    + ipaddress (optional, string) -  IP Address to Lookup.
-        + Default: Requester's IP Address
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + ipaddress (required, string, `97.96.74.114`) - IP Address to Lookup ( Defaults to Requester's IP Address )
 
-### Get IP Address [GET]
+### IP Address [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + ipaddress: 97.96.74.114
 
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + ipaddress: 97.96.74.114
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": {
+                "city": {
+                  "geoname_id": 4171563,
+                  "names": {
+                    "en": "St. Petersburg"
+                  }
+                },
+                "continent": {
+                  "code": "NA",
+                  "geoname_id": 6255149,
+                  "names": {
+                    "de": "Nordamerika",
+                    "en": "North America",
+                    "es": "Norteamérica",
+                    "fr": "Amérique du Nord",
+                    "ja": "北アメリカ",
+                    "pt-BR": "América do Norte",
+                    "ru": "Северная Америка",
+                    "zh-CN": "北美洲"
+                  }
+                },
+                "country": {
+                  "geoname_id": 6252001,
+                  "iso_code": "US",
+                  "names": {
+                    "de": "USA",
+                    "en": "United States",
+                    "es": "Estados Unidos",
+                    "fr": "États-Unis",
+                    "ja": "アメリカ合衆国",
+                    "pt-BR": "Estados Unidos",
+                    "ru": "США",
+                    "zh-CN": "美国"
+                  }
+                },
+                "location": {
+                  "accuracy_radius": 1,
+                  "latitude": 27.7723,
+                  "longitude": -82.6341,
+                  "metro_code": 539,
+                  "time_zone": "America/New_York"
+                },
+                "postal": {
+                  "code": "33701"
+                },
+                "registered_country": {
+                  "geoname_id": 6252001,
+                  "iso_code": "US",
+                  "names": {
+                    "de": "USA",
+                    "en": "United States",
+                    "es": "Estados Unidos",
+                    "fr": "États-Unis",
+                    "ja": "アメリカ合衆国",
+                    "pt-BR": "Estados Unidos",
+                    "ru": "США",
+                    "zh-CN": "美国"
+                  }
+                },
+                "subdivisions": [
+                  {
+                    "geoname_id": 4155751,
+                    "iso_code": "FL",
+                    "names": {
+                      "en": "Florida",
+                      "es": "Florida",
+                      "fr": "Floride",
+                      "ja": "フロリダ州",
+                      "pt-BR": "Flórida",
+                      "ru": "Флорида",
+                      "zh-CN": "佛罗里达州"
+                    }
+                  }
+                ]
+              },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "city": {
-              "geoname_id": 4171563,
-              "names": {
-                "en": "St. Petersburg"
-              }
-            },
-            "continent": {
-              "code": "NA",
-              "geoname_id": 6255149,
-              "names": {
-                "de": "Nordamerika",
-                "en": "North America",
-                "es": "Norteamérica",
-                "fr": "Amérique du Nord",
-                "ja": "北アメリカ",
-                "pt-BR": "América do Norte",
-                "ru": "Северная Америка",
-                "zh-CN": "北美洲"
-              }
-            },
-            "country": {
-              "geoname_id": 6252001,
-              "iso_code": "US",
-              "names": {
-                "de": "USA",
-                "en": "United States",
-                "es": "Estados Unidos",
-                "fr": "États-Unis",
-                "ja": "アメリカ合衆国",
-                "pt-BR": "Estados Unidos",
-                "ru": "США",
-                "zh-CN": "美国"
-              }
-            },
-            "location": {
-              "accuracy_radius": 1,
-              "latitude": 27.7723,
-              "longitude": -82.6341,
-              "metro_code": 539,
-              "time_zone": "America/New_York"
-            },
-            "postal": {
-              "code": "33701"
-            },
-            "registered_country": {
-              "geoname_id": 6252001,
-              "iso_code": "US",
-              "names": {
-                "de": "USA",
-                "en": "United States",
-                "es": "Estados Unidos",
-                "fr": "États-Unis",
-                "ja": "アメリカ合衆国",
-                "pt-BR": "Estados Unidos",
-                "ru": "США",
-                "zh-CN": "美国"
-              }
-            },
-            "subdivisions": [
-              {
-                "geoname_id": 4155751,
-                "iso_code": "FL",
-                "names": {
-                  "en": "Florida",
-                  "es": "Florida",
-                  "fr": "Floride",
-                  "ja": "フロリダ州",
-                  "pt-BR": "Flórida",
-                  "ru": "Флорида",
-                  "zh-CN": "佛罗里达州"
-                }
-              }
-            ]
-          },
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
-
-## Geolocation [/geolocation/{?zipcode,city,county,state,type,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
+## Geolocation [/geolocation/{?page,pageSize,fields,zipcode,city,county,state,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
 
 Get Location Specific Data using any combination of filters.
 
 + Parameters
-    + zipcode (optional, string) - Unique Zip Code
-    + city (optional, string) - City to use as Filter
-    + county (optional, string) - County to use as Filter
-    + state (optional, string) - State to use as Filter
-    + areaCode (optional, number) - Area Code of Phone Number to use as Filter
-    + timezone (optional, string) - Time Zone of Location ( e.g. America/New_York )
-    + minPopulation (optional, number) - Minimum Population of Location
-    + maxPopulation (optional, number) - Maximum Population of Location
-    + latitude (optional, number) - Latitude to base Location on
-    + longitude (optional, number) - Longitude to base Location on
-    + distance (optional, string) - Distance from Latitude & Longitude ( e.g. 5mi, 10km )
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - Unique Zip Code
+    + city (optional, string, `Portland`) - City to use as Filter
+    + county (optional, string, `Multnomah`) - County to use as Filter
+    + state (optional, string, `OR`) - State to use as Filter
+    + areaCode (optional, number, `573`) - Area Code of Phone Number to use as Filter
+    + timezone (optional, string, `America/New_York`) - Time Zone of Location ( e.g. America/New_York )
+    + minPopulation (optional, number, `10000`) - Minimum Population of Location
+    + maxPopulation (optional, number, `1000000`) - Maximum Population of Location
+    + latitude (optional, number, `45.542094`) - Latitude to base Location on
+    + longitude (optional, number, `-122.9346037`) - Longitude to base Location on
+    + distance (optional, string, `25mi`) - Distance from Latitude & Longitude ( e.g. 5mi, 10km )
 
-### Get Location [GET]
+### Location [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + zipcode: 97232
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 73,
-            "showing": 30,
-            "pages": 3,
-            "page": 1
-          },
-          "data": [
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + zipcode: 97232
+        
+    + Body
+    
             {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 12000,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
               },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33701"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
+              "data": [
+                {
+                  "alternate_city_names": [],
+                  "area_codes": [
+                    "971",
+                    "503"
+                  ],
+                  "city": "Portland",
+                  "county": "Multnomah County",
+                  "estimated_population": 10780,
+                  "location": {
+                    "lat": 45.52,
+                    "lon": -122.64
+                  },
+                  "state": "OR",
+                  "timezone": "America/Los_Angeles",
+                  "zipcode": "97232"
+                }
               ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 25220,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33702"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 20650,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33703"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 14520,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33704"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 21220,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33705"
-            },
-            {
-              "alternate_city_names": [
-                "Pass A Grille",
-                "Pass A Grille Beach",
-                "Saint Pete Beach",
-                "St Pete Bch",
-                "St Pete Beach",
-                "St Petersburg",
-                "St Petersburg Beach",
-                "Treasure Is",
-                "Treasure Island"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 12770,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33706"
-            },
-            {
-              "alternate_city_names": [
-                "Gulfport",
-                "S Pasadena",
-                "South Pasadena",
-                "St Pete Beach",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 19010,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33707"
-            },
-            {
-              "alternate_city_names": [
-                "Madeira Beach",
-                "N Redngtn Bch",
-                "North Redington Beach",
-                "Redingtn Shor",
-                "Redington Bch",
-                "Redington Beach",
-                "Redington Shores",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 12810,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33708"
-            },
-            {
-              "alternate_city_names": [
-                "Kenneth City",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 19720,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33709"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 29140,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33710"
-            },
-            {
-              "alternate_city_names": [
-                "Gulfport",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 14720,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33711"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 21690,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33712"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 25810,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33713"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 14240,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33714"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg",
-                "Tierra Verde"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 6370,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33715"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 13940,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33716"
-            },
-            {
-              "alternate_city_names": [
-                "Home Shopping",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 0,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "unique",
-              "zipcode": "33729"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 0,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "standard",
-              "zipcode": "33730"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 821,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33731"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 445,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33732"
-            },
-            {
-              "alternate_city_names": [
-                "St Pete",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 2058,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33733"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 512,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33734"
-            },
-            {
-              "alternate_city_names": [
-                "St Pete Beach",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 437,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33736"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 47,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33737"
-            },
-            {
-              "alternate_city_names": [
-                "Madeira Beach",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 338,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33738"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg",
-                "Treasure Is",
-                "Treasure Island"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 69,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33740"
-            },
-            {
-              "alternate_city_names": [
-                "Pass A Grille",
-                "Pass A Grille Beach",
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 94,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33741"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 666,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33742"
-            },
-            {
-              "alternate_city_names": [
-                "St Petersburg"
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Saint Petersburg",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 891,
-              "location": {
-                "lat": 27.75,
-                "lon": -82.64
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33743"
-            },
-            {
-              "alternate_city_names": [
-                ""
-              ],
-              "area_codes": [
-                "727"
-              ],
-              "city": "Bay Pines",
-              "country": "US",
-              "county": "Pinellas County",
-              "estimated_population": 268,
-              "location": {
-                "lat": 27.81,
-                "lon": -82.77
-              },
-              "state": "FL",
-              "timezone": "America/New_York",
-              "type": "po box",
-              "zipcode": "33744"
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
             }
-          ],
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
 
 # Group Legislator Endpoints
 
 The following endpoints convert location data into parameters that can fetch Legislators from Open States.
 
-## Legislators [/legislators/{?zipcode,latitude,longitude}]
+## Legislators [/legislators/{?page,pageSize,fields,zipcode,latitude,longitude}]
 
 Search for Legislators for a Given Location
 
 + Parameters
-    + zipcode (optional, string) - Zip Code ( must be a valid US Zip Code )
-    + latitude (optional, string) - GPS Latitude ( required if also passing over `longitude` )
-    + longitude (optional, string) - GPS Longitude ( required if also passing over `latitude` )
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - Zip Code ( must be a valid US Zip Code )
+    + latitude (optional, string, `45.542094`) - GPS Latitude ( required if also passing over `longitude` )
+    + longitude (optional, string, `-122.9346037`) - GPS Longitude ( required if also passing over `latitude` )
 
-### Get Legislators [GET]
+### Legislators [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + zipcode: 97232
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "request": {
-              "city": "Saint Petersburg",
-              "state": "FL",
-              "latitude": 27.75,
-              "longitude": -82.64,
-              "zipcode": "33701"
-            },
-            "results": [
-              {
-                "last_name": "Newton",
-                "updated_at": "2017-03-14 06:47:57",
-                "sources": [
-                  {
-                    "url": "http://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4659&LegislativeTermId=87"
-                  },
-                  {
-                    "url": "http://www.flhouse.gov/Sections/Representatives/representatives.aspx"
-                  }
-                ],
-                "full_name": "Newton, Sr., Wengay M. \"Newt\"",
-                "id": "FLL000443",
-                "first_name": "Wengay M. \"Newt\"",
-                "middle_name": "",
-                "district": "70",
-                "state": "fl",
-                "boundary_id": "ocd-division/country:us/state:fl/sldl:70",
-                "email": "",
-                "all_ids": [
-                  "FLL000443"
-                ],
-                "leg_id": "FLL000443",
-                "party": "Democratic",
-                "active": true,
-                "photo_url": "http://www.flhouse.gov/FileStores/Web/Imaging/Member/4659.jpg",
-                "roles": [
-                  {
-                    "term": "2017-2018",
-                    "end_date": null,
-                    "district": "70",
-                    "chamber": "lower",
-                    "state": "fl",
-                    "party": "Democratic",
-                    "type": "member",
-                    "start_date": null
-                  },
-                  {
-                    "term": "2017-2018",
-                    "committee_id": "FLC000167",
-                    "chamber": "lower",
-                    "state": "fl",
-                    "subcommittee": "Transportation & Infrastructure Subcommittee",
-                    "committee": "Government Accountability Committee",
-                    "position": "member",
-                    "type": "committee member"
-                  },
-                  {
-                    "term": "2017-2018",
-                    "committee_id": "FLC000173",
-                    "chamber": "lower",
-                    "state": "fl",
-                    "subcommittee": "PreK-12 Appropriations Subcommittee",
-                    "committee": "Appropriations Committee",
-                    "position": "member",
-                    "type": "committee member"
-                  },
-                  {
-                    "term": "2017-2018",
-                    "committee_id": "FLC000189",
-                    "chamber": "lower",
-                    "state": "fl",
-                    "subcommittee": "Health Quality Subcommittee",
-                    "committee": "Health & Human Services Committee",
-                    "position": "member",
-                    "type": "committee member"
-                  },
-                  {
-                    "term": "2017-2018",
-                    "committee_id": "FLC000198",
-                    "chamber": "lower",
-                    "state": "fl",
-                    "subcommittee": null,
-                    "committee": "Government Accountability Committee",
-                    "position": "member",
-                    "type": "committee member"
-                  }
-                ],
-                "url": "http://www.flhouse.gov/Sections/Representatives/details.aspx?MemberId=4659&LegislativeTermId=87",
-                "created_at": "2017-02-24 03:13:55",
-                "chamber": "lower",
-                "offices": [
-                  {
-                    "fax": null,
-                    "name": "District Office",
-                    "phone": "727-892-2468",
-                    "address": "Suite 108\n695 Central Avenue\nSt. Petersburg, FL 33701-3662",
-                    "type": "district",
-                    "email": null
-                  },
-                  {
-                    "fax": null,
-                    "name": "Capitol Office",
-                    "phone": "850-717-5070",
-                    "address": "1302 The Capitol\n402 South Monroe Street\nTallahassee, FL 32399-1300",
-                    "type": "capitol",
-                    "email": null
-                  }
-                ],
-                "suffixes": ""
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + zipcode: 97232
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
               },
-              {
-                "last_name": "Rouson",
-                "updated_at": "2017-03-14 06:47:24",
-                "sources": [
+              "data": {
+                "request": {
+                  "city": "Portland",
+                  "state": "OR",
+                  "latitude": 45.52,
+                  "longitude": -122.64,
+                  "zipcode": "97232"
+                },
+                "results": [
                   {
-                    "url": "http://www.flsenate.gov/Senators/"
+                    "last_name": "Nosse",
+                    "updated_at": "2017-03-20 10:49:54",
+                    "sources": [
+                      {
+                        "url": "http://www.oregonlegislature.gov/house/Pages/RepresentativesAll.aspx"
+                      }
+                    ],
+                    "full_name": "Rob Nosse",
+                    "old_roles": {
+                      "2013-2014": [
+                        {
+                          "term": "2013-2014",
+                          "end_date": null,
+                          "district": "42",
+                          "chamber": "lower",
+                          "state": "or",
+                          "party": "Democrat",
+                          "type": "member",
+                          "start_date": null
+                        }
+                      ],
+                      "2015-2016": [
+                        {
+                          "term": "2015-2016",
+                          "end_date": null,
+                          "district": "42",
+                          "chamber": "lower",
+                          "state": "or",
+                          "party": "Democrat",
+                          "type": "member",
+                          "start_date": null
+                        },
+                        {
+                          "term": "2015-2016",
+                          "committee_id": "ORC000013",
+                          "chamber": "lower",
+                          "state": "or",
+                          "subcommittee": null,
+                          "committee": "Business and Labor",
+                          "position": "Member",
+                          "type": "committee member"
+                        },
+                        {
+                          "term": "2015-2016",
+                          "committee_id": "ORC000017",
+                          "chamber": "lower",
+                          "state": "or",
+                          "subcommittee": null,
+                          "committee": "Revenue",
+                          "position": "Member",
+                          "type": "committee member"
+                        },
+                        {
+                          "term": "2015-2016",
+                          "committee_id": "ORC000007",
+                          "chamber": "lower",
+                          "state": "or",
+                          "subcommittee": null,
+                          "committee": "Health Care",
+                          "position": "Vice-Chair",
+                          "type": "committee member"
+                        }
+                      ]
+                    },
+                    "id": "ORL000259",
+                    "first_name": "Rob",
+                    "middle_name": "",
+                    "district": "42",
+                    "state": "or",
+                    "boundary_id": "ocd-division/country:us/state:or/sldl:42",
+                    "email": "Rep.RobNosse@state.or.us",
+                    "all_ids": [
+                      "ORL000259",
+                      "ORL000340"
+                    ],
+                    "leg_id": "ORL000259",
+                    "party": "Democrat",
+                    "active": true,
+                    "transparencydata_id": "",
+                    "nickname": "",
+                    "photo_url": "http://www.oregonlegislature.gov/house/MemberPhotos/nosse.jpg",
+                    "roles": [
+                      {
+                        "term": "2017-2018",
+                        "end_date": null,
+                        "district": "42",
+                        "chamber": "lower",
+                        "state": "or",
+                        "party": "Democrat",
+                        "type": "member",
+                        "start_date": null
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000178",
+                        "chamber": "joint",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Tax Credits",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000027",
+                        "chamber": "lower",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Rules",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000017",
+                        "chamber": "lower",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Revenue",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000007",
+                        "chamber": "lower",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Health Care",
+                        "position": "Vice-Chair",
+                        "type": "committee member"
+                      }
+                    ],
+                    "url": "http://www.oregonlegislature.gov/nosse",
+                    "created_at": "2014-07-07 23:28:46",
+                    "chamber": "lower",
+                    "offices": [
+                      {
+                        "fax": null,
+                        "name": "Capitol Office",
+                        "phone": "503-986-1442",
+                        "address": "900 Court St NE, H-472, Salem, OR 97301",
+                        "type": "capitol",
+                        "email": "Rep.RobNosse@oregonlegislature.gov"
+                      }
+                    ],
+                    "suffixes": ""
                   },
                   {
-                    "url": "http://www.flsenate.gov/Senators/s19"
-                  }
-                ],
-                "full_name": "Rouson, Darryl Ervin",
-                "id": "FLL000440",
-                "first_name": "Darryl Ervin",
-                "middle_name": "",
-                "district": "19",
-                "state": "fl",
-                "boundary_id": "ocd-division/country:us/state:fl/sldu:19",
-                "email": "rouson.darryl.web@flsenate.gov",
-                "all_ids": [
-                  "FLL000440"
-                ],
-                "leg_id": "FLL000440",
-                "party": "Democratic",
-                "active": true,
-                "photo_url": "http://www.flsenate.gov/PublishedContent/Senators/2016-2018/Photos/s19_5203.jpg",
-                "roles": [
-                  {
-                    "term": "2017-2018",
-                    "end_date": null,
-                    "district": "19",
+                    "last_name": "Taylor",
+                    "updated_at": "2017-03-20 10:49:54",
+                    "sources": [
+                      {
+                        "url": "http://www.oregonlegislature.gov/senate/Pages/SenatorsAll.aspx"
+                      }
+                    ],
+                    "full_name": "Kathleen Taylor",
+                    "id": "ORL000384",
+                    "first_name": "Kathleen",
+                    "middle_name": "",
+                    "district": "21",
+                    "state": "or",
+                    "boundary_id": "ocd-division/country:us/state:or/sldu:21",
+                    "all_ids": [
+                      "ORL000384"
+                    ],
+                    "leg_id": "ORL000384",
+                    "party": "Democrat",
+                    "active": true,
+                    "photo_url": "http://www.oregonlegislature.gov/senate/MemberPhotos/taylor.jpg",
+                    "roles": [
+                      {
+                        "term": "2017-2018",
+                        "end_date": null,
+                        "district": "21",
+                        "chamber": "upper",
+                        "state": "or",
+                        "party": "Democrat",
+                        "type": "member",
+                        "start_date": null
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000207",
+                        "chamber": "joint",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Transportation Preservation and Modernization",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000178",
+                        "chamber": "joint",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Tax Credits",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000131",
+                        "chamber": "joint",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Natural Resources",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000057",
+                        "chamber": "upper",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Finance and Revenue",
+                        "position": "Member",
+                        "type": "committee member"
+                      },
+                      {
+                        "term": "2017-2018",
+                        "committee_id": "ORC000177",
+                        "chamber": "upper",
+                        "state": "or",
+                        "subcommittee": null,
+                        "committee": "Workforce",
+                        "position": "Chair",
+                        "type": "committee member"
+                      }
+                    ],
+                    "url": "http://www.oregonlegislature.gov/taylor",
+                    "created_at": "2017-01-10 09:26:27",
                     "chamber": "upper",
-                    "state": "fl",
-                    "party": "Democratic",
-                    "type": "member",
-                    "start_date": null
+                    "offices": [
+                      {
+                        "fax": null,
+                        "name": "Capitol Office",
+                        "phone": "503-986-1721",
+                        "address": "900 Court St NE, S-423, Salem, OR 97301",
+                        "type": "capitol",
+                        "email": "Sen.KathleenTaylor@oregonlegislature.gov"
+                      }
+                    ],
+                    "suffixes": ""
                   }
-                ],
-                "url": "http://www.flsenate.gov/Senators/s19",
-                "created_at": "2017-02-24 03:13:55",
-                "chamber": "upper",
-                "offices": [
-                  {
-                    "fax": null,
-                    "name": "District Office",
-                    "phone": "727-822-6828",
-                    "address": "535 Central Avenue\nSuite 302\nSt. Petersburg, FL 33701",
-                    "type": "district",
-                    "email": null
-                  },
-                  {
-                    "fax": null,
-                    "name": "Capitol Office",
-                    "phone": "850-487-5019",
-                    "address": "212 Senate Office Building\n404 South Monroe Street\nTallahassee, FL 32399-1100",
-                    "type": "capitol",
-                    "email": null
-                  }
-                ],
-                "suffixes": ""
+                ]
+              },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
               }
-            ]
-          },
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
+            }
 
 
 # Group Senate Endpoints
 
 View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/senate/{?zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## Senate [/senate/{?page,pageSize,fields,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Senator using any combination of search parameters.
 
 + Parameters
-    + zipcode (optional, string) - United Steps Zip Code
-    + latitude (optional, float) - GPS Latitude ( `longitude` required if used )
-    + longitude (optional, float) - GPS Longitude ( `latitude` required if used )
-    + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
-    + class (optional, enum)
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
+    + class (optional, enum, `III`)
 
         Senate to be divided into three classes for purposes of elections. Using a comma to filter with multiple options, e.g. `?title=I,III`
 
@@ -1201,16 +720,16 @@ Search for Senator using any combination of search parameters.
             + `I`
             + `II`
             + `III`
-    + bioguide (optional, string) - The alphanumeric ID for this Senator on bioguide.congress.gov
-    + thomas (optional, string) - The numeric ID for this Senator ( not really used anymore )
-    + govtrack (optional, string) - The numeric ID for this Senator on GovTrack.us
-    + opensecrets (optional, string) - The alphanumeric ID for this Senator on OpenSecrets.org
-    + votesmart (optional, string) - The numeric ID for this Senator on VoteSmart.org
-    + fec (optional, string) - Federal Election Commission ID
-    + maplight (optional, string) - The numeric ID for this Senator on MapLight.org
-    + wikidata (optional, string) - The numeric ID for this Senator on wikidata.org
-    + googleEntityId (optional, string) - Google Integration
-    + title (optional, enum)
+    + bioguide (optional, string, `S001198`) - The alphanumeric ID for this Senator on bioguide.congress.gov
+    + thomas (optional, string, `2290`) - The numeric ID for this Senator ( not really used anymore )
+    + govtrack (optional, string, `412665`) - The numeric ID for this Senator on GovTrack.us
+    + opensecrets (optional, string, `N00035774`) - The alphanumeric ID for this Senator on OpenSecrets.org
+    + votesmart (optional, string, `114964`) - The numeric ID for this Senator on VoteSmart.org
+    + fec (optional, string, `H6AK00045`) - Federal Election Commission ID
+    + maplight (optional, string, `525`) - The numeric ID for this Senator on MapLight.org
+    + wikidata (optional, string, `Q1239590`) - The numeric ID for this Senator on wikidata.org
+    + googleEntityId (optional, string, `kg:/m/024p1k`) - Google Integration
+    + title (optional, enum, `senate-majority-leader`)
 
         Title of Senator. Using a comma to filter with multiple options, e.g. `?title=senate-majority-leader,senate-minority-leader`
 
@@ -1220,9 +739,9 @@ Search for Senator using any combination of search parameters.
             + `senate_majority-whip`
             + `senate-minority-leader`
             + `senate-minority-whip`
-    + party (optional, enum) -
+    + party (optional, enum, `democrat`) -
 
-        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?title=democrat,republican`
+        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?party=democrat,republican`
 
         + Values
             + `constitution`
@@ -1232,18 +751,18 @@ Search for Senator using any combination of search parameters.
             + `libertarian`
             + `nonpartisan`
             + `republican`
-    + name (optional, string) - Full Name of Senator
-    + gender (optional, enum)
+    + name (optional, string, `Elizabeth Warren`) - Full Name of Senator
+    + gender (optional, enum, `female`)
 
-        Gender of Senator. Using a comma to filter with multiple options, e.g. `?title=african-american,asian-american`
+        Gender of Senator. Using a comma to filter with multiple options, e.g. `?gender=female,male`
 
         + Values
             + `female`
             + `male`
             + `unspecified`
-    + ethnicity (optional, enum)
+    + ethnicity (optional, enum, `african-american`)
 
-        Ethnicity of Senator
+        Ethnicity of Senator. Using a comma to filter with multiple options, e.g. `?ethnicity=african-american,asian-american`
 
         + Values
             + `african-american`
@@ -1255,9 +774,9 @@ Search for Senator using any combination of search parameters.
             + `pacific-islander`
             + `white-american`
             + `unspecified`
-    + religion (optional, enum)
+    + religion (optional, enum, `protestant`)
 
-        Religion of Senator. Using a comma to filter with multiple options, e.g. `?title=muslim,jewish`
+        Religion of Senator. Using a comma to filter with multiple options, e.g. `?religion=muslim,jewish`
 
         + Values
             + `african-methodist`
@@ -1294,9 +813,9 @@ Search for Senator using any combination of search parameters.
             + `united-methodist`
             + `unitarian-universalist`
             + `unspecified`
-    + openlyLGBTQ (optional, enum)
+    + openlyLGBTQ (optional, enum, `gay`)
 
-        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?title=lesbian,gay`
+        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?openlyLGBTQ=lesbian,gay`
 
         + Values
             + `no`
@@ -1305,247 +824,259 @@ Search for Senator using any combination of search parameters.
             + `bisexual`
             + `transgender`
             + `queer`
-    + age (optional, number) - Age of Senator
-    + minAge (optional, number) - Minimum Age of Senator
-    + maxAge (optional, number) - Maximum Age of Senator
-    + termEnds (optional, number) - Year Term Ends ( formatted `YYYY` )
-    + termEndsBefore (optional, number) - Term Ends Before this Year ( formatted `YYYY` )
-    + termEndsAfter (optional, number) - Term Ends After this Year ( formatted `YYYY` )
-    + enteredOffice (optional, number) - Year Entered Office ( formatted `YYYY` )
-    + enteredOfficeBefore (optional, number) - Entered Office Before this Year ( formatted `YYYY` )
-    + enteredOfficeAfter (optional, number) - Entered Office After this Year ( formatted `YYYY` )
+    + age (optional, number, `65`) - Age of Senator
+    + minAge (optional, number, `40`) - Minimum Age of Senator
+    + maxAge (optional, number, `80`) - Maximum Age of Senator
+    + termEnds (optional, number, `2019`) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number, `2023`) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number, `2016`) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number, `2017`) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
 
-### Get Senators [GET]
+### Senators [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + zipcode: 97232
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 2,
-            "showing": 2,
-            "pages": 1,
-            "page": 1
-          },
-          "data": [
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + zipcode: 97232
+        
+    + Body
+    
             {
-              "address_city": "Washington",
-              "address_complete": "284 Russell, Washington, DC 20510",
-              "address_number": null,
-              "address_prefix": null,
-              "address_sec_unit_num": null,
-              "address_sec_unit_type": null,
-              "address_state": "DC",
-              "address_street": "284 Russell",
-              "address_type": "Building",
-              "address_zipcode": "20510",
-              "age": 45,
-              "biography": "Marco Rubio, a Senator from Florida; born in Miami, Fla., May 28, 1971; graduated University of Florida, B.S., 1993; graduated University of Miami, J.D., 1996; lawyer; West Miami City Commission 1998-2000; member of the Florida house of representatives 2000-2008; majority leader 2003-2006; speaker 2006-2008; elected as a Republican to the United States Senate for the term ending January 3, 2017.",
-              "bioguide": "R000595",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=R000595",
-              "contact_page": "https://www.rubio.senate.gov/public/index.cfm/contact",
-              "date_of_birth": "1971-05-28T00:00:00.000Z",
-              "entered_office": "2011-01-03T00:00:00.000Z",
-              "ethnicity": "hispanic-american",
-              "facebook_url": "https://www.facebook.com/SenatorMarcoRubio",
-              "fax": null,
-              "fec": null,
-              "fec_url": null,
-              "first_name": "Marco",
-              "gender": "male",
-              "goes_by": null,
-              "google_entity_id": null,
-              "govtrack": "412491",
-              "govtrack_url": "https://www.govtrack.us/congress/members/412491",
-              "last_name": "Rubio",
-              "latitude": 38.8925,
-              "longitude": -77.0074,
-              "maplight": null,
-              "maplight_url": null,
-              "middle_name": null,
-              "name": "Marco Rubio",
-              "name_slug": "marco-rubio",
-              "name_suffix": null,
-              "openly_lgbtq": "no",
-              "opensecrets": "N00030612",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
-              "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00030612",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00030612",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00030612",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00030612",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00030612",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00030612",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00030612",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00030612",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00030612"
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 2,
+                "showing": 2,
+                "pages": 1,
+                "page": 1
               },
-              "party": "republican",
-              "phone": "202-224-3041",
-              "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
-              "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/marco-rubio.jpg",
-                "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/marco-rubio.jpg",
-                "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/marco-rubio.jpg",
-                "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
-                "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/marco-rubio.jpg"
-              },
-              "pronunciation": "MAR-koh ROO-bee-oh",
-              "religion": "roman-catholic",
-              "state_code": "FL",
-              "state_code_slug": "fl",
-              "state_name": "Florida",
-              "state_name_slug": "florida",
-              "term_end": "2023-01-03T00:00:00.000Z",
-              "thomas": "2084",
-              "title": "senator",
-              "twitter_handle": "marcorubio",
-              "twitter_url": "https://twitter.com/marcorubio",
-              "votesmart": "1601",
-              "votesmart_url": "http://votesmart.org/candidate/1601",
-              "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/1601",
-                "bio": "http://votesmart.org/candidate/biography/1601",
-                "votes": "http://votesmart.org/candidate/key-votes/1601",
-                "positions": "http://votesmart.org/candidate/political-courage-test/1601",
-                "ratings": "http://votesmart.org/candidate/evaluations/1601",
-                "speeches": "http://votesmart.org/candidate/public-statements/1601",
-                "funding": "http://votesmart.org/candidate/campaign-finance/1601"
-              },
-              "website": "http://www.rubio.senate.gov",
-              "wikidata": null,
-              "wikidata_url": null
-            },
-            {
-              "address_city": "Washington",
-              "address_complete": "716 Hart, Washington, DC 20510",
-              "address_number": null,
-              "address_prefix": null,
-              "address_sec_unit_num": null,
-              "address_sec_unit_type": null,
-              "address_state": "DC",
-              "address_street": "716 Hart",
-              "address_type": "Building",
-              "address_zipcode": "20510",
-              "age": 74,
-              "biography": "Bill Nelson, a Senator and a Representative from Florida; born in Miami, Dade County, Fla., September 29, 1942; attended the Brevard County public schools; graduated from Melbourne High School 1960; B.A., Yale University 1965; J.D., University of Virginia School of Law 1968; admitted to the Florida bar in 1968 and commenced practice in Melbourne in 1970; served in United States Army Reserve 1965-1971; United States Army, active duty, 1968-1970, achieving rank of captain; legislative assistant to Governor Reubin Askew 1971; elected to Florida State house of representatives in 1972 and reelected in 1974 and 1976; elected as a Democrat to the Ninety-sixth and to the five succeeding Congresses (January 3, 1979-January 3, 1991); was not a candidate for reelection in 1990 to the House of Representatives, but was a candidate for nomination for governor of Florida; crewmember on the twenty-fourth flight of the Space Shuttle Columbia, January 12-18, 1986; Florida treasurer and insurance commissioner 1995-2000; elected to the United States Senate in 2000 for the term commencing January 3, 2001; reelected in 2006 and again in 2012 for the term ending January 3, 2019; Chair, Special Committee on Aging (One Hundred Thirteenth Congress).",
-              "bioguide": "N000032",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=N000032",
-              "contact_page": "https://www.billnelson.senate.gov/contact-bill",
-              "date_of_birth": "1942-09-29T00:00:00.000Z",
-              "entered_office": "2001-01-03T00:00:00.000Z",
-              "ethnicity": "white-american",
-              "facebook_url": "https://www.facebook.com/billnelson/",
-              "fax": "202-228-2183",
-              "fec": null,
-              "fec_url": null,
-              "first_name": "Bill",
-              "gender": "male",
-              "goes_by": null,
-              "google_entity_id": null,
-              "govtrack": "300078",
-              "govtrack_url": "https://www.govtrack.us/congress/members/300078",
-              "last_name": "Nelson",
-              "latitude": 38.8928,
-              "longitude": -77.0044,
-              "maplight": null,
-              "maplight_url": null,
-              "middle_name": null,
-              "name": "Bill Nelson",
-              "name_slug": "bill-nelson",
-              "name_suffix": null,
-              "openly_lgbtq": "no",
-              "opensecrets": "N00009926",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
-              "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009926",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009926",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009926",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009926",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009926",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009926",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009926",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009926",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009926"
-              },
-              "party": "democrat",
-              "phone": "202-224-5274",
-              "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
-              "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/bill-nelson.jpg",
-                "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/bill-nelson.jpg",
-                "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/bill-nelson.jpg",
-                "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
-                "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/bill-nelson.jpg"
-              },
-              "pronunciation": "BILL NELL-suhn",
-              "religion": "christian",
-              "state_code": "FL",
-              "state_code_slug": "fl",
-              "state_name": "Florida",
-              "state_name_slug": "florida",
-              "term_end": "2019-01-03T00:00:00.000Z",
-              "thomas": "859",
-              "title": "senator",
-              "twitter_handle": "SenBillNelson",
-              "twitter_url": "https://twitter.com/SenBillNelson",
-              "votesmart": "1606",
-              "votesmart_url": "http://votesmart.org/candidate/1606",
-              "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/1606",
-                "bio": "http://votesmart.org/candidate/biography/1606",
-                "votes": "http://votesmart.org/candidate/key-votes/1606",
-                "positions": "http://votesmart.org/candidate/political-courage-test/1606",
-                "ratings": "http://votesmart.org/candidate/evaluations/1606",
-                "speeches": "http://votesmart.org/candidate/public-statements/1606",
-                "funding": "http://votesmart.org/candidate/campaign-finance/1606"
-              },
-              "website": "http://www.billnelson.senate.gov",
-              "wikidata": null,
-              "wikidata_url": null
+              "data": [
+                {
+                  "address_city": "Washington",
+                  "address_complete": "313 Hart, Washington, DC 20510",
+                  "address_number": null,
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "313 Hart",
+                  "address_type": "Building",
+                  "address_zipcode": "20510",
+                  "age": 60,
+                  "biography": "Jeff Merkley, a Senator from Oregon; born in Myrtle Creek, Ore., October 24, 1956; B.A., Stanford University, 1979; M.P.A., Princeton University, 1982; government analyst; nonprofit executive; Oregon State Representative, 1999-2008; speaker of the Oregon State House of Representative, 2007-2008; elected as a Democrat to the United States Senate in 2008; reelected in 2014 for the term ending January 3, 2021.",
+                  "bioguide": "M001176",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=M001176",
+                  "contact_page": "https://www.merkley.senate.gov/contact/",
+                  "date_of_birth": "1956-10-24T00:00:00.000Z",
+                  "entered_office": "2009-01-03T00:00:00.000Z",
+                  "ethnicity": "white-american",
+                  "facebook_url": "https://www.facebook.com/jeffmerkley",
+                  "fax": "202-228-3997",
+                  "fec": null,
+                  "fec_url": null,
+                  "first_name": "Jeff",
+                  "gender": "male",
+                  "goes_by": null,
+                  "google_entity_id": null,
+                  "govtrack": "412325",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412325",
+                  "last_name": "Merkley",
+                  "latitude": 38.8928,
+                  "longitude": -77.0044,
+                  "maplight": null,
+                  "maplight_url": null,
+                  "middle_name": null,
+                  "name": "Jeff Merkley",
+                  "name_slug": "jeff-merkley",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00029303",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00029303",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00029303",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00029303",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00029303",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00029303",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00029303",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00029303",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00029303",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00029303"
+                  },
+                  "party": "democrat",
+                  "phone": "202-224-3753",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/jeff-merkley.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/jeff-merkley.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/jeff-merkley.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/jeff-merkley.jpg"
+                  },
+                  "pronunciation": "JEFF MER-klee",
+                  "religion": "lutheran",
+                  "state_code": "OR",
+                  "state_code_slug": "or",
+                  "state_name": "Oregon",
+                  "state_name_slug": "oregon",
+                  "term_end": "2021-01-03T00:00:00.000Z",
+                  "thomas": "1900",
+                  "title": "senator",
+                  "twitter_handle": "SenJeffMerkley",
+                  "twitter_url": "https://twitter.com/SenJeffMerkley",
+                  "votesmart": "23644",
+                  "votesmart_url": "http://votesmart.org/candidate/23644",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/23644",
+                    "bio": "http://votesmart.org/candidate/biography/23644",
+                    "votes": "http://votesmart.org/candidate/key-votes/23644",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/23644",
+                    "ratings": "http://votesmart.org/candidate/evaluations/23644",
+                    "speeches": "http://votesmart.org/candidate/public-statements/23644",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/23644"
+                  },
+                  "website": "http://www.merkley.senate.gov",
+                  "wikidata": null,
+                  "wikidata_url": null
+                },
+                {
+                  "address_city": "Washington",
+                  "address_complete": "221 Dirksen, Washington, DC 20510",
+                  "address_number": null,
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "221 Dirksen",
+                  "address_type": "Building",
+                  "address_zipcode": "20510",
+                  "age": 67,
+                  "biography": "Ron Wyden, a Senator and a Representative from Oregon; born in Wichita, Sedgwick County, Kans., May 3, 1949; attended the public schools of Palo Alto, Calif.; A.B., Stanford University 1971; J.D., University of Oregon Law School in Eugene 1974; director, Oregon Legal Services for the Elderly 1977-1979; public member, Oregon State Board of Examiners of Nursing Home Administrators 1977-1979; elected as a Democrat to the Ninety-seventh and to the seven succeeding Congresses, and served from January 3, 1981, to February 5, 1996, when he resigned, having been elected to the Senate; elected to the Senate in a special election on January 30, 1996, to fill the unexpired portion of the term ending January 3, 1999, left vacant by the resignation of Robert W. Packwood, and began service on February 5, 1996; reelected in 1998, 2004 and again in 2010 for the term ending January 3, 2017; chair, Committee on Energy and Natural Resources (One Hundred Thirteenth Congress [January 3, 2013-February 12, 2014]), Committee on Finance (One Hundred Thirteenth Congress [February 12, 2014-January 3, 2015]).",
+                  "bioguide": "W000779",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=W000779",
+                  "contact_page": "https://www.wyden.senate.gov/contact/",
+                  "date_of_birth": "1949-05-03T00:00:00.000Z",
+                  "entered_office": "1996-02-06T00:00:00.000Z",
+                  "ethnicity": "white-american",
+                  "facebook_url": "https://www.facebook.com/wyden/",
+                  "fax": "202-228-2717",
+                  "fec": null,
+                  "fec_url": null,
+                  "first_name": "Ron",
+                  "gender": "male",
+                  "goes_by": null,
+                  "google_entity_id": null,
+                  "govtrack": "300100",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/300100",
+                  "last_name": "Wyden",
+                  "latitude": 38.8929,
+                  "longitude": -77.0757,
+                  "maplight": null,
+                  "maplight_url": null,
+                  "middle_name": null,
+                  "name": "Ron Wyden",
+                  "name_slug": "ron-wyden",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00007724",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007724",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007724",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007724",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007724",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007724",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007724",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007724",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007724",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007724"
+                  },
+                  "party": "democrat",
+                  "phone": "202-224-5244",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/ron-wyden.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/ron-wyden.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/ron-wyden.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/ron-wyden.jpg"
+                  },
+                  "pronunciation": "RAHN WAHY-dn",
+                  "religion": "jewish",
+                  "state_code": "OR",
+                  "state_code_slug": "or",
+                  "state_name": "Oregon",
+                  "state_name_slug": "oregon",
+                  "term_end": "2023-01-03T00:00:00.000Z",
+                  "thomas": "1247",
+                  "title": "senator",
+                  "twitter_handle": "RonWyden",
+                  "twitter_url": "https://twitter.com/RonWyden",
+                  "votesmart": "27036",
+                  "votesmart_url": "http://votesmart.org/candidate/27036",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/27036",
+                    "bio": "http://votesmart.org/candidate/biography/27036",
+                    "votes": "http://votesmart.org/candidate/key-votes/27036",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/27036",
+                    "ratings": "http://votesmart.org/candidate/evaluations/27036",
+                    "speeches": "http://votesmart.org/candidate/public-statements/27036",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/27036"
+                  },
+                  "website": "http://www.wyden.senate.gov",
+                  "wikidata": null,
+                  "wikidata_url": null
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
             }
-          ],
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
 
 # Group House Endpoints
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/{?zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## House [/house/{?page,pageSize,fields,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
 + Parameters
-    + zipcode (optional, string) - United Steps Zip Code
-    + latitude (optional, float) - GPS Latitude ( `longitude` required if used )
-    + longitude (optional, float) - GPS Longitude ( `latitude` required if used )
-    + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
-    + district (optional, number) - District of Representative ( not always available )
-    + atLarge (optional, boolean) - Representative is considered At-Large
-    + vacant (optional, boolean) - Representative Seat is Vacant
-    + bioguide (optional, string) - The alphanumeric ID for this Senator on bioguide.congress.gov
-    + thomas (optional, string) - The numeric ID for this Senator ( not really used anymore )
-    + govtrack (optional, string) - The numeric ID for this Senator on GovTrack.us
-    + opensecrets (optional, string) - The alphanumeric ID for this Senator on OpenSecrets.org
-    + votesmart (optional, string) - The numeric ID for this Senator on VoteSmart.org
-    + fec (optional, string) - Federal Election Commission ID
-    + maplight (optional, string) - The numeric ID for this Senator on MapLight.org
-    + wikidata (optional, string) - The numeric ID for this Senator on wikidata.org
-    + googleEntityId (optional, string) - Google Integration
-    + title (optional, enum)
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
+    + district (optional, number, `3`) - District of Representative ( not always available )
+    + atLarge (optional, boolean, `true`) - Representative is considered At-Large
+    + vacant (optional, boolean, `true`) - Representative Seat is Vacant
+    + bioguide (optional, string, `Y000033`) - The alphanumeric ID for this Senator on bioguide.congress.gov
+    + thomas (optional, string, `1256`) - The numeric ID for this Senator ( not really used anymore )
+    + govtrack (optional, string, `400440`) - The numeric ID for this Senator on GovTrack.us
+    + opensecrets (optional, string, `N00007999`) - The alphanumeric ID for this Senator on OpenSecrets.org
+    + votesmart (optional, string, `26717`) - The numeric ID for this Senator on VoteSmart.org
+    + fec (optional, string, `H6AK00045`) - Federal Election Commission ID
+    + maplight (optional, string, `525`) - The numeric ID for this Senator on MapLight.org
+    + wikidata (optional, string, `Q1239590`) - The numeric ID for this Senator on wikidata.org
+    + googleEntityId (optional, string, `kg:/m/024p1k`) - Google Integration
+    + title (optional, enum, `house-majority-leader`)
 
         Title of Senator. Using a comma to filter with multiple options, e.g. `?title=house-majority-leader,house-minority-leader`
 
@@ -1560,7 +1091,7 @@ Search for House Representative using any combination of search parameters.
             + `republican-policy-committee-chairman`
             + `assistant-democratic-leader`
             + `democratic-caucus-chairman`
-    + party (optional, enum) -
+    + party (optional, enum, `independent`) -
 
         Political Party of Senator. Using a comma to filter with multiple options, e.g. `?title=democrat,republican`
 
@@ -1572,18 +1103,18 @@ Search for House Representative using any combination of search parameters.
             + `libertarian`
             + `nonpartisan`
             + `republican`
-    + name (optional, string) - Full Name of Senator
-    + gender (optional, enum)
+    + name (optional, string, `Nancy Pelosi`) - Full Name of Senator
+    + gender (optional, enum, `female`)
 
-        Gender of Senator. Using a comma to filter with multiple options, e.g. `?title=african-american,asian-american`
+        Gender of Senator. Using a comma to filter with multiple options, e.g. `?gender=female,male`
 
         + Values
             + `female`
             + `male`
             + `unspecified`
-    + ethnicity (optional, enum)
+    + ethnicity (optional, enum, `asian-american`)
 
-        Ethnicity of Senator
+        Ethnicity of Senator. Using a comma to filter with multiple options, e.g. `?ethnicity=african-american,asian-american`
 
         + Values
             + `african-american`
@@ -1595,9 +1126,9 @@ Search for House Representative using any combination of search parameters.
             + `pacific-islander`
             + `white-american`
             + `unspecified`
-    + religion (optional, enum)
+    + religion (optional, enum, `hindu`)
 
-        Religion of Senator. Using a comma to filter with multiple options, e.g. `?title=muslim,jewish`
+        Religion of Senator. Using a comma to filter with multiple options, e.g. `?religion=muslim,jewish`
 
         + Values
             + `african-methodist`
@@ -1634,9 +1165,9 @@ Search for House Representative using any combination of search parameters.
             + `united-methodist`
             + `unitarian-universalist`
             + `unspecified`
-    + openlyLGBTQ (optional, enum)
+    + openlyLGBTQ (optional, enum, `transgender`)
 
-        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?title=lesbian,gay`
+        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?openlyLGBTQ=lesbian,gay`
 
         + Values
             + `no`
@@ -1645,539 +1176,404 @@ Search for House Representative using any combination of search parameters.
             + `bisexual`
             + `transgender`
             + `queer`
-    + age (optional, number) - Age of Senator
-    + minAge (optional, number) - Minimum Age of Senator
-    + maxAge (optional, number) - Maximum Age of Senator
-    + termEnds (optional, number) - Year Term Ends ( formatted `YYYY` )
-    + termEndsBefore (optional, number) - Term Ends Before this Year ( formatted `YYYY` )
-    + termEndsAfter (optional, number) - Term Ends After this Year ( formatted `YYYY` )
-    + enteredOffice (optional, number) - Year Entered Office ( formatted `YYYY` )
-    + enteredOfficeBefore (optional, number) - Entered Office Before this Year ( formatted `YYYY` )
-    + enteredOfficeAfter (optional, number) - Entered Office After this Year ( formatted `YYYY` )
+    + age (optional, number, `65`) - Age of Senator
+    + minAge (optional, number, `40`) - Minimum Age of Senator
+    + maxAge (optional, number, `80`) - Maximum Age of Senator
+    + termEnds (optional, number, `2019`) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number, `2023`) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number, `2016`) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number, `2017`) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
 
-### Get House Representatives [GET]
+### House Representatives [GET]
 
-+ Response 200 (application/json)
+In this example we will get all House Representatives in the State of Oregon and only request the `name`, `party` & `photo_url` fields.
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 2,
-            "showing": 2,
-            "pages": 1,
-            "page": 1
-          },
-          "data": [
-            {
-              "address_city": "Washington",
-              "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
-              "address_number": "2436",
-              "address_prefix": null,
-              "address_sec_unit_num": null,
-              "address_sec_unit_type": null,
-              "address_state": "DC",
-              "address_street": "Rayburn Hob",
-              "address_type": null,
-              "address_zipcode": "20515",
-              "age": 55,
-              "at_large": false,
-              "biography": "David Cicilline, a Representative from Rhode Island; born in Providence, Providence County, R.I., July 15, 1961; graduated from Narragansett High School, Providence, R.I., 1979; B.A., Brown University, Providence, R.I., 1983; J.D., Georgetown University, Washington, D.C., 1986; public defender, Washington, D.C., 1986-1987; lawyer, private practice; lawyer, public advocate; faculty, Roger Williams Law School, Bristol, R.I.; unsuccessful nominee to the Rhode Island state senate in 1992; member of the Rhode Island state house of representatives, 1995-2003; Delegate, Democratic National Convention, 2008; Mayor of Providence R.I., 2003-2011; elected as a Democrat to the One Hundred Twelfth and to the three succeeding Congresses (January 3, 2011-present).",
-              "bioguide": "C001084",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=C001084",
-              "contact_page": "https://cicilline.house.gov/contact-me/email-me",
-              "date_of_birth": "1961-07-15T00:00:00.000Z",
-              "district": 1,
-              "entered_office": "2011-01-05T00:00:00.000Z",
-              "ethnicity": "white-american",
-              "facebook_url": "https://www.facebook.com/CongressmanDavidCicilline/",
-              "fax": "202-225-3290",
-              "fec": "H0RI01073",
-              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H0RI01073",
-              "first_name": "David",
-              "gender": "male",
-              "goes_by": null,
-              "google_entity_id": "kg:/m/04t97v",
-              "govtrack": "412470",
-              "govtrack_url": "https://www.govtrack.us/congress/members/412470",
-              "last_name": null,
-              "latitude": 38.8863,
-              "longitude": -77.0114,
-              "maplight": "1475",
-              "maplight_url": "http://maplight.org/us-congress/legislator/1475",
-              "middle_name": null,
-              "name": "David Cicilline",
-              "name_slug": "david-cicilline",
-              "name_suffix": "David",
-              "openly_lgbtq": "gay",
-              "opensecrets": "N00032019",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00032019",
-              "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00032019",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00032019",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00032019",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00032019",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00032019",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00032019",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00032019",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00032019",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00032019",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00032019"
-              },
-              "party": "democrat",
-              "phone": "202-225-4911",
-              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/david-cicilline.jpg",
-              "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/david-cicilline.jpg",
-                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/david-cicilline.jpg",
-                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/david-cicilline.jpg",
-                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/david-cicilline.jpg",
-                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/david-cicilline.jpg"
-              },
-              "pronunciation": "DAY-vid sih-sih-LEE-nee",
-              "religion": "jewish",
-              "state_code": "RI",
-              "state_code_slug": "ri",
-              "state_name": "Rhode Island",
-              "state_name_slug": "rhode-island",
-              "term_end": "2019-01-03T00:00:00.000Z",
-              "thomas": "2055",
-              "title": "representative",
-              "twitter_handle": "RepCicilline",
-              "twitter_url": "https://twitter.com/RepCicilline",
-              "vacant": false,
-              "votesmart": "7349",
-              "votesmart_url": "http://votesmart.org/candidate/7349",
-              "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/7349",
-                "bio": "http://votesmart.org/candidate/biography/7349",
-                "votes": "http://votesmart.org/candidate/key-votes/7349",
-                "positions": "http://votesmart.org/candidate/political-courage-test/7349",
-                "ratings": "http://votesmart.org/candidate/evaluations/7349",
-                "speeches": "http://votesmart.org/candidate/public-statements/7349",
-                "funding": "http://votesmart.org/candidate/campaign-finance/7349"
-              },
-              "website": "https://cicilline.house.gov",
-              "wikidata": "Q938498",
-              "wikidata_url": "https://www.wikidata.org/wiki/Q938498"
-            },
-            {
-              "address_city": "Washington",
-              "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
-              "address_number": "2436",
-              "address_prefix": null,
-              "address_sec_unit_num": null,
-              "address_sec_unit_type": null,
-              "address_state": "DC",
-              "address_street": "Rayburn Hob",
-              "address_type": null,
-              "address_zipcode": "20515",
-              "age": 52,
-              "at_large": false,
-              "biography": "Jim Langevin, a Representative from Rhode Island; born in Providence, Providence County, R.I., April 22, 1964; B.A., Rhode Island College, Providence, R.I., 1990; M.A., Harvard University, Cambridge, Mass., 1994; member of the Rhode Island state house of representatives, 1988-1994; Rhode Island secretary of state, 1994-2001; elected as a Democrat to the One Hundred Seventh and to the eight succeeding Congresses (January 3, 2001-present).",
-              "bioguide": "L000559",
-              "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=L000559",
-              "contact_page": "https://langevin.house.gov/contact-me/email-me",
-              "date_of_birth": "1964-04-22T00:00:00.000Z",
-              "district": 2,
-              "entered_office": "2001-01-03T00:00:00.000Z",
-              "ethnicity": "white-american",
-              "facebook_url": "https://www.facebook.com/CongressmanJimLangevin/",
-              "fax": "202-225-5976",
-              "fec": "H0RI02139",
-              "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H0RI02139",
-              "first_name": "Jim",
-              "gender": "male",
-              "goes_by": null,
-              "google_entity_id": "kg:/m/02tvqy",
-              "govtrack": "400230",
-              "govtrack_url": "https://www.govtrack.us/congress/members/400230",
-              "last_name": null,
-              "latitude": 38.8863,
-              "longitude": -77.0114,
-              "maplight": "331",
-              "maplight_url": "http://maplight.org/us-congress/legislator/331",
-              "middle_name": null,
-              "name": "Jim Langevin",
-              "name_slug": "jim-langevin",
-              "name_suffix": "Jim",
-              "openly_lgbtq": "no",
-              "opensecrets": "N00009724",
-              "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009724",
-              "opensecrets_url_tabs": {
-                "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009724",
-                "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009724",
-                "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009724",
-                "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009724",
-                "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009724",
-                "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009724",
-                "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009724",
-                "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009724",
-                "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009724",
-                "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009724"
-              },
-              "party": "democrat",
-              "phone": "202-225-2735",
-              "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/jim-langevin.jpg",
-              "photo_url_sizes": {
-                "64x64": "https://cdn.civil.services/us-house/headshots/64x64/jim-langevin.jpg",
-                "128x128": "https://cdn.civil.services/us-house/headshots/128x128/jim-langevin.jpg",
-                "256x256": "https://cdn.civil.services/us-house/headshots/256x256/jim-langevin.jpg",
-                "512x512": "https://cdn.civil.services/us-house/headshots/512x512/jim-langevin.jpg",
-                "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/jim-langevin.jpg"
-              },
-              "pronunciation": "JIM LAN-juh-vin",
-              "religion": "roman-catholic",
-              "state_code": "RI",
-              "state_code_slug": "ri",
-              "state_name": "Rhode Island",
-              "state_name_slug": "rhode-island",
-              "term_end": "2019-01-03T00:00:00.000Z",
-              "thomas": "1668",
-              "title": "representative",
-              "twitter_handle": "jimlangevin",
-              "twitter_url": "https://twitter.com/jimlangevin",
-              "vacant": false,
-              "votesmart": "55787",
-              "votesmart_url": "http://votesmart.org/candidate/55787",
-              "votesmart_url_tabs": {
-                "summary": "http://votesmart.org/candidate/55787",
-                "bio": "http://votesmart.org/candidate/biography/55787",
-                "votes": "http://votesmart.org/candidate/key-votes/55787",
-                "positions": "http://votesmart.org/candidate/political-courage-test/55787",
-                "ratings": "http://votesmart.org/candidate/evaluations/55787",
-                "speeches": "http://votesmart.org/candidate/public-statements/55787",
-                "funding": "http://votesmart.org/candidate/campaign-finance/55787"
-              },
-              "website": "https://langevin.house.gov",
-              "wikidata": "Q1397290",
-              "wikidata_url": "https://www.wikidata.org/wiki/Q1397290"
-            }
-          ],
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
++ Request
+    + Parameters
+        + fields: name,party,photo_url
+        + state: OR
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + fields: name,party,photo_url
+        + state: OR
         
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 5,
+                "showing": 5,
+                "pages": 1,
+                "page": 1
+              },
+              "data": [
+                {
+                  "name": "Kurt Schrader",
+                  "party": "democrat",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/kurt-schrader.jpg"
+                },
+                {
+                  "name": "Greg Walden",
+                  "party": "republican",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/greg-walden.jpg"
+                },
+                {
+                  "name": "Peter DeFazio",
+                  "party": "democrat",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/peter-defazio.jpg"
+                },
+                {
+                  "name": "Suzanne Bonamici",
+                  "party": "democrat",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg"
+                },
+                {
+                  "name": "Earl Blumenauer",
+                  "party": "democrat",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg"
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+
 # Group Government Endpoints
 
 This returns data for both the `/senate` & `/house` endpoints with one call.
 
-## Government [/government/{?zipcode,latitude,longitude,state}]
+## Government [/government/{?page,pageSize,fields,zipcode,latitude,longitude,state}]
 
 Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
 
 + Parameters
-    + zipcode (optional, string) - United Steps Zip Code
-    + latitude (optional, float) - GPS Latitude ( `longitude` required if used )
-    + longitude (optional, float) - GPS Longitude ( `latitude` required if used )
-    + state (optional, string) - State ( Full State Name or Two Letter Abbreviation )
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `house,senate`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
 
-### Get House Representatives [GET]
+### House Representatives [GET]
 
-+ Response 200 (application/json)
++ Request
+    + Parameters
+        + zipcode: 97232
 
-        {
-          "notices": [],
-          "warnings": [],
-          "errors": [],
-          "field_errors": {},
-          "meta": {
-            "total": 1,
-            "showing": 1,
-            "pages": 1,
-            "page": 1
-          },
-          "data": {
-            "house": [
-              {
-                "address_city": "Washington",
-                "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
-                "address_number": "2436",
-                "address_prefix": null,
-                "address_sec_unit_num": null,
-                "address_sec_unit_type": null,
-                "address_state": "DC",
-                "address_street": "Rayburn Hob",
-                "address_type": null,
-                "address_zipcode": "20515",
-                "age": 60,
-                "at_large": null,
-                "biography": "Charlie Crist, a Representative from Florida; born in Altoona, Blair County, Pa., July 24, 1956; graduated from St. Petersburg High School, St. Petersburg, Fla., 1974; attended Wake Forest University, Winston-Salem, N.C.; B.S., Florida State University, Tallahassee, Fla., 1978; J.D., Cumberland School of Law, Birmingham, Ala., 1981; lawyer, private practice; unsuccessful candidate for election to the Florida state senate in 1986; staff, United States Senator Connie Mack of Florida, 1988-1989; member of the Florida state senate, 1993-1999; unsuccessful candidate for election to the United States Senate in 1998; Florida deputy secretary of business and professional regulation, 1999-2001; Florida state education commissioner, 2001-2003; Florida state attorney general, 2003-2007; Governor of Florida, 2007-2011; unsuccessful candidate for election to the United States Senate in 2010; unsuccessful candidate for election for Governor of Florida in 2014; elected as a Democrat to the One Hundred Fifteenth Congress (January 3, 2017-present).",
-                "bioguide": "C001111",
-                "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=C001111",
-                "contact_page": "https://crist.house.gov/contact/email",
-                "date_of_birth": "1956-07-24T00:00:00.000Z",
-                "district": 13,
-                "entered_office": "2017-01-03T00:00:00.000Z",
-                "ethnicity": "white-american",
-                "facebook_url": "https://www.facebook.com/charliecrist",
-                "fax": "202-225-9764",
-                "fec": "H6FL13205",
-                "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H6FL13205",
-                "first_name": "Charlie",
-                "gender": "male",
-                "goes_by": null,
-                "google_entity_id": "kg:/m/04jyvv",
-                "govtrack": "412697",
-                "govtrack_url": "https://www.govtrack.us/congress/members/412697",
-                "last_name": "Crist",
-                "latitude": 38.8863,
-                "longitude": -77.0114,
-                "maplight": "2209",
-                "maplight_url": "http://maplight.org/us-congress/legislator/2209",
-                "middle_name": null,
-                "name": "Charlie Crist",
-                "name_slug": "charlie-crist",
-                "name_suffix": null,
-                "openly_lgbtq": "no",
-                "opensecrets": "N00002942",
-                "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00002942",
-                "opensecrets_url_tabs": {
-                  "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00002942",
-                  "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00002942",
-                  "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00002942",
-                  "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00002942",
-                  "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00002942",
-                  "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00002942",
-                  "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00002942",
-                  "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00002942",
-                  "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00002942",
-                  "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00002942"
-                },
-                "party": "democrat",
-                "phone": "202-225-5961",
-                "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/charlie-crist.jpg",
-                "photo_url_sizes": {
-                  "64x64": "https://cdn.civil.services/us-house/headshots/64x64/charlie-crist.jpg",
-                  "128x128": "https://cdn.civil.services/us-house/headshots/128x128/charlie-crist.jpg",
-                  "256x256": "https://cdn.civil.services/us-house/headshots/256x256/charlie-crist.jpg",
-                  "512x512": "https://cdn.civil.services/us-house/headshots/512x512/charlie-crist.jpg",
-                  "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/charlie-crist.jpg"
-                },
-                "pronunciation": "CHAR-lee KRIST",
-                "religion": "united-methodist",
-                "state_code": "FL",
-                "state_code_slug": "fl",
-                "state_name": "Florida",
-                "state_name_slug": "florida",
-                "term_end": "2019-01-03T00:00:00.000Z",
-                "thomas": null,
-                "title": "representative",
-                "twitter_handle": "CharlieCrist",
-                "twitter_url": "https://twitter.com/CharlieCrist",
-                "vacant": null,
-                "votesmart": "24311",
-                "votesmart_url": "http://votesmart.org/candidate/24311",
-                "votesmart_url_tabs": {
-                  "summary": "http://votesmart.org/candidate/24311",
-                  "bio": "http://votesmart.org/candidate/biography/24311",
-                  "votes": "http://votesmart.org/candidate/key-votes/24311",
-                  "positions": "http://votesmart.org/candidate/political-courage-test/24311",
-                  "ratings": "http://votesmart.org/candidate/evaluations/24311",
-                  "speeches": "http://votesmart.org/candidate/public-statements/24311",
-                  "funding": "http://votesmart.org/candidate/campaign-finance/24311"
-                },
-                "website": "https://crist.house.gov",
-                "wikidata": "Q374693",
-                "wikidata_url": "https://www.wikidata.org/wiki/Q374693"
-              }
-            ],
-            "senate": [
-              {
-                "address_city": "Washington",
-                "address_complete": "716 Hart, Washington, DC 20510",
-                "address_number": null,
-                "address_prefix": null,
-                "address_sec_unit_num": null,
-                "address_sec_unit_type": null,
-                "address_state": "DC",
-                "address_street": "716 Hart",
-                "address_type": "Building",
-                "address_zipcode": "20510",
-                "age": 74,
-                "biography": "Bill Nelson, a Senator and a Representative from Florida; born in Miami, Dade County, Fla., September 29, 1942; attended the Brevard County public schools; graduated from Melbourne High School 1960; B.A., Yale University 1965; J.D., University of Virginia School of Law 1968; admitted to the Florida bar in 1968 and commenced practice in Melbourne in 1970; served in United States Army Reserve 1965-1971; United States Army, active duty, 1968-1970, achieving rank of captain; legislative assistant to Governor Reubin Askew 1971; elected to Florida State house of representatives in 1972 and reelected in 1974 and 1976; elected as a Democrat to the Ninety-sixth and to the five succeeding Congresses (January 3, 1979-January 3, 1991); was not a candidate for reelection in 1990 to the House of Representatives, but was a candidate for nomination for governor of Florida; crewmember on the twenty-fourth flight of the Space Shuttle Columbia, January 12-18, 1986; Florida treasurer and insurance commissioner 1995-2000; elected to the United States Senate in 2000 for the term commencing January 3, 2001; reelected in 2006 and again in 2012 for the term ending January 3, 2019; Chair, Special Committee on Aging (One Hundred Thirteenth Congress).",
-                "bioguide": "N000032",
-                "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=N000032",
-                "contact_page": "https://www.billnelson.senate.gov/contact-bill",
-                "date_of_birth": "1942-09-29T00:00:00.000Z",
-                "entered_office": "2001-01-03T00:00:00.000Z",
-                "ethnicity": "white-american",
-                "facebook_url": "https://www.facebook.com/billnelson/",
-                "fax": "202-228-2183",
-                "fec": null,
-                "fec_url": null,
-                "first_name": "Bill",
-                "gender": "male",
-                "goes_by": null,
-                "google_entity_id": null,
-                "govtrack": "300078",
-                "govtrack_url": "https://www.govtrack.us/congress/members/300078",
-                "last_name": "Nelson",
-                "latitude": 38.8928,
-                "longitude": -77.0044,
-                "maplight": null,
-                "maplight_url": null,
-                "middle_name": null,
-                "name": "Bill Nelson",
-                "name_slug": "bill-nelson",
-                "name_suffix": null,
-                "openly_lgbtq": "no",
-                "opensecrets": "N00009926",
-                "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
-                "opensecrets_url_tabs": {
-                  "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00009926",
-                  "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00009926",
-                  "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00009926",
-                  "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00009926",
-                  "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00009926",
-                  "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00009926",
-                  "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00009926",
-                  "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00009926",
-                  "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00009926",
-                  "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00009926"
-                },
-                "party": "democrat",
-                "phone": "202-224-5274",
-                "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
-                "photo_url_sizes": {
-                  "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/bill-nelson.jpg",
-                  "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/bill-nelson.jpg",
-                  "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/bill-nelson.jpg",
-                  "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/bill-nelson.jpg",
-                  "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/bill-nelson.jpg"
-                },
-                "pronunciation": "BILL NELL-suhn",
-                "religion": "christian",
-                "state_code": "FL",
-                "state_code_slug": "fl",
-                "state_name": "Florida",
-                "state_name_slug": "florida",
-                "term_end": "2019-01-03T00:00:00.000Z",
-                "thomas": "859",
-                "title": "senator",
-                "twitter_handle": "SenBillNelson",
-                "twitter_url": "https://twitter.com/SenBillNelson",
-                "votesmart": "1606",
-                "votesmart_url": "http://votesmart.org/candidate/1606",
-                "votesmart_url_tabs": {
-                  "summary": "http://votesmart.org/candidate/1606",
-                  "bio": "http://votesmart.org/candidate/biography/1606",
-                  "votes": "http://votesmart.org/candidate/key-votes/1606",
-                  "positions": "http://votesmart.org/candidate/political-courage-test/1606",
-                  "ratings": "http://votesmart.org/candidate/evaluations/1606",
-                  "speeches": "http://votesmart.org/candidate/public-statements/1606",
-                  "funding": "http://votesmart.org/candidate/campaign-finance/1606"
-                },
-                "website": "http://www.billnelson.senate.gov",
-                "wikidata": null,
-                "wikidata_url": null
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + zipcode: 97232
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
               },
-              {
-                "address_city": "Washington",
-                "address_complete": "284 Russell, Washington, DC 20510",
-                "address_number": null,
-                "address_prefix": null,
-                "address_sec_unit_num": null,
-                "address_sec_unit_type": null,
-                "address_state": "DC",
-                "address_street": "284 Russell",
-                "address_type": "Building",
-                "address_zipcode": "20510",
-                "age": 45,
-                "biography": "Marco Rubio, a Senator from Florida; born in Miami, Fla., May 28, 1971; graduated University of Florida, B.S., 1993; graduated University of Miami, J.D., 1996; lawyer; West Miami City Commission 1998-2000; member of the Florida house of representatives 2000-2008; majority leader 2003-2006; speaker 2006-2008; elected as a Republican to the United States Senate for the term ending January 3, 2017.",
-                "bioguide": "R000595",
-                "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=R000595",
-                "contact_page": "https://www.rubio.senate.gov/public/index.cfm/contact",
-                "date_of_birth": "1971-05-28T00:00:00.000Z",
-                "entered_office": "2011-01-03T00:00:00.000Z",
-                "ethnicity": "hispanic-american",
-                "facebook_url": "https://www.facebook.com/SenatorMarcoRubio",
-                "fax": null,
-                "fec": null,
-                "fec_url": null,
-                "first_name": "Marco",
-                "gender": "male",
-                "goes_by": null,
-                "google_entity_id": null,
-                "govtrack": "412491",
-                "govtrack_url": "https://www.govtrack.us/congress/members/412491",
-                "last_name": "Rubio",
-                "latitude": 38.8925,
-                "longitude": -77.0074,
-                "maplight": null,
-                "maplight_url": null,
-                "middle_name": null,
-                "name": "Marco Rubio",
-                "name_slug": "marco-rubio",
-                "name_suffix": null,
-                "openly_lgbtq": "no",
-                "opensecrets": "N00030612",
-                "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
-                "opensecrets_url_tabs": {
-                  "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00030612",
-                  "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00030612",
-                  "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00030612",
-                  "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00030612",
-                  "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00030612",
-                  "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00030612",
-                  "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00030612",
-                  "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00030612",
-                  "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00030612",
-                  "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00030612"
-                },
-                "party": "republican",
-                "phone": "202-224-3041",
-                "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
-                "photo_url_sizes": {
-                  "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/marco-rubio.jpg",
-                  "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/marco-rubio.jpg",
-                  "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/marco-rubio.jpg",
-                  "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/marco-rubio.jpg",
-                  "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/marco-rubio.jpg"
-                },
-                "pronunciation": "MAR-koh ROO-bee-oh",
-                "religion": "roman-catholic",
-                "state_code": "FL",
-                "state_code_slug": "fl",
-                "state_name": "Florida",
-                "state_name_slug": "florida",
-                "term_end": "2023-01-03T00:00:00.000Z",
-                "thomas": "2084",
-                "title": "senator",
-                "twitter_handle": "marcorubio",
-                "twitter_url": "https://twitter.com/marcorubio",
-                "votesmart": "1601",
-                "votesmart_url": "http://votesmart.org/candidate/1601",
-                "votesmart_url_tabs": {
-                  "summary": "http://votesmart.org/candidate/1601",
-                  "bio": "http://votesmart.org/candidate/biography/1601",
-                  "votes": "http://votesmart.org/candidate/key-votes/1601",
-                  "positions": "http://votesmart.org/candidate/political-courage-test/1601",
-                  "ratings": "http://votesmart.org/candidate/evaluations/1601",
-                  "speeches": "http://votesmart.org/candidate/public-statements/1601",
-                  "funding": "http://votesmart.org/candidate/campaign-finance/1601"
-                },
-                "website": "http://www.rubio.senate.gov",
-                "wikidata": null,
-                "wikidata_url": null
+              "data": {
+                "house": [
+                  {
+                    "address_city": "Washington",
+                    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+                    "address_number": "2436",
+                    "address_prefix": null,
+                    "address_sec_unit_num": null,
+                    "address_sec_unit_type": null,
+                    "address_state": "DC",
+                    "address_street": "Rayburn Hob",
+                    "address_type": null,
+                    "address_zipcode": "20515",
+                    "age": 68,
+                    "at_large": null,
+                    "biography": "Earl Blumenauer, a Representative from Oregon; born in Portland, Multnomah County, Oreg., August 16, 1948; graduated from Centennial High School, Portland, Oreg., 1966; B.A., Lewis and Clark College, Portland, Oreg., 1970; J.D., Lewis and Clark Law School, Portland, Oreg., 1976; assistant to the president of Portland State University, Portland, Oreg., 1970-1977; member of the Oregon state house of representatives, 1973-1978; member of the board of directors, Portland Community College, 1975-1981; Multnomah County, Oreg., commissioner, 1978-1985; Portland, Oreg., city commissioner, 1986-1996; served on the Governorâ€™s commission on higher education, 1990-1991; elected as a Democrat, by special election, to the One Hundred Fourth Congress to fill the vacancy caused by the resignation of United States Representative Ronald Lee Wyden, and reelected to the eleven succeeding Congresses (May 21, 1996-present).",
+                    "bioguide": "B000574",
+                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B000574",
+                    "contact_page": "https://blumenauerforms.house.gov/forms/writeyourrep/",
+                    "date_of_birth": "1948-08-16T00:00:00.000Z",
+                    "district": 3,
+                    "entered_office": "1996-05-21T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/blumenauer",
+                    "fax": "202-225-8941",
+                    "fec": "H6OR03064",
+                    "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H6OR03064",
+                    "first_name": "Earl",
+                    "gender": "male",
+                    "goes_by": null,
+                    "google_entity_id": "kg:/m/033tw8",
+                    "govtrack": "400033",
+                    "govtrack_url": "https://www.govtrack.us/congress/members/400033",
+                    "last_name": "Blumenauer",
+                    "latitude": 38.8863,
+                    "longitude": -77.0114,
+                    "maplight": "152",
+                    "maplight_url": "http://maplight.org/us-congress/legislator/152",
+                    "middle_name": null,
+                    "name": "Earl Blumenauer",
+                    "name_slug": "earl-blumenauer",
+                    "name_suffix": null,
+                    "openly_lgbtq": "no",
+                    "opensecrets": "N00007727",
+                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007727",
+                    "opensecrets_url_tabs": {
+                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007727",
+                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007727",
+                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007727",
+                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007727",
+                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007727",
+                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007727",
+                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007727",
+                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007727",
+                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007727",
+                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007727"
+                    },
+                    "party": "democrat",
+                    "phone": "202-225-4811",
+                    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg",
+                    "photo_url_sizes": {
+                      "64x64": "https://cdn.civil.services/us-house/headshots/64x64/earl-blumenauer.jpg",
+                      "128x128": "https://cdn.civil.services/us-house/headshots/128x128/earl-blumenauer.jpg",
+                      "256x256": "https://cdn.civil.services/us-house/headshots/256x256/earl-blumenauer.jpg",
+                      "512x512": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg",
+                      "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/earl-blumenauer.jpg"
+                    },
+                    "pronunciation": "EARL BLOO-meh-now-er",
+                    "religion": "protestant",
+                    "state_code": "OR",
+                    "state_code_slug": "or",
+                    "state_name": "Oregon",
+                    "state_name_slug": "oregon",
+                    "term_end": "2019-01-03T00:00:00.000Z",
+                    "thomas": "99",
+                    "title": "representative",
+                    "twitter_handle": "repblumenauer",
+                    "twitter_url": "https://twitter.com/repblumenauer",
+                    "vacant": null,
+                    "votesmart": "367",
+                    "votesmart_url": "http://votesmart.org/candidate/367",
+                    "votesmart_url_tabs": {
+                      "summary": "http://votesmart.org/candidate/367",
+                      "bio": "http://votesmart.org/candidate/biography/367",
+                      "votes": "http://votesmart.org/candidate/key-votes/367",
+                      "positions": "http://votesmart.org/candidate/political-courage-test/367",
+                      "ratings": "http://votesmart.org/candidate/evaluations/367",
+                      "speeches": "http://votesmart.org/candidate/public-statements/367",
+                      "funding": "http://votesmart.org/candidate/campaign-finance/367"
+                    },
+                    "website": "https://blumenauerforms.house.gov",
+                    "wikidata": "Q748066",
+                    "wikidata_url": "https://www.wikidata.org/wiki/Q748066"
+                  }
+                ],
+                "senate": [
+                  {
+                    "address_city": "Washington",
+                    "address_complete": "313 Hart, Washington, DC 20510",
+                    "address_number": null,
+                    "address_prefix": null,
+                    "address_sec_unit_num": null,
+                    "address_sec_unit_type": null,
+                    "address_state": "DC",
+                    "address_street": "313 Hart",
+                    "address_type": "Building",
+                    "address_zipcode": "20510",
+                    "age": 60,
+                    "biography": "Jeff Merkley, a Senator from Oregon; born in Myrtle Creek, Ore., October 24, 1956; B.A., Stanford University, 1979; M.P.A., Princeton University, 1982; government analyst; nonprofit executive; Oregon State Representative, 1999-2008; speaker of the Oregon State House of Representative, 2007-2008; elected as a Democrat to the United States Senate in 2008; reelected in 2014 for the term ending January 3, 2021.",
+                    "bioguide": "M001176",
+                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=M001176",
+                    "contact_page": "https://www.merkley.senate.gov/contact/",
+                    "date_of_birth": "1956-10-24T00:00:00.000Z",
+                    "entered_office": "2009-01-03T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/jeffmerkley",
+                    "fax": "202-228-3997",
+                    "fec": null,
+                    "fec_url": null,
+                    "first_name": "Jeff",
+                    "gender": "male",
+                    "goes_by": null,
+                    "google_entity_id": null,
+                    "govtrack": "412325",
+                    "govtrack_url": "https://www.govtrack.us/congress/members/412325",
+                    "last_name": "Merkley",
+                    "latitude": 38.8928,
+                    "longitude": -77.0044,
+                    "maplight": null,
+                    "maplight_url": null,
+                    "middle_name": null,
+                    "name": "Jeff Merkley",
+                    "name_slug": "jeff-merkley",
+                    "name_suffix": null,
+                    "openly_lgbtq": "no",
+                    "opensecrets": "N00029303",
+                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
+                    "opensecrets_url_tabs": {
+                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
+                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00029303",
+                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00029303",
+                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00029303",
+                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00029303",
+                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00029303",
+                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00029303",
+                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00029303",
+                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00029303",
+                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00029303"
+                    },
+                    "party": "democrat",
+                    "phone": "202-224-3753",
+                    "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
+                    "photo_url_sizes": {
+                      "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/jeff-merkley.jpg",
+                      "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/jeff-merkley.jpg",
+                      "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/jeff-merkley.jpg",
+                      "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
+                      "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/jeff-merkley.jpg"
+                    },
+                    "pronunciation": "JEFF MER-klee",
+                    "religion": "lutheran",
+                    "state_code": "OR",
+                    "state_code_slug": "or",
+                    "state_name": "Oregon",
+                    "state_name_slug": "oregon",
+                    "term_end": "2021-01-03T00:00:00.000Z",
+                    "thomas": "1900",
+                    "title": "senator",
+                    "twitter_handle": "SenJeffMerkley",
+                    "twitter_url": "https://twitter.com/SenJeffMerkley",
+                    "votesmart": "23644",
+                    "votesmart_url": "http://votesmart.org/candidate/23644",
+                    "votesmart_url_tabs": {
+                      "summary": "http://votesmart.org/candidate/23644",
+                      "bio": "http://votesmart.org/candidate/biography/23644",
+                      "votes": "http://votesmart.org/candidate/key-votes/23644",
+                      "positions": "http://votesmart.org/candidate/political-courage-test/23644",
+                      "ratings": "http://votesmart.org/candidate/evaluations/23644",
+                      "speeches": "http://votesmart.org/candidate/public-statements/23644",
+                      "funding": "http://votesmart.org/candidate/campaign-finance/23644"
+                    },
+                    "website": "http://www.merkley.senate.gov",
+                    "wikidata": null,
+                    "wikidata_url": null
+                  },
+                  {
+                    "address_city": "Washington",
+                    "address_complete": "221 Dirksen, Washington, DC 20510",
+                    "address_number": null,
+                    "address_prefix": null,
+                    "address_sec_unit_num": null,
+                    "address_sec_unit_type": null,
+                    "address_state": "DC",
+                    "address_street": "221 Dirksen",
+                    "address_type": "Building",
+                    "address_zipcode": "20510",
+                    "age": 67,
+                    "biography": "Ron Wyden, a Senator and a Representative from Oregon; born in Wichita, Sedgwick County, Kans., May 3, 1949; attended the public schools of Palo Alto, Calif.; A.B., Stanford University 1971; J.D., University of Oregon Law School in Eugene 1974; director, Oregon Legal Services for the Elderly 1977-1979; public member, Oregon State Board of Examiners of Nursing Home Administrators 1977-1979; elected as a Democrat to the Ninety-seventh and to the seven succeeding Congresses, and served from January 3, 1981, to February 5, 1996, when he resigned, having been elected to the Senate; elected to the Senate in a special election on January 30, 1996, to fill the unexpired portion of the term ending January 3, 1999, left vacant by the resignation of Robert W. Packwood, and began service on February 5, 1996; reelected in 1998, 2004 and again in 2010 for the term ending January 3, 2017; chair, Committee on Energy and Natural Resources (One Hundred Thirteenth Congress [January 3, 2013-February 12, 2014]), Committee on Finance (One Hundred Thirteenth Congress [February 12, 2014-January 3, 2015]).",
+                    "bioguide": "W000779",
+                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=W000779",
+                    "contact_page": "https://www.wyden.senate.gov/contact/",
+                    "date_of_birth": "1949-05-03T00:00:00.000Z",
+                    "entered_office": "1996-02-06T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/wyden/",
+                    "fax": "202-228-2717",
+                    "fec": null,
+                    "fec_url": null,
+                    "first_name": "Ron",
+                    "gender": "male",
+                    "goes_by": null,
+                    "google_entity_id": null,
+                    "govtrack": "300100",
+                    "govtrack_url": "https://www.govtrack.us/congress/members/300100",
+                    "last_name": "Wyden",
+                    "latitude": 38.8929,
+                    "longitude": -77.0757,
+                    "maplight": null,
+                    "maplight_url": null,
+                    "middle_name": null,
+                    "name": "Ron Wyden",
+                    "name_slug": "ron-wyden",
+                    "name_suffix": null,
+                    "openly_lgbtq": "no",
+                    "opensecrets": "N00007724",
+                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
+                    "opensecrets_url_tabs": {
+                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
+                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007724",
+                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007724",
+                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007724",
+                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007724",
+                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007724",
+                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007724",
+                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007724",
+                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007724",
+                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007724"
+                    },
+                    "party": "democrat",
+                    "phone": "202-224-5244",
+                    "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
+                    "photo_url_sizes": {
+                      "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/ron-wyden.jpg",
+                      "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/ron-wyden.jpg",
+                      "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/ron-wyden.jpg",
+                      "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
+                      "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/ron-wyden.jpg"
+                    },
+                    "pronunciation": "RAHN WAHY-dn",
+                    "religion": "jewish",
+                    "state_code": "OR",
+                    "state_code_slug": "or",
+                    "state_name": "Oregon",
+                    "state_name_slug": "oregon",
+                    "term_end": "2023-01-03T00:00:00.000Z",
+                    "thomas": "1247",
+                    "title": "senator",
+                    "twitter_handle": "RonWyden",
+                    "twitter_url": "https://twitter.com/RonWyden",
+                    "votesmart": "27036",
+                    "votesmart_url": "http://votesmart.org/candidate/27036",
+                    "votesmart_url_tabs": {
+                      "summary": "http://votesmart.org/candidate/27036",
+                      "bio": "http://votesmart.org/candidate/biography/27036",
+                      "votes": "http://votesmart.org/candidate/key-votes/27036",
+                      "positions": "http://votesmart.org/candidate/political-courage-test/27036",
+                      "ratings": "http://votesmart.org/candidate/evaluations/27036",
+                      "speeches": "http://votesmart.org/candidate/public-statements/27036",
+                      "funding": "http://votesmart.org/candidate/campaign-finance/27036"
+                    },
+                    "website": "http://www.wyden.senate.gov",
+                    "wikidata": null,
+                    "wikidata_url": null
+                  }
+                ]
+              },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
               }
-            ]
-          },
-          "attribution": {
-            "text": "Data Provided by Civil Services",
-            "website": "https://civil.services",
-            "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-            "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-            "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
-            "logo": "https://cdn.civil.services/common/logo.png",
-            "icon": "https://cdn.civil.services/common/icon.png"
-          }
-        }
+            }

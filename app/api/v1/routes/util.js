@@ -35,9 +35,38 @@ module.exports = {
   /**
    * Extend `defaultResponse` with the passed in object, pass the result into `response.json()`
    * @param  {object} data - Data object to fill response with
+   * @param {string} [fields] - Comma Separated List of fields you want in the response
    * @return {object}
    */
-  createAPIResponse: function(data) {
+  createAPIResponse: function(data, fields) {
+
+    var filters = (fields) ? fields.split(',') : [];
+    var filterData = function (data) {
+      return _.omitBy(data, function(value, key) {
+        return (filters.indexOf(key) === -1);
+      });
+    };
+
+    if (data && typeof data.data !== 'undefined' && filters.length > 0) {
+      if (Array.isArray(data.data)) {
+        var filteredData = [];
+        for (var i = 0; i < data.data.length; i++) {
+          var filtered = filterData(data.data[i]);
+
+          filteredData.push(filtered);
+        }
+
+        data.data = filteredData;
+      } else {
+
+        data.data = _.omitBy(data.data, function(value, key) {
+          return (filters.indexOf(key) === -1);
+        });
+
+        // @TODO: Figure out a way to handle object responses
+      }
+    }
+
     var response = _.merge({}, this.defaultResponse, data);
 
     var errors = _.map(response.field_errors, function(value, key) {
@@ -48,7 +77,6 @@ module.exports = {
 
     // Sort Data if a single object
     if (data && !_.isArray(data.data) && _.isObject(data.data)){
-
       var sortedData = {};
       Object.keys(data.data).sort().forEach(function(key) {
         sortedData[key] = data.data[key];
