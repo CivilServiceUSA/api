@@ -326,12 +326,12 @@ Get Location Specific Data using any combination of filters.
     + county (optional, string, `Multnomah`) - County to use as Filter
     + state (optional, string, `OR`) - State to use as Filter
     + areaCode (optional, number, `573`) - Area Code of Phone Number to use as Filter
-    + timezone (optional, string, `America/New_York`) - Time Zone of Location ( e.g. America/New_York )
+    + timezone (optional, string, `America/New_York`) - Time Zone of Location
     + minPopulation (optional, number, `10000`) - Minimum Population of Location
     + maxPopulation (optional, number, `1000000`) - Maximum Population of Location
     + latitude (optional, number, `45.542094`) - Latitude to base Location on
     + longitude (optional, number, `-122.9346037`) - Longitude to base Location on
-    + distance (optional, string, `25mi`) - Distance from Latitude & Longitude ( e.g. 5mi, 10km )
+    + distance (optional, string, `25mi`) - Distance from Latitude & Longitude
 
 ### Location [GET]
 
@@ -397,7 +397,7 @@ Search for Legislators for a Given Location
 + Parameters
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
-    + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + fields (optional, string, `results`) - Comma Separated List of fields you want in the response
     + zipcode (optional, string, `97232`) - Zip Code ( must be a valid US Zip Code )
     + latitude (optional, string, `45.542094`) - GPS Latitude ( required if also passing over `longitude` )
     + longitude (optional, string, `-122.9346037`) - GPS Longitude ( required if also passing over `latitude` )
@@ -714,7 +714,7 @@ Search for Senator using any combination of search parameters.
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
     + class (optional, enum, `III`)
 
-        Senate to be divided into three classes for purposes of elections. Using a comma to filter with multiple options, e.g. `?title=I,III`
+        Senate to be divided into three classes for purposes of elections. Using a comma to filter with multiple options, e.g. `?class=I,III`
 
         + Values
             + `I`
@@ -1093,7 +1093,7 @@ Search for House Representative using any combination of search parameters.
             + `democratic-caucus-chairman`
     + party (optional, enum, `independent`) -
 
-        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?title=democrat,republican`
+        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?party=democrat,republican`
 
         + Values
             + `constitution`
