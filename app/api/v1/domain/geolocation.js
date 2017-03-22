@@ -133,6 +133,12 @@ module.exports = {
       return _.get(searchParams, 'body.query.bool.must');
     }
 
+    function setGeoFilters(filter) {
+      if (!_.get(searchParams, 'body.query.filtered.filter')) {
+        _.set(searchParams, 'body.query.filtered.filter', filter);
+      }
+    }
+
     // Page size
     if (query.pageSize && validator.isInt(query.pageSize) && validator.toInt(query.pageSize, 10) >= 1) {
       pageSize = validator.toInt(query.pageSize, 10);
@@ -269,18 +275,19 @@ module.exports = {
      * Filter By Latitude, Longitude & Distance
      */
     if (query.latitude && query.longitude) {
-      var DEFAULT_DISTANCE = '5mi';
-
-      getAndFilters();
-      searchParams.body.query.bool.filter = {
-        geo_distance : {
-          distance : query.distance || DEFAULT_DISTANCE,
-          location : {
-            lat: parseFloat(query.latitude),
-            lon: parseFloat(query.longitude)
+      setGeoFilters({
+        geo_shape: {
+          shape: {
+            shape: {
+              coordinates: [
+                query.longitude,
+                query.latitude
+              ],
+              type: 'point'
+            }
           }
         }
-      };
+      });
     }
 
     return elasticsearchClient.search(searchParams)

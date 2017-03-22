@@ -21,6 +21,24 @@ var StateDomain = require('../domain/state');
  * @property {boolean} [pretty=false] - Format JSON response to be human readable
  */
 /* istanbul ignore next */
+router.route('/state').get(function(request, response) {
+  StateDomain.search(request.query)
+    .then(function(results){
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'State', 'Search Results', request.query, results.length);
+
+      response.json(util.createAPIResponse(results, request.query.fields));
+    });
+});
+
+/**
+ * Senate
+ * @memberof module:routes/state/:state
+ * @property {number} [pageSize=30] - Set Number of Results per Page
+ * @property {number} [page=1] - Result Page to Load
+ * @property {boolean} [pretty=false] - Format JSON response to be human readable
+ */
+/* istanbul ignore next */
 router.route('/state/:state').get(function(request, response) {
   StateDomain.getState(request.params.state)
     .then(function(results){

@@ -47,7 +47,8 @@ mapping.body[indexType] = {
       index: 'no'
     },
     nickname: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     website: {
       type: 'string',
@@ -109,8 +110,7 @@ mapping.body[indexType] = {
       index: 'no'
     },
     shape: {
-      type: 'geo_shape',
-      tree_levels: 10
+      type: 'geo_shape'
     }
   }
 };

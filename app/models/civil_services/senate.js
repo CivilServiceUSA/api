@@ -328,7 +328,41 @@ var Senate = db.dbApi.define('senate', {
       fields: ['shape'],
       type: 'spatial'
     }
-  ]
+  ],
+  instanceMethods: {
+    getAliases: function() {
+      if (this.get('title') && this.get('first_name') && this.get('last_name') && this.get('party')) {
+        var title = this.get('title').replace(/-/g, ' ').replace(/_/g, ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        var first_name = this.get('first_name');
+        var last_name = this.get('last_name');
+        var name = first_name + ' ' + last_name;
+        var party = this.get('party').replace(/-/g, ' ').replace(/_/g, ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        var party_abbr = party.charAt(0).toUpperCase();
+
+        var aliases = [
+          party + ' ' + name,
+          party + ' ' + last_name,
+          'Senator ' + name,
+          'Senator ' + last_name,
+          'Sen. ' + name,
+          'Sen. ' + last_name,
+          name + ' [' + party_abbr + ']',
+          name + ' (' + party_abbr + ')'
+        ];
+
+        if (title !== 'Senator') {
+          aliases.push(title + ' ' + name);
+          aliases.push(title + ' ' + last_name);
+          aliases.push(title.replace('Senate ', '') + ' ' + name);
+          aliases.push(title.replace('Senate ', '') + ' ' + last_name);
+        }
+
+        return aliases;
+      } else {
+        return [];
+      }
+    }
+  }
 });
 
 module.exports = Senate;

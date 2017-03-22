@@ -77,10 +77,12 @@ mapping.body[indexType] = {
       type: 'string'
     },
     title: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     party: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     name: {
       type: 'string'
@@ -112,16 +114,20 @@ mapping.body[indexType] = {
       index: 'no'
     },
     gender: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     ethnicity: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     religion: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     openly_lgbtq: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     age: {
       type: 'integer'
@@ -232,8 +238,10 @@ mapping.body[indexType] = {
       type: 'geo_point'
     },
     shape: {
-      type: 'geo_shape',
-      tree_levels: 10
+      type: 'geo_shape'
+    },
+    aliases: {
+      type: 'string'
     }
   }
 };

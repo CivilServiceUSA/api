@@ -31,6 +31,7 @@ module.exports = {
    */
   prepareForAPIOutput: function(data) {
     var fields = [
+      'aliases',
       'age',
       'address_city',
       'address_complete',
@@ -164,7 +165,8 @@ module.exports = {
         lat: data.latitude,
         lon: data.longitude
       },
-      shape: data.shape
+      shape: data.shape,
+      aliases: data.getAliases()
     };
   },
 
@@ -437,8 +439,9 @@ module.exports = {
     if (query.title) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          title: query.title
+        terms: {
+          title: query.title.split(','),
+          minimum_should_match: 1
         }
       });
     }
@@ -449,8 +452,9 @@ module.exports = {
     if (query.party) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          party: query.party
+        terms: {
+          party: query.party.split(','),
+          minimum_should_match: 1
         }
       });
     }
@@ -475,8 +479,9 @@ module.exports = {
     if (query.gender) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          gender: query.gender
+        terms: {
+          gender: query.gender.split(','),
+          minimum_should_match: 1
         }
       });
     }
@@ -487,8 +492,9 @@ module.exports = {
     if (query.ethnicity) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          ethnicity: query.ethnicity
+        terms: {
+          ethnicity: query.ethnicity.split(','),
+          minimum_should_match: 1
         }
       });
     }
@@ -499,20 +505,22 @@ module.exports = {
     if (query.religion) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          religion: query.religion
+        terms: {
+          religion: query.religion.split(','),
+          minimum_should_match: 1
         }
       });
     }
 
     /**
-     * Filter By Openley LGBTQ
+     * Filter By Openly LGBTQ
      */
     if (query.openlyLGBTQ) {
       andFilters = getAndFilters();
       andFilters.push({
-        match: {
-          openly_lgbtq: query.openlyLGBTQ
+        terms: {
+          openlyLGBTQ: query.openlyLGBTQ.split(','),
+          minimum_should_match: 1
         }
       });
     }

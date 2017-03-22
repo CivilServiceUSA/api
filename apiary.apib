@@ -8,7 +8,7 @@ HOST: https://api.civil.services/v1
 Civil Services is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 * _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__
-* _Last Modified:_ __March 21st, 2017__
+* _Last Modified:_ __March 22st, 2017__
 * _Current API Version:_ __v1.0.1__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use. You can __[Register for an API Key](https://api.civil.services)__ if you would like access to our API. We typically review applications within a business day.
@@ -43,19 +43,6 @@ Our API requires an API Key to use.  We are not providing API Keys to the genera
 #### Request Header:
 
 * __API-Key__ `243CEA2E-7E63-D2C4-3D2D-1A114288274B` _( this is not an actual API Key )_
-
-__NOTE:__  If you are testing our API in Apiary, you will need to add an `API-Key` Header to your Request ( using the `apikey` GET param does not always work within Apiary, so its best to test using this custom header ):
-
-[![Apiary Add Custom Header](https://raw.githubusercontent.com/CivilServiceUSA/api/master/docs/img/headers.png)](http://docs.civilservices.apiary.io/#reference/government-endpoints/government/get-house-representatives?console=1)
-
-1. Select Endpoint
-2. Click `Switch to Console`
-3. Click the `Headers` Tab
-4. Click `+ Add new header`
-5. Replace `New item` with the label `API-Key`
-6. Replace `null` with your API Key
-7. Click the Green `Call Resource` button once you are ready to make an API call
-
 
 #### GET Parameter:
 
@@ -122,6 +109,7 @@ __Response 403:__ (application/json)
 The following parameters are available on most API endpoint and used for pagination
 for if there are a lot of results.
 
++ `apikey` (string) - Your Civil Services API Key
 + `fields` (string) - Comma Separated List of fields you want in the response.  By default all public fields will be returned, but if you only need specific fields you can greatly simplify your API response by specifying them.
 + `pageSize` (number, optional) - How many results to return in a single API call. Defaults to 30
 + `page` (number, optional) - If there is more than one page of results, you can set which page to load here
@@ -132,17 +120,20 @@ for if there are a lot of results.
 
 The following endpoints are for specific data related to Zip Codes and Geolocation data.
 
-## Zipcode [/geolocation/zipcode/{zipcode}{?page,pageSize,fields}]
+## Zip Code [/geolocation/zipcode/{zipcode}{?apikey,page,pageSize,fields}]
 
-Fetch details for Specific Zipcode
+Fetch details for a Specific Zip Code
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,state,location`) - Comma Separated List of fields you want in the response
-    + zipcode (string, `97232`) - Unique Zip Code
+    + zipcode (required, string, `97232`) - Unique Zip Code
 
-### Zipcode [GET]
+### Example: Location Info for 97232 [GET]
+
+This example fetches details for the zip code `97232`.
 
 + Request
     + Parameters
@@ -195,17 +186,20 @@ Fetch details for Specific Zipcode
               }
             }
 
-## IP Address [/geolocation/ip/{ipaddress}{?page,pageSize,fields}]
+## IP Address [/geolocation/ip/{ipaddress}{?apikey,page,pageSize,fields}]
 
-Fetch details for Specific IP Address
+Fetch details for a Specific IP Address
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
     + ipaddress (required, string, `97.96.74.114`) - IP Address to Lookup ( Defaults to Requester's IP Address )
 
-### IP Address [GET]
+### Example: Location Info for 97.96.74.114 [GET]
+
+This example fetches details for the ip address `97.96.74.114`.
 
 + Request
     + Parameters
@@ -313,11 +307,12 @@ Fetch details for Specific IP Address
               }
             }
 
-## Geolocation [/geolocation/{?page,pageSize,fields,zipcode,city,county,state,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
+## Geolocation [/geolocation/{?apikey,page,pageSize,fields,zipcode,city,county,state,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
 
 Get Location Specific Data using any combination of filters.
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
@@ -333,15 +328,19 @@ Get Location Specific Data using any combination of filters.
     + longitude (optional, number, `-122.9346037`) - Longitude to base Location on
     + distance (optional, string, `25mi`) - Distance from Latitude & Longitude
 
-### Location [GET]
+### Example: Location Info for Saint Louis, MO [GET]
+
+This example fetches details for the city of __Saint Louis, MO__ using the `state` and `city` parameters.
 
 + Request
     + Parameters
-        + zipcode: 97232
+        + state: MO
+        + city: Saint Louis
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes
-        + zipcode: 97232
+        + state: MO
+        + city: Saint Louis
         
     + Body
     
@@ -351,28 +350,72 @@ Get Location Specific Data using any combination of filters.
               "errors": [],
               "field_errors": {},
               "meta": {
-                "total": 1,
-                "showing": 1,
+                "total": 3,
+                "showing": 3,
                 "pages": 1,
                 "page": 1
               },
               "data": [
                 {
-                  "alternate_city_names": [],
-                  "area_codes": [
-                    "971",
-                    "503"
+                  "alternate_city_names": [
+                    "Saint Peters",
+                    "St Peters"
                   ],
-                  "city": "Portland",
-                  "county": "Multnomah County",
-                  "estimated_population": 10780,
+                  "area_codes": [
+                    "314",
+                    "636"
+                  ],
+                  "city": "Saint Charles",
+                  "county": "St Charles County",
+                  "estimated_population": 43920,
                   "location": {
-                    "lat": 45.52,
-                    "lon": -122.64
+                    "lat": 38.79,
+                    "lon": -90.51
                   },
-                  "state": "OR",
-                  "timezone": "America/Los_Angeles",
-                  "zipcode": "97232"
+                  "state": "MO",
+                  "timezone": "America/Chicago",
+                  "zipcode": "63303"
+                },
+                {
+                  "alternate_city_names": [
+                    "Cottleville",
+                    "Saint Peters",
+                    "St Peters",
+                    "Weldon Spring"
+                  ],
+                  "area_codes": [
+                    "314",
+                    "636"
+                  ],
+                  "city": "Saint Charles",
+                  "county": "St Charles County",
+                  "estimated_population": 40840,
+                  "location": {
+                    "lat": 38.79,
+                    "lon": -90.51
+                  },
+                  "state": "MO",
+                  "timezone": "America/Chicago",
+                  "zipcode": "63304"
+                },
+                {
+                  "alternate_city_names": [
+                    "Lake St Louis",
+                    "O Fallon"
+                  ],
+                  "area_codes": [
+                    "636"
+                  ],
+                  "city": "Lake Saint Louis",
+                  "county": "St Charles County",
+                  "estimated_population": 22230,
+                  "location": {
+                    "lat": 38.78,
+                    "lon": -90.78
+                  },
+                  "state": "MO",
+                  "timezone": "America/Chicago",
+                  "zipcode": "63367"
                 }
               ],
               "attribution": {
@@ -390,11 +433,12 @@ Get Location Specific Data using any combination of filters.
 
 The following endpoints convert location data into parameters that can fetch Legislators from Open States.
 
-## Legislators [/legislators/{?page,pageSize,fields,zipcode,latitude,longitude}]
+## Legislators [/legislators/{?apikey,page,pageSize,fields,zipcode,latitude,longitude}]
 
-Search for Legislators for a Given Location
+Search for Legislators in a Given Location.
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `results`) - Comma Separated List of fields you want in the response
@@ -402,7 +446,9 @@ Search for Legislators for a Given Location
     + latitude (optional, string, `45.542094`) - GPS Latitude ( required if also passing over `longitude` )
     + longitude (optional, string, `-122.9346037`) - GPS Longitude ( required if also passing over `latitude` )
 
-### Legislators [GET]
+### Example: Legislators in Zip Code 97232 [GET]
+
+This example fetches details for the zip code __97232__ using the `zipcode` parameter.
 
 + Request
     + Parameters
@@ -700,11 +746,12 @@ Search for Legislators for a Given Location
 
 View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/senate/{?page,pageSize,fields,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## Senate [/senate/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Senator using any combination of search parameters.
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
@@ -834,15 +881,19 @@ Search for Senator using any combination of search parameters.
     + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
     + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
 
-### Senators [GET]
+### Example: Female Senator's of Color [GET]
+
+This Example fetches all Women of Color in the United States Senate using the `gender` and `ethnicity` parameters.
 
 + Request
     + Parameters
-        + zipcode: 97232
+        + gender: female
+        + ethnicity: african-american,asian-american,hispanic-american,middle-eastern-american,native-american,pacific-islander
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes
-        + zipcode: 97232
+        + gender: female
+        + ethnicity: african-american,asian-american,hispanic-american,middle-eastern-american,native-american,pacific-islander
         
     + Body
     
@@ -852,187 +903,405 @@ Search for Senator using any combination of search parameters.
               "errors": [],
               "field_errors": {},
               "meta": {
-                "total": 2,
-                "showing": 2,
+                "total": 4,
+                "showing": 4,
                 "pages": 1,
                 "page": 1
               },
               "data": [
                 {
                   "address_city": "Washington",
-                  "address_complete": "313 Hart, Washington, DC 20510",
+                  "address_complete": "524 Hart, Washington, DC 20510",
                   "address_number": null,
                   "address_prefix": null,
                   "address_sec_unit_num": null,
                   "address_sec_unit_type": null,
                   "address_state": "DC",
-                  "address_street": "313 Hart",
+                  "address_street": "524 Hart",
                   "address_type": "Building",
                   "address_zipcode": "20510",
-                  "age": 60,
-                  "biography": "Jeff Merkley, a Senator from Oregon; born in Myrtle Creek, Ore., October 24, 1956; B.A., Stanford University, 1979; M.P.A., Princeton University, 1982; government analyst; nonprofit executive; Oregon State Representative, 1999-2008; speaker of the Oregon State House of Representative, 2007-2008; elected as a Democrat to the United States Senate in 2008; reelected in 2014 for the term ending January 3, 2021.",
-                  "bioguide": "M001176",
-                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=M001176",
-                  "contact_page": "https://www.merkley.senate.gov/contact/",
-                  "date_of_birth": "1956-10-24T00:00:00.000Z",
-                  "entered_office": "2009-01-03T00:00:00.000Z",
-                  "ethnicity": "white-american",
-                  "facebook_url": "https://www.facebook.com/jeffmerkley",
-                  "fax": "202-228-3997",
+                  "age": 49,
+                  "aliases": [
+                    "Democrat Tammy Duckworth",
+                    "Democrat Duckworth",
+                    "Senator Tammy Duckworth",
+                    "Senator Duckworth",
+                    "Sen. Tammy Duckworth",
+                    "Sen. Duckworth",
+                    "Tammy Duckworth [D]",
+                    "Tammy Duckworth (D)"
+                  ],
+                  "biography": "Tammy Duckworth, a Senator and a Representative from Illinois; born in Bangkok, Thailand, March 12, 1968; graduated from President William McKinley High School, Honolulu, Hawaii, 1985; B.A., University of Hawaii, Manoa, Hawaii, 1989; M.A., The George Washington University, Washington, D.C., 1992; attended Northern Illinois University, DeKalb, Ill.; Illinois Army National Guard, 1996-present; unsuccessful candidate for election to the United States House of Representatives in 2006; director, Ill. department of veterans' affairs, 2006-2009; assistant secretary, United States Department of Veterans' Affairs, 2009-2011; delegate to the Democratic National Convention, 2012; elected as a Democrat to the One Hundred Thirteenth Congress and to the succeeding Congress (January 3, 2013-January 3, 2017); was not a candidate for reelection to the House of Representatives but was elected as a Democrat to the United States Senate in 2016 for the term ending January 3, 2023.",
+                  "bioguide": "D000622",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=D000622",
+                  "contact_page": "https://www.duckworth.senate.gov/content/contact-senator",
+                  "date_of_birth": "1968-03-12T00:00:00.000Z",
+                  "entered_office": "2017-01-03T00:00:00.000Z",
+                  "ethnicity": "asian-american",
+                  "facebook_url": "https://www.facebook.com/CongresswomanTammyDuckworth/",
+                  "fax": "202-228-0618",
                   "fec": null,
                   "fec_url": null,
-                  "first_name": "Jeff",
-                  "gender": "male",
+                  "first_name": "Tammy",
+                  "gender": "female",
                   "goes_by": null,
                   "google_entity_id": null,
-                  "govtrack": "412325",
-                  "govtrack_url": "https://www.govtrack.us/congress/members/412325",
-                  "last_name": "Merkley",
+                  "govtrack": "412533",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412533",
+                  "last_name": "Duckworth",
                   "latitude": 38.8928,
                   "longitude": -77.0044,
                   "maplight": null,
                   "maplight_url": null,
                   "middle_name": null,
-                  "name": "Jeff Merkley",
-                  "name_slug": "jeff-merkley",
+                  "name": "Tammy Duckworth",
+                  "name_slug": "tammy-duckworth",
                   "name_suffix": null,
                   "openly_lgbtq": "no",
-                  "opensecrets": "N00029303",
-                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
+                  "opensecrets": "N00027860",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00027860",
                   "opensecrets_url_tabs": {
-                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
-                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00029303",
-                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00029303",
-                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00029303",
-                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00029303",
-                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00029303",
-                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00029303",
-                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00029303",
-                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00029303",
-                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00029303"
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00027860",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00027860",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00027860",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00027860",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00027860",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00027860",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00027860",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00027860",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00027860",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00027860"
                   },
                   "party": "democrat",
-                  "phone": "202-224-3753",
-                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
+                  "phone": "202-224-2854",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/tammy-duckworth.jpg",
                   "photo_url_sizes": {
-                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/jeff-merkley.jpg",
-                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/jeff-merkley.jpg",
-                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/jeff-merkley.jpg",
-                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
-                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/jeff-merkley.jpg"
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/tammy-duckworth.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/tammy-duckworth.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/tammy-duckworth.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/tammy-duckworth.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/tammy-duckworth.jpg"
                   },
-                  "pronunciation": "JEFF MER-klee",
-                  "religion": "lutheran",
-                  "state_code": "OR",
-                  "state_code_slug": "or",
-                  "state_name": "Oregon",
-                  "state_name_slug": "oregon",
-                  "term_end": "2021-01-03T00:00:00.000Z",
-                  "thomas": "1900",
+                  "pronunciation": "TAM-ee DUCK-werth",
+                  "religion": "deist",
+                  "state_code": "IL",
+                  "state_code_slug": "il",
+                  "state_name": "Illinois",
+                  "state_name_slug": "illinois",
+                  "term_end": "2023-01-03T00:00:00.000Z",
+                  "thomas": "2123",
                   "title": "senator",
-                  "twitter_handle": "SenJeffMerkley",
-                  "twitter_url": "https://twitter.com/SenJeffMerkley",
-                  "votesmart": "23644",
-                  "votesmart_url": "http://votesmart.org/candidate/23644",
+                  "twitter_handle": "RepDuckworth",
+                  "twitter_url": "https://twitter.com/RepDuckworth",
+                  "votesmart": "57442",
+                  "votesmart_url": "http://votesmart.org/candidate/57442",
                   "votesmart_url_tabs": {
-                    "summary": "http://votesmart.org/candidate/23644",
-                    "bio": "http://votesmart.org/candidate/biography/23644",
-                    "votes": "http://votesmart.org/candidate/key-votes/23644",
-                    "positions": "http://votesmart.org/candidate/political-courage-test/23644",
-                    "ratings": "http://votesmart.org/candidate/evaluations/23644",
-                    "speeches": "http://votesmart.org/candidate/public-statements/23644",
-                    "funding": "http://votesmart.org/candidate/campaign-finance/23644"
+                    "summary": "http://votesmart.org/candidate/57442",
+                    "bio": "http://votesmart.org/candidate/biography/57442",
+                    "votes": "http://votesmart.org/candidate/key-votes/57442",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/57442",
+                    "ratings": "http://votesmart.org/candidate/evaluations/57442",
+                    "speeches": "http://votesmart.org/candidate/public-statements/57442",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/57442"
                   },
-                  "website": "http://www.merkley.senate.gov",
+                  "website": "http://www.duckworth.senate.gov",
                   "wikidata": null,
                   "wikidata_url": null
                 },
                 {
                   "address_city": "Washington",
-                  "address_complete": "221 Dirksen, Washington, DC 20510",
+                  "address_complete": "B40A Dirksen, Washington, DC 20510",
                   "address_number": null,
                   "address_prefix": null,
                   "address_sec_unit_num": null,
                   "address_sec_unit_type": null,
                   "address_state": "DC",
-                  "address_street": "221 Dirksen",
+                  "address_street": "B40A Dirksen",
                   "address_type": "Building",
                   "address_zipcode": "20510",
-                  "age": 67,
-                  "biography": "Ron Wyden, a Senator and a Representative from Oregon; born in Wichita, Sedgwick County, Kans., May 3, 1949; attended the public schools of Palo Alto, Calif.; A.B., Stanford University 1971; J.D., University of Oregon Law School in Eugene 1974; director, Oregon Legal Services for the Elderly 1977-1979; public member, Oregon State Board of Examiners of Nursing Home Administrators 1977-1979; elected as a Democrat to the Ninety-seventh and to the seven succeeding Congresses, and served from January 3, 1981, to February 5, 1996, when he resigned, having been elected to the Senate; elected to the Senate in a special election on January 30, 1996, to fill the unexpired portion of the term ending January 3, 1999, left vacant by the resignation of Robert W. Packwood, and began service on February 5, 1996; reelected in 1998, 2004 and again in 2010 for the term ending January 3, 2017; chair, Committee on Energy and Natural Resources (One Hundred Thirteenth Congress [January 3, 2013-February 12, 2014]), Committee on Finance (One Hundred Thirteenth Congress [February 12, 2014-January 3, 2015]).",
-                  "bioguide": "W000779",
-                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=W000779",
-                  "contact_page": "https://www.wyden.senate.gov/contact/",
-                  "date_of_birth": "1949-05-03T00:00:00.000Z",
-                  "entered_office": "1996-02-06T00:00:00.000Z",
-                  "ethnicity": "white-american",
-                  "facebook_url": "https://www.facebook.com/wyden/",
-                  "fax": "202-228-2717",
+                  "age": 52,
+                  "aliases": [
+                    "Democrat Catherine Masto",
+                    "Democrat Masto",
+                    "Senator Catherine Masto",
+                    "Senator Masto",
+                    "Sen. Catherine Masto",
+                    "Sen. Masto",
+                    "Catherine Masto [D]",
+                    "Catherine Masto (D)"
+                  ],
+                  "biography": "Catherine Cortez Masto, a Senator from Nevada; born in Las Vegas, Nev., March 29, 1964; B.A., University of Nevada, 1986; J.D., Gonzaga University School of Law, 1990; admitted to the Nevada bar in 1990; assistant county manager, Clark County, Nev.; chief of staff to Nevada Governor Bob Miller; federal prosecutor; attorney general of Nevada 2007-2015; executive vice chancellor for the Nevada System of Higher Education; elected as a Democrat to the United States Senate in 2016 for the term ending January 3, 2023.",
+                  "bioguide": "C001113",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=C001113",
+                  "contact_page": "https://www.cortezmasto.senate.gov/content/contact-senator",
+                  "date_of_birth": "1964-03-29T00:00:00.000Z",
+                  "entered_office": "2017-01-03T00:00:00.000Z",
+                  "ethnicity": "hispanic-american",
+                  "facebook_url": "https://www.facebook.com/catherinecortezmasto/",
+                  "fax": "202--228-6753",
                   "fec": null,
                   "fec_url": null,
-                  "first_name": "Ron",
-                  "gender": "male",
+                  "first_name": "Catherine",
+                  "gender": "female",
                   "goes_by": null,
                   "google_entity_id": null,
-                  "govtrack": "300100",
-                  "govtrack_url": "https://www.govtrack.us/congress/members/300100",
-                  "last_name": "Wyden",
-                  "latitude": 38.8929,
-                  "longitude": -77.0757,
+                  "govtrack": "412681",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412681",
+                  "last_name": "Masto",
+                  "latitude": 38.8928,
+                  "longitude": -77.0044,
+                  "maplight": null,
+                  "maplight_url": null,
+                  "middle_name": "Cortez",
+                  "name": "Catherine Masto",
+                  "name_slug": "catherine-masto",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00037161",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00037161",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00037161",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00037161",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00037161",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00037161",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00037161",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00037161",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00037161",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00037161",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00037161",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00037161"
+                  },
+                  "party": "democrat",
+                  "phone": "202-224-3542",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/catherine-masto.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/catherine-masto.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/catherine-masto.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/catherine-masto.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/catherine-masto.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/catherine-masto.jpg"
+                  },
+                  "pronunciation": "KATH-rin KOR-tez MASS-toh",
+                  "religion": "roman-catholic",
+                  "state_code": "NV",
+                  "state_code_slug": "nv",
+                  "state_name": "Nevada",
+                  "state_name_slug": "nevada",
+                  "term_end": "2023-01-03T00:00:00.000Z",
+                  "thomas": null,
+                  "title": "senator",
+                  "twitter_handle": "CatherineForNV",
+                  "twitter_url": "https://twitter.com/CatherineForNV",
+                  "votesmart": "69579",
+                  "votesmart_url": "http://votesmart.org/candidate/69579",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/69579",
+                    "bio": "http://votesmart.org/candidate/biography/69579",
+                    "votes": "http://votesmart.org/candidate/key-votes/69579",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/69579",
+                    "ratings": "http://votesmart.org/candidate/evaluations/69579",
+                    "speeches": "http://votesmart.org/candidate/public-statements/69579",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/69579"
+                  },
+                  "website": "http://www.masto.senate.gov",
+                  "wikidata": null,
+                  "wikidata_url": null
+                },
+                {
+                  "address_city": "Washington",
+                  "address_complete": "112 Hart, Washington, DC 20510",
+                  "address_number": null,
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "112 Hart",
+                  "address_type": "Building",
+                  "address_zipcode": "20510",
+                  "age": 52,
+                  "aliases": [
+                    "Democrat Kamala Harris",
+                    "Democrat Harris",
+                    "Senator Kamala Harris",
+                    "Senator Harris",
+                    "Sen. Kamala Harris",
+                    "Sen. Harris",
+                    "Kamala Harris [D]",
+                    "Kamala Harris (D)"
+                  ],
+                  "biography": "Kamala Harris, a Senator from California; born in Oakland, Calif., October 20, 1964; B.A., Howard University, 1986; J.D., University of California, Hastings College of the Law, 1989; admitted to the California bar in 1990; deputy district attorney, Alameda County, Calif., 1990-1998; managing attorney, San Francisco District Attorney's Office; chief of the San Francisco City Attorney's Division on Children and Families; district attorney of San Francisco 2004-2011; attorney general of California 2011-2016; elected as a Democrat to the United States Senate in 2016 for the term ending January 3, 2023.",
+                  "bioguide": "H001075",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=H001075",
+                  "contact_page": "https://www.harris.senate.gov/content/contact-senator",
+                  "date_of_birth": "1964-10-20T00:00:00.000Z",
+                  "entered_office": "2017-01-03T00:00:00.000Z",
+                  "ethnicity": "asian-american",
+                  "facebook_url": "https://www.facebook.com/KamalaHarris",
+                  "fax": "202-224-2200",
+                  "fec": null,
+                  "fec_url": null,
+                  "first_name": "Kamala",
+                  "gender": "female",
+                  "goes_by": null,
+                  "google_entity_id": null,
+                  "govtrack": "412678",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412678",
+                  "last_name": "Harris",
+                  "latitude": 38.8928,
+                  "longitude": -77.0044,
                   "maplight": null,
                   "maplight_url": null,
                   "middle_name": null,
-                  "name": "Ron Wyden",
-                  "name_slug": "ron-wyden",
+                  "name": "Kamala Harris",
+                  "name_slug": "kamala-harris",
                   "name_suffix": null,
                   "openly_lgbtq": "no",
-                  "opensecrets": "N00007724",
-                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
+                  "opensecrets": "N00036915",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00036915",
                   "opensecrets_url_tabs": {
-                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
-                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007724",
-                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007724",
-                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007724",
-                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007724",
-                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007724",
-                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007724",
-                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007724",
-                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007724",
-                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007724"
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00036915",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00036915",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00036915",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00036915",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00036915",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00036915",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00036915",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00036915",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00036915",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00036915"
                   },
                   "party": "democrat",
-                  "phone": "202-224-5244",
-                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
+                  "phone": "202-224-3553",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/kamala-harris.jpg",
                   "photo_url_sizes": {
-                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/ron-wyden.jpg",
-                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/ron-wyden.jpg",
-                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/ron-wyden.jpg",
-                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
-                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/ron-wyden.jpg"
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/kamala-harris.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/kamala-harris.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/kamala-harris.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/kamala-harris.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/kamala-harris.jpg"
                   },
-                  "pronunciation": "RAHN WAHY-dn",
-                  "religion": "jewish",
-                  "state_code": "OR",
-                  "state_code_slug": "or",
-                  "state_name": "Oregon",
-                  "state_name_slug": "oregon",
+                  "pronunciation": "KAH-muh-luh HAIR-iss",
+                  "religion": "baptist",
+                  "state_code": "CA",
+                  "state_code_slug": "ca",
+                  "state_name": "California",
+                  "state_name_slug": "california",
                   "term_end": "2023-01-03T00:00:00.000Z",
-                  "thomas": "1247",
+                  "thomas": null,
                   "title": "senator",
-                  "twitter_handle": "RonWyden",
-                  "twitter_url": "https://twitter.com/RonWyden",
-                  "votesmart": "27036",
-                  "votesmart_url": "http://votesmart.org/candidate/27036",
+                  "twitter_handle": "KamalaHarris",
+                  "twitter_url": "https://twitter.com/KamalaHarris",
+                  "votesmart": "120012",
+                  "votesmart_url": "http://votesmart.org/candidate/120012",
                   "votesmart_url_tabs": {
-                    "summary": "http://votesmart.org/candidate/27036",
-                    "bio": "http://votesmart.org/candidate/biography/27036",
-                    "votes": "http://votesmart.org/candidate/key-votes/27036",
-                    "positions": "http://votesmart.org/candidate/political-courage-test/27036",
-                    "ratings": "http://votesmart.org/candidate/evaluations/27036",
-                    "speeches": "http://votesmart.org/candidate/public-statements/27036",
-                    "funding": "http://votesmart.org/candidate/campaign-finance/27036"
+                    "summary": "http://votesmart.org/candidate/120012",
+                    "bio": "http://votesmart.org/candidate/biography/120012",
+                    "votes": "http://votesmart.org/candidate/key-votes/120012",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/120012",
+                    "ratings": "http://votesmart.org/candidate/evaluations/120012",
+                    "speeches": "http://votesmart.org/candidate/public-statements/120012",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/120012"
                   },
-                  "website": "http://www.wyden.senate.gov",
+                  "website": "http://www.harris.senate.gov",
+                  "wikidata": null,
+                  "wikidata_url": null
+                },
+                {
+                  "address_city": "Washington",
+                  "address_complete": "330 Hart, Washington, DC 20510",
+                  "address_number": null,
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "330 Hart",
+                  "address_type": "Building",
+                  "address_zipcode": "20510",
+                  "age": 69,
+                  "aliases": [
+                    "Democrat Mazie Hirono",
+                    "Democrat Hirono",
+                    "Senator Mazie Hirono",
+                    "Senator Hirono",
+                    "Sen. Mazie Hirono",
+                    "Sen. Hirono",
+                    "Mazie Hirono [D]",
+                    "Mazie Hirono (D)"
+                  ],
+                  "biography": "Mazie Hirono, a Senator and a Representative from Hawaii; born in Fukushima, Japan, November 3, 1947; graduated from Kaimuki High School, Honolulu, Hawaii; B.A., University of Hawaii, Manoa, Hawaii, 1970; J.D., Georgetown University, Washington, D.C., 1978; lawyer, private practice; member of the Hawaii state house of representatives, 1981-1994; Hawaii lieutenant governor, 1994-2002; elected as a Democrat to the One Hundred Tenth and to the two succeeding Congresses (January 3, 2007-January 3, 2013); was not a candidate for reelection to the House of Representatives but was elected as a Democrat to the United States Senate in 2012 for the term ending January 3, 2019.",
+                  "bioguide": "H001042",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=H001042",
+                  "contact_page": "https://www.hirono.senate.gov/contact",
+                  "date_of_birth": "1947-11-03T00:00:00.000Z",
+                  "entered_office": "2013-01-03T00:00:00.000Z",
+                  "ethnicity": "asian-american",
+                  "facebook_url": "https://www.facebook.com/senatorhirono/",
+                  "fax": "202-224-2126",
+                  "fec": null,
+                  "fec_url": null,
+                  "first_name": "Mazie",
+                  "gender": "female",
+                  "goes_by": null,
+                  "google_entity_id": null,
+                  "govtrack": "412200",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412200",
+                  "last_name": "Hirono",
+                  "latitude": 38.8928,
+                  "longitude": -77.0044,
+                  "maplight": null,
+                  "maplight_url": null,
+                  "middle_name": "K.",
+                  "name": "Mazie Hirono",
+                  "name_slug": "mazie-hirono",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00028139",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00028139",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00028139",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00028139",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00028139",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00028139",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00028139",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00028139",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00028139",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00028139",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00028139",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00028139"
+                  },
+                  "party": "democrat",
+                  "phone": "202-224-6361",
+                  "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/mazie-hirono.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/mazie-hirono.jpg",
+                    "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/mazie-hirono.jpg",
+                    "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/mazie-hirono.jpg",
+                    "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/mazie-hirono.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/mazie-hirono.jpg"
+                  },
+                  "pronunciation": "MAY-zee hear-OH-noh [O's unrounded]",
+                  "religion": "buddhism",
+                  "state_code": "HI",
+                  "state_code_slug": "hi",
+                  "state_name": "Hawaii",
+                  "state_name_slug": "hawaii",
+                  "term_end": "2019-01-03T00:00:00.000Z",
+                  "thomas": "1844",
+                  "title": "senator",
+                  "twitter_handle": "maziehirono",
+                  "twitter_url": "https://twitter.com/maziehirono",
+                  "votesmart": "1677",
+                  "votesmart_url": "http://votesmart.org/candidate/1677",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/1677",
+                    "bio": "http://votesmart.org/candidate/biography/1677",
+                    "votes": "http://votesmart.org/candidate/key-votes/1677",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/1677",
+                    "ratings": "http://votesmart.org/candidate/evaluations/1677",
+                    "speeches": "http://votesmart.org/candidate/public-statements/1677",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/1677"
+                  },
+                  "website": "http://www.hirono.senate.gov",
                   "wikidata": null,
                   "wikidata_url": null
                 }
@@ -1052,11 +1321,12 @@ Search for Senator using any combination of search parameters.
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/{?page,pageSize,fields,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## House [/house/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
@@ -1186,19 +1456,19 @@ Search for House Representative using any combination of search parameters.
     + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
     + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
 
-### House Representatives [GET]
+### Example: District Rep at 45.542094, -122.9346037 [GET]
 
-In this example we will get all House Representatives in the State of Oregon and only request the `name`, `party` & `photo_url` fields.
+In this example we will get all House Representatives for `latitude` `45.542094` and `longitude` `-122.9346037`.
 
 + Request
     + Parameters
-        + fields: name,party,photo_url
-        + state: OR
+        + latitude: 45.542094
+        + longitude: `-122.9346037`
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes
-        + fields: name,party,photo_url
-        + state: OR
+        + latitude: 45.542094
+        + longitude: `-122.9346037`
         
     + Body
     
@@ -1208,36 +1478,113 @@ In this example we will get all House Representatives in the State of Oregon and
               "errors": [],
               "field_errors": {},
               "meta": {
-                "total": 5,
-                "showing": 5,
+                "total": 1,
+                "showing": 1,
                 "pages": 1,
                 "page": 1
               },
               "data": [
                 {
-                  "name": "Kurt Schrader",
-                  "party": "democrat",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/kurt-schrader.jpg"
-                },
-                {
-                  "name": "Greg Walden",
-                  "party": "republican",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/greg-walden.jpg"
-                },
-                {
-                  "name": "Peter DeFazio",
-                  "party": "democrat",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/peter-defazio.jpg"
-                },
-                {
+                  "address_city": "Washington",
+                  "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+                  "address_number": "2436",
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "Rayburn Hob",
+                  "address_type": null,
+                  "address_zipcode": "20515",
+                  "age": 62,
+                  "aliases": [
+                    "Democrat Suzanne Bonamici",
+                    "Democrat Bonamici",
+                    "Representative Suzanne Bonamici",
+                    "Representative Bonamici",
+                    "Rep. Suzanne Bonamici",
+                    "Rep. Bonamici",
+                    "Suzanne Bonamici [D]",
+                    "Suzanne Bonamici (D)"
+                  ],
+                  "at_large": null,
+                  "biography": "Suzanne Bonamici, a Representative from Oregon; born in Detroit, Wayne County, Mich., October 14, 1954; A.A., Lane Community College, Eugene, Oreg. 1978; B.A., University of Oregon, Eugene, Oreg., 1980; J.D., University of Oregon, Eugene, Oreg., 1983; lawyer, Federal Trade Commission, Washington, D.C.; lawyer, private practice; staff, Oregon state house of representatives, 2001-2006; member of Oregon state house of representatives 2007-2008; member of Oregon state senate, 2008-2011; elected as a Democrat to the One Hundred Twelfth Congress, by special election, to fill the vacancy caused by the resignation of United States Representative David Wu, and reelected to the three succeeding Congresses (January 31, 2012-present).",
+                  "bioguide": "B001278",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B001278",
+                  "contact_page": "https://bonamici.house.gov/contact-me/email-me",
+                  "date_of_birth": "1954-10-14T00:00:00.000Z",
+                  "district": 1,
+                  "entered_office": "2012-02-07T00:00:00.000Z",
+                  "ethnicity": "white-american",
+                  "facebook_url": "https://www.facebook.com/CongresswomanBonamici",
+                  "fax": "202-225-9497",
+                  "fec": "H2OR01133",
+                  "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H2OR01133",
+                  "first_name": "Suzanne",
+                  "gender": "female",
+                  "goes_by": null,
+                  "google_entity_id": "kg:/m/02q453x",
+                  "govtrack": "412501",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412501",
+                  "last_name": "Bonamici",
+                  "latitude": 38.8863,
+                  "longitude": -77.0114,
+                  "maplight": "1682",
+                  "maplight_url": "http://maplight.org/us-congress/legislator/1682",
+                  "middle_name": null,
                   "name": "Suzanne Bonamici",
+                  "name_slug": "suzanne-bonamici",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00033474",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00033474",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00033474",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00033474",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00033474",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00033474",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00033474",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00033474",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00033474",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00033474"
+                  },
                   "party": "democrat",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg"
-                },
-                {
-                  "name": "Earl Blumenauer",
-                  "party": "democrat",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg"
+                  "phone": "202-225-0855",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-house/headshots/64x64/suzanne-bonamici.jpg",
+                    "128x128": "https://cdn.civil.services/us-house/headshots/128x128/suzanne-bonamici.jpg",
+                    "256x256": "https://cdn.civil.services/us-house/headshots/256x256/suzanne-bonamici.jpg",
+                    "512x512": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/suzanne-bonamici.jpg"
+                  },
+                  "pronunciation": "soo-ZANN bahn-uh-MEE-chee",
+                  "religion": "jewish",
+                  "state_code": "OR",
+                  "state_code_slug": "or",
+                  "state_name": "Oregon",
+                  "state_name_slug": "oregon",
+                  "term_end": "2019-01-03T00:00:00.000Z",
+                  "thomas": "2092",
+                  "title": "representative",
+                  "twitter_handle": "RepBonamici",
+                  "twitter_url": "https://twitter.com/RepBonamici",
+                  "vacant": null,
+                  "votesmart": "59641",
+                  "votesmart_url": "http://votesmart.org/candidate/59641",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/59641",
+                    "bio": "http://votesmart.org/candidate/biography/59641",
+                    "votes": "http://votesmart.org/candidate/key-votes/59641",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/59641",
+                    "ratings": "http://votesmart.org/candidate/evaluations/59641",
+                    "speeches": "http://votesmart.org/candidate/public-statements/59641",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/59641"
+                  },
+                  "website": "https://bonamici.house.gov",
+                  "wikidata": "Q45946",
+                  "wikidata_url": "https://www.wikidata.org/wiki/Q45946"
                 }
               ],
               "attribution": {
@@ -1255,11 +1602,12 @@ In this example we will get all House Representatives in the State of Oregon and
 
 This returns data for both the `/senate` & `/house` endpoints with one call.
 
-## Government [/government/{?page,pageSize,fields,zipcode,latitude,longitude,state}]
+## Government [/government/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state}]
 
 Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
 
 + Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `house,senate`) - Comma Separated List of fields you want in the response
@@ -1268,7 +1616,7 @@ Search for House Representative using any combination of search parameters.  You
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
 
-### House Representatives [GET]
+### Example: House & Senate in Zip Code 97232 [GET]
 
 + Request
     + Parameters
@@ -1305,6 +1653,16 @@ Search for House Representative using any combination of search parameters.  You
                     "address_type": null,
                     "address_zipcode": "20515",
                     "age": 68,
+                    "aliases": [
+                      "Democrat Earl Blumenauer",
+                      "Democrat Blumenauer",
+                      "Representative Earl Blumenauer",
+                      "Representative Blumenauer",
+                      "Rep. Earl Blumenauer",
+                      "Rep. Blumenauer",
+                      "Earl Blumenauer [D]",
+                      "Earl Blumenauer (D)"
+                    ],
                     "at_large": null,
                     "biography": "Earl Blumenauer, a Representative from Oregon; born in Portland, Multnomah County, Oreg., August 16, 1948; graduated from Centennial High School, Portland, Oreg., 1966; B.A., Lewis and Clark College, Portland, Oreg., 1970; J.D., Lewis and Clark Law School, Portland, Oreg., 1976; assistant to the president of Portland State University, Portland, Oreg., 1970-1977; member of the Oregon state house of representatives, 1973-1978; member of the board of directors, Portland Community College, 1975-1981; Multnomah County, Oreg., commissioner, 1978-1985; Portland, Oreg., city commissioner, 1986-1996; served on the Governorâ€™s commission on higher education, 1990-1991; elected as a Democrat, by special election, to the One Hundred Fourth Congress to fill the vacancy caused by the resignation of United States Representative Ronald Lee Wyden, and reelected to the eleven succeeding Congresses (May 21, 1996-present).",
                     "bioguide": "B000574",
@@ -1399,6 +1757,16 @@ Search for House Representative using any combination of search parameters.  You
                     "address_type": "Building",
                     "address_zipcode": "20510",
                     "age": 60,
+                    "aliases": [
+                      "Democrat Jeff Merkley",
+                      "Democrat Merkley",
+                      "Senator Jeff Merkley",
+                      "Senator Merkley",
+                      "Sen. Jeff Merkley",
+                      "Sen. Merkley",
+                      "Jeff Merkley [D]",
+                      "Jeff Merkley (D)"
+                    ],
                     "biography": "Jeff Merkley, a Senator from Oregon; born in Myrtle Creek, Ore., October 24, 1956; B.A., Stanford University, 1979; M.P.A., Princeton University, 1982; government analyst; nonprofit executive; Oregon State Representative, 1999-2008; speaker of the Oregon State House of Representative, 2007-2008; elected as a Democrat to the United States Senate in 2008; reelected in 2014 for the term ending January 3, 2021.",
                     "bioguide": "M001176",
                     "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=M001176",
@@ -1488,6 +1856,16 @@ Search for House Representative using any combination of search parameters.  You
                     "address_type": "Building",
                     "address_zipcode": "20510",
                     "age": 67,
+                    "aliases": [
+                      "Democrat Ron Wyden",
+                      "Democrat Wyden",
+                      "Senator Ron Wyden",
+                      "Senator Wyden",
+                      "Sen. Ron Wyden",
+                      "Sen. Wyden",
+                      "Ron Wyden [D]",
+                      "Ron Wyden (D)"
+                    ],
                     "biography": "Ron Wyden, a Senator and a Representative from Oregon; born in Wichita, Sedgwick County, Kans., May 3, 1949; attended the public schools of Palo Alto, Calif.; A.B., Stanford University 1971; J.D., University of Oregon Law School in Eugene 1974; director, Oregon Legal Services for the Elderly 1977-1979; public member, Oregon State Board of Examiners of Nursing Home Administrators 1977-1979; elected as a Democrat to the Ninety-seventh and to the seven succeeding Congresses, and served from January 3, 1981, to February 5, 1996, when he resigned, having been elected to the Senate; elected to the Senate in a special election on January 30, 1996, to fill the unexpired portion of the term ending January 3, 1999, left vacant by the resignation of Robert W. Packwood, and began service on February 5, 1996; reelected in 1998, 2004 and again in 2010 for the term ending January 3, 2017; chair, Committee on Energy and Natural Resources (One Hundred Thirteenth Congress [January 3, 2013-February 12, 2014]), Committee on Finance (One Hundred Thirteenth Congress [February 12, 2014-January 3, 2015]).",
                     "bioguide": "W000779",
                     "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=W000779",
@@ -1567,6 +1945,181 @@ Search for House Representative using any combination of search parameters.  You
                   }
                 ]
               },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+            
+# Group State Endpoints
+
+The following endpoints are for specific data related to Stated within the United States
+
+## State [/state/{state}{?apikey,page,pageSize,fields}]
+
+Fetch details for Specific State.
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `nickname,population,website`) - Comma Separated List of fields you want in the response
+    + state (string, `ny`) - State you want, can be either the states abbreviation, name or slug
+
+### Example: Information about New York [GET]
+
+In this example, we will fetch information about the State of New York.
+
++ Request
+    + Parameters
+        + state: NY
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + state: NY
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": {
+                "admission_date": "1788-07-26T00:00:00.000Z",
+                "admission_number": 11,
+                "capital_city": "Albany",
+                "capital_url": "http://www.albanyny.org",
+                "constitution_url": "https://www.dos.ny.gov/info/constitution.htm",
+                "facebook_url": null,
+                "landscape": {
+                  "size_640x360": "https://cdn.civil.services/us-states/backgrounds/640x360/landscape/new-york.jpg",
+                  "size_960x540": "https://cdn.civil.services/us-states/backgrounds/960x540/landscape/new-york.jpg",
+                  "size_1280x720": "https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-york.jpg",
+                  "size_1920x1080": "https://cdn.civil.services/us-states/backgrounds/1920x1080/landscape/new-york.jpg"
+                },
+                "map": {
+                  "large": "https://cdn.civil.services/us-states/maps/new-york-large.png",
+                  "small": "https://cdn.civil.services/us-states/maps/new-york-small.png"
+                },
+                "nickname": "Empire State",
+                "population": 19651127,
+                "population_rank": 3,
+                "skyline": {
+                  "size_640x360": "https://cdn.civil.services/us-states/backgrounds/640x360/skyline/new-york.jpg",
+                  "size_960x540": "https://cdn.civil.services/us-states/backgrounds/960x540/skyline/new-york.jpg",
+                  "size_1280x720": "https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-york.jpg",
+                  "size_1920x1080": "https://cdn.civil.services/us-states/backgrounds/1920x1080/skyline/new-york.jpg"
+                },
+                "state_code": "NY",
+                "state_code_slug": "ny",
+                "state_flag": {
+                  "large": "https://cdn.civil.services/us-states/flags/new-york-large.png",
+                  "small": "https://cdn.civil.services/us-states/flags/new-york-small.png"
+                },
+                "state_name": "New York",
+                "state_name_slug": "new-york",
+                "state_seal": {
+                  "large": "https://cdn.civil.services/us-states/seals/new-york-large.png",
+                  "small": "https://cdn.civil.services/us-states/seals/new-york-small.png"
+                },
+                "twitter_handle": "nygov",
+                "twitter_url": "https://twitter.com/nygov",
+                "website": "http://www.ny.gov"
+              },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+
+         
+## Search [/state/{?apikey,page,pageSize,fields,name,slug,code,nickname,minPopulation,maxPopulation,admittedBefore,admittedAfter,latitude,longitude}]
+
+Fetch details for Specific State.
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `nickname,population,website`) - Comma Separated List of fields you want in the response
+    + name (string, optional, `New York`) - Name of State
+    + slug (string, optional, `new-york`) - Name of State converted to lowercase letters and spaces replaced with dashes
+    + code (string, optional, `NY`) - Two Letter State Abbreviation
+    + nickname (string, optional, `Empire State`) - Official State Nickname
+    + minPopulation (number, optional, `100000`) - Minimum Population of State
+    + maxPopulation (number, optional, `1000000`) - Maximum Population of State
+    + admittedBefore (date, optional, `1800`) - Admitted Before Date
+    + admittedAfter (date, optional, `1700`) - Admitted After Date
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+
+### Example: Find State w/ Nickname "Empire State" [GET]
+
+In this example, we will fetch information for a State with the Nickname "Empire State".
+
++ Request
+    + Parameters
+        + nickname: Empire State
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + nickname: Empire State
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": [
+                {
+                  "state_name": "New York",
+                  "state_name_slug": "new-york",
+                  "state_code": "NY",
+                  "state_code_slug": "ny",
+                  "nickname": "Empire State",
+                  "website": "http://www.ny.gov",
+                  "admission_date": "1788-07-26T00:00:00.000Z",
+                  "admission_number": 11,
+                  "capital_city": "Albany",
+                  "capital_url": "http://www.albanyny.org",
+                  "population": 19651127,
+                  "population_rank": 3,
+                  "constitution_url": "https://www.dos.ny.gov/info/constitution.htm",
+                  "state_flag_url": "https://cdn.civil.services/us-states/flags/new-york-large.png",
+                  "state_seal_url": "https://cdn.civil.services/us-states/seals/new-york-large.png",
+                  "map_image_url": "https://cdn.civil.services/us-states/maps/new-york-large.png",
+                  "landscape_background_url": "https://cdn.civil.services/us-states/backgrounds/1280x720/landscape/new-york.jpg",
+                  "skyline_background_url": "https://cdn.civil.services/us-states/backgrounds/1280x720/skyline/new-york.jpg",
+                  "twitter_handle": "nygov",
+                  "twitter_url": "https://twitter.com/nygov",
+                  "facebook_url": null
+                }
+              ],
               "attribution": {
                 "text": "Data Provided by Civil Services",
                 "website": "https://civil.services",
