@@ -1,1 +1,1 @@
-require('./app/server');
+require('./app/multicore');
