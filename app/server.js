@@ -248,9 +248,8 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  var port = config.get('port');
+  var bind = (typeof port === 'string') ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -272,17 +271,13 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  var addr = app.address();
+  var bind = (typeof addr === 'string') ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
 
 app.on('error', onError);
 app.on('listening', onListening);
 
-app.listen(config.get('port'));
-
-module.exports = app;
+module.exports = app.listen(config.get('port'));
 module.exports.setupAPI = setupAPI;
