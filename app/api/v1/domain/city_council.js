@@ -123,8 +123,8 @@ module.exports = {
       term_end: data.term_end,
       email: data.email,
       phone: data.phone,
-      latitude: data.latitude,
-      longitude: data.longitude,
+      latitude: parseFloat(data.latitude),
+      longitude: parseFloat(data.longitude),
       address_complete: data.address_complete,
       address_number: data.address_number,
       address_prefix: data.address_prefix,
@@ -147,8 +147,8 @@ module.exports = {
       facebook_url: data.facebook_url,
       photo_url: data.photo_url,
       location: {
-        lat: data.latitude,
-        lon: data.longitude
+        lat: parseFloat(data.latitude),
+        lon: parseFloat(data.longitude)
       },
       shape: data.shape,
       aliases: data.getAliases()

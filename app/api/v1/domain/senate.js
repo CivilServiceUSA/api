@@ -137,8 +137,8 @@ module.exports = {
       biography: data.biography,
       phone: data.phone,
       fax: data.fax,
-      latitude: data.latitude,
-      longitude: data.longitude,
+      latitude: parseFloat(data.latitude),
+      longitude: parseFloat(data.longitude),
       address_complete: data.address_complete,
       address_number: data.address_number,
       address_prefix: data.address_prefix,
@@ -156,8 +156,8 @@ module.exports = {
       twitter_url: data.twitter_url,
       photo_url: data.photo_url,
       location: {
-        lat: data.latitude,
-        lon: data.longitude
+        lat: parseFloat(data.latitude),
+        lon: parseFloat(data.longitude)
       },
       shape: data.shape,
       aliases: data.getAliases()

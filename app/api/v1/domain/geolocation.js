@@ -60,12 +60,12 @@ module.exports = {
       county: data.county,
       estimated_population: data.estimated_population,
       id: data.id,
-      latitude: data.latitude,
+      latitude: parseFloat(data.latitude),
       location: {
-        lat: data.latitude,
-        lon: data.longitude
+        lat: parseFloat(data.latitude),
+        lon: parseFloat(data.longitude)
       },
-      longitude: data.longitude,
+      longitude: parseFloat(data.longitude),
       state: data.state,
       timezone: data.timezone,
       zipcode: data.zipcode
