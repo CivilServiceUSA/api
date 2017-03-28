@@ -1,6 +1,6 @@
 /**
  * @module routes/house
- * @version 1.0.0
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  * @todo Create Unit Tests for Routes
  */
@@ -28,6 +28,14 @@ router.route('/house').get(function(request, response) {
       analytics.trackEvent(apikey, 'House', 'Search Results', request.query, results.length);
 
       response.json(util.createAPIResponse(results, request.query.fields));
+    })
+    .catch(function(error){
+      var apikey = (request.header('API-Key')) || request.query.apikey || null;
+      analytics.trackEvent(apikey, 'City Council', 'Error', error.toString());
+
+      response.json(util.createAPIResponse({
+        errors: ['Unable to Fetch House Data']
+      }, request.query.fields));
     });
 });
 

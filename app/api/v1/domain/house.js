@@ -1,6 +1,6 @@
 /**
  * @module domain/house
- * @version 1.0.0
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -182,11 +182,11 @@ module.exports = {
 
     for (var i = 0; i < data.length; i++) {
       data[i].photo_url_sizes = {
-        '64x64': data[i].photo_url.replace('512x512', '64x64'),
-        '128x128': data[i].photo_url.replace('512x512', '128x128'),
-        '256x256': data[i].photo_url.replace('512x512', '256x256'),
-        '512x512': data[i].photo_url,
-        '1024x1024': data[i].photo_url.replace('512x512', '1024x1024')
+        '64x64': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '64x64') : null,
+        '128x128': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '128x128') : null,
+        '256x256': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '256x256') : null,
+        '512x512': (data[i].photo_url) ? data[i].photo_url : null,
+        '1024x1024': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '1024x1024') : null
       };
 
       data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;
@@ -255,12 +255,6 @@ module.exports = {
       return _.get(searchParams, 'body.query.bool.must');
     }
 
-    function setGeoFilters(filter) {
-      if (!_.get(searchParams, 'body.query.filtered.filter')) {
-        _.set(searchParams, 'body.query.filtered.filter', filter);
-      }
-    }
-
     // Page size
     if (query.pageSize && validator.isInt(query.pageSize) && validator.toInt(query.pageSize, 10) >= 1) {
       pageSize = validator.toInt(query.pageSize, 10);
@@ -274,6 +268,31 @@ module.exports = {
     }
 
     searchParams.from = (page - 1) * searchParams.size;
+
+    // Sorting
+    var sort = (query.sort) ? query.sort.split(',') : ['state_code', 'district'];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc'];
+
+    searchParams.body.sort = {};
+
+    for (var i = 0; i < sort.length; i++) {
+      var sortOrder = (typeof order[i] !== 'undefined' && ( order[i] === 'asc' || order[i] === 'desc' )) ? order[i] : 'asc';
+      searchParams.body.sort[sort[i]] = {
+        order: sortOrder
+      };
+    }
+
+    /**
+     * Filter By State
+     */
+    if (query.id) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        match: {
+          id: query.id
+        }
+      });
+    }
 
     /**
      * Filter By State
@@ -661,15 +680,17 @@ module.exports = {
      * Filter By Latitude & Longitude
      */
     if (query.latitude && query.longitude) {
-      setGeoFilters({
+      andFilters = getAndFilters();
+      andFilters.push({
         geo_shape: {
           shape: {
             shape: {
               coordinates: [
-                query.longitude, //-82.6321373,
-                query.latitude // 27.7812652
+                query.longitude,
+                query.latitude
               ],
-              type: 'point'
+              type: 'circle',
+              radius: '1km'
             }
           }
         }
@@ -686,9 +707,15 @@ module.exports = {
         }
       })
       .then(function(zipcode) {
+        if (zipcode && zipcode.state && zipcode.shape && zipcode.shape.coordinates) {
+          andFilters = getAndFilters();
+          andFilters.push({
+            match: {
+              state_code: zipcode.state
+            }
+          });
 
-        if (zipcode && zipcode.shape && zipcode.shape.coordinates) {
-          setGeoFilters({
+          andFilters.push({
             geo_shape: {
               shape: {
                 shape: {
@@ -723,7 +750,7 @@ module.exports = {
             })
             .catch(function(error) {
               return util.createAPIResponse({
-                errors: [ query.zipcode + ' Zip Code Not Found' ]
+                errors: [ 'No Districts found for ' + query.zipcode + ' Zip Code' ]
               });
             });
         } else {
@@ -759,6 +786,7 @@ module.exports = {
           };
         })
         .catch(function(error) {
+          console.log('error', error);
           return util.createAPIResponse({
             errors: [error]
           });

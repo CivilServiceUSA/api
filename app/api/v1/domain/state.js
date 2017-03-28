@@ -1,6 +1,6 @@
 /**
- * @module domain/profile
- * @version 1.0.0
+ * @module domain/state
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -177,7 +177,6 @@ module.exports = {
     var searchParams = {
       index: indexName,
       type: indexType,
-      sort: 'state_name',
       body: {}
     };
 
@@ -187,12 +186,6 @@ module.exports = {
       }
 
       return _.get(searchParams, 'body.query.bool.must');
-    }
-
-    function setGeoFilters(filter) {
-      if (!_.get(searchParams, 'body.query.filtered.filter')) {
-        _.set(searchParams, 'body.query.filtered.filter', filter);
-      }
     }
 
     // Page size
@@ -208,6 +201,19 @@ module.exports = {
     }
 
     searchParams.from = (page - 1) * searchParams.size;
+
+    // Sorting
+    var sort = (query.sort) ? query.sort.split(',') : ['state_name'];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc'];
+
+    searchParams.body.sort = {};
+
+    for (var i = 0; i < sort.length; i++) {
+      var sortOrder = (typeof order[i] !== 'undefined' && ( order[i] === 'asc' || order[i] === 'desc' )) ? order[i] : 'asc';
+      searchParams.body.sort[sort[i]] = {
+        order: sortOrder
+      };
+    }
 
     /**
      * Filter By State Name
@@ -317,7 +323,8 @@ module.exports = {
      * Filter By Latitude, Longitude & Distance
      */
     if (query.latitude && query.longitude) {
-      setGeoFilters({
+      andFilters = getAndFilters();
+      andFilters.push({
         geo_shape: {
           shape: {
             shape: {
@@ -325,7 +332,8 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'point'
+              type: 'circle',
+              radius: '0.01km'
             }
           }
         }

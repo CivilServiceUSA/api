@@ -1,6 +1,6 @@
 /**
  * @module elasticsearch/create/state
- * @version 1.0.0
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -58,20 +58,24 @@ mapping.body[indexType] = {
       type: 'date'
     },
     admission_number: {
-      type: 'integer'
+      type: 'integer',
+      index: 'not_analyzed'
     },
     capital_city: {
-      type: 'string'
+      type: 'string',
+      index: 'not_analyzed'
     },
     capital_url: {
       type: 'string',
       index: 'no'
     },
     population: {
-      type: 'integer'
+      type: 'integer',
+      index: 'not_analyzed'
     },
     population_rank: {
-      type: 'integer'
+      type: 'integer',
+      index: 'not_analyzed'
     },
     constitution_url: {
       type: 'string',

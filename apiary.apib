@@ -8,8 +8,8 @@ HOST: https://api.civil.services/v1
 Civil Services is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 * _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__
-* _Last Modified:_ __March 22st, 2017__
-* _Current API Version:_ __v1.0.1__
+* _Last Modified:_ __March 28th, 2017__
+* _Current API Version:_ __v1.0.2__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use. You can __[Register for an API Key](https://api.civil.services)__ if you would like access to our API. We typically review applications within a business day.
 
@@ -113,6 +113,8 @@ for if there are a lot of results.
 + `fields` (string) - Comma Separated List of fields you want in the response.  By default all public fields will be returned, but if you only need specific fields you can greatly simplify your API response by specifying them.
 + `pageSize` (number, optional) - How many results to return in a single API call. Defaults to 30
 + `page` (number, optional) - If there is more than one page of results, you can set which page to load here
++ `sort` (optional, string, `population_rank`) - Comma Separated List of fields you want to sort by
++ `order` (optional, string, `asc`) - Comma Separated List of Order Methods
 + `pretty` (optional) - If you want to format the JSON response to be human readable, just add a `pretty` param in the API call ( it does not need a value )
 
 
@@ -120,7 +122,7 @@ for if there are a lot of results.
 
 The following endpoints are for specific data related to Zip Codes and Geolocation data.
 
-## Zip Code [/geolocation/zipcode/{zipcode}{?apikey,page,pageSize,fields}]
+## Zip Code [/geolocation/zipcode/{zipcode}{?apikey,page,pageSize,fields,sort,order}]
 
 Fetch details for a Specific Zip Code
 
@@ -129,6 +131,8 @@ Fetch details for a Specific Zip Code
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,state,location`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `city_number`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc`) - Comma Separated List of Order Methods
     + zipcode (required, string, `97232`) - Unique Zip Code
 
 ### Example: Location Info for 97232 [GET]
@@ -186,7 +190,7 @@ This example fetches details for the zip code `97232`.
               }
             }
 
-## IP Address [/geolocation/ip/{ipaddress}{?apikey,page,pageSize,fields}]
+## IP Address [/geolocation/ip/{ipaddress}{?apikey,page,pageSize,fields,sort,order}]
 
 Fetch details for a Specific IP Address
 
@@ -195,6 +199,8 @@ Fetch details for a Specific IP Address
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `city_continent`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc`) - Comma Separated List of Order Methods
     + ipaddress (required, string, `97.96.74.114`) - IP Address to Lookup ( Defaults to Requester's IP Address )
 
 ### Example: Location Info for 97.96.74.114 [GET]
@@ -307,7 +313,7 @@ This example fetches details for the ip address `97.96.74.114`.
               }
             }
 
-## Geolocation [/geolocation/{?apikey,page,pageSize,fields,zipcode,city,county,state,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
+## Geolocation [/geolocation/{?apikey,page,pageSize,fields,sort,order,zipcode,city,county,state,areaCode,timezone,minPopulation,maxPopulation,latitude,longitude,distance}]
 
 Get Location Specific Data using any combination of filters.
 
@@ -316,6 +322,8 @@ Get Location Specific Data using any combination of filters.
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `city,location`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `city`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc`) - Comma Separated List of Order Methods
     + zipcode (optional, string, `97232`) - Unique Zip Code
     + city (optional, string, `Portland`) - City to use as Filter
     + county (optional, string, `Multnomah`) - County to use as Filter
@@ -746,7 +754,7 @@ This example fetches details for the zip code __97232__ using the `zipcode` para
 
 View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/senate/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## Senate [/senate/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Senator using any combination of search parameters.
 
@@ -755,6 +763,8 @@ Search for Senator using any combination of search parameters.
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `state_code,name`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
     + zipcode (optional, string, `97232`) - United Steps Zip Code
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
@@ -1321,7 +1331,7 @@ This Example fetches all Women of Color in the United States Senate using the `g
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
@@ -1330,6 +1340,8 @@ Search for House Representative using any combination of search parameters.
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `state_code,district`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
     + zipcode (optional, string, `97232`) - United Steps Zip Code
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
@@ -1620,11 +1632,13 @@ Search for House Representative using any combination of search parameters.  You
 
 + Request
     + Parameters
-        + zipcode: 97232
+        + latitude: `40.75368539999999`
+        + longitude: `-73.9991637`
 
 + Response 200 (application/json; charset=utf-8)
     + Attributes
-        + zipcode: 97232
+        + latitude: `40.75368539999999`
+        + longitude: `-73.9991637`
         
     + Body
     
@@ -1640,308 +1654,186 @@ Search for House Representative using any combination of search parameters.  You
                 "page": 1
               },
               "data": {
-                "house": [
+                "city_council": [
                   {
-                    "address_city": "Washington",
-                    "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
-                    "address_number": "2436",
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
                     "address_prefix": null,
-                    "address_sec_unit_num": null,
-                    "address_sec_unit_type": null,
-                    "address_state": "DC",
-                    "address_street": "Rayburn Hob",
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
                     "address_type": null,
-                    "address_zipcode": "20515",
-                    "age": 68,
+                    "address_zipcode": "10007",
+                    "age": 34,
                     "aliases": [
-                      "Democrat Earl Blumenauer",
-                      "Democrat Blumenauer",
-                      "Representative Earl Blumenauer",
-                      "Representative Blumenauer",
-                      "Rep. Earl Blumenauer",
-                      "Rep. Blumenauer",
-                      "Earl Blumenauer [D]",
-                      "Earl Blumenauer (D)"
+                      "Democrat Corey Johnson",
+                      "Democrat Johnson",
+                      "Councilor Corey Johnson",
+                      "Councilor Johnson",
+                      "Corey Johnson [D]",
+                      "Corey Johnson (D)"
                     ],
-                    "at_large": null,
-                    "biography": "Earl Blumenauer, a Representative from Oregon; born in Portland, Multnomah County, Oreg., August 16, 1948; graduated from Centennial High School, Portland, Oreg., 1966; B.A., Lewis and Clark College, Portland, Oreg., 1970; J.D., Lewis and Clark Law School, Portland, Oreg., 1976; assistant to the president of Portland State University, Portland, Oreg., 1970-1977; member of the Oregon state house of representatives, 1973-1978; member of the board of directors, Portland Community College, 1975-1981; Multnomah County, Oreg., commissioner, 1978-1985; Portland, Oreg., city commissioner, 1986-1996; served on the Governorâ€™s commission on higher education, 1990-1991; elected as a Democrat, by special election, to the One Hundred Fourth Congress to fill the vacancy caused by the resignation of United States Representative Ronald Lee Wyden, and reelected to the eleven succeeding Congresses (May 21, 1996-present).",
-                    "bioguide": "B000574",
-                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B000574",
-                    "contact_page": "https://blumenauerforms.house.gov/forms/writeyourrep/",
-                    "date_of_birth": "1948-08-16T00:00:00.000Z",
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1982-04-28T00:00:00.000Z",
                     "district": 3,
-                    "entered_office": "1996-05-21T00:00:00.000Z",
+                    "email": "district3@council.nyc.gov",
+                    "entered_office": "2014-01-01T00:00:00.000Z",
                     "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/blumenauer",
-                    "fax": "202-225-8941",
-                    "fec": "H6OR03064",
-                    "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H6OR03064",
-                    "first_name": "Earl",
+                    "facebook_url": "https://www.facebook.com/corey.d.johnson",
+                    "first_name": "Corey",
                     "gender": "male",
                     "goes_by": null,
-                    "google_entity_id": "kg:/m/033tw8",
-                    "govtrack": "400033",
-                    "govtrack_url": "https://www.govtrack.us/congress/members/400033",
-                    "last_name": "Blumenauer",
-                    "latitude": 38.8863,
-                    "longitude": -77.0114,
-                    "maplight": "152",
-                    "maplight_url": "http://maplight.org/us-congress/legislator/152",
-                    "middle_name": null,
-                    "name": "Earl Blumenauer",
-                    "name_slug": "earl-blumenauer",
+                    "last_name": "Johnson",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Corey",
+                    "name": "Corey Johnson",
+                    "name_slug": "corey-johnson",
                     "name_suffix": null,
-                    "openly_lgbtq": "no",
-                    "opensecrets": "N00007727",
-                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007727",
-                    "opensecrets_url_tabs": {
-                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007727",
-                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007727",
-                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007727",
-                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007727",
-                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007727",
-                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007727",
-                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007727",
-                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007727",
-                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007727",
-                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007727"
-                    },
                     "party": "democrat",
-                    "phone": "202-225-4811",
-                    "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg",
-                    "photo_url_sizes": {
-                      "64x64": "https://cdn.civil.services/us-house/headshots/64x64/earl-blumenauer.jpg",
-                      "128x128": "https://cdn.civil.services/us-house/headshots/128x128/earl-blumenauer.jpg",
-                      "256x256": "https://cdn.civil.services/us-house/headshots/256x256/earl-blumenauer.jpg",
-                      "512x512": "https://cdn.civil.services/us-house/headshots/512x512/earl-blumenauer.jpg",
-                      "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/earl-blumenauer.jpg"
-                    },
-                    "pronunciation": "EARL BLOO-meh-now-er",
-                    "religion": "protestant",
-                    "state_code": "OR",
-                    "state_code_slug": "or",
-                    "state_name": "Oregon",
-                    "state_name_slug": "oregon",
-                    "term_end": "2019-01-03T00:00:00.000Z",
-                    "thomas": "99",
-                    "title": "representative",
-                    "twitter_handle": "repblumenauer",
-                    "twitter_url": "https://twitter.com/repblumenauer",
-                    "vacant": null,
-                    "votesmart": "367",
-                    "votesmart_url": "http://votesmart.org/candidate/367",
-                    "votesmart_url_tabs": {
-                      "summary": "http://votesmart.org/candidate/367",
-                      "bio": "http://votesmart.org/candidate/biography/367",
-                      "votes": "http://votesmart.org/candidate/key-votes/367",
-                      "positions": "http://votesmart.org/candidate/political-courage-test/367",
-                      "ratings": "http://votesmart.org/candidate/evaluations/367",
-                      "speeches": "http://votesmart.org/candidate/public-statements/367",
-                      "funding": "http://votesmart.org/candidate/campaign-finance/367"
-                    },
-                    "website": "https://blumenauerforms.house.gov",
-                    "wikidata": "Q748066",
-                    "wikidata_url": "https://www.wikidata.org/wiki/Q748066"
-                  }
-                ],
-                "senate": [
-                  {
-                    "address_city": "Washington",
-                    "address_complete": "313 Hart, Washington, DC 20510",
-                    "address_number": null,
-                    "address_prefix": null,
-                    "address_sec_unit_num": null,
-                    "address_sec_unit_type": null,
-                    "address_state": "DC",
-                    "address_street": "313 Hart",
-                    "address_type": "Building",
-                    "address_zipcode": "20510",
-                    "age": 60,
-                    "aliases": [
-                      "Democrat Jeff Merkley",
-                      "Democrat Merkley",
-                      "Senator Jeff Merkley",
-                      "Senator Merkley",
-                      "Sen. Jeff Merkley",
-                      "Sen. Merkley",
-                      "Jeff Merkley [D]",
-                      "Jeff Merkley (D)"
-                    ],
-                    "biography": "Jeff Merkley, a Senator from Oregon; born in Myrtle Creek, Ore., October 24, 1956; B.A., Stanford University, 1979; M.P.A., Princeton University, 1982; government analyst; nonprofit executive; Oregon State Representative, 1999-2008; speaker of the Oregon State House of Representative, 2007-2008; elected as a Democrat to the United States Senate in 2008; reelected in 2014 for the term ending January 3, 2021.",
-                    "bioguide": "M001176",
-                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=M001176",
-                    "contact_page": "https://www.merkley.senate.gov/contact/",
-                    "date_of_birth": "1956-10-24T00:00:00.000Z",
-                    "entered_office": "2009-01-03T00:00:00.000Z",
-                    "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/jeffmerkley",
-                    "fax": "202-228-3997",
-                    "fec": null,
-                    "fec_url": null,
-                    "first_name": "Jeff",
-                    "gender": "male",
-                    "goes_by": null,
-                    "google_entity_id": null,
-                    "govtrack": "412325",
-                    "govtrack_url": "https://www.govtrack.us/congress/members/412325",
-                    "last_name": "Merkley",
-                    "latitude": 38.8928,
-                    "longitude": -77.0044,
-                    "maplight": null,
-                    "maplight_url": null,
-                    "middle_name": null,
-                    "name": "Jeff Merkley",
-                    "name_slug": "jeff-merkley",
-                    "name_suffix": null,
-                    "openly_lgbtq": "no",
-                    "opensecrets": "N00029303",
-                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
-                    "opensecrets_url_tabs": {
-                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00029303",
-                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00029303",
-                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00029303",
-                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00029303",
-                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00029303",
-                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00029303",
-                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00029303",
-                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00029303",
-                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00029303",
-                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00029303"
-                    },
-                    "party": "democrat",
-                    "phone": "202-224-3753",
-                    "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
-                    "photo_url_sizes": {
-                      "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/jeff-merkley.jpg",
-                      "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/jeff-merkley.jpg",
-                      "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/jeff-merkley.jpg",
-                      "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/jeff-merkley.jpg",
-                      "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/jeff-merkley.jpg"
-                    },
-                    "pronunciation": "JEFF MER-klee",
-                    "religion": "lutheran",
-                    "state_code": "OR",
-                    "state_code_slug": "or",
-                    "state_name": "Oregon",
-                    "state_name_slug": "oregon",
-                    "term_end": "2021-01-03T00:00:00.000Z",
-                    "thomas": "1900",
-                    "title": "senator",
-                    "twitter_handle": "SenJeffMerkley",
-                    "twitter_url": "https://twitter.com/SenJeffMerkley",
-                    "votesmart": "23644",
-                    "votesmart_url": "http://votesmart.org/candidate/23644",
-                    "votesmart_url_tabs": {
-                      "summary": "http://votesmart.org/candidate/23644",
-                      "bio": "http://votesmart.org/candidate/biography/23644",
-                      "votes": "http://votesmart.org/candidate/key-votes/23644",
-                      "positions": "http://votesmart.org/candidate/political-courage-test/23644",
-                      "ratings": "http://votesmart.org/candidate/evaluations/23644",
-                      "speeches": "http://votesmart.org/candidate/public-statements/23644",
-                      "funding": "http://votesmart.org/candidate/campaign-finance/23644"
-                    },
-                    "website": "http://www.merkley.senate.gov",
-                    "wikidata": null,
-                    "wikidata_url": null
+                    "phone": "212-564-7757",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/corey-johnson.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "councilor",
+                    "twitter_handle": "CoreyinNYC",
+                    "twitter_url": "https://twitter.com/CoreyinNYC",
+                    "vacant": false
                   },
                   {
-                    "address_city": "Washington",
-                    "address_complete": "221 Dirksen, Washington, DC 20510",
-                    "address_number": null,
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
                     "address_prefix": null,
-                    "address_sec_unit_num": null,
-                    "address_sec_unit_type": null,
-                    "address_state": "DC",
-                    "address_street": "221 Dirksen",
-                    "address_type": "Building",
-                    "address_zipcode": "20510",
-                    "age": 67,
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
+                    "address_type": null,
+                    "address_zipcode": "10007",
+                    "age": 55,
                     "aliases": [
-                      "Democrat Ron Wyden",
-                      "Democrat Wyden",
-                      "Senator Ron Wyden",
-                      "Senator Wyden",
-                      "Sen. Ron Wyden",
-                      "Sen. Wyden",
-                      "Ron Wyden [D]",
-                      "Ron Wyden (D)"
+                      "Democrat Bill De Blasio",
+                      "Democrat De Blasio",
+                      "Mayor Bill De Blasio",
+                      "Mayor De Blasio",
+                      "Bill De Blasio [D]",
+                      "Bill De Blasio (D)"
                     ],
-                    "biography": "Ron Wyden, a Senator and a Representative from Oregon; born in Wichita, Sedgwick County, Kans., May 3, 1949; attended the public schools of Palo Alto, Calif.; A.B., Stanford University 1971; J.D., University of Oregon Law School in Eugene 1974; director, Oregon Legal Services for the Elderly 1977-1979; public member, Oregon State Board of Examiners of Nursing Home Administrators 1977-1979; elected as a Democrat to the Ninety-seventh and to the seven succeeding Congresses, and served from January 3, 1981, to February 5, 1996, when he resigned, having been elected to the Senate; elected to the Senate in a special election on January 30, 1996, to fill the unexpired portion of the term ending January 3, 1999, left vacant by the resignation of Robert W. Packwood, and began service on February 5, 1996; reelected in 1998, 2004 and again in 2010 for the term ending January 3, 2017; chair, Committee on Energy and Natural Resources (One Hundred Thirteenth Congress [January 3, 2013-February 12, 2014]), Committee on Finance (One Hundred Thirteenth Congress [February 12, 2014-January 3, 2015]).",
-                    "bioguide": "W000779",
-                    "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=W000779",
-                    "contact_page": "https://www.wyden.senate.gov/contact/",
-                    "date_of_birth": "1949-05-03T00:00:00.000Z",
-                    "entered_office": "1996-02-06T00:00:00.000Z",
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1961-05-08T00:00:00.000Z",
+                    "district": null,
+                    "email": null,
+                    "entered_office": "2014-01-01T00:00:00.000Z",
                     "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/wyden/",
-                    "fax": "202-228-2717",
-                    "fec": null,
-                    "fec_url": null,
-                    "first_name": "Ron",
+                    "facebook_url": "https://www.facebook.com/bill.deblasio/",
+                    "first_name": "Bill",
                     "gender": "male",
                     "goes_by": null,
-                    "google_entity_id": null,
-                    "govtrack": "300100",
-                    "govtrack_url": "https://www.govtrack.us/congress/members/300100",
-                    "last_name": "Wyden",
-                    "latitude": 38.8929,
-                    "longitude": -77.0757,
-                    "maplight": null,
-                    "maplight_url": null,
-                    "middle_name": null,
-                    "name": "Ron Wyden",
-                    "name_slug": "ron-wyden",
+                    "last_name": "De Blasio",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Bill",
+                    "name": "Bill De Blasio",
+                    "name_slug": "bill-de-blasio",
                     "name_suffix": null,
-                    "openly_lgbtq": "no",
-                    "opensecrets": "N00007724",
-                    "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
-                    "opensecrets_url_tabs": {
-                      "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00007724",
-                      "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00007724",
-                      "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00007724",
-                      "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00007724",
-                      "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00007724",
-                      "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00007724",
-                      "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00007724",
-                      "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00007724",
-                      "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00007724",
-                      "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00007724"
-                    },
                     "party": "democrat",
-                    "phone": "202-224-5244",
-                    "photo_url": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
-                    "photo_url_sizes": {
-                      "64x64": "https://cdn.civil.services/us-senate/headshots/64x64/ron-wyden.jpg",
-                      "128x128": "https://cdn.civil.services/us-senate/headshots/128x128/ron-wyden.jpg",
-                      "256x256": "https://cdn.civil.services/us-senate/headshots/256x256/ron-wyden.jpg",
-                      "512x512": "https://cdn.civil.services/us-senate/headshots/512x512/ron-wyden.jpg",
-                      "1024x1024": "https://cdn.civil.services/us-senate/headshots/1024x1024/ron-wyden.jpg"
-                    },
-                    "pronunciation": "RAHN WAHY-dn",
-                    "religion": "jewish",
-                    "state_code": "OR",
-                    "state_code_slug": "or",
-                    "state_name": "Oregon",
-                    "state_name_slug": "oregon",
-                    "term_end": "2023-01-03T00:00:00.000Z",
-                    "thomas": "1247",
-                    "title": "senator",
-                    "twitter_handle": "RonWyden",
-                    "twitter_url": "https://twitter.com/RonWyden",
-                    "votesmart": "27036",
-                    "votesmart_url": "http://votesmart.org/candidate/27036",
-                    "votesmart_url_tabs": {
-                      "summary": "http://votesmart.org/candidate/27036",
-                      "bio": "http://votesmart.org/candidate/biography/27036",
-                      "votes": "http://votesmart.org/candidate/key-votes/27036",
-                      "positions": "http://votesmart.org/candidate/political-courage-test/27036",
-                      "ratings": "http://votesmart.org/candidate/evaluations/27036",
-                      "speeches": "http://votesmart.org/candidate/public-statements/27036",
-                      "funding": "http://votesmart.org/candidate/campaign-finance/27036"
-                    },
-                    "website": "http://www.wyden.senate.gov",
-                    "wikidata": null,
-                    "wikidata_url": null
+                    "phone": "212-788-3000",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/bill-de-blasio.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "mayor",
+                    "twitter_handle": "BilldeBlasio",
+                    "twitter_url": "https://twitter.com/BilldeBlasio",
+                    "vacant": false
+                  },
+                  {
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
+                    "address_prefix": null,
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
+                    "address_type": null,
+                    "address_zipcode": "10007",
+                    "age": 62,
+                    "aliases": [
+                      "Independent Cyrus Vance",
+                      "Independent Vance",
+                      "District Attorney Cyrus Vance",
+                      "District Attorney Vance",
+                      "Cyrus Vance [I]",
+                      "Cyrus Vance (I)"
+                    ],
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1954-06-14T00:00:00.000Z",
+                    "district": null,
+                    "email": null,
+                    "entered_office": "2010-01-01T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/ManhattanDistrictAttorney",
+                    "first_name": "Cyrus",
+                    "gender": "male",
+                    "goes_by": null,
+                    "last_name": "Vance",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Cyrus",
+                    "name": "Cyrus Vance",
+                    "name_slug": "cyrus-vance",
+                    "name_suffix": null,
+                    "party": "independent",
+                    "phone": "212-335-9000",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/cyrus-vance.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "district-attorney",
+                    "twitter_handle": "ManhattanDA",
+                    "twitter_url": "https://twitter.com/ManhattanDA",
+                    "vacant": false
                   }
                 ]
               },
@@ -1960,7 +1852,7 @@ Search for House Representative using any combination of search parameters.  You
 
 The following endpoints are for specific data related to Stated within the United States
 
-## State [/state/{state}{?apikey,page,pageSize,fields}]
+## State [/state/{state}{?apikey,page,pageSize,fields,sort,order}]
 
 Fetch details for Specific State.
 
@@ -1969,6 +1861,8 @@ Fetch details for Specific State.
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `nickname,population,website`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `population_rank`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc`) - Comma Separated List of Order Methods
     + state (string, `ny`) - State you want, can be either the states abbreviation, name or slug
 
 ### Example: Information about New York [GET]
@@ -2050,7 +1944,7 @@ In this example, we will fetch information about the State of New York.
             }
 
          
-## Search [/state/{?apikey,page,pageSize,fields,name,slug,code,nickname,minPopulation,maxPopulation,admittedBefore,admittedAfter,latitude,longitude}]
+## Search [/state/{?apikey,page,pageSize,fields,sort,order,name,slug,code,nickname,minPopulation,maxPopulation,admittedBefore,admittedAfter,latitude,longitude}]
 
 Fetch details for Specific State.
 
@@ -2059,6 +1953,8 @@ Fetch details for Specific State.
     + page (number, optional, `1`) - Which page to load here
     + pageSize (number, optional, `50`) - Maximum Number of Results to Show
     + fields (optional, string, `nickname,population,website`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `admission_number`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc`) - Comma Separated List of Order Methods
     + name (string, optional, `New York`) - Name of State
     + slug (string, optional, `new-york`) - Name of State converted to lowercase letters and spaces replaced with dashes
     + code (string, optional, `NY`) - Two Letter State Abbreviation

@@ -1,6 +1,6 @@
 /**
  * @module domain/senate
- * @version 1.0.0
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -249,12 +249,6 @@ module.exports = {
       return _.get(searchParams, 'body.query.bool.must');
     }
 
-    function setGeoFilters(filter) {
-      if (!_.get(searchParams, 'body.query.filtered.filter')) {
-        _.set(searchParams, 'body.query.filtered.filter', filter);
-      }
-    }
-
     // Page size
     if (query.pageSize && validator.isInt(query.pageSize) && validator.toInt(query.pageSize, 10) >= 1) {
       pageSize = validator.toInt(query.pageSize, 10);
@@ -268,6 +262,19 @@ module.exports = {
     }
 
     searchParams.from = (page - 1) * searchParams.size;
+
+    // Sorting
+    var sort = (query.sort) ? query.sort.split(',') : ['state_code', 'title', 'last_name'];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc', 'asc'];
+
+    searchParams.body.sort = {};
+
+    for (var i = 0; i < sort.length; i++) {
+      var sortOrder = (typeof order[i] !== 'undefined' && ( order[i] === 'asc' || order[i] === 'desc' )) ? order[i] : 'asc';
+      searchParams.body.sort[sort[i]] = {
+        order: sortOrder
+      };
+    }
 
     /**
      * Filter By State
@@ -631,15 +638,17 @@ module.exports = {
      * Filter By Latitude & Longitude
      */
     if (query.latitude && query.longitude) {
-      setGeoFilters({
+      andFilters = getAndFilters();
+      andFilters.push({
         geo_shape: {
           shape: {
             shape: {
               coordinates: [
-                query.longitude, //-82.6321373,
-                query.latitude // 27.7812652
+                query.longitude,
+                query.latitude
               ],
-              type: 'point'
+              type: 'circle',
+              radius: '0.01km'
             }
           }
         }
@@ -657,8 +666,15 @@ module.exports = {
       })
         .then(function(zipcode) {
 
-          if (zipcode && zipcode.shape && zipcode.shape.coordinates) {
-            setGeoFilters({
+          if (zipcode && zipcode.state && zipcode.shape && zipcode.shape.coordinates) {
+            andFilters = getAndFilters();
+            andFilters.push({
+              match: {
+                state_code: zipcode.state
+              }
+            });
+
+            andFilters.push({
               geo_shape: {
                 shape: {
                   shape: {
@@ -668,6 +684,8 @@ module.exports = {
                 }
               }
             });
+
+            console.log('searchParams', JSON.stringify(searchParams.body));
 
             return elasticsearchClient.search(searchParams)
               .then(function(result) {

@@ -1,6 +1,6 @@
 /**
- * @module domain/profile
- * @version 1.0.0
+ * @module domain/government
+ * @version 1.0.2
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -9,6 +9,8 @@ var Promise = require('bluebird');
 
 var HouseDomain = require('./house');
 var SenateDomain = require('./senate');
+var CityCouncilDomain = require('./city_council');
+var StateDomain = require('./state');
 
 /**
  * Domain Profile
@@ -16,24 +18,36 @@ var SenateDomain = require('./senate');
  */
 module.exports = {
   /**
-   * Get Government Data by Zip Code
-   * @param zipcode
+   * Get Government Data by either Zip Code or Geolocation
+   * @param params
    */
   search: function(params) {
 
-    var house = new Promise(function (resolve, reject) {
+    if (!params || (( !params.latitude && !params.longitude) && !params.zipcode)) {
+      return Promise.reject('Requires `latitude` and `longitude`, or `zipcode` Parameters.');
+    }
+
+    var house = new Promise(function (resolve) {
       resolve(HouseDomain.search(params));
     });
 
-    var senate = new Promise(function (resolve, reject) {
+    var senate = new Promise(function (resolve) {
       resolve(SenateDomain.search(params));
     });
 
-    return Promise.all([house, senate]).then(function(values) {
+    var city_council = new Promise(function (resolve) {
+      resolve(CityCouncilDomain.search(params));
+    });
 
-      var notices = _.union(values[0].notices, values[1].notices);
-      var warnings = _.union(values[0].warnings, values[1].warnings);
-      var errors = _.union(values[0].errors, values[1].errors);
+    var state = new Promise(function (resolve) {
+      resolve(StateDomain.search(params));
+    });
+
+    return Promise.all([house, senate, city_council, state]).then(function(values) {
+
+      var notices = _.union(values[0].notices, values[1].notices, values[2].notices, values[3].notices);
+      var warnings = _.union(values[0].warnings, values[1].warnings, values[2].warnings, values[3].warnings);
+      var errors = _.union(values[0].errors, values[1].errors, values[2].errors, values[3].errors);
 
       return {
         notices: notices,
@@ -41,7 +55,9 @@ module.exports = {
         errors: errors,
         data: {
           house: values[0].data,
-          senate: values[1].data
+          senate: values[1].data,
+          city_council: values[2].data,
+          state: values[3].data
         }
       };
     });
