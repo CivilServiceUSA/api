@@ -1,6 +1,6 @@
 /**
  * @module routes/city_council
- * @version 1.0.2
+ * @version 1.0.3
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  * @todo Create Unit Tests for Routes
  */
@@ -51,9 +51,7 @@ router.route('/city-council/:state/:city').get(function(request, response) {
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
       analytics.trackEvent(apikey, 'City Council', util.titleCase(request.params.city) + ', ' + request.params.state.toUpperCase(), 'Query: ' + JSON.stringify(request.query), results.length);
 
-      response.json(util.createAPIResponse({
-        data: results
-      }, request.query.fields));
+      response.json(util.createAPIResponse(results, request.query.fields));
     })
     .catch(function(error){
       var apikey = (request.header('API-Key')) || request.query.apikey || null;

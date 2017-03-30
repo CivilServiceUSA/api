@@ -8,7 +8,7 @@ HOST: https://api.civil.services/v1
 Civil Services is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
 * _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__
-* _Last Modified:_ __March 28th, 2017__
+* _Last Modified:_ __March 29th, 2017__
 * _Current API Version:_ __v1.0.2__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use. You can __[Register for an API Key](https://api.civil.services)__ if you would like access to our API. We typically review applications within a business day.
@@ -116,6 +116,414 @@ for if there are a lot of results.
 + `sort` (optional, string, `population_rank`) - Comma Separated List of fields you want to sort by
 + `order` (optional, string, `asc`) - Comma Separated List of Order Methods
 + `pretty` (optional) - If you want to format the JSON response to be human readable, just add a `pretty` param in the API call ( it does not need a value )
+
+
+# Group City Council Endpoints
+
+The following endpoints are for specific data related to City Council members.  Currently we only have City Council Data for New York, NY.
+
+## City Council [/city-council/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,district,atLarge,vacant,title,party,name,gender,ethnicity,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+
+Search for City Council members using any combination of search parameters.
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `state_code,name`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
+    + district (optional, number, `3`) - District of Representative ( not always available )
+    + atLarge (optional, boolean, `true`) - Representative is considered At-Large
+    + vacant (optional, boolean, `true`) - Representative Seat is Vacant    
+    + title (optional, enum, `district-attorney`)
+
+        Title of Senator. Using a comma to filter with multiple options, e.g. `?title=district-attorney,mayor`
+
+        + Values
+            + `alderman`
+            + `chairman`
+            + `city-attorney`
+            + `city-auditor`
+            + `city-controller`
+            + `commissioner`
+            + `council-president`
+            + `councilor`
+            + `deputy-leader`
+            + `deputy-mayor-pro-tem`
+            + `deputy-majority-leader`
+            + `deputy-majority-whip`
+            + `deputy-minority-leader`
+            + `deputy-minority-whip`
+            + `district-attorney`
+            + `majority-leader`
+            + `majority-whip`
+            + `mayor`
+            + `mayor-pro-tem`
+            + `minority-leader`
+            + `minority-whip`
+            + `representative`
+            + `supervisor`
+            + `president`
+            + `president-pro-tem`
+            + `vice-chairman`
+            + `vice-mayor`
+            + `vice-president`
+            + `vacant`
+    + party (optional, enum, `democrat`) -
+
+        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?party=democrat,republican`
+
+        + Values
+            + `constitution`
+            + `democrat`
+            + `green`
+            + `independent`
+            + `libertarian`
+            + `nonpartisan`
+            + `republican`
+    + name (optional, string, `Bill De Blasio`) - Full Name of Senator
+    + gender (optional, enum, `female`)
+
+        Gender of Senator. Using a comma to filter with multiple options, e.g. `?gender=female,male`
+
+        + Values
+            + `female`
+            + `male`
+            + `unspecified`
+    + ethnicity (optional, enum, `african-american`)
+
+        Ethnicity of Senator. Using a comma to filter with multiple options, e.g. `?ethnicity=african-american,asian-american`
+
+        + Values
+            + `african-american`
+            + `asian-american`
+            + `hispanic-american`
+            + `middle-eastern-american`
+            + `multi-racial-american`
+            + `native-american`
+            + `pacific-islander`
+            + `white-american`
+            + `unspecified`
+    + age (optional, number, `65`) - Age of Senator
+    + minAge (optional, number, `40`) - Minimum Age of Senator
+    + maxAge (optional, number, `80`) - Maximum Age of Senator
+    + termEnds (optional, number, `2019`) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number, `2023`) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number, `2016`) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number, `2017`) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
+
+### Example: Mayor New York [GET]
+
+This example fetches details for the state `NY` and title `mayor`.
+
++ Request
+    + Parameters
+        + state: NY
+        + title: mayor
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + state: NY
+        + title: mayor
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": [
+                {
+                  "address_city": "New York",
+                  "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                  "address_number": "250",
+                  "address_prefix": null,
+                  "address_sec_unit_num": "1823",
+                  "address_sec_unit_type": "Suite",
+                  "address_state": "NY",
+                  "address_street": "Broadway",
+                  "address_type": null,
+                  "address_zipcode": "10007",
+                  "age": 55,
+                  "aliases": [
+                    "Democrat Bill De Blasio",
+                    "Democrat De Blasio",
+                    "Mayor Bill De Blasio",
+                    "Mayor De Blasio",
+                    "Bill De Blasio [D]",
+                    "Bill De Blasio (D)"
+                  ],
+                  "at_large": false,
+                  "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                  "city_council_calendar_url": null,
+                  "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                  "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                  "city_council_url": "http://council.nyc.gov/districts/",
+                  "city_government_url": "http://www.nycgo.com",
+                  "city_name": "New York",
+                  "city_name_slug": "new-york",
+                  "date_of_birth": "1961-05-08T00:00:00.000Z",
+                  "district": null,
+                  "email": null,
+                  "entered_office": "2014-01-01T00:00:00.000Z",
+                  "ethnicity": "white-american",
+                  "facebook_url": "https://www.facebook.com/bill.deblasio/",
+                  "first_name": "Bill",
+                  "gender": "male",
+                  "goes_by": null,
+                  "last_name": "De Blasio",
+                  "latitude": 40.6643,
+                  "longitude": -73.9385,
+                  "middle_name": "Bill",
+                  "name": "Bill De Blasio",
+                  "name_slug": "bill-de-blasio",
+                  "name_suffix": null,
+                  "party": "democrat",
+                  "phone": "212-788-3000",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/bill-de-blasio.jpg",
+                  "population": 8550405,
+                  "pronunciation": null,
+                  "state_code": "NY",
+                  "state_code_slug": "ny",
+                  "state_name": "New York",
+                  "state_name_slug": "new-york",
+                  "term_end": "2017-12-31T00:00:00.000Z",
+                  "title": "mayor",
+                  "twitter_handle": "BilldeBlasio",
+                  "twitter_url": "https://twitter.com/BilldeBlasio",
+                  "vacant": false
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+
+## City Council [/city-council/{state}/{city}{?apikey,page,pageSize,fields,sort,order}]
+
+Search for City Council members using any combination of search parameters.
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `state_code,name`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
+    + state (required, string, `NY`) - Unique Zip Code
+    + city (required, string, `New York`) - Unique Zip Code
+    
+### Example: New York City Council [GET]
+
+This example fetches details for the state `NY` and city `New York` with only the `name,title,photo_url` fields.
+
++ Request
+    + Parameters
+        + state: `NY`
+        + city: `New York`
+        + fields: `name,title,photo_url`
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + state: `NY`
+        + city: `New York`
+        + fields: `name,title,photo_url`
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 53,
+                "showing": 30,
+                "pages": 2,
+                "page": 1
+              },
+              "data": [
+                {
+                  "name": "Margaret Chin",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/margaret-chin.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Rosie Mendez",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/rosie-mendez.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Corey Johnson",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/corey-johnson.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Daniel Garodnick",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/daniel-garodnick.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Ben Kallos",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/ben-kallos.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Helen Rosenthal",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/helen-rosenthal.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Mark Levine",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/mark-levine.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Melissa  Mark-Viverito",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/melissa-mark-viverito.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Inez Dickens",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/inez-dickens.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Ydanis Rodriguez",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/ydanis-rodriguez.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Andrew Cohen",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/andrew-cohen.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Andy King",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/andy-king.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "James Vacca",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/james-vacca.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Fernando Cabrera",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/fernando-cabrera.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Ritchie Torres",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/ritchie-torres.jpg",
+                  "title": "deputy-leader"
+                },
+                {
+                  "name": "Vanessa Gibson",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/vanessa-gibson.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Rafael Salamanca",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/rafael-salamanca.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Annabel Palma",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/annabel-palma.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Paul Vallone",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/paul-vallone.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Peter Koo",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/peter-koo.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Julissa  Ferreras-Copeland",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/julissa-ferreras-copeland.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Costa Constantinides",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/costa-constantinides.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Barry Grodenchik",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/barry-grodenchik.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Rory Lancman",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/rory-lancman.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Daniel Dromm",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/daniel-dromm.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Jimmy Van Bramer",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/jimmy-van-bramer.jpg",
+                  "title": "majority-leader"
+                },
+                {
+                  "name": "Daneek Miller",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/daneek-miller.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Ruben Wills",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/ruben-wills.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Karen Koslowitz",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/karen-koslowitz.jpg",
+                  "title": "councilor"
+                },
+                {
+                  "name": "Elizabeth Crowley",
+                  "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/elizabeth-crowley.jpg",
+                  "title": "councilor"
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
 
 
 # Group Geolocation Endpoints
@@ -437,6 +845,530 @@ This example fetches details for the city of __Saint Louis, MO__ using the `stat
               }
             }
 
+
+# Group Government Endpoints
+
+This returns data for both the `/senate` & `/house` endpoints with one call.
+
+## Government [/government/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state}]
+
+Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `house,senate`) - Comma Separated List of fields you want in the response
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
+
+### Example: House & Senate in Zip Code 97232 [GET]
+
++ Request
+    + Parameters
+        + latitude: `40.75368539999999`
+        + longitude: `-73.9991637`
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + latitude: `40.75368539999999`
+        + longitude: `-73.9991637`
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": {
+                "city_council": [
+                  {
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
+                    "address_prefix": null,
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
+                    "address_type": null,
+                    "address_zipcode": "10007",
+                    "age": 34,
+                    "aliases": [
+                      "Democrat Corey Johnson",
+                      "Democrat Johnson",
+                      "Councilor Corey Johnson",
+                      "Councilor Johnson",
+                      "Corey Johnson [D]",
+                      "Corey Johnson (D)"
+                    ],
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1982-04-28T00:00:00.000Z",
+                    "district": 3,
+                    "email": "district3@council.nyc.gov",
+                    "entered_office": "2014-01-01T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/corey.d.johnson",
+                    "first_name": "Corey",
+                    "gender": "male",
+                    "goes_by": null,
+                    "last_name": "Johnson",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Corey",
+                    "name": "Corey Johnson",
+                    "name_slug": "corey-johnson",
+                    "name_suffix": null,
+                    "party": "democrat",
+                    "phone": "212-564-7757",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/corey-johnson.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "councilor",
+                    "twitter_handle": "CoreyinNYC",
+                    "twitter_url": "https://twitter.com/CoreyinNYC",
+                    "vacant": false
+                  },
+                  {
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
+                    "address_prefix": null,
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
+                    "address_type": null,
+                    "address_zipcode": "10007",
+                    "age": 55,
+                    "aliases": [
+                      "Democrat Bill De Blasio",
+                      "Democrat De Blasio",
+                      "Mayor Bill De Blasio",
+                      "Mayor De Blasio",
+                      "Bill De Blasio [D]",
+                      "Bill De Blasio (D)"
+                    ],
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1961-05-08T00:00:00.000Z",
+                    "district": null,
+                    "email": null,
+                    "entered_office": "2014-01-01T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/bill.deblasio/",
+                    "first_name": "Bill",
+                    "gender": "male",
+                    "goes_by": null,
+                    "last_name": "De Blasio",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Bill",
+                    "name": "Bill De Blasio",
+                    "name_slug": "bill-de-blasio",
+                    "name_suffix": null,
+                    "party": "democrat",
+                    "phone": "212-788-3000",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/bill-de-blasio.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "mayor",
+                    "twitter_handle": "BilldeBlasio",
+                    "twitter_url": "https://twitter.com/BilldeBlasio",
+                    "vacant": false
+                  },
+                  {
+                    "address_city": "New York",
+                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
+                    "address_number": "250",
+                    "address_prefix": null,
+                    "address_sec_unit_num": "1823",
+                    "address_sec_unit_type": "Suite",
+                    "address_state": "NY",
+                    "address_street": "Broadway",
+                    "address_type": null,
+                    "address_zipcode": "10007",
+                    "age": 62,
+                    "aliases": [
+                      "Independent Cyrus Vance",
+                      "Independent Vance",
+                      "District Attorney Cyrus Vance",
+                      "District Attorney Vance",
+                      "Cyrus Vance [I]",
+                      "Cyrus Vance (I)"
+                    ],
+                    "at_large": false,
+                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
+                    "city_council_calendar_url": null,
+                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
+                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
+                    "city_council_url": "http://council.nyc.gov/districts/",
+                    "city_government_url": "http://www.nycgo.com",
+                    "city_name": "New York",
+                    "city_name_slug": "new-york",
+                    "date_of_birth": "1954-06-14T00:00:00.000Z",
+                    "district": null,
+                    "email": null,
+                    "entered_office": "2010-01-01T00:00:00.000Z",
+                    "ethnicity": "white-american",
+                    "facebook_url": "https://www.facebook.com/ManhattanDistrictAttorney",
+                    "first_name": "Cyrus",
+                    "gender": "male",
+                    "goes_by": null,
+                    "last_name": "Vance",
+                    "latitude": 40.6643,
+                    "longitude": -73.9385,
+                    "middle_name": "Cyrus",
+                    "name": "Cyrus Vance",
+                    "name_slug": "cyrus-vance",
+                    "name_suffix": null,
+                    "party": "independent",
+                    "phone": "212-335-9000",
+                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/cyrus-vance.jpg",
+                    "population": 8550405,
+                    "pronunciation": null,
+                    "state_code": "NY",
+                    "state_code_slug": "ny",
+                    "state_name": "New York",
+                    "state_name_slug": "new-york",
+                    "term_end": "2017-12-31T00:00:00.000Z",
+                    "title": "district-attorney",
+                    "twitter_handle": "ManhattanDA",
+                    "twitter_url": "https://twitter.com/ManhattanDA",
+                    "vacant": false
+                  }
+                ]
+              },
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+
+
+# Group House Endpoints
+
+View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
+
+## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+
+Search for House Representative using any combination of search parameters.
+
++ Parameters
+    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
+    + page (number, optional, `1`) - Which page to load here
+    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
+    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
+    + sort (optional, string, `state_code,district`) - Comma Separated List of fields you want to sort by
+    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
+    + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
+    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
+    + district (optional, number, `3`) - District of Representative ( not always available )
+    + atLarge (optional, boolean, `true`) - Representative is considered At-Large
+    + vacant (optional, boolean, `true`) - Representative Seat is Vacant
+    + bioguide (optional, string, `Y000033`) - The alphanumeric ID for this Senator on bioguide.congress.gov
+    + thomas (optional, string, `1256`) - The numeric ID for this Senator ( not really used anymore )
+    + govtrack (optional, string, `400440`) - The numeric ID for this Senator on GovTrack.us
+    + opensecrets (optional, string, `N00007999`) - The alphanumeric ID for this Senator on OpenSecrets.org
+    + votesmart (optional, string, `26717`) - The numeric ID for this Senator on VoteSmart.org
+    + fec (optional, string, `H6AK00045`) - Federal Election Commission ID
+    + maplight (optional, string, `525`) - The numeric ID for this Senator on MapLight.org
+    + wikidata (optional, string, `Q1239590`) - The numeric ID for this Senator on wikidata.org
+    + googleEntityId (optional, string, `kg:/m/024p1k`) - Google Integration
+    + title (optional, enum, `house-majority-leader`)
+
+        Title of Senator. Using a comma to filter with multiple options, e.g. `?title=house-majority-leader,house-minority-leader`
+
+        + Values
+            + `representative`
+            + `house-speaker`
+            + `house-majority-leader`
+            + `house-majority-whip`
+            + `house-minority-leader`
+            + `house-minority-whip`
+            + `republican-conference-chairman`
+            + `republican-policy-committee-chairman`
+            + `assistant-democratic-leader`
+            + `democratic-caucus-chairman`
+    + party (optional, enum, `independent`) -
+
+        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?party=democrat,republican`
+
+        + Values
+            + `constitution`
+            + `democrat`
+            + `green`
+            + `independent`
+            + `libertarian`
+            + `nonpartisan`
+            + `republican`
+    + name (optional, string, `Nancy Pelosi`) - Full Name of Senator
+    + gender (optional, enum, `female`)
+
+        Gender of Senator. Using a comma to filter with multiple options, e.g. `?gender=female,male`
+
+        + Values
+            + `female`
+            + `male`
+            + `unspecified`
+    + ethnicity (optional, enum, `asian-american`)
+
+        Ethnicity of Senator. Using a comma to filter with multiple options, e.g. `?ethnicity=african-american,asian-american`
+
+        + Values
+            + `african-american`
+            + `asian-american`
+            + `hispanic-american`
+            + `middle-eastern-american`
+            + `multi-racial-american`
+            + `native-american`
+            + `pacific-islander`
+            + `white-american`
+            + `unspecified`
+    + religion (optional, enum, `hindu`)
+
+        Religion of Senator. Using a comma to filter with multiple options, e.g. `?religion=muslim,jewish`
+
+        + Values
+            + `african-methodist`
+            + `anglican`
+            + `baptist`
+            + `buddhism`
+            + `christian`
+            + `christian-reformed`
+            + `christian-scientist`
+            + `church-of-christ`
+            + `church-of-god`
+            + `congregationalist`
+            + `deist`
+            + `eastern-orthodox`
+            + `episcopalian`
+            + `evangelical`
+            + `evangelical-lutheran`
+            + `hindu`
+            + `jewish`
+            + `jodo-shinshu-buddhist`
+            + `lutheran`
+            + `methodist`
+            + `mormon`
+            + `muslim`
+            + `nazarene-christian`
+            + `pentecostal`
+            + `presbyterian`
+            + `protestant`
+            + `roman-catholic`
+            + `seventh-day-adventist-church`
+            + `soka-gakkai-buddhist`
+            + `southern-baptist`
+            + `united-church-of-christ`
+            + `united-methodist`
+            + `unitarian-universalist`
+            + `unspecified`
+    + openlyLGBTQ (optional, enum, `transgender`)
+
+        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?openlyLGBTQ=lesbian,gay`
+
+        + Values
+            + `no`
+            + `lesbian`
+            + `gay`
+            + `bisexual`
+            + `transgender`
+            + `queer`
+    + age (optional, number, `65`) - Age of Senator
+    + minAge (optional, number, `40`) - Minimum Age of Senator
+    + maxAge (optional, number, `80`) - Maximum Age of Senator
+    + termEnds (optional, number, `2019`) - Year Term Ends ( formatted `YYYY` )
+    + termEndsBefore (optional, number, `2023`) - Term Ends Before this Year ( formatted `YYYY` )
+    + termEndsAfter (optional, number, `2016`) - Term Ends After this Year ( formatted `YYYY` )
+    + enteredOffice (optional, number, `2017`) - Year Entered Office ( formatted `YYYY` )
+    + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
+    + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
+
+### Example: District Rep at 45.542094, -122.9346037 [GET]
+
+In this example we will get all House Representatives for `latitude` `45.542094` and `longitude` `-122.9346037`.
+
++ Request
+    + Parameters
+        + latitude: 45.542094
+        + longitude: `-122.9346037`
+
++ Response 200 (application/json; charset=utf-8)
+    + Attributes
+        + latitude: 45.542094
+        + longitude: `-122.9346037`
+        
+    + Body
+    
+            {
+              "notices": [],
+              "warnings": [],
+              "errors": [],
+              "field_errors": {},
+              "meta": {
+                "total": 1,
+                "showing": 1,
+                "pages": 1,
+                "page": 1
+              },
+              "data": [
+                {
+                  "address_city": "Washington",
+                  "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
+                  "address_number": "2436",
+                  "address_prefix": null,
+                  "address_sec_unit_num": null,
+                  "address_sec_unit_type": null,
+                  "address_state": "DC",
+                  "address_street": "Rayburn Hob",
+                  "address_type": null,
+                  "address_zipcode": "20515",
+                  "age": 62,
+                  "aliases": [
+                    "Democrat Suzanne Bonamici",
+                    "Democrat Bonamici",
+                    "Representative Suzanne Bonamici",
+                    "Representative Bonamici",
+                    "Rep. Suzanne Bonamici",
+                    "Rep. Bonamici",
+                    "Suzanne Bonamici [D]",
+                    "Suzanne Bonamici (D)"
+                  ],
+                  "at_large": null,
+                  "biography": "Suzanne Bonamici, a Representative from Oregon; born in Detroit, Wayne County, Mich., October 14, 1954; A.A., Lane Community College, Eugene, Oreg. 1978; B.A., University of Oregon, Eugene, Oreg., 1980; J.D., University of Oregon, Eugene, Oreg., 1983; lawyer, Federal Trade Commission, Washington, D.C.; lawyer, private practice; staff, Oregon state house of representatives, 2001-2006; member of Oregon state house of representatives 2007-2008; member of Oregon state senate, 2008-2011; elected as a Democrat to the One Hundred Twelfth Congress, by special election, to fill the vacancy caused by the resignation of United States Representative David Wu, and reelected to the three succeeding Congresses (January 31, 2012-present).",
+                  "bioguide": "B001278",
+                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B001278",
+                  "contact_page": "https://bonamici.house.gov/contact-me/email-me",
+                  "date_of_birth": "1954-10-14T00:00:00.000Z",
+                  "district": 1,
+                  "entered_office": "2012-02-07T00:00:00.000Z",
+                  "ethnicity": "white-american",
+                  "facebook_url": "https://www.facebook.com/CongresswomanBonamici",
+                  "fax": "202-225-9497",
+                  "fec": "H2OR01133",
+                  "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H2OR01133",
+                  "first_name": "Suzanne",
+                  "gender": "female",
+                  "goes_by": null,
+                  "google_entity_id": "kg:/m/02q453x",
+                  "govtrack": "412501",
+                  "govtrack_url": "https://www.govtrack.us/congress/members/412501",
+                  "last_name": "Bonamici",
+                  "latitude": 38.8863,
+                  "longitude": -77.0114,
+                  "maplight": "1682",
+                  "maplight_url": "http://maplight.org/us-congress/legislator/1682",
+                  "middle_name": null,
+                  "name": "Suzanne Bonamici",
+                  "name_slug": "suzanne-bonamici",
+                  "name_suffix": null,
+                  "openly_lgbtq": "no",
+                  "opensecrets": "N00033474",
+                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
+                  "opensecrets_url_tabs": {
+                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
+                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00033474",
+                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00033474",
+                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00033474",
+                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00033474",
+                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00033474",
+                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00033474",
+                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00033474",
+                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00033474",
+                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00033474"
+                  },
+                  "party": "democrat",
+                  "phone": "202-225-0855",
+                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
+                  "photo_url_sizes": {
+                    "64x64": "https://cdn.civil.services/us-house/headshots/64x64/suzanne-bonamici.jpg",
+                    "128x128": "https://cdn.civil.services/us-house/headshots/128x128/suzanne-bonamici.jpg",
+                    "256x256": "https://cdn.civil.services/us-house/headshots/256x256/suzanne-bonamici.jpg",
+                    "512x512": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
+                    "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/suzanne-bonamici.jpg"
+                  },
+                  "pronunciation": "soo-ZANN bahn-uh-MEE-chee",
+                  "religion": "jewish",
+                  "state_code": "OR",
+                  "state_code_slug": "or",
+                  "state_name": "Oregon",
+                  "state_name_slug": "oregon",
+                  "term_end": "2019-01-03T00:00:00.000Z",
+                  "thomas": "2092",
+                  "title": "representative",
+                  "twitter_handle": "RepBonamici",
+                  "twitter_url": "https://twitter.com/RepBonamici",
+                  "vacant": null,
+                  "votesmart": "59641",
+                  "votesmart_url": "http://votesmart.org/candidate/59641",
+                  "votesmart_url_tabs": {
+                    "summary": "http://votesmart.org/candidate/59641",
+                    "bio": "http://votesmart.org/candidate/biography/59641",
+                    "votes": "http://votesmart.org/candidate/key-votes/59641",
+                    "positions": "http://votesmart.org/candidate/political-courage-test/59641",
+                    "ratings": "http://votesmart.org/candidate/evaluations/59641",
+                    "speeches": "http://votesmart.org/candidate/public-statements/59641",
+                    "funding": "http://votesmart.org/candidate/campaign-finance/59641"
+                  },
+                  "website": "https://bonamici.house.gov",
+                  "wikidata": "Q45946",
+                  "wikidata_url": "https://www.wikidata.org/wiki/Q45946"
+                }
+              ],
+              "attribution": {
+                "text": "Data Provided by Civil Services",
+                "website": "https://civil.services",
+                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
+                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
+                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
+                "logo": "https://cdn.civil.services/common/logo.png",
+                "icon": "https://cdn.civil.services/common/icon.png"
+              }
+            }
+
+            
 # Group Legislator Endpoints
 
 The following endpoints convert location data into parameters that can fetch Legislators from Open States.
@@ -1327,526 +2259,6 @@ This Example fetches all Women of Color in the United States Senate using the `g
               }
             }
 
-# Group House Endpoints
-
-View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
-
-## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
-
-Search for House Representative using any combination of search parameters.
-
-+ Parameters
-    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
-    + page (number, optional, `1`) - Which page to load here
-    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
-    + fields (optional, string, `name,party,photo_url`) - Comma Separated List of fields you want in the response
-    + sort (optional, string, `state_code,district`) - Comma Separated List of fields you want to sort by
-    + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
-    + zipcode (optional, string, `97232`) - United Steps Zip Code
-    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
-    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
-    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
-    + district (optional, number, `3`) - District of Representative ( not always available )
-    + atLarge (optional, boolean, `true`) - Representative is considered At-Large
-    + vacant (optional, boolean, `true`) - Representative Seat is Vacant
-    + bioguide (optional, string, `Y000033`) - The alphanumeric ID for this Senator on bioguide.congress.gov
-    + thomas (optional, string, `1256`) - The numeric ID for this Senator ( not really used anymore )
-    + govtrack (optional, string, `400440`) - The numeric ID for this Senator on GovTrack.us
-    + opensecrets (optional, string, `N00007999`) - The alphanumeric ID for this Senator on OpenSecrets.org
-    + votesmart (optional, string, `26717`) - The numeric ID for this Senator on VoteSmart.org
-    + fec (optional, string, `H6AK00045`) - Federal Election Commission ID
-    + maplight (optional, string, `525`) - The numeric ID for this Senator on MapLight.org
-    + wikidata (optional, string, `Q1239590`) - The numeric ID for this Senator on wikidata.org
-    + googleEntityId (optional, string, `kg:/m/024p1k`) - Google Integration
-    + title (optional, enum, `house-majority-leader`)
-
-        Title of Senator. Using a comma to filter with multiple options, e.g. `?title=house-majority-leader,house-minority-leader`
-
-        + Values
-            + `representative`
-            + `house-speaker`
-            + `house-majority-leader`
-            + `house-majority-whip`
-            + `house-minority-leader`
-            + `house-minority-whip`
-            + `republican-conference-chairman`
-            + `republican-policy-committee-chairman`
-            + `assistant-democratic-leader`
-            + `democratic-caucus-chairman`
-    + party (optional, enum, `independent`) -
-
-        Political Party of Senator. Using a comma to filter with multiple options, e.g. `?party=democrat,republican`
-
-        + Values
-            + `constitution`
-            + `democrat`
-            + `green`
-            + `independent`
-            + `libertarian`
-            + `nonpartisan`
-            + `republican`
-    + name (optional, string, `Nancy Pelosi`) - Full Name of Senator
-    + gender (optional, enum, `female`)
-
-        Gender of Senator. Using a comma to filter with multiple options, e.g. `?gender=female,male`
-
-        + Values
-            + `female`
-            + `male`
-            + `unspecified`
-    + ethnicity (optional, enum, `asian-american`)
-
-        Ethnicity of Senator. Using a comma to filter with multiple options, e.g. `?ethnicity=african-american,asian-american`
-
-        + Values
-            + `african-american`
-            + `asian-american`
-            + `hispanic-american`
-            + `middle-eastern-american`
-            + `multi-racial-american`
-            + `native-american`
-            + `pacific-islander`
-            + `white-american`
-            + `unspecified`
-    + religion (optional, enum, `hindu`)
-
-        Religion of Senator. Using a comma to filter with multiple options, e.g. `?religion=muslim,jewish`
-
-        + Values
-            + `african-methodist`
-            + `anglican`
-            + `baptist`
-            + `buddhism`
-            + `christian`
-            + `christian-reformed`
-            + `christian-scientist`
-            + `church-of-christ`
-            + `church-of-god`
-            + `congregationalist`
-            + `deist`
-            + `eastern-orthodox`
-            + `episcopalian`
-            + `evangelical`
-            + `evangelical-lutheran`
-            + `hindu`
-            + `jewish`
-            + `jodo-shinshu-buddhist`
-            + `lutheran`
-            + `methodist`
-            + `mormon`
-            + `muslim`
-            + `nazarene-christian`
-            + `pentecostal`
-            + `presbyterian`
-            + `protestant`
-            + `roman-catholic`
-            + `seventh-day-adventist-church`
-            + `soka-gakkai-buddhist`
-            + `southern-baptist`
-            + `united-church-of-christ`
-            + `united-methodist`
-            + `unitarian-universalist`
-            + `unspecified`
-    + openlyLGBTQ (optional, enum, `transgender`)
-
-        Senator is Openly LGBTQ. Using a comma to filter with multiple options, e.g. `?openlyLGBTQ=lesbian,gay`
-
-        + Values
-            + `no`
-            + `lesbian`
-            + `gay`
-            + `bisexual`
-            + `transgender`
-            + `queer`
-    + age (optional, number, `65`) - Age of Senator
-    + minAge (optional, number, `40`) - Minimum Age of Senator
-    + maxAge (optional, number, `80`) - Maximum Age of Senator
-    + termEnds (optional, number, `2019`) - Year Term Ends ( formatted `YYYY` )
-    + termEndsBefore (optional, number, `2023`) - Term Ends Before this Year ( formatted `YYYY` )
-    + termEndsAfter (optional, number, `2016`) - Term Ends After this Year ( formatted `YYYY` )
-    + enteredOffice (optional, number, `2017`) - Year Entered Office ( formatted `YYYY` )
-    + enteredOfficeBefore (optional, number, `2008`) - Entered Office Before this Year ( formatted `YYYY` )
-    + enteredOfficeAfter (optional, number, `2017`) - Entered Office After this Year ( formatted `YYYY` )
-
-### Example: District Rep at 45.542094, -122.9346037 [GET]
-
-In this example we will get all House Representatives for `latitude` `45.542094` and `longitude` `-122.9346037`.
-
-+ Request
-    + Parameters
-        + latitude: 45.542094
-        + longitude: `-122.9346037`
-
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes
-        + latitude: 45.542094
-        + longitude: `-122.9346037`
-        
-    + Body
-    
-            {
-              "notices": [],
-              "warnings": [],
-              "errors": [],
-              "field_errors": {},
-              "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-              },
-              "data": [
-                {
-                  "address_city": "Washington",
-                  "address_complete": "2436 Rayburn Hob, Washington, DC 20515",
-                  "address_number": "2436",
-                  "address_prefix": null,
-                  "address_sec_unit_num": null,
-                  "address_sec_unit_type": null,
-                  "address_state": "DC",
-                  "address_street": "Rayburn Hob",
-                  "address_type": null,
-                  "address_zipcode": "20515",
-                  "age": 62,
-                  "aliases": [
-                    "Democrat Suzanne Bonamici",
-                    "Democrat Bonamici",
-                    "Representative Suzanne Bonamici",
-                    "Representative Bonamici",
-                    "Rep. Suzanne Bonamici",
-                    "Rep. Bonamici",
-                    "Suzanne Bonamici [D]",
-                    "Suzanne Bonamici (D)"
-                  ],
-                  "at_large": null,
-                  "biography": "Suzanne Bonamici, a Representative from Oregon; born in Detroit, Wayne County, Mich., October 14, 1954; A.A., Lane Community College, Eugene, Oreg. 1978; B.A., University of Oregon, Eugene, Oreg., 1980; J.D., University of Oregon, Eugene, Oreg., 1983; lawyer, Federal Trade Commission, Washington, D.C.; lawyer, private practice; staff, Oregon state house of representatives, 2001-2006; member of Oregon state house of representatives 2007-2008; member of Oregon state senate, 2008-2011; elected as a Democrat to the One Hundred Twelfth Congress, by special election, to fill the vacancy caused by the resignation of United States Representative David Wu, and reelected to the three succeeding Congresses (January 31, 2012-present).",
-                  "bioguide": "B001278",
-                  "bioguide_url": "http://bioguide.congress.gov/scripts/biodisplay.pl?index=B001278",
-                  "contact_page": "https://bonamici.house.gov/contact-me/email-me",
-                  "date_of_birth": "1954-10-14T00:00:00.000Z",
-                  "district": 1,
-                  "entered_office": "2012-02-07T00:00:00.000Z",
-                  "ethnicity": "white-american",
-                  "facebook_url": "https://www.facebook.com/CongresswomanBonamici",
-                  "fax": "202-225-9497",
-                  "fec": "H2OR01133",
-                  "fec_url": "http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H2OR01133",
-                  "first_name": "Suzanne",
-                  "gender": "female",
-                  "goes_by": null,
-                  "google_entity_id": "kg:/m/02q453x",
-                  "govtrack": "412501",
-                  "govtrack_url": "https://www.govtrack.us/congress/members/412501",
-                  "last_name": "Bonamici",
-                  "latitude": 38.8863,
-                  "longitude": -77.0114,
-                  "maplight": "1682",
-                  "maplight_url": "http://maplight.org/us-congress/legislator/1682",
-                  "middle_name": null,
-                  "name": "Suzanne Bonamici",
-                  "name_slug": "suzanne-bonamici",
-                  "name_suffix": null,
-                  "openly_lgbtq": "no",
-                  "opensecrets": "N00033474",
-                  "opensecrets_url": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
-                  "opensecrets_url_tabs": {
-                    "summary": "https://www.opensecrets.org/politicians/summary.php?cid=N00033474",
-                    "elections": "https://www.opensecrets.org/politicians/elections.php?cid=N00033474",
-                    "industries": "https://www.opensecrets.org/politicians/industries.php?cid=N00033474",
-                    "pacs": "https://www.opensecrets.org/politicians/pacs.php?cid=N00033474",
-                    "donors": "https://www.opensecrets.org/politicians/contrib.php?cid=N00033474",
-                    "geography": "https://www.opensecrets.org/politicians/geog.php?cid=N00033474",
-                    "expenditures": "https://www.opensecrets.org/politicians/expend.php?cid=N00033474",
-                    "legislation": "https://www.opensecrets.org/politicians/bills.php?cid=N00033474",
-                    "news": "https://www.opensecrets.org/politicians/inthenews.php?cid=N00033474",
-                    "other": "https://www.opensecrets.org/politicians/otherdata.php?cid=N00033474"
-                  },
-                  "party": "democrat",
-                  "phone": "202-225-0855",
-                  "photo_url": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
-                  "photo_url_sizes": {
-                    "64x64": "https://cdn.civil.services/us-house/headshots/64x64/suzanne-bonamici.jpg",
-                    "128x128": "https://cdn.civil.services/us-house/headshots/128x128/suzanne-bonamici.jpg",
-                    "256x256": "https://cdn.civil.services/us-house/headshots/256x256/suzanne-bonamici.jpg",
-                    "512x512": "https://cdn.civil.services/us-house/headshots/512x512/suzanne-bonamici.jpg",
-                    "1024x1024": "https://cdn.civil.services/us-house/headshots/1024x1024/suzanne-bonamici.jpg"
-                  },
-                  "pronunciation": "soo-ZANN bahn-uh-MEE-chee",
-                  "religion": "jewish",
-                  "state_code": "OR",
-                  "state_code_slug": "or",
-                  "state_name": "Oregon",
-                  "state_name_slug": "oregon",
-                  "term_end": "2019-01-03T00:00:00.000Z",
-                  "thomas": "2092",
-                  "title": "representative",
-                  "twitter_handle": "RepBonamici",
-                  "twitter_url": "https://twitter.com/RepBonamici",
-                  "vacant": null,
-                  "votesmart": "59641",
-                  "votesmart_url": "http://votesmart.org/candidate/59641",
-                  "votesmart_url_tabs": {
-                    "summary": "http://votesmart.org/candidate/59641",
-                    "bio": "http://votesmart.org/candidate/biography/59641",
-                    "votes": "http://votesmart.org/candidate/key-votes/59641",
-                    "positions": "http://votesmart.org/candidate/political-courage-test/59641",
-                    "ratings": "http://votesmart.org/candidate/evaluations/59641",
-                    "speeches": "http://votesmart.org/candidate/public-statements/59641",
-                    "funding": "http://votesmart.org/candidate/campaign-finance/59641"
-                  },
-                  "website": "https://bonamici.house.gov",
-                  "wikidata": "Q45946",
-                  "wikidata_url": "https://www.wikidata.org/wiki/Q45946"
-                }
-              ],
-              "attribution": {
-                "text": "Data Provided by Civil Services",
-                "website": "https://civil.services",
-                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
-                "logo": "https://cdn.civil.services/common/logo.png",
-                "icon": "https://cdn.civil.services/common/icon.png"
-              }
-            }
-
-# Group Government Endpoints
-
-This returns data for both the `/senate` & `/house` endpoints with one call.
-
-## Government [/government/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state}]
-
-Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
-
-+ Parameters
-    + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
-    + page (number, optional, `1`) - Which page to load here
-    + pageSize (number, optional, `50`) - Maximum Number of Results to Show
-    + fields (optional, string, `house,senate`) - Comma Separated List of fields you want in the response
-    + zipcode (optional, string, `97232`) - United Steps Zip Code
-    + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
-    + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
-    + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
-
-### Example: House & Senate in Zip Code 97232 [GET]
-
-+ Request
-    + Parameters
-        + latitude: `40.75368539999999`
-        + longitude: `-73.9991637`
-
-+ Response 200 (application/json; charset=utf-8)
-    + Attributes
-        + latitude: `40.75368539999999`
-        + longitude: `-73.9991637`
-        
-    + Body
-    
-            {
-              "notices": [],
-              "warnings": [],
-              "errors": [],
-              "field_errors": {},
-              "meta": {
-                "total": 1,
-                "showing": 1,
-                "pages": 1,
-                "page": 1
-              },
-              "data": {
-                "city_council": [
-                  {
-                    "address_city": "New York",
-                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
-                    "address_number": "250",
-                    "address_prefix": null,
-                    "address_sec_unit_num": "1823",
-                    "address_sec_unit_type": "Suite",
-                    "address_state": "NY",
-                    "address_street": "Broadway",
-                    "address_type": null,
-                    "address_zipcode": "10007",
-                    "age": 34,
-                    "aliases": [
-                      "Democrat Corey Johnson",
-                      "Democrat Johnson",
-                      "Councilor Corey Johnson",
-                      "Councilor Johnson",
-                      "Corey Johnson [D]",
-                      "Corey Johnson (D)"
-                    ],
-                    "at_large": false,
-                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
-                    "city_council_calendar_url": null,
-                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
-                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
-                    "city_council_url": "http://council.nyc.gov/districts/",
-                    "city_government_url": "http://www.nycgo.com",
-                    "city_name": "New York",
-                    "city_name_slug": "new-york",
-                    "date_of_birth": "1982-04-28T00:00:00.000Z",
-                    "district": 3,
-                    "email": "district3@council.nyc.gov",
-                    "entered_office": "2014-01-01T00:00:00.000Z",
-                    "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/corey.d.johnson",
-                    "first_name": "Corey",
-                    "gender": "male",
-                    "goes_by": null,
-                    "last_name": "Johnson",
-                    "latitude": 40.6643,
-                    "longitude": -73.9385,
-                    "middle_name": "Corey",
-                    "name": "Corey Johnson",
-                    "name_slug": "corey-johnson",
-                    "name_suffix": null,
-                    "party": "democrat",
-                    "phone": "212-564-7757",
-                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/corey-johnson.jpg",
-                    "population": 8550405,
-                    "pronunciation": null,
-                    "state_code": "NY",
-                    "state_code_slug": "ny",
-                    "state_name": "New York",
-                    "state_name_slug": "new-york",
-                    "term_end": "2017-12-31T00:00:00.000Z",
-                    "title": "councilor",
-                    "twitter_handle": "CoreyinNYC",
-                    "twitter_url": "https://twitter.com/CoreyinNYC",
-                    "vacant": false
-                  },
-                  {
-                    "address_city": "New York",
-                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
-                    "address_number": "250",
-                    "address_prefix": null,
-                    "address_sec_unit_num": "1823",
-                    "address_sec_unit_type": "Suite",
-                    "address_state": "NY",
-                    "address_street": "Broadway",
-                    "address_type": null,
-                    "address_zipcode": "10007",
-                    "age": 55,
-                    "aliases": [
-                      "Democrat Bill De Blasio",
-                      "Democrat De Blasio",
-                      "Mayor Bill De Blasio",
-                      "Mayor De Blasio",
-                      "Bill De Blasio [D]",
-                      "Bill De Blasio (D)"
-                    ],
-                    "at_large": false,
-                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
-                    "city_council_calendar_url": null,
-                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
-                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
-                    "city_council_url": "http://council.nyc.gov/districts/",
-                    "city_government_url": "http://www.nycgo.com",
-                    "city_name": "New York",
-                    "city_name_slug": "new-york",
-                    "date_of_birth": "1961-05-08T00:00:00.000Z",
-                    "district": null,
-                    "email": null,
-                    "entered_office": "2014-01-01T00:00:00.000Z",
-                    "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/bill.deblasio/",
-                    "first_name": "Bill",
-                    "gender": "male",
-                    "goes_by": null,
-                    "last_name": "De Blasio",
-                    "latitude": 40.6643,
-                    "longitude": -73.9385,
-                    "middle_name": "Bill",
-                    "name": "Bill De Blasio",
-                    "name_slug": "bill-de-blasio",
-                    "name_suffix": null,
-                    "party": "democrat",
-                    "phone": "212-788-3000",
-                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/bill-de-blasio.jpg",
-                    "population": 8550405,
-                    "pronunciation": null,
-                    "state_code": "NY",
-                    "state_code_slug": "ny",
-                    "state_name": "New York",
-                    "state_name_slug": "new-york",
-                    "term_end": "2017-12-31T00:00:00.000Z",
-                    "title": "mayor",
-                    "twitter_handle": "BilldeBlasio",
-                    "twitter_url": "https://twitter.com/BilldeBlasio",
-                    "vacant": false
-                  },
-                  {
-                    "address_city": "New York",
-                    "address_complete": "250 Broadway Suite 1823 New York, NY 10007",
-                    "address_number": "250",
-                    "address_prefix": null,
-                    "address_sec_unit_num": "1823",
-                    "address_sec_unit_type": "Suite",
-                    "address_state": "NY",
-                    "address_street": "Broadway",
-                    "address_type": null,
-                    "address_zipcode": "10007",
-                    "age": 62,
-                    "aliases": [
-                      "Independent Cyrus Vance",
-                      "Independent Vance",
-                      "District Attorney Cyrus Vance",
-                      "District Attorney Vance",
-                      "Cyrus Vance [I]",
-                      "Cyrus Vance (I)"
-                    ],
-                    "at_large": false,
-                    "background_url": "https://cdn.civil.services/city-council/ny/new-york/backgrounds/1280x720/city.jpg",
-                    "city_council_calendar_url": null,
-                    "city_council_committees_url": "http://legistar.council.nyc.gov/Departments.aspx",
-                    "city_council_legislation_url": "http://legistar.council.nyc.gov/Legislation.aspx",
-                    "city_council_url": "http://council.nyc.gov/districts/",
-                    "city_government_url": "http://www.nycgo.com",
-                    "city_name": "New York",
-                    "city_name_slug": "new-york",
-                    "date_of_birth": "1954-06-14T00:00:00.000Z",
-                    "district": null,
-                    "email": null,
-                    "entered_office": "2010-01-01T00:00:00.000Z",
-                    "ethnicity": "white-american",
-                    "facebook_url": "https://www.facebook.com/ManhattanDistrictAttorney",
-                    "first_name": "Cyrus",
-                    "gender": "male",
-                    "goes_by": null,
-                    "last_name": "Vance",
-                    "latitude": 40.6643,
-                    "longitude": -73.9385,
-                    "middle_name": "Cyrus",
-                    "name": "Cyrus Vance",
-                    "name_slug": "cyrus-vance",
-                    "name_suffix": null,
-                    "party": "independent",
-                    "phone": "212-335-9000",
-                    "photo_url": "https://cdn.civil.services/city-council/ny/new-york/headshots/512x512/cyrus-vance.jpg",
-                    "population": 8550405,
-                    "pronunciation": null,
-                    "state_code": "NY",
-                    "state_code_slug": "ny",
-                    "state_name": "New York",
-                    "state_name_slug": "new-york",
-                    "term_end": "2017-12-31T00:00:00.000Z",
-                    "title": "district-attorney",
-                    "twitter_handle": "ManhattanDA",
-                    "twitter_url": "https://twitter.com/ManhattanDA",
-                    "vacant": false
-                  }
-                ]
-              },
-              "attribution": {
-                "text": "Data Provided by Civil Services",
-                "website": "https://civil.services",
-                "link": "<a href=\"https://civil.services\">Data Provided by Civil Services</a>",
-                "license": "https://raw.githubusercontent.com/CivilServiceUSA/api/master/LICENSE",
-                "report_bug": "https://github.com/CivilServiceUSA/api/issues/new",
-                "logo": "https://cdn.civil.services/common/logo.png",
-                "icon": "https://cdn.civil.services/common/icon.png"
-              }
-            }
             
 # Group State Endpoints
 
