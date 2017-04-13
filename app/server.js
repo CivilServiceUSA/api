@@ -2,7 +2,7 @@
 
 /**
  * @module server
- * @version 1.0.0
+ * @version 1.0.4
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -10,7 +10,7 @@ require('dotenv').config({silent: true});
 
 var rateLimit = require('express-rate-limit');
 var express = require('express');
-var compression = require('compression');
+var shrinkRay = require('shrink-ray');
 var bodyParser = require('body-parser');
 var debug = require('debug')('express:civilservices');
 var config = require('./config');
@@ -217,7 +217,7 @@ app.use('/docs', express.static(__dirname + '/static/docs'));
 app.use('/guide', express.static(__dirname + '/static/guide'));
 
 app.use(setupAPI);
-app.use(compression());
+app.use(shrinkRay({ filter: shouldCompress }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(limiter);
@@ -240,9 +240,24 @@ app.get('*', function (req, res) {
 });
 
 /**
+ * Should Compress
+ * @param req
+ * @param res
+ * @returns {*}
+ */
+function shouldCompress(req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+
+  // fallback to standard filter function
+  return shrinkRay.filter(req, res)
+}
+
+/**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;

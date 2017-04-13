@@ -1,6 +1,6 @@
 /**
  * @module domain/house
- * @version 1.0.2
+ * @version 1.0.4
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -182,11 +182,11 @@ module.exports = {
 
     for (var i = 0; i < data.length; i++) {
       data[i].photo_url_sizes = {
-        '64x64': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '64x64') : null,
-        '128x128': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '128x128') : null,
-        '256x256': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '256x256') : null,
-        '512x512': (data[i].photo_url) ? data[i].photo_url : null,
-        '1024x1024': (data[i].photo_url) ? data[i].photo_url.replace('512x512', '1024x1024') : null
+        size_64x64: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '64x64') : null,
+        size_128x128: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '128x128') : null,
+        size_256x256: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '256x256') : null,
+        size_512x512: (data[i].photo_url) ? data[i].photo_url : null,
+        size_1024x1024: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '1024x1024') : null
       };
 
       data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;

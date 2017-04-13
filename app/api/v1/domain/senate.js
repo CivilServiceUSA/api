@@ -1,6 +1,6 @@
 /**
  * @module domain/senate
- * @version 1.0.2
+ * @version 1.0.4
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -44,6 +44,7 @@ module.exports = {
       'address_zipcode',
       'biography',
       'bioguide',
+      'class',
       'contact_page',
       'date_of_birth',
       'entered_office',
@@ -176,11 +177,11 @@ module.exports = {
 
     for (var i = 0; i < data.length; i++) {
       data[i].photo_url_sizes = {
-        '64x64': data[i].photo_url.replace('512x512', '64x64'),
-        '128x128': data[i].photo_url.replace('512x512', '128x128'),
-        '256x256': data[i].photo_url.replace('512x512', '256x256'),
-        '512x512': data[i].photo_url,
-        '1024x1024': data[i].photo_url.replace('512x512', '1024x1024')
+        size_64x64: data[i].photo_url.replace('512x512', '64x64'),
+        size_128x128: data[i].photo_url.replace('512x512', '128x128'),
+        size_256x256: data[i].photo_url.replace('512x512', '256x256'),
+        size_512x512: data[i].photo_url,
+        size_1024x1024: data[i].photo_url.replace('512x512', '1024x1024')
       };
 
       data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;
