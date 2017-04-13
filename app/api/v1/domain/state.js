@@ -89,6 +89,53 @@ module.exports = {
   },
 
   /**
+   * Extend Data - There are a few URL's we can provide with the core set of data we have collected
+   * that are not really needed in our database as they can be automated.  So this method creates the data
+   * we did not store in the database.
+   * @param data
+   * @returns {Array}
+   */
+  extendData: function (data) {
+    var extended = [];
+
+    for (var i = 0; i < data.length; i++) {
+      data[i].state_flag = {
+        large: data[i].state_flag_url,
+        small: data[i].state_flag_url.replace('-large.png', '-small.png')
+      };
+
+      data[i].state_seal = {
+        large: data[i].state_seal_url,
+        small: data[i].state_seal_url.replace('-large.png', '-small.png')
+      };
+
+      data[i].map = {
+        large: data[i].map_image_url,
+        small: data[i].map_image_url.replace('-large.png', '-small.png')
+      };
+
+      data[i].landscape = {
+        size_640x360: data[i].landscape_background_url.replace('1280x720', '640x360'),
+        size_960x540: data[i].landscape_background_url.replace('1280x720', '960x540'),
+        size_1280x720: data[i].landscape_background_url,
+        size_1920x1080: data[i].landscape_background_url.replace('1280x720', '1920x1080')
+      };
+
+      data[i].skyline = {
+        size_640x360: data[i].skyline_background_url.replace('1280x720', '640x360'),
+        size_960x540: data[i].skyline_background_url.replace('1280x720', '960x540'),
+        size_1280x720: data[i].skyline_background_url,
+        size_1920x1080: data[i].skyline_background_url.replace('1280x720', '1920x1080')
+      };
+
+      var sorted = util.sortByKeys(data[i]);
+      extended.push(sorted);
+    }
+
+    return extended;
+  },
+
+  /**
    * Get State
    * @param {number} state - State
    * @returns {*}
@@ -342,6 +389,9 @@ module.exports = {
 
     return elasticsearchClient.search(searchParams)
       .then(function(result) {
+        var data = result.hits.hits.map(self.prepareForAPIOutput);
+        var extended = self.extendData(data);
+
         return {
           meta: {
             total: result.hits.total,
@@ -349,7 +399,7 @@ module.exports = {
             pages: Math.ceil(result.hits.total / searchParams.size),
             page: page
           },
-          data: result.hits.hits.map(self.prepareForAPIOutput)
+          data: extended
         };
       })
       .catch(function(error) {

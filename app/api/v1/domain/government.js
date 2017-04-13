@@ -57,7 +57,7 @@ module.exports = {
           house: values[0].data,
           senate: values[1].data,
           city_council: values[2].data,
-          state: values[3].data
+          state: values[3].data[0]
         }
       };
     });
