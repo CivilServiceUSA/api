@@ -44,6 +44,20 @@ bugsnag.register(config.get('bugsnag'), {
   }
 });
 
+/**
+ * Should Compress
+ * @param req
+ * @param res
+ * @returns {*}
+ */
+function shouldCompress(req, res) {
+  if (req.headers['x-no-compression']) {
+    return false;
+  }
+
+  return shrinkRay.filter(req, res);
+}
+
 /* istanbul ignore next */
 function setupAPI(request, response, next) {
   if ('pretty' in request.query && request.query.pretty !== 'false') {
@@ -238,22 +252,6 @@ app.get('*', function (req, res) {
     ]
   })));
 });
-
-/**
- * Should Compress
- * @param req
- * @param res
- * @returns {*}
- */
-function shouldCompress(req, res) {
-  if (req.headers['x-no-compression']) {
-    // don't compress responses with this request header
-    return false
-  }
-
-  // fallback to standard filter function
-  return shrinkRay.filter(req, res)
-}
 
 /**
  * Event listener for HTTP server "error" event.
