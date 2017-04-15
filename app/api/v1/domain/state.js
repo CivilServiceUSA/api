@@ -11,6 +11,7 @@ var config = require('../../../config');
 var elasticsearchClient = require('../../../elasticsearch/client');
 var Promise = require('bluebird');
 var validator = require('validator');
+var ZipCode = require('../../../models/civil_services/zipcode');
 
 var env = config.get('env');
 var indexType = env + '_state';
@@ -387,25 +388,82 @@ module.exports = {
       });
     }
 
-    return elasticsearchClient.search(searchParams)
-      .then(function(result) {
-        var data = result.hits.hits.map(self.prepareForAPIOutput);
-        var extended = self.extendData(data);
-
-        return {
-          meta: {
-            total: result.hits.total,
-            showing: result.hits.hits.length,
-            pages: Math.ceil(result.hits.total / searchParams.size),
-            page: page
-          },
-          data: extended
-        };
+    /**
+     * Filter By Latitude & Longitude
+     */
+    if (query.zipcode) {
+      return ZipCode.findOne({
+        where: {
+          zipcode: query.zipcode
+        }
       })
-      .catch(function(error) {
-        return util.createAPIResponse({
-          errors: [error]
+        .then(function(zipcode) {
+          if (zipcode && zipcode.state && zipcode.shape && zipcode.shape.coordinates) {
+            andFilters = getAndFilters();
+            andFilters.push({
+              match: {
+                state_code: zipcode.state
+              }
+            });
+
+            return elasticsearchClient.search(searchParams)
+              .then(function(result) {
+                var data = result.hits.hits.map(self.prepareForAPIOutput);
+                var extended = self.extendData(data);
+
+                var notices = [];
+
+                if (query.zipcode && result.hits.total > 1) {
+                  notices.push('Try using `latitude` & `longitude` for more specific `house` district results.');
+                }
+
+                return {
+                  notices: notices,
+                  meta: {
+                    total: result.hits.total,
+                    showing: result.hits.hits.length,
+                    pages: Math.ceil(result.hits.total / searchParams.size),
+                    page: page
+                  },
+                  data: extended
+                };
+              })
+              .catch(function(error) {
+                return util.createAPIResponse({
+                  errors: [ 'No Districts found for ' + query.zipcode + ' Zip Code' ]
+                });
+              });
+          } else {
+            return {
+              errors: [ query.zipcode + ' Zip Code Not Found' ]
+            };
+          }
+        }).catch(function(error) {
+          return {
+            errors: [ query.zipcode + ' Zip Code Not Found' ]
+          };
         });
-      });
+    } else {
+      return elasticsearchClient.search(searchParams)
+        .then(function(result) {
+          var data = result.hits.hits.map(self.prepareForAPIOutput);
+          var extended = self.extendData(data);
+
+          return {
+            meta: {
+              total: result.hits.total,
+              showing: result.hits.hits.length,
+              pages: Math.ceil(result.hits.total / searchParams.size),
+              page: page
+            },
+            data: extended
+          };
+        })
+        .catch(function(error) {
+          return util.createAPIResponse({
+            errors: [error]
+          });
+        });
+    }
   }
 };

@@ -690,7 +690,7 @@ module.exports = {
                 query.latitude
               ],
               type: 'circle',
-              radius: '1km'
+              radius: '0.25km'
             }
           }
         }
@@ -719,8 +719,12 @@ module.exports = {
             geo_shape: {
               shape: {
                 shape: {
-                  coordinates: zipcode.shape.coordinates,
-                  type: 'polygon'
+                  coordinates: [
+                    zipcode.longitude,
+                    zipcode.latitude
+                  ],
+                  type: 'circle',
+                  radius: '0.25km'
                 }
               }
             }

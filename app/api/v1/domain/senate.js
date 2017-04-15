@@ -679,14 +679,16 @@ module.exports = {
               geo_shape: {
                 shape: {
                   shape: {
-                    coordinates: zipcode.shape.coordinates,
-                    type: 'polygon'
+                    coordinates: [
+                      zipcode.longitude,
+                      zipcode.latitude
+                    ],
+                    type: 'circle',
+                    radius: '0.25km'
                   }
                 }
               }
             });
-
-            console.log('searchParams', JSON.stringify(searchParams.body));
 
             return elasticsearchClient.search(searchParams)
               .then(function(result) {

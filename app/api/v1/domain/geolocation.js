@@ -121,7 +121,6 @@ module.exports = {
     var searchParams = {
       index: indexName,
       type: indexType,
-      sort: 'zipcode',
       body: {}
     };
 
@@ -152,6 +151,19 @@ module.exports = {
     }
 
     searchParams.from = (page - 1) * searchParams.size;
+
+    // Sorting
+    var sort = (query.sort) ? query.sort.split(',') : ['state', 'city', 'zipcode'];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc', 'asc'];
+
+    searchParams.body.sort = {};
+
+    for (var i = 0; i < sort.length; i++) {
+      var sortOrder = (typeof order[i] !== 'undefined' && ( order[i] === 'asc' || order[i] === 'desc' )) ? order[i] : 'asc';
+      searchParams.body.sort[sort[i]] = {
+        order: sortOrder
+      };
+    }
 
     /**
      * Filter By Unique Zip Code
