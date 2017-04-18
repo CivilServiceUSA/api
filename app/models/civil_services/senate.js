@@ -216,12 +216,14 @@ var Senate = db.dbApi.define('senate', {
     allowNull: true
   },
   latitude: {
-    type: DataTypes.FLOAT(14),
-    allowNull: false
+    type: DataTypes.DECIMAL(10, 8),
+    allowNull: false,
+    validate: { min: -90, max: 90 }
   },
   longitude: {
-    type: DataTypes.FLOAT(14),
-    allowNull: false
+    type: DataTypes.DECIMAL(11, 8),
+    allowNull: false,
+    validate: { min: -180, max: 180 }
   },
   address_complete: {
     type: DataTypes.TEXT,
@@ -292,6 +294,13 @@ var Senate = db.dbApi.define('senate', {
     allowNull: false
   }
 }, {
+  validate: {
+    bothCoordsOrNone: function() {
+      if ((this.latitude === null) !== (this.longitude === null)) {
+        throw new Error('Require either both latitude and longitude or neither')
+      }
+    }
+  },
   indexes: [
     {
       fields: ['bioguide', 'name'],

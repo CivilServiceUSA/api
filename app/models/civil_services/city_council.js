@@ -237,6 +237,13 @@ var CityCouncil = db.dbApi.define('city_council', {
     allowNull: false
   }
 }, {
+  validate: {
+    bothCoordsOrNone: function() {
+      if ((this.latitude === null) !== (this.longitude === null)) {
+        throw new Error('Require either both latitude and longitude or neither')
+      }
+    }
+  },
   indexes: [
     {
       fields: ['state_name', 'city_name', 'name'],

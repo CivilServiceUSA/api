@@ -684,7 +684,7 @@ module.exports = {
                       zipcode.latitude
                     ],
                     type: 'circle',
-                    radius: '0.25km'
+                    radius: '1km'
                   }
                 }
               }

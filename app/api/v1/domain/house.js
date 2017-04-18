@@ -724,7 +724,7 @@ module.exports = {
                     zipcode.latitude
                   ],
                   type: 'circle',
-                  radius: '0.25km'
+                  radius: '1km'
                 }
               }
             }
@@ -732,6 +732,7 @@ module.exports = {
 
           return elasticsearchClient.search(searchParams)
             .then(function(result) {
+
               var data = result.hits.hits.map(self.prepareForAPIOutput);
               var extended = self.extendData(data);
 
