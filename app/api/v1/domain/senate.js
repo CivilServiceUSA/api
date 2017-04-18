@@ -649,7 +649,7 @@ module.exports = {
                 query.latitude
               ],
               type: 'circle',
-              radius: '0.01km'
+              radius: '1km'
             }
           }
         }
