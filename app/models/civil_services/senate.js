@@ -297,7 +297,7 @@ var Senate = db.dbApi.define('senate', {
   validate: {
     bothCoordsOrNone: function() {
       if ((this.latitude === null) !== (this.longitude === null)) {
-        throw new Error('Require either both latitude and longitude or neither')
+        throw new Error('Require either both latitude and longitude or neither');
       }
     }
   },
