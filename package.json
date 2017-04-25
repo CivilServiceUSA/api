@@ -1,6 +1,6 @@
 {
   "name": "civil-services-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Civil Services API",
   "license": "MIT",
   "main": "index.js",

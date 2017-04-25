@@ -6400,7 +6400,7 @@ module.exports = {
         name_suffix: null,
         goes_by: null,
         pronunciation: "LOW-iss FRAYNK-uhl",
-        gender: "female",
+        gender: "male",
         ethnicity: "white-american",
         religion: "jewish",
         openly_lgbtq: "no",

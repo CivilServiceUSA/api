@@ -270,8 +270,8 @@ module.exports = {
     searchParams.from = (page - 1) * searchParams.size;
 
     // Sorting
-    var sort = (query.sort) ? query.sort.split(',') : ['state_code', 'district'];
-    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc'];
+    var sort = (query.sort) ? query.sort.split(',') : [];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : [];
 
     searchParams.body.sort = {};
 
@@ -285,25 +285,18 @@ module.exports = {
     /**
      * Filter By State
      */
-    if (query.id) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          id: query.id
-        }
-      });
-    }
-
-    /**
-     * Filter By State
-     */
     if (query.state) {
       andFilters = getAndFilters();
       andFilters.push({
         multi_match: {
           query: query.state,
           type: 'phrase',
-          fields: ['state_name', 'state_code']
+          fields: [
+            'state_code_slug',
+            'state_name_slug',
+            'state_code',
+            'state_name'
+          ]
         }
       });
     }
@@ -486,8 +479,13 @@ module.exports = {
       andFilters.push({
         multi_match: {
           query: query.name,
-          type: 'phrase',
-          fields: ['name', 'first_name', 'last_name']
+          type: 'best_fields',
+          fields: [
+            'name_slug^2',
+            'name',
+            'first_name',
+            'last_name'
+          ]
         }
       });
     }
@@ -696,6 +694,8 @@ module.exports = {
         }
       });
     }
+
+    console.log(query);
 
     /**
      * Filter By Latitude & Longitude

@@ -265,8 +265,8 @@ module.exports = {
     searchParams.from = (page - 1) * searchParams.size;
 
     // Sorting
-    var sort = (query.sort) ? query.sort.split(',') : ['state_code', 'title', 'last_name'];
-    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc', 'asc'];
+    var sort = (query.sort) ? query.sort.split(',') : [];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : [];
 
     searchParams.body.sort = {};
 
@@ -286,7 +286,12 @@ module.exports = {
         multi_match: {
           query: query.state,
           type: 'phrase',
-          fields: ['state_name', 'state_code']
+          fields: [
+            'state_code_slug',
+            'state_name_slug',
+            'state_code',
+            'state_name'
+          ]
         }
       });
     }
@@ -446,7 +451,12 @@ module.exports = {
         multi_match: {
           query: query.name,
           type: 'phrase',
-          fields: ['name', 'first_name', 'last_name']
+          fields: [
+            'name',
+            'name_slug',
+            'first_name',
+            'last_name'
+          ]
         }
       });
     }
