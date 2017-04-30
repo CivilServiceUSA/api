@@ -8,7 +8,8 @@ var config = require('./config');
 var logger = require('./logger');
 
 var redis = require('redis');
-var redisCacheExpires = config.get('redis.cacheExpire');
+
+/* istanbul ignore next */
 var redisClient = redis.createClient(config.get('redis.port'), config.get('redis.host'), {
   retry_strategy: function (options) {
     if (options.error.code === 'ECONNREFUSED') {
@@ -24,12 +25,14 @@ var redisClient = redis.createClient(config.get('redis.port'), config.get('redis
   }
 });
 
+/* istanbul ignore next */
 redisClient.on('error', function (err) {
   if (config.get('env') !== 'test') {
     console.error('Redis Error: ', err.code);
   }
 });
 
+/* istanbul ignore next */
 if (config.get('redis.password')) {
   redisClient.auth(config.get('redis.password'));
 }

@@ -1,8 +1,4 @@
 var assert = require('chai').assert;
-var sinon = require('sinon');
-var http = require('http');
-var mockReq = require('mock-req');
-var mockRes = require('mock-res');
 
 var util = require('../../../../../app/api/v1/domain/util');
 
@@ -32,6 +28,27 @@ describe('Domain Util', function() {
       var str = '1,foo,6';
       var expected = [1, 6];
       assert.deepEqual(util.normalizeCommaSeparatedIntegers(str), expected);
+    });
+  });
+
+  describe('sortByKeys', function() {
+    it('should exist', function () {
+      assert.isFunction(util.sortByKeys);
+    });
+
+    it('should return an sorted keys', function () {
+      var unsorted = {
+        b: 1,
+        a: 2,
+        c: 3
+      };
+      var expected = {
+        a: 2,
+        b: 1,
+        c: 3
+      };
+
+      assert.deepEqual(util.sortByKeys(unsorted), expected);
     });
   });
 });

@@ -38,7 +38,6 @@ module.exports = {
       state_name: data.state_name,
       state_code: data.state_code,
       name: data.name
-      //shape: data.shape
     };
   }
 };

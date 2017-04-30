@@ -1,6 +1,6 @@
 /**
  * @module domain/government
- * @version 1.0.2
+ * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -10,6 +10,7 @@ var Promise = require('bluebird');
 var HouseDomain = require('./house');
 var SenateDomain = require('./senate');
 var CityCouncilDomain = require('./city_council');
+var GovernorDomain = require('./governor');
 var StateDomain = require('./state');
 
 /**
@@ -39,15 +40,19 @@ module.exports = {
       resolve(CityCouncilDomain.search(params));
     });
 
+    var governor = new Promise(function (resolve) {
+      resolve(GovernorDomain.search(params));
+    });
+
     var state = new Promise(function (resolve) {
       resolve(StateDomain.search(params));
     });
 
-    return Promise.all([house, senate, city_council, state]).then(function(values) {
+    return Promise.all([house, senate, city_council, governor, state]).then(function(values) {
 
-      var notices = _.union(values[0].notices, values[1].notices, values[2].notices, values[3].notices);
-      var warnings = _.union(values[0].warnings, values[1].warnings, values[2].warnings, values[3].warnings);
-      var errors = _.union(values[0].errors, values[1].errors, values[2].errors, values[3].errors);
+      var notices = _.union(values[0].notices, values[1].notices, values[2].notices, values[3].notices, values[4].notices);
+      var warnings = _.union(values[0].warnings, values[1].warnings, values[2].warnings, values[3].warnings, values[4].warnings);
+      var errors = _.union(values[0].errors, values[1].errors, values[2].errors, values[3].errors, values[4].errors);
 
       return {
         notices: notices,
@@ -57,7 +62,8 @@ module.exports = {
           house: values[0].data,
           senate: values[1].data,
           city_council: values[2].data,
-          state: values[3].data[0]
+          governor: values[3].data,
+          state: values[4].data[0]
         }
       };
     });

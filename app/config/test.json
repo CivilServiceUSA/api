@@ -1,9 +1,15 @@
 {
+  "devFlags": {
+    "enableBugTracking": true,
+    "enableGoogleAnalytics": false
+  },
   "debug": false,
   "env": "test",
   "secret": "5EAC65B7-90A9-C164-2555-179E0ECD7307",
   "sessionKey": "50128304-E5B6-3C64-C1DD-523A90C74E59",
   "debugKey": "628304F4-83C3-35B4-85C7-6F8CF79600FF",
+  "analytics": "UA-93026527-3",
+  "bugsnag": "FAKE_KEY",
   "hashID": {
     "secret": "379241DC-B034-9BA4-B1BC-863EAFD86D9D"
   },

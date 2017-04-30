@@ -30,8 +30,6 @@ module.exports = {
    */
   prepareForAPIOutput: function(data) {
     var fields = [
-      'aliases',
-      'age',
       'address_city',
       'address_complete',
       'address_number',
@@ -42,8 +40,11 @@ module.exports = {
       'address_street',
       'address_type',
       'address_zipcode',
+      'age',
+      'aliases',
       'biography',
       'bioguide',
+      'civil_services_url',
       'class',
       'contact_page',
       'date_of_birth',
@@ -70,7 +71,7 @@ module.exports = {
       'party',
       'phone',
       'photo_url',
-      'photos',
+      'photo_url_sizes',
       'pronunciation',
       'religion',
       'state_code',
@@ -103,65 +104,67 @@ module.exports = {
     var age = (!data.date_of_birth) ? null : moment().diff(birthday, 'years');
 
     return {
-      age: age,
-      state_name: data.state_name,
-      state_name_slug: data.state_name_slug,
-      state_code: data.state_code,
-      state_code_slug: data.state_code_slug,
-      class: data.class,
-      bioguide: data.bioguide,
-      thomas: data.thomas,
-      govtrack: data.govtrack,
-      opensecrets: data.opensecrets,
-      votesmart: data.votesmart,
-      fec: data.fec,
-      maplight: data.maplight,
-      wikidata: data.wikidata,
-      google_entity_id: data.google_entity_id,
-      title: data.title,
-      party: data.party,
-      name: data.name,
-      name_slug: data.name_slug,
-      first_name: data.first_name,
-      middle_name: data.middle_name,
-      last_name: data.last_name,
-      name_suffix: data.name_suffix,
-      goes_by: data.goes_by,
-      pronunciation: data.pronunciation,
-      gender: data.gender,
-      ethnicity: data.ethnicity,
-      religion: data.religion,
-      openly_lgbtq: data.openly_lgbtq,
-      date_of_birth: data.date_of_birth,
-      entered_office: data.entered_office,
-      term_end: data.term_end,
-      biography: data.biography,
-      phone: data.phone,
-      fax: data.fax,
-      latitude: parseFloat(data.latitude),
-      longitude: parseFloat(data.longitude),
+      address_city: data.address_city,
       address_complete: data.address_complete,
       address_number: data.address_number,
       address_prefix: data.address_prefix,
-      address_street: data.address_street,
-      address_sec_unit_type: data.address_sec_unit_type,
       address_sec_unit_num: data.address_sec_unit_num,
-      address_city: data.address_city,
+      address_sec_unit_type: data.address_sec_unit_type,
       address_state: data.address_state,
-      address_zipcode: data.address_zipcode,
+      address_street: data.address_street,
       address_type: data.address_type,
-      website: data.website,
+      address_zipcode: data.address_zipcode,
+      age: age,
+      aliases: data.getAliases(),
+      biography: data.biography,
+      bioguide: data.bioguide,
+      civil_services_url: data.civil_services_url,
+      class: data.class,
       contact_page: data.contact_page,
+      date_of_birth: data.date_of_birth,
+      entered_office: data.entered_office,
+      ethnicity: data.ethnicity,
       facebook_url: data.facebook_url,
-      twitter_handle: data.twitter_handle,
-      twitter_url: data.twitter_url,
-      photo_url: data.photo_url,
+      fax: data.fax,
+      fec: data.fec,
+      first_name: data.first_name,
+      gender: data.gender,
+      goes_by: data.goes_by,
+      google_entity_id: data.google_entity_id,
+      govtrack: data.govtrack,
+      last_name: data.last_name,
+      latitude: parseFloat(data.latitude),
       location: {
         lat: parseFloat(data.latitude),
         lon: parseFloat(data.longitude)
       },
+      longitude: parseFloat(data.longitude),
+      maplight: data.maplight,
+      middle_name: data.middle_name,
+      name: data.name,
+      name_slug: data.name_slug,
+      name_suffix: data.name_suffix,
+      openly_lgbtq: data.openly_lgbtq,
+      opensecrets: data.opensecrets,
+      party: data.party,
+      phone: data.phone,
+      photo_url: data.photo_url,
+      photo_url_sizes: data.photo_url_sizes,
+      pronunciation: data.pronunciation,
+      religion: data.religion,
       shape: data.shape,
-      aliases: data.getAliases()
+      state_code: data.state_code,
+      state_code_slug: data.state_code_slug,
+      state_name: data.state_name,
+      state_name_slug: data.state_name_slug,
+      term_end: data.term_end,
+      thomas: data.thomas,
+      title: data.title,
+      twitter_handle: data.twitter_handle,
+      twitter_url: data.twitter_url,
+      votesmart: data.votesmart,
+      website: data.website,
+      wikidata: data.wikidata,
     };
   },
 
@@ -177,11 +180,11 @@ module.exports = {
 
     for (var i = 0; i < data.length; i++) {
       data[i].photo_url_sizes = {
-        size_64x64: data[i].photo_url.replace('512x512', '64x64'),
-        size_128x128: data[i].photo_url.replace('512x512', '128x128'),
-        size_256x256: data[i].photo_url.replace('512x512', '256x256'),
-        size_512x512: data[i].photo_url,
-        size_1024x1024: data[i].photo_url.replace('512x512', '1024x1024')
+        size_64x64: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '64x64') : null,
+        size_128x128: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '128x128') : null,
+        size_256x256: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '256x256') : null,
+        size_512x512: (data[i].photo_url) ? data[i].photo_url : null,
+        size_1024x1024: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '1024x1024') : null
       };
 
       data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;
@@ -215,6 +218,12 @@ module.exports = {
       data[i].fec_url = (!data[i].fec) ? null : 'http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=' + data[i].fec;
       data[i].maplight_url = (!data[i].maplight) ? null : 'http://maplight.org/us-congress/legislator/' + data[i].maplight;
       data[i].wikidata_url = (!data[i].wikidata) ? null : 'https://www.wikidata.org/wiki/' + data[i].wikidata;
+
+      data[i].civil_services_url = 'https://civil.services/us-senate/' + data[i].state_name_slug + '/senator/' + data[i].name_slug;
+
+      data[i].date_of_birth = (data[i].date_of_birth) ? data[i].date_of_birth.substring(0, 10) : null;
+      data[i].entered_office = (data[i].entered_office) ? data[i].entered_office.substring(0, 10) : null;
+      data[i].term_end = (data[i].term_end) ? data[i].term_end.substring(0, 10) : null;
 
       var sorted = util.sortByKeys(data[i]);
 
@@ -658,10 +667,23 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'circle',
-              radius: '1km'
+              type: 'point'
             }
           }
+        }
+      });
+    }
+
+    /**
+     * Filter By Keyword
+     */
+    if (query.keyword) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        query_string: {
+          query: '*' + query.keyword + '*',
+          fields: ['name', 'first_name', 'last_name', 'title'],
+          fuzziness: 'AUTO'
         }
       });
     }

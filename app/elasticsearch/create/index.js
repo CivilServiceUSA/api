@@ -1,6 +1,6 @@
 /**
  * @module elasticsearch/create
- * @version 1.0.2
+ * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -13,6 +13,7 @@ module.exports = {
   CityCouncil: require('./city_council'),
   County: require('./county'),
   Geolocation: require('./geolocation'),
+  Governor: require('./governor'),
   House: require('./house'),
   Senate: require('./senate'),
   State: require('./state'),

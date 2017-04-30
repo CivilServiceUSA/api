@@ -1,6 +1,6 @@
 /**
  * @module domain/city_council
- * @version 1.0.2
+ * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -51,6 +51,7 @@ module.exports = {
       'city_government_url',
       'city_name',
       'city_name_slug',
+      'civil_services_url',
       'date_of_birth',
       'district',
       'email',
@@ -72,6 +73,7 @@ module.exports = {
       'photo_url',
       'population',
       'pronunciation',
+      'photo_url_sizes',
       'state_code',
       'state_code_slug',
       'state_name',
@@ -96,63 +98,98 @@ module.exports = {
     var age = (!data.date_of_birth) ? null : moment().diff(birthday, 'years');
 
     return {
-      age: age,
-      state_name: data.state_name,
-      state_name_slug: data.state_name_slug,
-      state_code: data.state_code,
-      state_code_slug: data.state_code_slug,
-      city_name: data.state_name,
-      city_name_slug: data.state_name_slug,
-      district: data.district,
-      at_large: data.at_large,
-      vacant: data.vacant,
-      title: data.title,
-      party: data.party,
-      name: data.name,
-      name_slug: data.name_slug,
-      first_name: data.first_name,
-      middle_name: data.middle_name,
-      last_name: data.last_name,
-      name_suffix: data.name_suffix,
-      goes_by: data.goes_by,
-      pronunciation: data.pronunciation,
-      gender: data.gender,
-      ethnicity: data.ethnicity,
-      date_of_birth: data.date_of_birth,
-      entered_office: data.entered_office,
-      term_end: data.term_end,
-      email: data.email,
-      phone: data.phone,
-      latitude: parseFloat(data.latitude),
-      longitude: parseFloat(data.longitude),
+      address_city: data.address_city,
       address_complete: data.address_complete,
       address_number: data.address_number,
       address_prefix: data.address_prefix,
-      address_street: data.address_street,
-      address_sec_unit_type: data.address_sec_unit_type,
       address_sec_unit_num: data.address_sec_unit_num,
-      address_city: data.address_city,
+      address_sec_unit_type: data.address_sec_unit_type,
       address_state: data.address_state,
-      address_zipcode: data.address_zipcode,
+      address_street: data.address_street,
       address_type: data.address_type,
-      population: data.population,
+      address_zipcode: data.address_zipcode,
+      age: age,
+      aliases: data.getAliases(),
+      at_large: data.at_large,
       background_url: data.background_url,
-      city_government_url: data.city_government_url,
-      city_council_url: data.city_council_url,
       city_council_calendar_url: data.city_council_calendar_url,
-      city_council_legislation_url: data.city_council_legislation_url,
       city_council_committees_url: data.city_council_committees_url,
-      twitter_handle: data.twitter_handle,
-      twitter_url: data.twitter_url,
+      city_council_legislation_url: data.city_council_legislation_url,
+      city_council_url: data.city_council_url,
+      city_government_url: data.city_government_url,
+      city_name: data.city_name,
+      city_name_slug: data.city_name_slug,
+      civil_services_url: data.civil_services_url,
+      date_of_birth: data.date_of_birth,
+      district: data.district,
+      email: data.email,
+      entered_office: data.entered_office,
+      ethnicity: data.ethnicity,
       facebook_url: data.facebook_url,
-      photo_url: data.photo_url,
+      first_name: data.first_name,
+      gender: data.gender,
+      goes_by: data.goes_by,
+      last_name: data.last_name,
+      latitude: parseFloat(data.latitude),
       location: {
         lat: parseFloat(data.latitude),
         lon: parseFloat(data.longitude)
       },
+      longitude: parseFloat(data.longitude),
+      middle_name: data.middle_name,
+      name: data.name,
+      name_slug: data.name_slug,
+      name_suffix: data.name_suffix,
+      party: data.party,
+      phone: data.phone,
+      photo_url: data.photo_url,
+      photo_url_sizes: data.photo_url_sizes,
+      population: data.population,
+      pronunciation: data.pronunciation,
       shape: data.shape,
-      aliases: data.getAliases()
+      state_code: data.state_code,
+      state_code_slug: data.state_code_slug,
+      state_name: data.state_name,
+      state_name_slug: data.state_name_slug,
+      term_end: data.term_end,
+      title: data.title,
+      twitter_handle: data.twitter_handle,
+      twitter_url: data.twitter_url,
+      vacant: data.vacant,
     };
+  },
+
+  /**
+   * Extend Data - There are a few URL's we can provide with the core set of data we have collected
+   * that are not really needed in our database as they can be automated.  So this method creates the data
+   * we did not store in the database.
+   * @param data
+   * @returns {Array}
+   */
+  extendData: function (data) {
+    var extended = [];
+
+    for (var i = 0; i < data.length; i++) {
+      data[i].photo_url_sizes = {
+        size_64x64: data[i].photo_url.replace('512x512', '64x64'),
+        size_128x128: data[i].photo_url.replace('512x512', '128x128'),
+        size_256x256: data[i].photo_url.replace('512x512', '256x256'),
+        size_512x512: data[i].photo_url,
+        size_1024x1024: data[i].photo_url.replace('512x512', '1024x1024')
+      };
+
+      data[i].date_of_birth = (data[i].date_of_birth) ? data[i].date_of_birth.substring(0, 10) : null;
+      data[i].entered_office = (data[i].entered_office) ? data[i].entered_office.substring(0, 10) : null;
+      data[i].term_end = (data[i].term_end) ? data[i].term_end.substring(0, 10) : null;
+
+      data[i].civil_services_url = 'https://civil.services/city-council/' + data[i].state_name_slug + '/' + data[i].city_name_slug + '/councilor/' + data[i].name_slug;
+
+      var sorted = util.sortByKeys(data[i]);
+
+      extended.push(sorted);
+    }
+
+    return extended;
   },
 
   /**
@@ -196,8 +233,8 @@ module.exports = {
     searchParams.from = (page - 1) * searchParams.size;
 
     // Sorting
-    var sort = (query.sort) ? query.sort.split(',') : ['state_code', 'city_name_slug', 'district'];
-    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc', 'asc'];
+    var sort = (query.sort) ? query.sort.split(',') : [];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : [];
 
     searchParams.body.sort = {};
 
@@ -290,10 +327,10 @@ module.exports = {
     if (query.name) {
       andFilters = getAndFilters();
       andFilters.push({
-        multi_match: {
-          query: query.name,
-          type: 'phrase',
-          fields: ['name', 'first_name', 'last_name']
+        query_string: {
+          query: query.name + '*',
+          fields: ['name^2', 'first_name', 'last_name'],
+          fuzziness: 'AUTO'
         }
       });
     }
@@ -476,6 +513,21 @@ module.exports = {
         }
       });
     }
+
+    /**
+     * Filter By Keyword
+     */
+    if (query.keyword) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        query_string: {
+          query: '*' + query.keyword + '*',
+          fields: ['name', 'first_name', 'last_name', 'title'],
+          fuzziness: 'AUTO'
+        }
+      });
+    }
+
     /**
      * Filter By Latitude & Longitude
      */
@@ -519,6 +571,9 @@ module.exports = {
                   notices.push('Try using `latitude` & `longitude` for more specific `house` district results.');
                 }
 
+                var data = result.hits.hits.map(self.prepareForAPIOutput);
+                var extended = self.extendData(data);
+
                 return {
                   notices: notices,
                   meta: {
@@ -527,7 +582,7 @@ module.exports = {
                     pages: Math.ceil(result.hits.total / searchParams.size),
                     page: page
                   },
-                  data: result.hits.hits.map(self.prepareForAPIOutput)
+                  data: extended
                 };
               })
               .catch(function(error) {
@@ -555,6 +610,9 @@ module.exports = {
             notices.push('Try using `latitude` & `longitude` for more specific `house` district results.');
           }
 
+          var data = result.hits.hits.map(self.prepareForAPIOutput);
+          var extended = self.extendData(data);
+
           return {
             notices: notices,
             meta: {
@@ -563,7 +621,7 @@ module.exports = {
               pages: Math.ceil(result.hits.total / searchParams.size),
               page: page
             },
-            data: result.hits.hits.map(self.prepareForAPIOutput)
+            data: extended
           };
         })
         .catch(function(error) {

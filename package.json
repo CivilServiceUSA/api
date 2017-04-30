@@ -1,6 +1,6 @@
 {
   "name": "civil-services-api",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "Civil Services API",
   "license": "MIT",
   "main": "index.js",
@@ -17,7 +17,7 @@
     "test": "npm run -s lint && npm run -s coverage && npm run -s check-coverage",
     "lint": "jshint --reporter=node_modules/jshint-stylish ./app",
     "coverage": "API_NODE_ENV=test istanbul cover _mocha --recursive --require ./test/bootstrap.js ./test/**/*_test.js",
-    "check-coverage": "istanbul check-coverage --statement 50 --branch 40 --function 50 --line 50",
+    "check-coverage": "istanbul check-coverage --statement 80 --branch 80 --function 80 --line 80",
     "migrate": "sequelize db:migrate",
     "migrate:create": "sequelize migration:create",
     "migrate:rollback": "sequelize db:migrate:undo",

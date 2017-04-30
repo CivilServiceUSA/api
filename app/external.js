@@ -16,6 +16,7 @@ var logger = require('./logger');
 var redisClient = require('./redis');
 var redisCacheExpires = config.get('redis.cacheExpire');
 
+/* istanbul ignore next */
 module.exports = {
   /**
    * Get External Content

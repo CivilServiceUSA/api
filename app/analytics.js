@@ -1,6 +1,6 @@
 /**
  * @module analytics
- * @version 1.0.0
+ * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -43,9 +43,14 @@ function trackEvent (apikey, category, action, label, value) {
       form: data
     }];
 
-    async.map(requests, function(fetch) {
-      request(fetch);
-    });
+    /* istanbul ignore next */
+    if (config.get('env') !== 'test') {
+      async.map(requests, function(fetch) {
+        request(fetch);
+      });
+    }
+
+    return requests;
   }
 }
 

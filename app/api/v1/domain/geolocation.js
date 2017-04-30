@@ -153,8 +153,8 @@ module.exports = {
     searchParams.from = (page - 1) * searchParams.size;
 
     // Sorting
-    var sort = (query.sort) ? query.sort.split(',') : ['state', 'city', 'zipcode'];
-    var order = (query.order) ? query.order.toLowerCase().split(',') : ['asc', 'asc', 'asc'];
+    var sort = (query.sort) ? query.sort.split(',') : [];
+    var order = (query.order) ? query.order.toLowerCase().split(',') : [];
 
     searchParams.body.sort = {};
 
@@ -287,15 +287,17 @@ module.exports = {
      * Filter By Latitude, Longitude & Distance
      */
     if (query.latitude && query.longitude) {
-      setGeoFilters({
+      andFilters = getAndFilters();
+      andFilters.push({
         geo_shape: {
           shape: {
             shape: {
               coordinates: [
-                query.longitude,
-                query.latitude
+                parseFloat(query.longitude),
+                parseFloat(query.latitude)
               ],
-              type: 'point'
+              type: 'point',
+              radius: '0.25km'
             }
           }
         }

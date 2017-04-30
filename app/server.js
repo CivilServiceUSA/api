@@ -50,6 +50,7 @@ bugsnag.register(config.get('bugsnag'), {
  * @param res
  * @returns {*}
  */
+/* istanbul ignore next */
 function shouldCompress(req, res) {
   if (req.headers['x-no-compression']) {
     return false;
@@ -197,6 +198,7 @@ app.enable('trust proxy');
 /**
  * Allow for Timeout JSON Response
  */
+/* istanbul ignore next */
 app.use(function(req, res, next){
   res.setTimeout(5000, function(){
     if(req.header('API-Key')){
@@ -238,6 +240,7 @@ app.use(limiter);
 app.use(router);
 
 // Fallback for Possible Routes used that do not exist
+/* istanbul ignore next */
 app.get('*', function (req, res) {
   if(req.header('API-Key')){
     req.query.apikey = req.header('API-Key');
@@ -256,6 +259,7 @@ app.get('*', function (req, res) {
 /**
  * Event listener for HTTP server "error" event.
  */
+/* istanbul ignore next */
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -282,7 +286,7 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
+/* istanbul ignore next */
 function onListening() {
   var addr = app.address();
   var bind = (typeof addr === 'string') ? 'pipe ' + addr : 'port ' + addr.port;

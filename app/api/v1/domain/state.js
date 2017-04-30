@@ -1,6 +1,6 @@
 /**
  * @module domain/state
- * @version 1.0.2
+ * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
 
@@ -31,27 +31,30 @@ module.exports = {
    */
   prepareForAPIOutput: function(data) {
     var fields = [
-      'state_name',
-      'state_name_slug',
-      'state_code',
-      'state_code_slug',
-      'nickname',
-      'website',
       'admission_date',
       'admission_number',
       'capital_city',
       'capital_url',
+      'civil_services_url',
+      'constitution_url',
+      'facebook_url',
+      'landscape_background_url',
+      'map_image_url',
+      'name',
+      'nickname',
+      'photo_url',
       'population',
       'population_rank',
-      'constitution_url',
-      'state_flag_url',
-      'state_seal_url',
-      'map_image_url',
-      'landscape_background_url',
       'skyline_background_url',
+      'state_code',
+      'state_code_slug',
+      'state_flag_url',
+      'state_name',
+      'state_name_slug',
+      'state_seal_url',
       'twitter_handle',
       'twitter_url',
-      'facebook_url'
+      'website'
     ];
 
     return _.pick(data._source, fields);
@@ -64,28 +67,31 @@ module.exports = {
    */
   prepareForElasticSearch: function(data) {
     return {
-      state_name: data.state_name,
-      state_name_slug: data.state_name_slug,
-      state_code: data.state_code,
-      state_code_slug: data.state_code_slug,
-      nickname: data.nickname,
-      website: data.website,
       admission_date: data.admission_date,
       admission_number: data.admission_number,
       capital_city: data.capital_city,
       capital_url: data.capital_url,
+      civil_services_url: data.civil_services_url,
+      constitution_url: data.constitution_url,
+      facebook_url: data.facebook_url,
+      landscape_background_url: data.landscape_background_url,
+      map_image_url: data.map_image_url,
+      name: data.state_name,
+      nickname: data.nickname,
+      photo_url: data.landscape_background_url,
       population: data.population,
       population_rank: data.population_rank,
-      constitution_url: data.constitution_url,
-      state_flag_url: data.state_flag_url,
-      state_seal_url: data.state_seal_url,
-      map_image_url: data.map_image_url,
-      landscape_background_url: data.landscape_background_url,
+      shape: data.shape,
       skyline_background_url: data.skyline_background_url,
+      state_code: data.state_code,
+      state_code_slug: data.state_code_slug,
+      state_flag_url: data.state_flag_url,
+      state_name: data.state_name,
+      state_name_slug: data.state_name_slug,
+      state_seal_url: data.state_seal_url,
       twitter_handle: data.twitter_handle,
       twitter_url: data.twitter_url,
-      facebook_url: data.facebook_url,
-      shape: data.shape
+      website: data.website
     };
   },
 
@@ -129,6 +135,11 @@ module.exports = {
         size_1920x1080: data[i].skyline_background_url.replace('1280x720', '1920x1080')
       };
 
+      data[i].civil_services_url = 'https://civil.services/state/' + data[i].state_name_slug;
+
+      data[i].admission_date = (data[i].admission_date) ? data[i].admission_date.substring(0, 10) : null;
+
+
       var sorted = util.sortByKeys(data[i]);
       extended.push(sorted);
     }
@@ -170,6 +181,7 @@ module.exports = {
               admission_number: state.admission_number,
               capital_city: state.capital_city,
               capital_url: state.capital_url,
+              civil_services_url: 'https://civil.services/state/' + state.state_name_slug,
               population: state.population,
               population_rank: state.population_rank,
               constitution_url: state.constitution_url,
@@ -384,6 +396,20 @@ module.exports = {
               radius: '0.01km'
             }
           }
+        }
+      });
+    }
+
+    /**
+     * Filter By Keyword
+     */
+    if (query.keyword) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        query_string: {
+          query: '*' + query.keyword + '*',
+          fields: ['state_name'],
+          fuzziness: 'AUTO'
         }
       });
     }

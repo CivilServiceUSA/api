@@ -1,10 +1,11 @@
 var assert = require('chai').assert;
 var sinon = require('sinon');
 
-var SearchDomain = require('../../../../../app/api/v1/domain/search');
+var government = require('../../../../../app/api/v1/domain/government');
 var client = require('../../../../../app/elasticsearch/client');
+var ZipCode = require('../../../../../app/models/civil_services/zipcode');
 
-describe('Domain Search', function() {
+describe('Domain Government', function() {
   beforeEach(function() {
     this.sandbox = sinon.sandbox.create();
   });
@@ -14,16 +15,17 @@ describe('Domain Search', function() {
   });
 
   it('should be defined', function() {
-    assert.isDefined(SearchDomain);
+    assert.isDefined(government);
   });
 
   it('search should be defined', function() {
-    assert.isDefined(SearchDomain.search);
+    assert.isDefined(government.search);
   });
 
   describe('search should return correct data', function() {
     beforeEach(function () {
       this.elasticsearchStub = this.sandbox.stub(client, 'search');
+      this.zipCodeStub = this.sandbox.stub(ZipCode, 'findOne');
     });
 
     afterEach(function () {
@@ -31,14 +33,15 @@ describe('Domain Search', function() {
     });
 
     var searchQuery = {
-      keyword: 'test'
+      latitude: 34.16,
+      longitude: -118.37
     };
 
     it('should fail without params', function(done) {
 
       this.elasticsearchStub.returns(Promise.reject('Fake Error'));
 
-      SearchDomain.search({})
+      government.search({})
         .catch(function(error) {
           assert.isDefined(error);
           done();
@@ -51,7 +54,7 @@ describe('Domain Search', function() {
         hits: { total: 1, hits: [] }
       }));
 
-      SearchDomain.search(searchQuery)
+      government.search(searchQuery)
         .then(function(results) {
           assert.isDefined(results);
           done();

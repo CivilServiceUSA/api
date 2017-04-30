@@ -1,6 +1,6 @@
 /**
  * @module domain
- * @version 1.0.0
+ * @version 1.1.0
  */
 
 /**
@@ -8,15 +8,16 @@
  * @type {object}
  */
 module.exports = {
-  CityCouncil: require('./city_council'),
   Category: require('./category'),
+  CityCouncil: require('./city_council'),
   County: require('./county'),
   Email: require('./email'),
   Geolocation: require('./geolocation'),
   Government: require('./government'),
+  Governor: require('./governor'),
+  House: require('./house'),
   Profile: require('./profile'),
   Search: require('./search'),
-  House: require('./house'),
   Senate: require('./senate'),
   Settings: require('./settings'),
   State: require('./state'),

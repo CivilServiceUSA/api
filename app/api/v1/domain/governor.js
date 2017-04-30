@@ -1,5 +1,5 @@
 /**
- * @module domain/house
+ * @module domain/governor
  * @version 1.1.0
  * @author Peter Schmalfeldt <me@peterschmalfeldt.com>
  */
@@ -14,7 +14,7 @@ var ZipCode = require('../../../models/civil_services/zipcode');
 
 
 var env = config.get('env');
-var indexType = env + '_house';
+var indexType = env + '_governor';
 var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
 
 var DEFAULT_PAGE_SIZE = 30;
@@ -43,33 +43,25 @@ module.exports = {
       'address_street',
       'address_type',
       'address_zipcode',
-      'at_large',
       'biography',
-      'bioguide',
       'civil_services_url',
       'contact_page',
       'date_of_birth',
-      'district',
       'entered_office',
       'ethnicity',
       'facebook_url',
       'fax',
-      'fec',
       'first_name',
       'gender',
       'goes_by',
-      'google_entity_id',
-      'govtrack',
       'last_name',
       'latitude',
       'longitude',
-      'maplight',
       'middle_name',
       'name',
       'name_slug',
       'name_suffix',
       'openly_lgbtq',
-      'opensecrets',
       'party',
       'phone',
       'photo_url',
@@ -81,14 +73,11 @@ module.exports = {
       'state_name',
       'state_name_slug',
       'term_end',
-      'thomas',
       'title',
       'twitter_handle',
       'twitter_url',
-      'vacant',
       'votesmart',
-      'website',
-      'wikidata'
+      'website'
     ];
 
     return _.pick(data._source, fields);
@@ -107,69 +96,56 @@ module.exports = {
     var age = (!data.date_of_birth) ? null : moment().diff(birthday, 'years');
 
     return {
-      address_city: data.address_city,
+      age: age,
+      state_name: data.state_name,
+      state_name_slug: data.state_name_slug,
+      state_code: data.state_code,
+      state_code_slug: data.state_code_slug,
+      votesmart: data.votesmart,
+      civil_services_url: data.civil_services_url,
+      photo_url_sizes: data.photo_url_sizes,
+      title: data.title,
+      party: data.party,
+      name: data.name,
+      name_slug: data.name_slug,
+      first_name: data.first_name,
+      middle_name: data.middle_name,
+      last_name: data.last_name,
+      name_suffix: data.name_suffix,
+      goes_by: data.goes_by,
+      pronunciation: data.pronunciation,
+      gender: data.gender,
+      ethnicity: data.ethnicity,
+      religion: data.religion,
+      openly_lgbtq: data.openly_lgbtq,
+      date_of_birth: data.date_of_birth,
+      entered_office: data.entered_office,
+      term_end: data.term_end,
+      biography: data.biography,
+      phone: data.phone,
+      fax: data.fax,
+      latitude: parseFloat(data.latitude),
+      longitude: parseFloat(data.longitude),
       address_complete: data.address_complete,
       address_number: data.address_number,
       address_prefix: data.address_prefix,
-      address_sec_unit_num: data.address_sec_unit_num,
-      address_sec_unit_type: data.address_sec_unit_type,
-      address_state: data.address_state,
       address_street: data.address_street,
-      address_type: data.address_type,
+      address_sec_unit_type: data.address_sec_unit_type,
+      address_sec_unit_num: data.address_sec_unit_num,
+      address_city: data.address_city,
+      address_state: data.address_state,
       address_zipcode: data.address_zipcode,
-      age: age,
-      aliases: data.getAliases(),
-      at_large: data.at_large,
-      biography: data.biography,
-      bioguide: data.bioguide,
-      civil_services_url: data.civil_services_url,
+      address_type: data.address_type,
+      website: data.website,
       contact_page: data.contact_page,
-      date_of_birth: data.date_of_birth,
-      district: data.district,
-      entered_office: data.entered_office,
-      ethnicity: data.ethnicity,
       facebook_url: data.facebook_url,
-      fax: data.fax,
-      fec: data.fec,
-      first_name: data.first_name,
-      gender: data.gender,
-      goes_by: data.goes_by,
-      google_entity_id: data.google_entity_id,
-      govtrack: data.govtrack,
-      last_name: data.last_name,
-      latitude: parseFloat(data.latitude),
-      location: {
-        lat: parseFloat(data.latitude),
-        lon: parseFloat(data.longitude)
-      },
-      longitude: parseFloat(data.longitude),
-      maplight: data.maplight,
-      middle_name: data.middle_name,
-      name: data.name,
-      name_slug: data.name_slug,
-      name_suffix: data.name_suffix,
-      openly_lgbtq: data.openly_lgbtq,
-      opensecrets: data.opensecrets,
-      party: data.party,
-      phone: data.phone,
-      photo_url: data.photo_url,
-      photo_url_sizes: data.photo_url_sizes,
-      pronunciation: data.pronunciation,
-      religion: data.religion,
-      shape: data.shape,
-      state_code: data.state_code,
-      state_code_slug: data.state_code_slug,
-      state_name: data.state_name,
-      state_name_slug: data.state_name_slug,
-      term_end: data.term_end,
-      thomas: data.thomas,
-      title: data.title,
       twitter_handle: data.twitter_handle,
       twitter_url: data.twitter_url,
-      vacant: data.vacant,
-      votesmart: data.votesmart,
-      website: data.website,
-      wikidata: data.wikidata
+      photo_url: data.photo_url,
+      location: {lat: parseFloat(data.latitude),lon: parseFloat(data.longitude)
+      },
+      shape: data.shape,
+      aliases: data.getAliases()
     };
   },
 
@@ -192,23 +168,6 @@ module.exports = {
         size_1024x1024: (data[i].photo_url) ? data[i].photo_url.replace('512x512', '1024x1024') : null
       };
 
-      data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;
-      data[i].govtrack_url = (!data[i].govtrack) ? null : 'https://www.govtrack.us/congress/members/' + data[i].govtrack;
-
-      data[i].opensecrets_url = (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/summary.php?cid=' + data[i].opensecrets;
-      data[i].opensecrets_url_tabs = {
-        summary: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/summary.php?cid=' + data[i].opensecrets,
-        elections: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/elections.php?cid=' + data[i].opensecrets,
-        industries: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/industries.php?cid=' + data[i].opensecrets,
-        pacs: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/pacs.php?cid=' + data[i].opensecrets,
-        donors: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/contrib.php?cid=' + data[i].opensecrets,
-        geography: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/geog.php?cid=' + data[i].opensecrets,
-        expenditures: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/expend.php?cid=' + data[i].opensecrets,
-        legislation: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/bills.php?cid=' + data[i].opensecrets,
-        news: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/inthenews.php?cid=' + data[i].opensecrets,
-        other: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/otherdata.php?cid=' + data[i].opensecrets
-      };
-
       data[i].votesmart_url = (!data[i].votesmart) ? null : 'http://votesmart.org/candidate/' + data[i].votesmart;
       data[i].votesmart_url_tabs = {
         summary: (!data[i].votesmart) ? null : 'http://votesmart.org/candidate/' + data[i].votesmart,
@@ -220,11 +179,7 @@ module.exports = {
         funding: (!data[i].votesmart) ? null : 'http://votesmart.org/candidate/campaign-finance/' + data[i].votesmart
       };
 
-      data[i].fec_url = (!data[i].fec) ? null : 'http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=' + data[i].fec;
-      data[i].maplight_url = (!data[i].maplight) ? null : 'http://maplight.org/us-congress/legislator/' + data[i].maplight;
-      data[i].wikidata_url = (!data[i].wikidata) ? null : 'https://www.wikidata.org/wiki/' + data[i].wikidata;
-
-      data[i].civil_services_url = 'https://civil.services/us-house/' + data[i].state_name_slug + '/representative/' + data[i].name_slug;
+      data[i].civil_services_url = 'https://civil.services/us-governor/' + data[i].state_name_slug + '/governor/' + data[i].name_slug;
 
       data[i].date_of_birth = (data[i].date_of_birth) ? data[i].date_of_birth.substring(0, 10) : null;
       data[i].entered_office = (data[i].entered_office) ? data[i].entered_office.substring(0, 10) : null;
@@ -239,7 +194,7 @@ module.exports = {
   },
 
   /**
-   * Search House
+   * Search Governor
    * @param {object} query - GET Parameters
    * @returns {*}
    */
@@ -311,90 +266,6 @@ module.exports = {
     }
 
     /**
-     * Filter By District
-     */
-    if (query.district) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          district: query.district
-        }
-      });
-    }
-
-    /**
-     * Filter By at Large
-     */
-    if (query.atLarge) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          at_large: query.atLarge
-        }
-      });
-    }
-
-    /**
-     * Filter By Vacant
-     */
-    if (query.vacant) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          vacant: query.vacant
-        }
-      });
-    }
-
-    /**
-     * Filter By Bioguide
-     */
-    if (query.bioguide) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          bioguide: query.bioguide
-        }
-      });
-    }
-
-    /**
-     * Filter By Thomas
-     */
-    if (query.thomas) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          thomas: query.thomas
-        }
-      });
-    }
-
-    /**
-     * Filter By GovTrack
-     */
-    if (query.govtrack) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          govtrack: query.govtrack
-        }
-      });
-    }
-
-    /**
-     * Filter By OpenSecrets
-     */
-    if (query.opensecrets) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          opensecrets: query.opensecrets
-        }
-      });
-    }
-
-    /**
      * Filter By VoteSmart
      */
     if (query.votesmart) {
@@ -402,54 +273,6 @@ module.exports = {
       andFilters.push({
         match: {
           votesmart: query.votesmart
-        }
-      });
-    }
-
-    /**
-     * Filter By FEC
-     */
-    if (query.fec) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          fec: query.fec
-        }
-      });
-    }
-
-    /**
-     * Filter By MapLight
-     */
-    if (query.maplight) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          maplight: query.maplight
-        }
-      });
-    }
-
-    /**
-     * Filter By WikiData
-     */
-    if (query.wikidata) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          wikidata: query.wikidata
-        }
-      });
-    }
-
-    /**
-     * Filter By Google Entity ID
-     */
-    if (query.googleEntityId) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          google_entity_id: query.googleEntityId
         }
       });
     }
@@ -696,8 +519,7 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'circle',
-              radius: '0.25km'
+              type: 'point'
             }
           }
         }
@@ -760,7 +582,7 @@ module.exports = {
               var notices = [];
 
               if (query.zipcode && result.hits.total > 1) {
-                notices.push('Try using `latitude` & `longitude` for more specific `house` district results.');
+                notices.push('Try using `latitude` & `longitude` for more specific `governor` district results.');
               }
 
               return {
