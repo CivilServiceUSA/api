@@ -6,16 +6,14 @@
 
 var _ = require('lodash');
 var Promise = require('bluebird');
+var md5 = require('md5');
 var util = require('./util');
-var Hashids = require('hashids');
 
 var HouseDomain = require('./house');
 var SenateDomain = require('./senate');
 var CityCouncilDomain = require('./city_council');
 var GovernorDomain = require('./governor');
 var StateDomain = require('./state');
-
-var config = require('../../../config');
 
 /**
  * Domain Profile
@@ -106,8 +104,6 @@ module.exports = {
       var data = _.union(houseClean, senateClean, cityCouncilClean, governorClean, stateClean);
       var prepared = [];
 
-      var hashid = new Hashids(config.get('hashID.secret'),8, 'abcdefghijklmnopqrstuvwxyz0123456789');
-
       for (var i = 0; i < data.length; i++) {
 
         var keywords = [];
@@ -119,29 +115,29 @@ module.exports = {
         switch (data[i].data_type) {
           case 'us-house-representative':
             title = util.titleCase(data[i].title) + ' ' + name;
-            description = data[i].state_name + ' U.S. House ' + util.titleCase(data[i].title) + ' ' + name;
-            keywords = description.split(' ');
+            description = 'Accountability Reports, Demographic Data & Contact Information for ' + data[i].state_name + ' U.S. House ' + util.titleCase(data[i].title) + ' ' + name;
+            keywords = description.replace(' &', '').replace(' for', '').split(' ');
             photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'us-senator':
             title = util.titleCase(data[i].title) + ' ' + name;
-            description = data[i].state_name + ' U.S. ' + util.titleCase(data[i].title) + ' ' + name;
-            keywords = description.split(' ');
+            description = 'Accountability Reports, Demographic Data & Contact Information for ' + data[i].state_name + ' U.S. ' + util.titleCase(data[i].title) + ' ' + name;
+            keywords = description.replace(' &', '').replace(' for', '').split(' ');
             photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'us-governor':
             title = util.titleCase(data[i].title) + ' ' + name;
-            description = data[i].state_name + ' U.S. State Governor ' + util.titleCase(data[i].title) + ' ' + name;
-            keywords = description.split(' ');
+            description = 'Demographic Data & Contact Information for ' + data[i].state_name + ' U.S. State ' + util.titleCase(data[i].title) + ' ' + name;
+            keywords = description.replace(' &', '').replace(' for', '').split(' ');
             photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'city-councilor':
             title = util.titleCase(data[i].title) + ' ' + name;
-            description = data[i].city_name + ', ' + data[i].state_code + ' - City ' + util.titleCase(data[i].title) + ' ' + name;
-            keywords = description.replace(' - ', ' ').replace(',', '').split(' ');
+            description = 'Demographic Data & Contact Information for ' + data[i].city_name + ', ' + data[i].state_code + ' - City ' + util.titleCase(data[i].title) + ' ' + name;
+            keywords = description.replace(' &', '').replace(' for', '').replace(' - ', ' ').replace(',', '').split(' ');
             photo = data[i].photo_url_sizes.size_256x256;
             break;
 
@@ -156,7 +152,7 @@ module.exports = {
         if (name !== '') {
           prepared.push({
             domain: 'app.civil.services',
-            identifier: 'cs' + hashid.encode(i),
+            identifier: md5(data[i].civil_services_url),
             title: title,
             description: description,
             web_url: data[i].civil_services_url,
