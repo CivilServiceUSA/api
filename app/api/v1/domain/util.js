@@ -48,5 +48,14 @@ module.exports = {
         }
       )
     );
+  },
+
+  /**
+   * Convert String to Title Case
+   * @param str
+   * @returns {string}
+   */
+  titleCase: function(str) {
+    return str.trim().replace(/-/g, ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   }
 };

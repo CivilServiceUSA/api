@@ -7,6 +7,7 @@
 var express = require('express');
 var config = require('../../../config');
 
+var indexer = require('./indexer');
 var apiUser = require('./user');
 var categories = require('./categories');
 var cityCouncil = require('./city_council');
@@ -28,6 +29,7 @@ var API_VERSION = config.get('version');
 
 var router = express.Router(config.router);
 
+router.use('/' + API_VERSION + '/', indexer);
 router.use('/' + API_VERSION + '/', apiUser);
 router.use('/' + API_VERSION + '/', categories);
 router.use('/' + API_VERSION + '/', cityCouncil);

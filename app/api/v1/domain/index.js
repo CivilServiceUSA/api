@@ -16,6 +16,7 @@ module.exports = {
   Government: require('./government'),
   Governor: require('./governor'),
   House: require('./house'),
+  Indexer: require('./indexer'),
   Profile: require('./profile'),
   Search: require('./search'),
   Senate: require('./senate'),
