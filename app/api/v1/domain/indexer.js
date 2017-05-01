@@ -96,7 +96,7 @@ module.exports = {
         }
       };
 
-      var filters = ['data_type', 'name', 'title', 'state_name', 'state_code', 'city_name', 'civil_services_url'];
+      var filters = ['data_type', 'name', 'title', 'photo_url_sizes', 'skyline', 'state_name', 'state_code', 'city_name', 'civil_services_url'];
       var houseClean = cleanData(values[0].data, 'us-house-representative', filters);
       var senateClean = cleanData(values[1].data, 'us-senator', filters);
       var cityCouncilClean = cleanData(values[2].data, 'city-councilor', filters);
@@ -113,6 +113,7 @@ module.exports = {
         var keywords = [];
         var description = '';
         var title = '';
+        var photo = '';
         var name = data[i].name.replace(/\s+/g, ' ').trim();
 
         switch (data[i].data_type) {
@@ -120,30 +121,35 @@ module.exports = {
             title = util.titleCase(data[i].title) + ' ' + name;
             description = data[i].state_name + ' U.S. House ' + util.titleCase(data[i].title) + ' ' + name;
             keywords = description.split(' ');
+            photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'us-senator':
             title = util.titleCase(data[i].title) + ' ' + name;
             description = data[i].state_name + ' U.S. ' + util.titleCase(data[i].title) + ' ' + name;
             keywords = description.split(' ');
+            photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'us-governor':
             title = util.titleCase(data[i].title) + ' ' + name;
             description = data[i].state_name + ' U.S. State Governor ' + util.titleCase(data[i].title) + ' ' + name;
             keywords = description.split(' ');
+            photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'city-councilor':
             title = util.titleCase(data[i].title) + ' ' + name;
             description = data[i].city_name + ', ' + data[i].state_code + ' - City ' + util.titleCase(data[i].title) + ' ' + name;
             keywords = description.replace(' - ', ' ').replace(',', '').split(' ');
+            photo = data[i].photo_url_sizes.size_256x256;
             break;
 
           case 'us-state':
             title = 'State of ' + data[i].name;
             description = 'Information on U.S. State ' + name;
             keywords = description.split(' ');
+            photo = data[i].skyline.size_640x360;
             break;
         }
 
@@ -153,7 +159,8 @@ module.exports = {
             identifier: 'cs' + hashid.encode(i),
             title: title,
             description: description,
-            url: data[i].civil_services_url,
+            web_url: data[i].civil_services_url,
+            url: photo,
             keywords: keywords,
             lifetime: 1440
           });
