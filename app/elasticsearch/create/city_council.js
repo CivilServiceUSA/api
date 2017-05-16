@@ -47,7 +47,7 @@ mapping.body[indexType] = {
       index: 'no'
     },
     district: {
-      type: 'integer'
+      type: 'string'
     },
     at_large: {
       type: 'boolean'
