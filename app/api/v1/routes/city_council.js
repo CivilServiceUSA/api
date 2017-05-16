@@ -46,7 +46,10 @@ router.route('/city-council').get(function(request, response) {
 /* istanbul ignore next */
 router.route('/city-council/:state/:city').get(function(request, response) {
 
-  CityCouncilDomain.search(request.params.state, request.params.city, request.query)
+  request.query.state = request.params.state;
+  request.query.city = request.params.city;
+
+  CityCouncilDomain.search(request.query)
     .then(function(results){
       var apikey = (request.header('API-Key')) || request.query.apikey || null;
       analytics.trackEvent(apikey, 'City Council', util.titleCase(request.params.city) + ', ' + request.params.state.toUpperCase(), 'Query: ' + JSON.stringify(request.query), results.length);

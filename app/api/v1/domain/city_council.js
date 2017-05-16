@@ -254,7 +254,21 @@ module.exports = {
         multi_match: {
           query: query.state,
           type: 'phrase',
-          fields: ['state_name', 'state_code']
+          fields: ['state_name', 'state_code', 'state_code_slug']
+        }
+      });
+    }
+
+    /**
+     * Filter By City
+     */
+    if (query.city) {
+      andFilters = getAndFilters();
+      andFilters.push({
+        multi_match: {
+          query: query.city,
+          type: 'phrase',
+          fields: ['city_name', 'city_name_slug']
         }
       });
     }
