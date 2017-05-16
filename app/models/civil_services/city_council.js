@@ -55,7 +55,7 @@ var CityCouncil = db.dbApi.define('city_council', {
     allowNull: false
   },
   district: {
-    type: DataTypes.INTEGER(2).UNSIGNED,
+    type: DataTypes.STRING(25),
     allowNull: true
   },
   at_large: {
@@ -225,7 +225,7 @@ var CityCouncil = db.dbApi.define('city_council', {
     allowNull: true
   },
   facebook_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   photo_url: {
