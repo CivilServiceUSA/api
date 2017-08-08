@@ -227,7 +227,7 @@ module.exports = {
         district: "5",
         at_large: false,
         vacant: false,
-        title: "president",
+        title: "commissioner",
         party: "democrat",
         name: "London Breed",
         name_slug: "london-breed",
