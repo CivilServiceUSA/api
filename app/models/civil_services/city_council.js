@@ -193,27 +193,27 @@ var CityCouncil = db.dbApi.define('city_council', {
     allowNull: true
   },
   background_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   city_government_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   city_council_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   city_council_calendar_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   city_council_legislation_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   city_council_committees_url: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   twitter_handle: {
