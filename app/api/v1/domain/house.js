@@ -697,7 +697,7 @@ module.exports = {
                 query.latitude
               ],
               type: 'circle',
-              radius: '0.25km'
+              radius: (query.radius) ? `${query.radius}km` : '0.25km'
             }
           }
         }
@@ -745,7 +745,7 @@ module.exports = {
                     zipcode.latitude
                   ],
                   type: 'circle',
-                  radius: '0.25km'
+                  radius: (query.radius) ? `${query.radius}km` : '0.25km'
                 }
               }
             }
