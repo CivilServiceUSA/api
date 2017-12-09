@@ -539,7 +539,7 @@ This example fetches details for the state `NY` and city `New York` with only th
 
 The following endpoints are for specific data related to Zip Codes and Geolocation data.
 
-## Zip Code [/geolocation/zipcode/{zipcode}{?apikey,page,pageSize,fields,sort,order}]
+## Zip Code [/geolocation/zipcode/{zipcode}{?apikey,page,pageSize,fields,sort,order,radius}]
 
 Fetch details for a Specific Zip Code
 
@@ -550,6 +550,7 @@ Fetch details for a Specific Zip Code
     + fields (optional, string, `city,state,location`) - Comma Separated List of fields you want in the response
     + sort (optional, string, `city_number`) - Comma Separated List of fields you want to sort by
     + order (optional, string, `asc`) - Comma Separated List of Order Methods
+    + radius (optional, number, `0.25`) - Radius to search in km
     + zipcode (required, string, `97232`) - Unique Zip Code
 
 ### Example: Location Info for 97232 [GET]
@@ -1560,7 +1561,7 @@ Search for House Representative using any combination of search parameters.  You
 
 View Contact Information for United States Governors, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Governor [/governor/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,title,party,name,gender,ethnicity,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## Governor [/governor/{?apikey,page,pageSize,fields,sort,order,zipcode,radius,latitude,longitude,state,title,party,name,gender,ethnicity,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Governors using any combination of search parameters.
 
@@ -1572,6 +1573,7 @@ Search for Governors using any combination of search parameters.
     + sort (optional, string, `state_code,name`) - Comma Separated List of fields you want to sort by
     + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
     + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + radius (optional, number, `0.25`) - Radius to search in km
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
@@ -1699,7 +1701,7 @@ Search for Governors using any combination of search parameters.
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,radius,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
@@ -1713,6 +1715,7 @@ Search for House Representative using any combination of search parameters.
     + zipcode (optional, string, `97232`) - United Steps Zip Code
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
+    + radius (optional, number, `0.25`) - Radius to search in km
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
     + district (optional, number, `3`) - District of Representative ( not always available )
     + atLarge (optional, boolean, `true`) - Representative is considered At-Large
@@ -2402,7 +2405,7 @@ In this example, we will search all of Civil Services for anything containing `a
 
 View Contact Information for United States Senators, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## Senate [/senate/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## Senate [/senate/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,radius,state,class,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for Senator using any combination of search parameters.
 
@@ -2414,6 +2417,7 @@ Search for Senator using any combination of search parameters.
     + sort (optional, string, `state_code,name`) - Comma Separated List of fields you want to sort by
     + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
     + zipcode (optional, string, `97232`) - United Steps Zip Code
+    + radius (optional, number, `1.0`) - Radius to search in km
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
