@@ -716,7 +716,7 @@ module.exports = {
                       zipcode.latitude
                     ],
                     type: 'circle',
-                    radius: '1km'
+                    radius: (query.radius) ? `${query.radius}km` : '1km'
                   }
                 }
               }
