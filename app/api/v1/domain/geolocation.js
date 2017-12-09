@@ -297,7 +297,7 @@ module.exports = {
                 parseFloat(query.latitude)
               ],
               type: 'point',
-              radius: '0.25km'
+              radius: (query.radius) ? `${query.radius}km` : '0.25km'
             }
           }
         }
