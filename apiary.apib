@@ -7,8 +7,8 @@ HOST: https://api.civil.services/v1
 
 Civil Services is a collection of tools that make it possible for citizens to be a part of what is happening in their Local, State & Federal Governments.
 
-* _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__
-* _Last Modified:_ __December 9th, 2017__
+* _Maintained By:_ __[Peter Schmalfeldt](https://twitter.com/mrmidi)__, __[Skyler Katz](https://about.me/skylerkatz)__
+* _Last Modified:_ __December 28th, 2017__
 * _Current API Version:_ __v1.2.0__
 
 __IMPORTANT:__ Currently, our API is only open for select non-commercial use. You can __[Register for an API Key](https://api.civil.services)__ if you would like access to our API. We typically review applications within a business day.
@@ -140,7 +140,7 @@ Search for City Council members using any combination of search parameters.
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
     + district (optional, number, `3`) - District of Representative ( not always available )
     + atLarge (optional, boolean, `true`) - Representative is considered At-Large
-    + vacant (optional, boolean, `true`) - Representative Seat is Vacant    
+    + vacant (optional, boolean, `true`) - Representative Seat is Vacant
     + title (optional, enum, `district-attorney`)
 
         Title of Senator. Using a comma to filter with multiple options, e.g. `?title=district-attorney,mayor`
@@ -233,9 +233,9 @@ This example fetches details for the state `NY` and title `mayor`.
     + Attributes
         + state: NY
         + title: mayor
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -341,7 +341,7 @@ Search for City Council members using any combination of search parameters.
     + order (optional, string, `asc,asc`) - Comma Separated List of Order Methods
     + state (required, string, `NY`) - Unique Zip Code
     + city (required, string, `New York`) - Unique Zip Code
-    
+
 ### Example: New York City Council [GET]
 
 This example fetches details for the state `NY` and city `New York` with only the `name,title,photo_url` fields.
@@ -357,9 +357,9 @@ This example fetches details for the state `NY` and city `New York` with only th
         + state: `NY`
         + city: `New York`
         + fields: `name,title,photo_url`
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -564,9 +564,9 @@ This example fetches details for the zip code `97232`.
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + zipcode: 97232
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -632,9 +632,9 @@ This example fetches details for the ip address `97.96.74.114`.
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + ipaddress: 97.96.74.114
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -768,9 +768,9 @@ This example fetches details for the city of __Saint Louis, MO__ using the `stat
     + Attributes
         + state: MO
         + city: Saint Louis
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -863,7 +863,7 @@ This returns data for both the `/governor`, `/house`, `/senate` & `/state` endpo
 
 ## Government [/government/{?apikey,page,pageSize,fields,zipcode,latitude,longitude,state}]
 
-Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints. 
+Search for House Representative using any combination of search parameters.  You can also add any of the search parameters from either of the `/senate` & `/house` endpoints.
 
 + Parameters
     + apikey (string, optional, `YOUR-API-KEY`) - Your API Key
@@ -886,9 +886,9 @@ Search for House Representative using any combination of search parameters.  You
     + Attributes
         + latitude: `40.75368539999999`
         + longitude: `-73.9991637`
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -1634,9 +1634,9 @@ Search for Governors using any combination of search parameters.
     + Attributes
         + maxAge: 50
         + fields: name,age,photo_url
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -1701,7 +1701,7 @@ Search for Governors using any combination of search parameters.
 
 View Contact Information for United States House Representatives, including: Phone Number, Mailing Address, Official Website, Twitter & Facebook Accounts.
 
-## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,radius,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
+## House [/house/{?apikey,page,pageSize,fields,sort,order,zipcode,latitude,longitude,radius,all,state,district,atLarge,vacant,bioguide,thomas,govtrack,opensecrets,votesmart,fec,maplight,wikidata,googleEntityId,title,party,name,gender,ethnicity,religion,openlyLGBTQ,age,minAge,maxAge,termEnds,termEndsBefore,termEndsAfter,enteredOffice,enteredOfficeBefore,enteredOfficeAfter}]
 
 Search for House Representative using any combination of search parameters.
 
@@ -1716,6 +1716,7 @@ Search for House Representative using any combination of search parameters.
     + latitude (optional, float, `45.542094`) - GPS Latitude ( `longitude` required if used )
     + longitude (optional, float, `-122.9346037`) - GPS Longitude ( `latitude` required if used )
     + radius (optional, number, `0.25`) - Radius to search in km
+    + all (optional, string, `true`) - Will increase the the search radius to 1km from the default 0.25km
     + state (optional, string, `OR`) - State ( Full State Name or Two Letter Abbreviation )
     + district (optional, number, `3`) - District of Representative ( not always available )
     + atLarge (optional, boolean, `true`) - Representative is considered At-Large
@@ -1852,9 +1853,9 @@ In this example we will get all House Representatives for `latitude` `45.542094`
     + Attributes
         + latitude: `45.542094`
         + longitude: `-122.9346037`
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -1982,7 +1983,7 @@ In this example we will get all House Representatives for `latitude` `45.542094`
               }
             }
 
-            
+
 # Group Legislator Endpoints
 
 The following endpoints convert location data into parameters that can fetch Legislators from Open States.
@@ -2011,9 +2012,9 @@ This example fetches details for the zip code __97232__ using the `zipcode` para
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + zipcode: 97232
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -2319,9 +2320,9 @@ In this example, we will search all of Civil Services for anything containing `a
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + state: ana
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -2556,9 +2557,9 @@ This Example fetches all Women of Color in the United States Senate using the `g
     + Attributes
         + gender: female
         + ethnicity: african-american,asian-american,hispanic-american,middle-eastern-american,native-american,pacific-islander
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -2987,7 +2988,7 @@ This Example fetches all Women of Color in the United States Senate using the `g
               }
             }
 
-            
+
 # Group State Endpoints
 
 The following endpoints are for specific data related to Stated within the United States
@@ -3016,9 +3017,9 @@ In this example, we will fetch information about the State of New York.
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + state: NY
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
@@ -3084,7 +3085,7 @@ In this example, we will fetch information about the State of New York.
               }
             }
 
-         
+
 ## Search [/state/{?apikey,page,pageSize,fields,sort,order,name,slug,code,nickname,minPopulation,maxPopulation,admittedBefore,admittedAfter,latitude,longitude}]
 
 Fetch details for Specific State.
@@ -3118,9 +3119,9 @@ In this example, we will fetch information for a State with the Nickname "Empire
 + Response 200 (application/json; charset=utf-8)
     + Attributes
         + nickname: Empire State
-        
+
     + Body
-    
+
             {
               "notices": [],
               "warnings": [],
