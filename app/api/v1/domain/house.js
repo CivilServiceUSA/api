@@ -265,8 +265,8 @@ module.exports = {
     }
 
     function getFilterRadius() {
-      if (query.radius) {
-        return query.radius + 'km';
+      if (query.radius && !isNaN(query.radius)) {
+        return parseFloat(query.radius) + 'km';
       } else if (query.all === '' || query.all) {
         return '1km';
       }
@@ -754,7 +754,7 @@ module.exports = {
                     zipcode.latitude
                   ],
                   type: 'circle',
-                  radius: (query.radius) ? `${query.radius}km` : '0.25km'
+                  radius: getFilterRadius()
                 }
               }
             }
@@ -768,7 +768,7 @@ module.exports = {
 
               var notices = [];
 
-              if (query.zipcode && result.hits.total > 1 || query.all === '' || query.all || query.radius) {
+              if ((query.zipcode || query.all === '' || query.all || query.radius) && result.hits.total > 1) {
                 notices.push('Try using `latitude` & `longitude` for more specific `house` district results.');
               }
 
