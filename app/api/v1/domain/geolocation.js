@@ -288,6 +288,10 @@ module.exports = {
      */
     if (query.latitude && query.longitude) {
       andFilters = getAndFilters();
+      var radius = "0.25km";
+      if (query.radius && !isNaN(query.radius)) {
+        radius = parseFloat(query.radius) + "km";
+      }
       andFilters.push({
         geo_shape: {
           shape: {
@@ -297,7 +301,7 @@ module.exports = {
                 parseFloat(query.latitude)
               ],
               type: 'point',
-              radius: (query.radius) ? `${query.radius}km` : '0.25km'
+              radius: radius
             }
           }
         }
