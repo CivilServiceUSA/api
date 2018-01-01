@@ -707,6 +707,11 @@ module.exports = {
               }
             });
 
+            var radius = '1km';
+            if (query.radius && !isNaN(query.radius)) {
+              radius = parseFloat(query.radius) + "km";
+            }
+
             andFilters.push({
               geo_shape: {
                 shape: {
@@ -716,7 +721,7 @@ module.exports = {
                       zipcode.latitude
                     ],
                     type: 'circle',
-                    radius: (query.radius) ? `${query.radius}km` : '1km'
+                    radius: radius
                   }
                 }
               }
