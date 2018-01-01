@@ -977,6 +977,21 @@ module.exports = {
         created_date: new Date(),
         modified_date: new Date()
       }, {
+        zipcode: "22350",
+        primary_city: "Alexandria",
+        acceptable_cities: null,
+        unacceptable_cities: null,
+        state: "VA",
+        county: "Alexandria City",
+        timezone: "America/New_York",
+        area_codes: "703",
+        latitude: 38.799584,
+        longitude: -77.049179,
+        estimated_population: "0",
+        shape: queryInterface.sequelize.fn('ST_GeomFromGeoJSON', '{"type":"Polygon","coordinates":[[[-77.11335897445679,38.82989613834395],[-77.11563348770142,38.83270433073078],[-77.11816549301146,38.83143397170698],[-77.11947441101073,38.83300520191563],[-77.1220064163208,38.832453603771874],[-77.12329387664795,38.82936123199528],[-77.1250534057617,38.82994628560805],[-77.12679147720337,38.82784007009913],[-77.12597608566284,38.82728843193011],[-77.12692022323608,38.825115270284016],[-77.12404489517212,38.82402866458588],[-77.11335897445679,38.82989613834395]]]}'),
+        created_date: new Date(),
+        modified_date: new Date()
+      }, {
         zipcode: "22401",
         primary_city: "Fredericksburg",
         acceptable_cities: "Fredericksbrg",
