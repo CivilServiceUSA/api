@@ -274,11 +274,11 @@ var Senate = db.dbApi.define('senate', {
   },
   twitter_handle: {
     type: DataTypes.STRING(25),
-    allowNull: false
+    allowNull: true
   },
   twitter_url: {
     type: DataTypes.STRING(100),
-    allowNull: false
+    allowNull: true
   },
   photo_url: {
     type: DataTypes.STRING(255),
