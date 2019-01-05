@@ -125,7 +125,7 @@ var Senate = db.dbApi.define('senate', {
     allowNull: true
   },
   title: {
-    type: DataTypes.ENUM('senator','senate-majority-leader','senate_majority-whip','senate-minority-leader','senate-minority-whip'),
+    type: DataTypes.ENUM('senator','senate-majority-leader','senate-majority-whip','senate-minority-leader','senate-minority-whip'),
     allowNull: false,
     defaultValue: 'senator'
   },
