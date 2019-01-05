@@ -233,7 +233,7 @@ var Senate = db.dbApi.define('senate', {
     allowNull: true
   },
   address_street: {
-    type: DataTypes.STRING(50),
+    type: DataTypes.STRING(255),
     allowNull: true
   },
   address_sec_unit_type: {
