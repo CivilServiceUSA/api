@@ -16,7 +16,6 @@ describe('Models House', function() {
       vacant: false,
       bioguide: "Y000033",
       thomas: "1256",
-      govtrack: "400440",
       opensecrets: "N00007999",
       votesmart: "26717",
       fec: "H6AK00045",

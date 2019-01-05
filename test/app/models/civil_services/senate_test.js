@@ -14,7 +14,6 @@ describe('Models Senate', function() {
       class: "II",
       bioguide: "S001198",
       thomas: "2290",
-      govtrack: "412665",
       opensecrets: "N00035774",
       votesmart: "114964",
       fec: null,

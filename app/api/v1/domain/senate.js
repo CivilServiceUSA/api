@@ -57,7 +57,6 @@ module.exports = {
       'gender',
       'goes_by',
       'google_entity_id',
-      'govtrack',
       'last_name',
       'latitude',
       'longitude',
@@ -131,7 +130,6 @@ module.exports = {
       gender: data.gender,
       goes_by: data.goes_by,
       google_entity_id: data.google_entity_id,
-      govtrack: data.govtrack,
       last_name: data.last_name,
       latitude: parseFloat(data.latitude),
       location: {
@@ -188,8 +186,6 @@ module.exports = {
       };
 
       data[i].bioguide_url = (!data[i].bioguide) ? null : 'http://bioguide.congress.gov/scripts/biodisplay.pl?index=' + data[i].bioguide;
-      data[i].govtrack_url = (!data[i].govtrack) ? null : 'https://www.govtrack.us/congress/members/' + data[i].govtrack;
-
       data[i].opensecrets_url = (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/summary.php?cid=' + data[i].opensecrets;
       data[i].opensecrets_url_tabs = {
         summary: (!data[i].opensecrets) ? null : 'https://www.opensecrets.org/politicians/summary.php?cid=' + data[i].opensecrets,
@@ -337,18 +333,6 @@ module.exports = {
       andFilters.push({
         match: {
           thomas: query.thomas
-        }
-      });
-    }
-
-    /**
-     * Filter By GovTrack
-     */
-    if (query.govtrack) {
-      andFilters = getAndFilters();
-      andFilters.push({
-        match: {
-          govtrack: query.govtrack
         }
       });
     }

@@ -29,7 +29,7 @@ module.exports = {
       pages: 1,
       page: 1
     },
-    data: []
+    data: null
   },
 
   /**

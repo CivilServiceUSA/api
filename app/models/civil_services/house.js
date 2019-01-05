@@ -20,7 +20,6 @@ var db = require('../../config/sequelize');
  * @property {boolean} vacant - Representative Seat is Vacant
  * @property {string} bioguide - The alphanumeric ID for this Senator on http://bioguide.congress.gov ( http://bioguide.congress.gov/scripts/biodisplay.pl?index=C001075 )
  * @property {string} [thomas] - The numeric ID for this Senator ( not really used anymore )
- * @property {string} govtrack - The numeric ID for this Senator on GovTrack.us ( https://www.govtrack.us/congress/members/412630 )
  * @property {string} opensecrets - The alphanumeric ID for this Senator on OpenSecrets.org ( https://www.opensecrets.org/politicians/summary.php?cid=N00030245 )
  * @property {string} votesmart - The numeric ID for this Senator on VoteSmart.org ( http://votesmart.org/candidate/69494 )
  * @property {string} [fec] - Federal Election Commission ID ( http://www.fec.gov/fecviewer/CandidateCommitteeDetail.do?candidateCommitteeId=H6AL04098 )
@@ -109,10 +108,6 @@ var House = db.dbApi.define('house', {
     allowNull: true
   },
   thomas: {
-    type: DataTypes.STRING(15),
-    allowNull: true
-  },
-  govtrack: {
     type: DataTypes.STRING(15),
     allowNull: true
   },

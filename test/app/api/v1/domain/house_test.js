@@ -45,8 +45,6 @@ var sample_result = {
   gender: 'male',
   goes_by: null,
   google_entity_id: 'kg:/m/04jyvv',
-  govtrack: '412697',
-  govtrack_url: 'https://www.govtrack.us/congress/members/412697',
   last_name: 'Crist',
   latitude: 38.8863,
   longitude: -77.0114,
@@ -183,7 +181,6 @@ describe('Domain House', function() {
     assert.isDefined(output.gender);
     assert.isDefined(output.goes_by);
     assert.isDefined(output.google_entity_id);
-    assert.isDefined(output.govtrack);
     assert.isDefined(output.last_name);
     assert.isDefined(output.latitude);
     assert.isDefined(output.longitude);
@@ -250,7 +247,6 @@ describe('Domain House', function() {
     assert.isDefined(output.gender);
     assert.isDefined(output.goes_by);
     assert.isDefined(output.google_entity_id);
-    assert.isDefined(output.govtrack);
     assert.isDefined(output.last_name);
     assert.isDefined(output.latitude);
     assert.isDefined(output.longitude);
@@ -339,7 +335,6 @@ describe('Domain House', function() {
       fec: 'abc123',
       gender: 'male',
       googleEntityId: 'abc123',
-      govtrack: 'abc123',
       latitude: 34.16,
       longitude: -118.37,
       maplight: 'abc123',
