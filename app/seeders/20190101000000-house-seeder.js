@@ -14028,7 +14028,7 @@ module.exports = {
         address_zipcode: "20515",
         address_type: null,
         website: "https://www.house.gov",
-        contact_page: null,
+        contact_page: "https://www.house.gov",
         facebook_url: "https://www.facebook.com/HouseRepublicans",
         twitter_handle: "housegop",
         twitter_url: "https://twitter.com/housegop",
