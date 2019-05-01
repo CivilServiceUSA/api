@@ -1,4 +1,4 @@
-version: '2'
+version: "2"
 services:
   civil_services_api:
     build:
@@ -14,9 +14,17 @@ services:
       API_NODE_ENV: docker
     ports:
       - 5000:5000
-    command: ["./scripts/docker-compose/wait-for-it.sh", "elasticsearch:9200", "--timeout=30", "--", "./scripts/docker-compose/start.sh"]
+    command:
+      [
+        "./scripts/docker-compose/wait-for-it.sh",
+        "elasticsearch:9200",
+        "--timeout=30",
+        "--",
+        "./scripts/docker-compose/start.sh",
+      ]
   database:
     image: mysql:5.7
+    command: --max_allowed_packet=33554432
     environment:
       MYSQL_ROOT_PASSWORD: c1v1Ls3rv1c3s
       MYSQL_DATABASE: civil_services_api
