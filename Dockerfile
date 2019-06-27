@@ -1,4 +1,4 @@
-FROM node:6.9.4
+FROM node:8.16-jessie
 
 LABEL maintainer "Peter Schmalfeldt hello@civil.services"
 LABEL version="1.0"
@@ -26,7 +26,7 @@ USER civilservices
 RUN export API_NODE_ENV=docker
 
 # Install dependencies
-RUN npm install --no-optional && npm cache clean
+RUN yarn install --force
 
 # Switch to root and copy over the rest of our code
 # This is here, after the npm install, so that code changes don't trigger an un-caching

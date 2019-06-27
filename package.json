@@ -5,8 +5,8 @@
   "license": "MIT",
   "main": "index.js",
   "engines": {
-    "node": "6.x",
-    "npm": "3.10.7"
+    "node": "8.x",
+    "npm": "6.4.x"
   },
   "scripts": {
     "start": "./scripts/civil-services-api.sh start",

@@ -181,8 +181,8 @@ civil_services_api_start() {
      __success "Cleaning Up Junk Files"
     npm run -s cleanup
 
-     __success "Generating API Docs"
-    npm run -s docs
+    #  __success "Generating API Docs"
+    # npm run -s docs
 
      __make_header "Migrating API Structure"
     npm run -s migrate
