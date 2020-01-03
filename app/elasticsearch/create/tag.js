@@ -17,23 +17,19 @@ var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
  * Tag Mapping
  * @type {{index: string, type: string, body: {}}}
  */
-var mapping = {
-  index: indexName,
-  type: indexType,
-  body: {}
-};
+var mappings = {};
 
 /**
  * Tag Mapping Body
  * @type {{properties: {id: {type: string}, parent_id: {type: string}, name: {type: string}, slug: {type: string}}}}
  */
-mapping.body[indexType] = {
+mappings[indexName] = {
   properties: {
     name: {
-      type: 'string'
+      type: 'keyword'
     },
     slug: {
-      type: 'string'
+      type: 'keyword'
     }
   }
 };
@@ -46,24 +42,28 @@ var Tag = client.indices.exists({
   index: indexName
 }).then(function(exists) {
   if ( !exists) {
-    return client.indices.create({
+    return client.indices.createIndex({
       index: indexName,
+      body: {
+        mappings
+      }
+    }, {
       ignore: [404]
     });
   } else {
     return Promise.resolve();
   }
 })
-.then(function() {
-  client.indices.putMapping(mapping)
-    .then(function() {
-      debug.success('Index Created: ' + indexName);
-    })
-    .catch(function(error) {
-      debug.error('Error applying ' + indexType + ' mapping');
-      debug.error(error.status + ' ' + error.message);
-    });
-})
+// .then(function() {
+//   client.indices.putMapping(mapping)
+//     .then(function() {
+//       debug.success('Index Created: ' + indexName);
+//     })
+//     .catch(function(error) {
+//       debug.error('Error applying ' + indexType + ' mapping');
+//       debug.error(error.status + ' ' + error.message);
+//     });
+// })
 .catch(function(error) {
   debug.error('There was an error creating the ' + indexType + ' index');
   debug.error(error.status + ' ' + error.message);

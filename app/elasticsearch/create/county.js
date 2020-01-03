@@ -17,32 +17,28 @@ var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
  * County Mapping
  * @type {{index: string, type: string, body: {}}}
  */
-var mapping = {
-  index: indexName,
-  type: indexType,
-  body: {}
-};
+var mappings = {};
 
 /**
  * County Mapping Body
  * @type {{properties: {id: {type: string}, fips: {type: string}, state_name: {type: string}, state_code: {type: string}, name: {type: string}, shape: {type: string, tree_levels: number}}}}
  */
-mapping.body[indexType] = {
+mappings[indexName] = {
   properties: {
     id: {
       type: 'integer'
     },
     fips: {
-      type: 'string'
+      type: 'text'
     },
     state_name: {
-      type: 'string'
+      type: 'text'
     },
     state_code: {
-      type: 'string'
+      type: 'text'
     },
     name: {
-      type: 'string'
+      type: 'text'
     },
     shape: {
       type: 'geo_shape',
@@ -59,24 +55,28 @@ var County = client.indices.exists({
   index: indexName
 }).then(function(exists) {
   if ( !exists) {
-    return client.indices.create({
+    return client.indices.createIndex({
       index: indexName,
+      body: {
+        mappings
+      }
+    }, {
       ignore: [404]
     });
   } else {
     return Promise.resolve();
   }
 })
-.then(function() {
-  client.indices.putMapping(mapping)
-    .then(function() {
-      debug.success('Index Created: ' + indexName);
-    })
-    .catch(function(error) {
-      debug.error('Error applying ' + indexType + ' mapping');
-      debug.error(error.status + ' ' + error.message);
-    });
-})
+// .then(function() {
+//   client.indices.putMapping(mapping)
+//     .then(function() {
+//       debug.success('Index Created: ' + indexName);
+//     })
+//     .catch(function(error) {
+//       debug.error('Error applying ' + indexType + ' mapping');
+//       debug.error(error.status + ' ' + error.message);
+//     });
+// })
 .catch(function(error) {
   debug.error('There was an error creating the ' + indexType + ' index');
   debug.error(error.status + ' ' + error.message);

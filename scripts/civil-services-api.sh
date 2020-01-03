@@ -181,8 +181,8 @@ civil_services_api_start() {
      __success "Cleaning Up Junk Files"
     npm run -s cleanup
 
-     __success "Generating API Docs"
-    npm run -s docs
+    #  __success "Generating API Docs"
+    # npm run -s docs
 
      __make_header "Migrating API Structure"
     npm run -s migrate
@@ -190,9 +190,9 @@ civil_services_api_start() {
      __make_header "Seeding Database"
     npm run -s seed
 
-     __make_header "Updating Search Index"
-    npm run -s elasticsearch:create
-    npm run -s elasticsearch:update
+    #  __make_header "Updating Search Index"
+    # npm run -s elasticsearch:create
+    # npm run -s elasticsearch:update
 
     if [ "$OPTION" == "debug" ]; then
       __make_header "Starting Node Server in Debug Mode"

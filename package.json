@@ -5,8 +5,8 @@
   "license": "MIT",
   "main": "index.js",
   "engines": {
-    "node": "6.x",
-    "npm": "3.10.7"
+    "node": "8.x",
+    "npm": "6.4.x"
   },
   "scripts": {
     "start": "./scripts/civil-services-api.sh start",
@@ -56,7 +56,7 @@
     "convict": "^1.5.0",
     "debug": "^2.2.0",
     "dotenv": "^4.0.0",
-    "elasticsearch": "^11.0.1",
+    "@elastic/elasticsearch": "^6.0.0",
     "express": "^4.14.0",
     "express-jwt": "^5.1.0",
     "express-rate-limit": "git://github.com/manifestinteractive/express-rate-limit.git#d615bcf3cb50cb67e6a6c05d220d7b86d7f82255",

@@ -28,7 +28,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: c1v1Ls3rv1c3s
       MYSQL_DATABASE: civil_services_api
+    ports:
+      - 3306:3306
   elasticsearch:
-    image: elasticsearch:1.7.5
+    image: elasticsearch:6.8.1
+    ports:
+      - 9200:9200
   redis:
     image: redis:3.2.4

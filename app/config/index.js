@@ -196,7 +196,7 @@ var config = convict({
     apiVersion: {
       doc: 'Change the API that they client provides, specify the major version of the Elasticsearch nodes you will be connecting to.',
       format: String,
-      default: '2.3'
+      default: '6.8'
     },
     requestTimeout: {
       doc: 'Milliseconds before an HTTP request will be aborted and retried. This can also be set per request.',

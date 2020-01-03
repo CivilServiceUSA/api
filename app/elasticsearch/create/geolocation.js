@@ -17,46 +17,42 @@ var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
  * Geolocation Mapping
  * @type {{index: string, type: string, body: {}}}
  */
-var mapping = {
-  index: indexName,
-  type: indexType,
-  body: {}
-};
+var mappings = {};
 
 /**
  * Geolocation Mapping Body
  * @type {{properties: {zipcode: {type: string}, type: {type: string}, decommissioned: {type: string, index: string}, primary_city: {type: string, index_analyzer: string, search_analyzer: string}, acceptable_cities: {type: string, index: string}, unacceptable_cities: {type: string, index: string}, county: {type: string, index_analyzer: string, search_analyzer: string}, timezone: {type: string, index_analyzer: string, search_analyzer: string}, area_codes: {type: string}, world_region: {type: string, index: string}, country: {type: string}, latitude: {type: string}, longitude: {type: string}, estimated_population: {type: string, index: string}, created_date: {type: string, format: string}, modified_date: {type: string, format: string}, deleted_at: {type: string, format: string}}}}
  */
-mapping.body[indexType] = {
+mappings[indexName] = {
   properties: {
     id: {
       type: 'integer'
     },
     zipcode: {
-      type: 'string'
+      type: 'text'
     },
     primary_city: {
-      type: 'string'
+      type: 'text'
     },
     acceptable_cities: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     unacceptable_cities: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     state: {
-      type: 'string'
+      type: 'text'
     },
     county: {
-      type: 'string'
+      type: 'text'
     },
     timezone: {
-      type: 'string'
+      type: 'text'
     },
     area_codes: {
-      type: 'string'
+      type: 'text'
     },
     latitude: {
       type: 'float'
@@ -93,24 +89,28 @@ var Geolocation = client.indices.exists({
   index: indexName
 }).then(function(exists) {
   if ( !exists) {
-    return client.indices.create({
+    return client.indices.createIndex({
       index: indexName,
+      body: {
+        mappings
+      }
+    }, {
       ignore: [404]
     });
   } else {
     return Promise.resolve();
   }
 })
-.then(function() {
-  client.indices.putMapping(mapping)
-    .then(function() {
-      debug.success('Index Created: ' + indexName);
-    })
-    .catch(function(error) {
-      debug.error('Error applying ' + indexType + ' mapping');
-      debug.error(error.status + ' ' + error.message);
-    });
-})
+// .then(function() {
+//   client.indices.putMapping(mapping)
+//     .then(function() {
+//       debug.success('Index Created: ' + indexName);
+//     })
+//     .catch(function(error) {
+//       debug.error('Error applying ' + indexType + ' mapping');
+//       debug.error(error.status + ' ' + error.message);
+//     });
+// })
 .catch(function(error) {
   debug.error('There was an error creating the ' + indexType + ' index');
   debug.error(error.status + ' ' + error.message);

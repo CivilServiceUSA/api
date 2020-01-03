@@ -1,4 +1,4 @@
-FROM node:6.9.4
+FROM node:8.16-jessie
 
 LABEL maintainer "Peter Schmalfeldt hello@civil.services"
 LABEL version="1.0"
@@ -26,7 +26,7 @@ USER civilservices
 RUN export API_NODE_ENV=docker
 
 # Install dependencies
-RUN npm install --no-optional && npm cache clean
+RUN yarn install --force
 
 # Switch to root and copy over the rest of our code
 # This is here, after the npm install, so that code changes don't trigger an un-caching
@@ -47,12 +47,10 @@ COPY scripts ./scripts
 
 # Download Required Libraries
 RUN rm -f ./app/flat-db/cities.mmdb
-RUN curl -o ./app/flat-db/cities.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz
-RUN gunzip ./app/flat-db/cities.mmdb.gz
+RUN curl -o ./app/flat-db/cities.mmdb http://projects.nickoneill.name/extras/GeoLite2-City.mmdb
 
 RUN rm -f ./app/flat-db/countries.mmdb
-RUN curl -o ./app/flat-db/countries.mmdb.gz http://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.mmdb.gz
-RUN gunzip ./app/flat-db/countries.mmdb.gz
+RUN curl -o ./app/flat-db/countries.mmdb http://projects.nickoneill.name/extras/GeoLite2-Country.mmdb
 
 RUN chmod 755 ./scripts/docker-compose/*.sh
 RUN chown -R civilservices:civilservices /home/civilservices/api

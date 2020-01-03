@@ -17,53 +17,49 @@ var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
  * User Mapping
  * @type {{index: string, type: string, body: {}}}
  */
-var mapping = {
-  index: indexName,
-  type: indexType,
-  body: {}
-};
+var mappings = {};
 
 /**
  * User Mapping Body
  * @type {{properties: {activated: {type: string}, username: {type: string}, first_name: {type: string}, last_name: {type: string}, company_name: {type: string}, profile_name: {type: string}, location: {type: string}, profile_link_website: {type: string}, profile_link_twitter: {type: string}, profile_link_1: {type: string}, profile_link_2: {type: string}, profile_link_3: {type: string}, banned: {type: string}}}}
  */
-mapping.body[indexType] = {
+mappings[indexName] = {
   properties: {
     activated: {
       type: 'boolean'
     },
     username: {
-      type: 'string'
+      type: 'text'
     },
     first_name: {
-      type: 'string'
+      type: 'text'
     },
     last_name: {
-      type: 'string'
+      type: 'text'
     },
     company_name: {
-      type: 'string'
+      type: 'text'
     },
     profile_name: {
-      type: 'string'
+      type: 'text'
     },
     location: {
-      type: 'string'
+      type: 'text'
     },
     profile_link_website: {
-      type: 'string'
+      type: 'text'
     },
     profile_link_twitter: {
-      type: 'string'
+      type: 'text'
     },
     profile_link_1: {
-      type: 'string'
+      type: 'text'
     },
     profile_link_2: {
-      type: 'string'
+      type: 'text'
     },
     profile_link_3: {
-      type: 'string'
+      type: 'text'
     },
     banned: {
       type: 'boolean'
@@ -79,24 +75,28 @@ var User = client.indices.exists({
   index: indexName
 }).then(function(exists) {
   if ( !exists) {
-    return client.indices.create({
+    return client.indices.createIndex({
       index: indexName,
+      body: {
+        mappings
+      }
+    }, {
       ignore: [404]
     });
   } else {
     return Promise.resolve();
   }
 })
-.then(function() {
-  client.indices.putMapping(mapping)
-    .then(function() {
-      debug.success('Index Created: ' + indexName);
-    })
-    .catch(function(error) {
-      debug.error('Error applying ' + indexType + ' mapping');
-      debug.error(error.status + ' ' + error.message);
-    });
-})
+// .then(function() {
+//   client.indices.putMapping(mapping)
+//     .then(function() {
+//       debug.success('Index Created: ' + indexName);
+//     })
+//     .catch(function(error) {
+//       debug.error('Error applying ' + indexType + ' mapping');
+//       debug.error(error.status + ' ' + error.message);
+//     });
+// })
 .catch(function(error) {
   debug.error('There was an error creating the ' + indexType + ' index');
   debug.error(error.status + ' ' + error.message);
