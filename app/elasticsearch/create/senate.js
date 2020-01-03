@@ -17,114 +17,110 @@ var indexName = config.get('elasticsearch.indexName') + '_' + indexType;
  * Senate Mapping
  * @type {{index: string, type: string, body: {}}}
  */
-var mapping = {
-  index: indexName,
-  type: indexType,
-  body: {}
-};
+var mappings = {};
 
 /**
  * Senate Mapping Body
  * @type {{properties: {id: {type: string}, state_name: {type: string}, state_name_slug: {type: string, index: string}, state_code: {type: string}, state_code_slug: {type: string, index: string}, class: {type: string}, bioguide: {type: string}, thomas: {type: string}, opensecrets: {type: string}, votesmart: {type: string}, fec: {type: string}, maplight: {type: string}, wikidata: {type: string}, google_entity_id: {type: string}, title: {type: string}, party: {type: string}, name: {type: string}, name_slug: {type: string, index: string}, first_name: {type: string}, middle_name: {type: string, index: string}, last_name: {type: string}, name_suffix: {type: string, index: string}, goes_by: {type: string, index: string}, pronunciation: {type: string, index: string}, gender: {type: string}, ethnicity: {type: string}, religion: {type: string}, openly_lgbtq: {type: string}, date_of_birth: {type: string}, entered_office: {type: string}, term_end: {type: string}, biography: {type: string, index: string}, phone: {type: string, index: string}, fax: {type: string, index: string}, latitude: {type: string, index: string}, longitude: {type: string, index: string}, address_complete: {type: string, index: string}, address_number: {type: string, index: string}, address_prefix: {type: string, index: string}, address_street: {type: string, index: string}, address_sec_unit_type: {type: string, index: string}, address_sec_unit_num: {type: string, index: string}, address_city: {type: string, index: string}, address_state: {type: string, index: string}, address_zipcode: {type: string, index: string}, address_type: {type: string, index: string}, website: {type: string, index: string}, contact_page: {type: string, index: string}, facebook_url: {type: string, index: string}, twitter_handle: {type: string, index: string}, twitter_url: {type: string, index: string}, photo_url: {type: string, index: string}, created_date: {type: string}, modified_date: {type: string}, deleted_at: {type: string}, location: {type: string}}}}
  */
-mapping.body[indexType] = {
+mappings[indexName] = {
   properties: {
     id: {
       type: 'integer'
     },
     state_name: {
-      type: 'string'
+      type: 'text'
     },
     state_name_slug: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     state_code: {
-      type: 'string'
+      type: 'text'
     },
     state_code_slug: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     class: {
-      type: 'string'
+      type: 'text'
     },
     bioguide: {
-      type: 'string'
+      type: 'text'
     },
     thomas: {
-      type: 'string'
+      type: 'text'
     },
     opensecrets: {
-      type: 'string'
+      type: 'text'
     },
     votesmart: {
-      type: 'string'
+      type: 'text'
     },
     fec: {
-      type: 'string'
+      type: 'text'
     },
     maplight: {
-      type: 'string'
+      type: 'text'
     },
     wikidata: {
-      type: 'string'
+      type: 'text'
     },
     google_entity_id: {
-      type: 'string'
+      type: 'text'
     },
     title: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     party: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     name: {
-      type: 'string'
+      type: 'text'
     },
     name_slug: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     first_name: {
-      type: 'string'
+      type: 'text'
     },
     middle_name: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     last_name: {
-      type: 'string'
+      type: 'text'
     },
     name_suffix: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     goes_by: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     pronunciation: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     gender: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     ethnicity: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     religion: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     openly_lgbtq: {
-      type: 'string',
-      index: 'not_analyzed'
+      type: 'keyword',
+      index: true
     },
     age: {
       type: 'integer'
@@ -139,88 +135,86 @@ mapping.body[indexType] = {
       type: 'date'
     },
     biography: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     phone: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     fax: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     latitude: {
-      type: 'float',
-      index: 'no'
+      type: 'float'
     },
     longitude: {
-      type: 'float',
-      index: 'no'
+      type: 'float'
     },
     address_complete: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_number: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_prefix: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_street: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_sec_unit_type: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_sec_unit_num: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_city: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_state: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_zipcode: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     address_type: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     website: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     contact_page: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     facebook_url: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     twitter_handle: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     twitter_url: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     photo_url: {
-      type: 'string',
-      index: 'no'
+      type: 'keyword',
+      index: true
     },
     created_date: {
       type: 'date'
@@ -238,7 +232,7 @@ mapping.body[indexType] = {
       type: 'geo_shape'
     },
     aliases: {
-      type: 'string'
+      type: 'text'
     }
   }
 };
@@ -251,24 +245,29 @@ var Senate = client.indices.exists({
   index: indexName
 }).then(function(exists) {
   if ( !exists) {
-    return client.indices.create({
+    return client.indices.createIndex({
       index: indexName,
+      body: {
+        mappings
+      }
+    },{
       ignore: [404]
     });
   } else {
     return Promise.resolve();
   }
 })
-.then(function() {
-  client.indices.putMapping(mapping)
-    .then(function() {
-      debug.success('Index Created: ' + indexName);
-    })
-    .catch(function(error) {
-      debug.error('Error applying ' + indexType + ' mapping');
-      debug.error(error.status + ' ' + error.message);
-    });
-})
+// .then(function() {
+//   client.indices.putMapping(mapping)
+//     .then(function() {
+//       debug.success('Index Created: ' + indexName);
+//     })
+//     .catch(function(error) {
+//       debug.error('Error applying ' + indexType + ' mapping');
+//       debug.error(error.status + ' ' + error.message);
+//       debug.error(JSON.stringify(error));
+//     });
+// })
 .catch(function(error) {
   debug.error('There was an error creating the ' + indexType + ' index');
   debug.error(error.status + ' ' + error.message);

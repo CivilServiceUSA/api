@@ -212,11 +212,13 @@ module.exports = {
     };
 
     function getAndFilters() {
-      if (!_.get(searchParams, 'body.query.bool.must')) {
-        _.set(searchParams, 'body.query.bool.must', []);
+      console.log("filter")
+      if (!_.get(searchParams, 'body.query.bool.filter')) {
+        // _.set(searchParams, 'body.query.bool.must.match_all', {});
+        _.set(searchParams, 'body.query.bool.filter', {});
       }
 
-      return _.get(searchParams, 'body.query.bool.must');
+      return _.get(searchParams, 'body.query.bool.filter');
     }
 
     // Page size
@@ -245,6 +247,8 @@ module.exports = {
         order: sortOrder
       };
     }
+
+    console.log("wHat")
 
     /**
      * Filter By State
@@ -511,16 +515,18 @@ module.exports = {
      */
     if (query.latitude && query.longitude) {
       andFilters = getAndFilters();
-      andFilters.push({
+      console.log('filters returned',andFilters,searchParams);
+      _.set(searchParams, 'body.query.bool.filter', {
         geo_shape: {
-          shape: {
+          location: {
             shape: {
+              type: 'point',
               coordinates: [
                 query.longitude,
                 query.latitude
-              ],
-              type: 'point'
-            }
+              ]  
+            },
+            relation: 'contains'
           }
         }
       });
@@ -544,6 +550,7 @@ module.exports = {
      * Filter By Latitude & Longitude
      */
     if (query.zipcode) {
+      console.log("zip?")
       return ZipCode.findOne({
         where: {
           zipcode: query.zipcode
@@ -575,7 +582,7 @@ module.exports = {
 
           return elasticsearchClient.search(searchParams)
             .then(function(result) {
-
+              console.log('gov results',result);
               var data = result.hits.hits.map(self.prepareForAPIOutput);
               var extended = self.extendData(data);
 
@@ -612,8 +619,11 @@ module.exports = {
         };
       });
     } else {
+      console.log('params',searchParams.body.query.bool.filter)
       return elasticsearchClient.search(searchParams)
         .then(function(result) {
+          console.log('gov results 2',result);
+
           var data = result.hits.hits.map(self.prepareForAPIOutput);
           var extended = self.extendData(data);
           var notices = [];
@@ -630,6 +640,7 @@ module.exports = {
           };
         })
         .catch(function(error) {
+          console.log('err',error)
           return util.createAPIResponse({
             errors: [error]
           });

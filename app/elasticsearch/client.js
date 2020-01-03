@@ -5,15 +5,15 @@
  */
 
 var config = require('../config');
-var elasticsearch = require('elasticsearch');
+var elasticsearch = require('@elastic/elasticsearch');
 
 /**
  * Client
  * @type {object}
  */
 module.exports = new elasticsearch.Client({
-  host: config.get('elasticsearch.host'),
-  apiVersion: config.get('elasticsearch.apiVersion'),
+  node: config.get('elasticsearch.host'),
+  // apiVersion: config.get('elasticsearch.apiVersion'),
   requestTimeout: config.get('elasticsearch.requestTimeout'),
-  log: config.get('elasticsearch.log')
+  // log: config.get('elasticsearch.log')
 });
