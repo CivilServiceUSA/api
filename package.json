@@ -29,8 +29,8 @@
     "elasticsearch:update": "cd ./app && node ./elasticsearch/update && cd ../",
     "elasticsearch:delete": "cd ./app && node ./elasticsearch/delete && cd ../",
     "flatdb:download-all": "npm run -s flatdb:geo-city && npm run -s flatdb:geo-country",
-    "flatdb:geo-city": "rm -f ./app/flat-db/cities.mmdb && curl -o ./app/flat-db/cities.mmdb.gz 'https://download.maxmind.com/app/geoip_download_by_token?edition_id=GeoLite2-City&date=20200714&suffix=tar.gz&token=v2.local.FVJaW4IX_0MoNkfLT_qQBLnNUMBgoAtKK8STQ2zfLlUC-0ENzevLLP1eUiz4EFRNHNbap_CipmSWhopie4oQS4pG3kpWyOyyIBoKWUj7NU0ElLbJkHWKMBzrXus0nOrLvN3A10k9-mY691gwYf67vsTO8gSVO_uspsDBYCWNfRGjPEPZ0fAm_pWQoSxxrvrxeNi-ZxCc' && gunzip ./app/flat-db/cities.mmdb.gz",
-    "flatdb:geo-country": "rm -f ./app/flat-db/countries.mmdb && curl -o ./app/flat-db/countries.mmdb.gz 'https://download.maxmind.com/app/geoip_download_by_token?edition_id=GeoLite2-Country&date=20200714&suffix=tar.gz&token=v2.local.1LThSGP2YkV0lQUHfMeZgcJbVeAHlMYakwUm1t9GiDejVddK6-hY6cyQU701KrOnMo2JAjo-9Z766RsSwKtD5YbWggdy25rp_CjSFpvMYCk0EvBiCTQolhQTtAvIH1ZsB7Wpbn_jzhDn2LquVHvHg1u077kobwj4hFbKBFEGhIId5ctSCy_N6kSSDjP7vdFOW-Ok4lwo' && gunzip ./app/flat-db/countries.mmdb.gz",
+    "flatdb:geo-city": "rm -f ./app/flat-db/cities.mmdb && curl -o ./app/flat-db/cities.mmdb.gz 'https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&license_key=OnetpenM09tdqAhJ&suffix=tar.gz' && gunzip ./app/flat-db/cities.mmdb.gz",
+    "flatdb:geo-country": "rm -f ./app/flat-db/countries.mmdb && curl -o ./app/flat-db/countries.mmdb.gz 'https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&license_key=OnetpenM09tdqAhJ&suffix=tar.gz' && gunzip ./app/flat-db/countries.mmdb.gz",
     "make-config": "if ( ! test -e ./app/config/local.json ); then curl -o ./app/config/local.json https://gist.githubusercontent.com/manifestinteractive/a5e9ef7ef6730cb5e0d1783c89a94a5a/raw/5443e7d7b4fc144c6a3560581f9ae8bef9153b6c/campaign-zero-local.json; fi",
     "redis:clearcache": "redis-cli -r 1 flushall",
     "help": "node node_modules/npm-scripts-help"
