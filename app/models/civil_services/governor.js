@@ -136,7 +136,7 @@ var Governor = db.dbApi.define('governor', {
     defaultValue: 'unspecified'
   },
   religion: {
-    type: DataTypes.ENUM('african-methodist','anglican','baptist','buddhism','christian','christian-reformed','christian-scientist','church-of-christ','church-of-god','congregationalist','deist','eastern-orthodox','episcopalian','evangelical','evangelical-lutheran','hindu','jewish','jodo-shinshu-buddhist','lutheran','methodist','mormon','muslim','nazarene-christian','pentecostal','presbyterian','protestant','roman-catholic','seventh-day-adventist-church','soka-gakkai-buddhist','southern-baptist','united-church-of-christ','united-methodist','unitarian-universalist','unspecified'),
+    type: DataTypes.ENUM('african-methodist','anglican','baptist','buddhism','catholic','christian','christian-reformed','christian-scientist','church-of-christ','church-of-god','congregationalist','deist','eastern-orthodox','episcopalian','evangelical','evangelical-lutheran','hindu','jewish','jodo-shinshu-buddhist','lutheran','methodist','mormon','muslim','nazarene-christian','pentecostal','presbyterian','protestant','roman-catholic','seventh-day-adventist-church','soka-gakkai-buddhist','southern-baptist','united-church-of-christ','united-methodist','unitarian-universalist','unspecified'),
     allowNull: true,
     defaultValue: 'unspecified'
   },

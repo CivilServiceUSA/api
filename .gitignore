@@ -9,3 +9,4 @@ app/static/docs
 coverage
 dredd.yml
 node_modules
+*.zip
