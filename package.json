@@ -47,7 +47,7 @@
   "dependencies": {
     "@turf/turf": "^3.7.0",
     "async": "^2.1.5",
-    "bcrypt": "^0.8.7",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "bugsnag": "^1.8.0",
