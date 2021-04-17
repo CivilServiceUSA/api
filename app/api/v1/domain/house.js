@@ -680,7 +680,8 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'point'
+              type: 'circle',
+              radius: '250km'
             }
           }
         }
