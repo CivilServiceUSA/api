@@ -77,7 +77,8 @@ mapping.body[indexType] = {
       type: 'date'
     },
     location: {
-      type: 'geo_point'
+      type: 'geo_point',
+      lat_lon: true
     },
     shape: {
       type: 'geo_shape'
