@@ -296,8 +296,7 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'circle',
-              radius: '0.25km'
+              type: 'point'
             }
           }
         }
