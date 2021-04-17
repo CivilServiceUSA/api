@@ -237,7 +237,7 @@ mapping.body[indexType] = {
     },
     shape: {
       type: 'geo_shape',
-      tree_levels: 10,
+      tree_levels: 26,
       tree: 'quadtree'
     },
     aliases: {
