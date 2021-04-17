@@ -293,11 +293,10 @@ module.exports = {
           shape: {
             shape: {
               coordinates: [
-                parseFloat(query.longitude),
-                parseFloat(query.latitude)
+                query.longitude,
+                query.latitude
               ],
-              type: 'point',
-              radius: '0.25km'
+              type: 'point'
             }
           }
         }

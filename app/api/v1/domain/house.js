@@ -680,8 +680,7 @@ module.exports = {
                 query.longitude,
                 query.latitude
               ],
-              type: 'circle',
-              radius: '0.25km'
+              type: 'point'
             }
           }
         }
@@ -729,7 +728,7 @@ module.exports = {
                     zipcode.latitude
                   ],
                   type: 'circle',
-                  radius: '0.25km'
+                  radius: '250km'
                 }
               }
             }

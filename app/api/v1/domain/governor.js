@@ -142,7 +142,9 @@ module.exports = {
       twitter_handle: data.twitter_handle,
       twitter_url: data.twitter_url,
       photo_url: data.photo_url,
-      location: {lat: parseFloat(data.latitude),lon: parseFloat(data.longitude)
+      location: {
+        lat: parseFloat(data.latitude),
+        lon: parseFloat(data.longitude)
       },
       shape: data.shape,
       aliases: data.getAliases()
